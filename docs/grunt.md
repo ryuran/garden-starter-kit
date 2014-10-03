@@ -85,15 +85,16 @@ $ grunt connect:dev
 ```
 
 Cette tache permet d'accéder au site web statique de développement à l'adresse
-[http://localhost:8000](). Elle permet également d'accéder à la version HTML de la
-documentation du projet à l'adresse [http://localhost:8000/docs/]()
+[http://localhost:8000](http://localhost:8000). Elle permet également d'accéder
+à la version HTML de la documentation du projet à l'adresse
+[http://localhost:8000/docs/](http://localhost:8000/docs/)
 
 ```bash
 $ grunt connect:prod
 ```
 
 Cette tache permet d'accéder au site web statique avec toutes les optimisations
-pour la production à l'adresse [http://localhost:8001]()
+pour la production à l'adresse [http://localhost:8001](http://localhost:8001)
 
 #### watch
 Cette tache permet de lancer tous les observateurs disponibles pour le travail
