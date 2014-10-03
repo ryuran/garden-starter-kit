@@ -45,7 +45,7 @@ Vous avez deux options pour démarrer votre projet:
 Une fois que vous avez récupéré le contenu de ce dépôts, vous pouvez
 eventuellement ajouter les outils recommandés ci-après.
 
-Enfin, une fois que vous êtes près a travailler, exécutez les commandes
+Enfin, une fois que vous êtes près à travailler, exécutez les commandes
 suivantes :
 
 ```bash
@@ -65,12 +65,17 @@ Le plus simple:
 
 ```bash
 $ cd ~/monProjet
-$ git clone git@example.com:project-name.git
+$ git clone git@git.clever-age.net:clever-age-expertise/clever-garden-starter-kit.git
 $ git remote remove origin
 ```
 
 Il ne vous reste plus qu'a ajouter une nouvelle `origin` vers le dépot définif
 des sources du projet final.
+
+```bash
+$ git remote add git@git.clever-age.net:client-name/project-name.git
+$ git push -u origin master
+```
 
 
 Outils obligatoires
@@ -79,8 +84,8 @@ Les outils listés ici doivent êtres utilisés obligatoirement lorsqu'on démar
 un nouveau projet d'intégration. _Le seul cas ou on ne les utilisera pas sera
 lorsqu'on aura une demande explicite du client pour utiliser autre chose._
 
-* [*Grunt*](docs/grunt.md)
-* [*Sass*](docs/sass.md)
+* [Grunt](docs/grunt.md)
+* Sass
 
 
 Outils recommandés
@@ -89,5 +94,5 @@ Les outils listés ci-après sont des recommandations. Il peuvent apporter des
 fonctionnalités originales ou en cours d'experimentation. Vous êtes libre de
 les utilisés ou non selon vos envies ou votre contexte projet.
 
-* [*Compass*](docs/compass.md)
-* [*Bower*](docs/bower.md)
+* Compass
+* Bower
