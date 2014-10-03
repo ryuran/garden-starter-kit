@@ -1,0 +1,11 @@
+{
+  "name": "garden-starterkit",
+  "version": "0.0.1",
+  "dependencies": {
+    "grunt": "~0.4.5",
+    "load-grunt-tasks": "~0.6.0",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-contrib-connect": "~0.8.0"
+  },
+  "devDependencies": {}
+}
