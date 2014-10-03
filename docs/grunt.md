@@ -32,7 +32,7 @@ projet.
 Configuration standard
 --------------------------------------------------------------------------------
 
-La configuration standard de Grunt et celle avec laquelle tous nos projets
+La configuration standard de Grunt est celle avec laquelle tous nos projets
 doivent être initialisés. Cette configuration comprend un jeu de plugins
 standards ainsi que certaines taches personnalisées identiques pour tous les
 projets.
