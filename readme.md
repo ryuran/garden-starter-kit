@@ -77,6 +77,30 @@ $ git remote add git@git.clever-age.net:client-name/project-name.git
 $ git push -u origin master
 ```
 
+## Organisation des fichiers
+Pour harmoniser notre travail, tous les projet utiliserons la structure de
+fichiers suivante.
+
+Les sources sur lesquels on travail sont toutes dans le repertoire `src`.
+Normalement, seul les fichiers présents dans ce repertoire devraient être
+modifiés après le début du projet.
+
+* `/src`
+* `/src/sass` : L'ensemble des fichiers Sass du projet
+* `/src/js` : L'ensemble des sources javascript du projet
+* `/src/img` : L'ensemble des images d'interface du projet
+* `/src/font` : L'enemble des fonts utilisés par le projet
+* `/src/html` : L'ensemble des gabarit HTML du projet
+* `/src/docs` : L'ensemble de la documentation statique du projet au format Markdown
+
+A chaque fois que le projet est "contruit", le resultat est disponible dans
+les répertoires suivant:
+
+* `/build`
+* `/build/docs` : Toutes la documentation du projet au format HTML
+* `/build/dev` : Le projet contruit sans optimisation pour le développement
+* `/build/prod` : Le projet statique optimisé pour la livraison final
+
 
 Outils obligatoires
 --------------------------------------------------------------------------------
