@@ -49,38 +49,76 @@ Par défaut, tout projet utilise les plugins suivant avec leur taches associé:
 Tous nos projet doivent, de manière standard proposer les taches normalisées
 suivantes:
 
+#### live
+Cette tache est la tache à utiliser lors de l'intégration. Elle reconstruit le
+projet puis lance un serveur web statique sur la version de développement et
+enfin observe tous les changements sur les fichiers sources. Les changements
+seront automatiquement répercutés sur le _build_ de développement et le
+navigateur mis à jour.
+
+```bash
+$ grunt live
+```
+
+Cette tache est un raccourcis pour le lancement successif des taches _build_,
+_connect_ et _watch_ (voir ci-après). Elle propose en outre une fonction de
+_livereload_.
+
 #### build
-Cette tache va intégrallement reconstruire le contenu du dossier `/build`.
-Cela inclus, la documentation du projet au format HTML, la version static de
-dévelopement du projet et la version static prète à être livré pour la
+Cette tache va intégralement reconstruire le contenu du dossier `/build`.
+Cela inclus, la documentation du projet au format HTML, la version statique de
+développement du projet et la version statique prête à être livré pour la
 production.
 
 ```bash
 $ grunt build
 ```
 
-#### live
-Cette tache est la tache à utiliser lors de l'intégration. Elle recontruit le
-projet puis lance un server web statique sur la version de développement et
-enfin observe tous les changements sur les fichiers sources. Les changements
-seront automatiquement répercuté sur le build de dévelopement et le navigateur
-mis à jour.
+#### connect
+Cette tache offre la possibilité d'avoir un serveur web statique autonome pour
+visualiser le résultat d'un _build_. Elle se subdivise en deux sous-taches, une
+pour la version statique de développement et une pour le version statique de
+production:
 
 ```bash
-$ grunt live
+$ grunt connect:dev
+```
+
+Cette tache permet d'accéder au site web statique de développement à l'adresse
+http://localhost:8000. Elle permet également d'accéder à la version HTML de la
+documentation du projet à l'adresse http://localhost:8000/docs/
+
+```bash
+$ grunt connect:prod
+```
+
+Cette tache permet d'accéder au site web statique avec toutes les optimisations
+pour la production à l'adresse http://localhost:8001
+
+#### watch
+Cette tache permet de lancer tous les observateurs disponibles pour le travail
+de développement. Leur travail consiste à mettre à jour le _build_ de
+développement pour pouvoir vérifier le résultat dans un navigateur.
+
+Sauf cas très spécifique, il est conseillé d'utiliser la tache _live_ plutôt que
+_watch_ directement.
+
+```bash
+$ grunt watch
 ```
 
 
-Autres plugins
+Autres taches
 --------------------------------------------------------------------------------
 
 En plus de la configuration standard, il est tout à fait possible d'utiliser
 d'autre taches grunt. Selon le contexte projet tout est possible.
 
 Nous recommandons cependant d'enregistrer ses taches dans la section
-`devDependencies` du fichier `package.json`. Pour cela, il suffit d'utiliser le
-flag `--save-dev` lors de l'installation de la tache:
+`devDependencies` du fichier `package.json`, la section `dependencies` étant
+réservée aux taches standards. Pour cela, il suffit d'utiliser le flag
+`--save-dev` lors de l'installation de la tache:
 
 ```bash
-$ npm install <nom de la tache> --save-dev
+$ npm install <nom-de-la-tache> --save-dev
 ```
