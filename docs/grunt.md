@@ -34,12 +34,12 @@ Configuration standard
 
 La configuration standard de Grunt est celle avec laquelle tous nos projets
 doivent être initialisés. Cette configuration comprend un jeu de plugins
-standards ainsi que certaines taches personnalisées identiques pour tous les
+standardisé ainsi que certaines taches normalisés identiques pour tous les
 projets.
 
 
 ### Plugin standards
-Par défaut, tout projet utilise les plugins suivant avec leur taches associé:
+Par défaut, tout projet utilise les plugins suivant avec leur taches associées:
 
 * [grunt-contrib-watch](https://github.com/gruntjs/grunt-contrib-watch)
 * [grunt-contrib-connect](https://github.com/gruntjs/grunt-contrib-connect)
@@ -77,7 +77,7 @@ $ grunt build
 #### connect
 Cette tache offre la possibilité d'avoir un serveur web statique autonome pour
 visualiser le résultat d'un _build_. Elle se subdivise en deux sous-taches, une
-pour la version statique de développement et une pour le version statique de
+pour la version statique de développement et une pour la version statique de
 production:
 
 ```bash
@@ -85,15 +85,15 @@ $ grunt connect:dev
 ```
 
 Cette tache permet d'accéder au site web statique de développement à l'adresse
-http://localhost:8000. Elle permet également d'accéder à la version HTML de la
-documentation du projet à l'adresse http://localhost:8000/docs/
+[http://localhost:8000](). Elle permet également d'accéder à la version HTML de la
+documentation du projet à l'adresse [http://localhost:8000/docs/]()
 
 ```bash
 $ grunt connect:prod
 ```
 
 Cette tache permet d'accéder au site web statique avec toutes les optimisations
-pour la production à l'adresse http://localhost:8001
+pour la production à l'adresse [http://localhost:8001]()
 
 #### watch
 Cette tache permet de lancer tous les observateurs disponibles pour le travail
@@ -114,10 +114,10 @@ Autres taches
 En plus de la configuration standard, il est tout à fait possible d'utiliser
 d'autre taches grunt. Selon le contexte projet tout est possible.
 
-Nous recommandons cependant d'enregistrer ses taches dans la section
-`devDependencies` du fichier `package.json`, la section `dependencies` étant
-réservée aux taches standards. Pour cela, il suffit d'utiliser le flag
-`--save-dev` lors de l'installation de la tache:
+Nous recommandons cependant d'enregistrer les plugin associés à ces taches dans
+la section `devDependencies` du fichier `package.json`, la section
+`dependencies` étant réservée aux taches standards. Pour cela, il suffit
+d'utiliser le flag `--save-dev` lors de l'installation de la tache:
 
 ```bash
 $ npm install <nom-de-la-tache> --save-dev
