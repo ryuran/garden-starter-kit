@@ -11,7 +11,7 @@ module.exports = (grunt) ->
   # $ grunt build
   # Régénère le contenu du dossier `/build`. Il est recommandé de lancer cette
   # tache à chaque fois que l'on réalise un `git pull` du projet.
-  grunt.registerTask 'build', []
+  grunt.registerTask 'build', ['clean']
 
 
   # CHARGE AUTOMATIQUEMENT TOUTES LES TACHES GRUNT DU PROJET
@@ -24,6 +24,14 @@ module.exports = (grunt) ->
   grunt.initConfig
     pkg: grunt.file.readJSON 'package.json'
 
+
+    # $ grunt clean
+    # --------------------------------------------------------------------------
+    # Supprime tous les fichiers avant de lancer un build
+    clean:
+      dev : ['/build/dev']
+      prod: ['/build/prod']
+      doc : ['/build/doc']
 
     # $ grunt connect
     # --------------------------------------------------------------------------
