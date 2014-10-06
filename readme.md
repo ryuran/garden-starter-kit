@@ -13,7 +13,7 @@ l'utiliser dans notre contexte. Cette documentation est rédigée au format
 Markdown et disponible dans le répertoire `docs` de ce dépôt.
 
 
-Setup projet
+Démarrage de projet
 --------------------------------------------------------------------------------
 Pour démarrer un nouveau projet, suivez simplement les instructions ci-après.
 
@@ -60,7 +60,7 @@ $ npm install
 Si vous le souhaitez, vous pouvez directement cloner ce dépôt avec GIT.
 Si vous choisissez cette option, cela vous permet de garder le lien avec ce
 dépôt. Ça peut être utile si vous voulez pouvoir récupérer des mises à jour de
-ce boiler plat après coup. *ATTENTION:* _En l'état c'est assez risqué et il est
+ce starter kit après coup. *ATTENTION:* _En l'état c'est assez risqué et il est
 recommandé de supprimer la branche distante liée à ce dépôt une fois que vous
 avez l'avez cloné._
 
@@ -73,7 +73,7 @@ $ git remote remove origin
 ```
 
 Il ne vous reste plus qu'a ajouter une nouvelle `origin` vers le dépôt définitif
-des sources du projet final.
+des sources du projet final et à envoyer vos source vers le dépôt définitif.
 
 ```bash
 $ git remote add git@git.clever-age.net:client-name/project-name.git
