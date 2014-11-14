@@ -44,6 +44,7 @@ Par défaut, tout projet utilise les plugins suivant avec leur taches associées
 * [grunt-contrib-watch](https://github.com/gruntjs/grunt-contrib-watch)
 * [grunt-contrib-connect](https://github.com/gruntjs/grunt-contrib-connect)
 * [grunt-contrib-clean](https://github.com/gruntjs/grunt-contrib-clean)
+* [grunt-contrib-compass](https://github.com/gruntjs/grunt-contrib-compass)
 
 
 ### Taches normalisées
