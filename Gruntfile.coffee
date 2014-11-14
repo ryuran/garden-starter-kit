@@ -15,6 +15,7 @@ module.exports = (grunt) ->
 
 
   # CHARGE AUTOMATIQUEMENT TOUTES LES TACHES GRUNT DU PROJET
+  # /!\ Attention, cela ne fonctionne que pour les taches préfixées `grunt-*`
   # ============================================================================
   require('load-grunt-tasks')(grunt)
 
@@ -24,6 +25,20 @@ module.exports = (grunt) ->
   grunt.initConfig
     pkg: grunt.file.readJSON 'package.json'
 
+    # $ grunt compass
+    # --------------------------------------------------------------------------
+    # Gère la compilation compass
+    # TODO: configurer l'option watch pour rendre la compilation plus rapide
+    compass:
+      options:
+        bundleExec: true
+        config: 'config.rb'
+      dev:
+        options:
+          environment: 'development'
+      prod:
+        options:
+          environment: 'production'
 
     # $ grunt clean
     # --------------------------------------------------------------------------

@@ -90,8 +90,9 @@ modifiés après le début du projet.
 
 * `/src`
 * `/src/sass` : L'ensemble des fichiers Sass du projet
-* `/src/js` : L'ensemble des sources JavasSript du projet
-* `/src/img` : L'ensemble des images d'interface du projet
+* `/src/js`   : L'ensemble des sources JavasSript du projet
+* `/src/img`  : L'ensemble des images d'interface du projet
+* `/src/img/sprites` : L'ensemble des images d'interface qui seront regroupés en sprites
 * `/src/font` : L'ensemble des fonts utilisés par le projet
 * `/src/html` : L'ensemble des gabarit HTML du projet
 * `/src/docs` : L'ensemble de la documentation statique du projet au format Markdown
@@ -112,7 +113,7 @@ un nouveau projet d'intégration. _Le seul cas ou on ne les utilisera pas sera
 lorsqu'on aura une demande explicite du client pour utiliser autre chose._
 
 * [Grunt](docs/grunt.md)
-* Sass
+* [Sass/compass](docs/sass.md)
 
 
 Outils recommandés
@@ -121,5 +122,4 @@ Les outils listés ci-après sont des recommandations. Il peuvent apporter des
 fonctionnalités originales ou en cours d’expérimentation. Vous êtes libre de
 les utiliser ou non selon vos envies ou votre contexte projet.
 
-* Compass
 * Bower
