@@ -11,7 +11,7 @@ module.exports = (grunt) ->
   # $ grunt build
   # Régénère le contenu du dossier `/build`. Il est recommandé de lancer cette
   # tache à chaque fois que l'on réalise un `git pull` du projet.
-  grunt.registerTask 'build', ['clean', 'compass']
+  grunt.registerTask 'build', ['clean', 'compass', 'imagemin']
 
 
   # CHARGE AUTOMATIQUEMENT TOUTES LES TACHES GRUNT DU PROJET
@@ -24,6 +24,33 @@ module.exports = (grunt) ->
   # ============================================================================
   grunt.initConfig
     pkg: grunt.file.readJSON 'package.json'
+
+    # $ grunt imagemin
+    # --------------------------------------------------------------------------
+    # Optimise automatiquement les images (png, jpeg, gif et svg)
+    # Seul les images à la racine de `src/img` sont optimisées. Les images
+    # optimisées sont automatiquement placées dans `build/dev` et `build/prod`
+    imagemin:
+      options:
+        progressive: false
+        svgoPlugins: [
+          removeHiddenElems  : false
+          convertStyleToAttrs: false
+        ]
+      dev:
+        files: [
+          expand: true,
+          cwd   : 'src/img/',
+          src   : ['*.{png,jpg,gif,svg}'],
+          dest  : 'build/dev/img/'
+        ]
+      prod:
+        files: [
+          expand: true,
+          cwd   : 'src/img/',
+          src   : ['*.{png,jpg,gif,svg}'],
+          dest  : 'build/prod/img/'
+        ]
 
     # $ grunt compass
     # --------------------------------------------------------------------------
@@ -95,10 +122,14 @@ module.exports = (grunt) ->
       sass:
         files: 'src/sass/**/*.scss'
         tasks: ['sass']
+      images:
+        files: 'src/img/*.{png,jpg,gif,svg}'
+        tasks: ['newer:imagemin:dev']
 
 
   # TACHES UTILITAIRES
   # ============================================================================
+  # Intermediate task to handle `$ grunt watch --sass=no`
   grunt.registerTask 'sass', 'Checking Sass requirement', () ->
     if grunt.option('sass') isnt 'no'
       grunt.log.write 'We are allowed to compile Sass'
