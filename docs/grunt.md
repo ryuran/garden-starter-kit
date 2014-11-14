@@ -45,6 +45,8 @@ Par défaut, tout projet utilise les plugins suivant avec leur taches associées
 * [grunt-contrib-connect](https://github.com/gruntjs/grunt-contrib-connect)
 * [grunt-contrib-clean](https://github.com/gruntjs/grunt-contrib-clean)
 * [grunt-contrib-compass](https://github.com/gruntjs/grunt-contrib-compass)
+* [grunt-contrib-imagemin](https://github.com/gruntjs/grunt-contrib-imagemin)
+* [grunt-newer](https://github.com/tschaub/grunt-newer)
 
 
 ### Taches normalisées
