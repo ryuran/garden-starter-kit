@@ -11,7 +11,7 @@ module.exports = (grunt) ->
   # $ grunt build
   # Régénère le contenu du dossier `/build`. Il est recommandé de lancer cette
   # tache à chaque fois que l'on réalise un `git pull` du projet.
-  grunt.registerTask 'build', ['clean']
+  grunt.registerTask 'build', ['clean', 'compass']
 
 
   # CHARGE AUTOMATIQUEMENT TOUTES LES TACHES GRUNT DU PROJET
@@ -92,3 +92,16 @@ module.exports = (grunt) ->
         options:
           livereload: true
         files: ['build/dev/**/*']
+      sass:
+        files: 'src/sass/**/*.scss'
+        tasks: ['sass']
+
+
+  # TACHES UTILITAIRES
+  # ============================================================================
+  grunt.registerTask 'sass', 'Checking Sass requirement', () ->
+    if grunt.option('sass') isnt 'no'
+      grunt.log.write 'We are allowed to compile Sass'
+      grunt.task.run 'compass:dev'
+    else
+      grunt.log.write 'We must not compile Sass'

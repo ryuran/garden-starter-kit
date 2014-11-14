@@ -14,9 +14,6 @@ http_images_path      = '/img'
 http_javascripts_path = '/js'
 http_fonts_path       = '/fonts'
 
-# Environnement par défaut du projet (:production ou :development)
-environment = :development
-
 # Configuration spécifique à chaque environement
 if  environment == :production
     # chemin des ressources
