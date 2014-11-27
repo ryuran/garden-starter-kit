@@ -110,6 +110,17 @@ module.exports = (grunt) ->
           port       : 8001
           keepalive  : true
 
+    # Vérifie que les fichiers Javascript sont bien lintés
+    jshint:
+      all: ['src/**/*.js']
+      options:
+        jshintrc: '.jshintrc'
+
+    # Vérifie que les fichiers de style sont bien lintés
+    scsslint:
+      all: ['src/**/*.scss']
+      options:
+        config: '.scss-lint.yml'
 
     # $ grunt watch
     # --------------------------------------------------------------------------
