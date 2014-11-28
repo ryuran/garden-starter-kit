@@ -23,11 +23,11 @@
   "trailing"  : true,
   "nonbsp"    : true,
   "noempty"   : true,
-	"forin"     : true,
-	"freeze"    : false,
-	"nonew"     : true,
-	"plusplus"  : false,
-	"maxparams" : 3,
-	"maxdepth"  : 3,
-	"jquery"    : true
+  "forin"     : true,
+  "freeze"    : false,
+  "nonew"     : true,
+  "plusplus"  : false,
+  "maxparams" : 3,
+  "maxdepth"  : 3,
+  "jquery"    : true
 }
