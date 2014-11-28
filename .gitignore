@@ -1,0 +1,8 @@
+
+*.sass-cache
+
+# Guarantee that this file is always there
+!.gitignore
+
+# NodeJS modules
+node_modules

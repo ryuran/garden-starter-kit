@@ -110,6 +110,17 @@ module.exports = (grunt) ->
           port       : 8001
           keepalive  : true
 
+    # Vérifie que les fichiers Javascript sont bien lintés
+    jshint:
+      all: ['src/**/*.js']
+      options:
+        jshintrc: '.jshintrc'
+
+    # Vérifie que les fichiers de style sont bien lintés
+    scsslint:
+      all: ['src/**/*.scss']
+      options:
+        config: '.scss-lint.yml'
 
     # $ grunt watch
     # --------------------------------------------------------------------------
@@ -125,6 +136,12 @@ module.exports = (grunt) ->
       images:
         files: 'src/img/*.{png,jpg,gif,svg}'
         tasks: ['newer:imagemin:dev']
+      jshint:
+        files: 'src/**/*.js'
+        tasks: ['newer:jshint']
+      scsslint:
+        files: 'src/**/*.scss'
+        tasks: ['newer:scsslint']
 
 
   # TACHES UTILITAIRES

@@ -1,0 +1,13 @@
+# Default application configuration that all configurations inherit from.
+
+scss_files: "**/*.scss"
+
+linters:
+
+  Indentation:
+    enabled: true
+    character: space # or 'tab'
+    width: 2
+
+  Compass::*:
+    enabled: true

@@ -114,6 +114,7 @@ lorsqu'on aura une demande explicite du client pour utiliser autre chose._
 
 * [Grunt](docs/grunt.md)
 * [Sass/compass](docs/sass.md)
+* [Linter](docs/linter.md)
 
 
 Outils recommandés
