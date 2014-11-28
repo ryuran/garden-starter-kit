@@ -136,6 +136,12 @@ module.exports = (grunt) ->
       images:
         files: 'src/img/*.{png,jpg,gif,svg}'
         tasks: ['newer:imagemin:dev']
+      jshint:
+        files: 'src/**/*.js'
+        tasks: ['newer:jshint']
+      scsslint:
+        files: 'src/**/*.scss'
+        tasks: ['newer:scsslint']
 
 
   # TACHES UTILITAIRES

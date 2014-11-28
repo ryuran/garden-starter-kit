@@ -14,7 +14,7 @@
   "eqeqeq"    : true,
   "eqnull"    : true,
   "immed"     : true,
-  "indent"    : 4,
+  "indent"    : 2,
   "smarttabs" : false,
   "unused"    : true,
   "newcap"    : true,
@@ -23,5 +23,11 @@
   "trailing"  : true,
   "nonbsp"    : true,
   "noempty"   : true,
-  "forin"     : true
+	"forin"     : true,
+	"freeze"    : false,
+	"nonew"     : true,
+	"plusplus"  : false,
+	"maxparams" : 3,
+	"maxdepth"  : 3,
+	"jquery"    : true
 }
