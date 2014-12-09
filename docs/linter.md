@@ -40,6 +40,8 @@ Linter Sass : SCSS-Lint
 Il est possible de surcharger les règles par défaut via le fichier *.scss-lint.yml*.
 Pour voir les options possibles, c'est [ici](https://github.com/causes/scss-lint/blob/master/lib/scss_lint/linter/README.md).
 
-Certains editeurs, tels que [Sublime](http://www.sublimetext.com/), sont capables
-de lire cette configuration et de verifier le linting à la demande. [Documentation
-du plugin Sublime](https://sublime.wbond.net/packages/SublimeLinter-contrib-scss-lint)
+Les settings utilisé sur le starter-kit sont adapté de [scss-lint-w3c](https://github.com/kaelig/scss-lint-w3c).
+
+Certains editeurs, tels que [Sublime text 3](http://www.sublimetext.com/3), sont
+capables de lire cette configuration et de verifier le linting à la demande.
+[Documentation du plugin Sublime](https://sublime.wbond.net/packages/SublimeLinter-contrib-scss-lint)
