@@ -120,6 +120,7 @@ module.exports = (grunt) ->
     scsslint:
       all: ['src/**/*.scss']
       options:
+        bundleExec: true
         config: '.scss-lint.yml'
 
     # $ grunt watch
