@@ -1,10 +1,11 @@
+
 Grunt
 ================================================================================
 
 Pour tous nos projets, nous automatisons les taches répétitives à l'aide de
 [Grunt](http://gruntjs.com/)
 
-> *NOTE :* _L'utilisation d'autres outils d'automatisation des taches n'est
+> **NOTE :** _L'utilisation d'autres outils d'automatisation des taches n'est
   autorisé que si le client en fait une demande explicite_
 
 

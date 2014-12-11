@@ -1,10 +1,11 @@
+
 Sass & Compass
 ================================================================================
 
 Pour tous nos projets, nous utilisons [Sass](http://sass-lang.com) et
 régulièrement [Compass](http://compass-style.org)
 
-> *NOTE :* _L'utilisation d'autres préprocesseurs CSS n'est autorisé que si le
+> **NOTE :** _L'utilisation d'autres préprocesseurs CSS n'est autorisé que si le
             client en fait une demande explicite_
 
 
