@@ -137,16 +137,13 @@ module.exports = (grunt) ->
         files: ['build/dev/**/*']
       sass:
         files: 'src/sass/**/*.scss'
-        tasks: ['sass']
+        tasks: ['newer:scsslint', 'sass']
       images:
         files: 'src/img/*.{png,jpg,gif,svg}'
         tasks: ['newer:imagemin:dev']
-      jshint:
-        files: 'src/**/*.js'
+      js:
+        files: 'src/js/**/*.js'
         tasks: ['newer:jshint']
-      scsslint:
-        files: 'src/**/*.scss'
-        tasks: ['newer:scsslint']
 
 
   # TACHES UTILITAIRES
