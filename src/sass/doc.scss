@@ -1,0 +1,74 @@
+body {
+  font: 1em sans-serif;
+  padding: 1em;
+  margin: 0;
+  color: black;
+  background: white;
+}
+
+.page:not(.index) {
+  max-width: 40em;
+  margin: 0 auto;
+}
+
+code, pre {
+  background-color: #DEDEDE;
+}
+
+pre {
+  overflow: auto;
+  padding: .5em;
+  border: 1px solid #999;
+}
+
+img {
+  max-width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  padding-top: 0;
+  font-weight: bold;
+}
+
+p {
+  text-align: justify;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
+
+.table {
+  overflow:  auto;
+  border: 1px solid #333;
+}
+
+table {
+  width: 100%;
+  min-width: 40em;
+  border-spacing: 0;
+  border-collapse: collapse;
+
+  th, td, tr {
+    text-align: left;
+    border: 1px solid #333;
+    padding: .4em .5em .3em;
+  }
+
+  th {
+    white-space: nowrap;
+    background: #DFDFDF;
+  }
+
+  td:nth-child(1) {
+    min-width: 250px;
+  }
+
+  p {
+    margin: 0;
+
+    + p {
+      margin-top: 1em;
+    }
+  }
+}
