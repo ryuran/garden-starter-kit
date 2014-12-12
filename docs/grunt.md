@@ -73,6 +73,14 @@ Cette tache est un raccourcis pour le lancement successif des taches _build_,
 _connect_ et _watch_ (voir ci-après). Elle propose en outre une fonction de
 _livereload_.
 
+Il est possible de faire en sorte de ne pas observer les fichiers Sass pour ceux
+qui voudraient utiliser directement le watcher de compass. Pour cela, il suffit
+d'utiliser le flag `--sass=no`.
+
+```bash
+$ grunt live --sass=no
+```
+
 #### build
 Cette tache va intégralement reconstruire le contenu du dossier `/build`.
 Cela inclus, la documentation du projet au format HTML, la version statique de
@@ -137,6 +145,14 @@ _watch_ directement.
 
 ```bash
 $ grunt watch
+```
+
+Il est possible de faire en sorte de ne pas observer les fichiers Sass pour ceux
+qui voudraient utiliser directement le watcher de compass. Pour cela, il suffit
+d'utiliser le flag `--sass=no`.
+
+```bash
+$ grunt watch --sass=no
 ```
 
 
