@@ -48,8 +48,10 @@ Par défaut, tout projet utilise les plugins suivant avec leur taches associées
 * [grunt-contrib-clean](https://github.com/gruntjs/grunt-contrib-clean)
 * [grunt-contrib-compass](https://github.com/gruntjs/grunt-contrib-compass)
 * [grunt-contrib-imagemin](https://github.com/gruntjs/grunt-contrib-imagemin)
+* [grunt-contrib-jshint](https://github.com/gruntjs/grunt-contrib-jshint)
 * [grunt-newer](https://github.com/tschaub/grunt-newer)
 * [grunt-prettify](https://github.com/jonschlinkert/grunt-prettify)
+* [grunt-scss-lint](https://github.com/ahmednuaman/grunt-scss-lint)
 
 
 ### Taches normalisées
