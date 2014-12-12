@@ -37,10 +37,26 @@ logo : <%- pkg.logo %>
             {{#if INDEX.JS.url}}<a href="{{INDEX.JS.url}}">{{/if}}{{INDEX.JS.label}}{{#if INDEX.JS.url}}</a>{{/if}}
           </th>
         {{/if}}
-        {{#if INDEX.GROUP1.length}}<th scope="col" colspan="{{INDEX.GROUP1.length}}">{{INDEX.GROUP1.label}}</th>{{/if}}
-        {{#if INDEX.GROUP2.length}}<th scope="col" colspan="{{INDEX.GROUP2.length}}">{{INDEX.GROUP2.label}}</th>{{/if}}
-        {{#if INDEX.GROUP3.length}}<th scope="col" colspan="{{INDEX.GROUP3.length}}">{{INDEX.GROUP3.label}}</th>{{/if}}
-        {{#if INDEX.NOTES}}<th scope="col" rowspan="2">{{INDEX.NOTES.label}}</th>{{/if}}
+        {{#if INDEX.GROUP1.length}}
+        <th scope="col" colspan="{{INDEX.GROUP1.length}}">
+          {{#if INDEX.GROUP1.url}}<a href="{{INDEX.GROUP1.url}}">{{/if}}{{INDEX.GROUP1.label}}{{#if INDEX.GROUP1.url}}</a>{{/if}}
+        </th>
+        {{/if}}
+        {{#if INDEX.GROUP2.length}}
+        <th scope="col" colspan="{{INDEX.GROUP2.length}}">
+          {{#if INDEX.GROUP2.url}}<a href="{{INDEX.GROUP2.url}}">{{/if}}{{INDEX.GROUP2.label}}{{#if INDEX.GROUP2.url}}</a>{{/if}}
+        </th>
+        {{/if}}
+        {{#if INDEX.GROUP3.length}}
+        <th scope="col" colspan="{{INDEX.GROUP3.length}}">
+          {{#if INDEX.GROUP3.url}}<a href="{{INDEX.GROUP3.url}}">{{/if}}{{INDEX.GROUP3.label}}{{#if INDEX.GROUP3.url}}</a>{{/if}}
+        </th>
+        {{/if}}
+        {{#if INDEX.NOTES}}
+        <th scope="col" rowspan="2">
+          {{#if INDEX.NOTES.url}}<a href="{{INDEX.NOTES.url}}">{{/if}}{{INDEX.NOTES.label}}{{#if INDEX.NOTES.url}}</a>{{/if}}
+        </th>
+        {{/if}}
       </tr>
       <tr>
         {{#if INDEX.L1}}
