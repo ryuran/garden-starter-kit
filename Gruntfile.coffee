@@ -11,7 +11,7 @@ module.exports = (grunt) ->
   # $ grunt build
   # Régénère le contenu du dossier `/build`. Il est recommandé de lancer cette
   # tache à chaque fois que l'on réalise un `git pull` du projet.
-  grunt.registerTask 'build', ['clean', 'compass', 'imagemin']
+  grunt.registerTask 'build', ['clean', 'compass', 'imagemin', 'assemble', 'prettify']
 
 
   # CHARGE AUTOMATIQUEMENT TOUTES LES TACHES GRUNT DU PROJET
@@ -209,6 +209,9 @@ module.exports = (grunt) ->
       js:
         files: 'src/js/**/*.js'
         tasks: ['newer:jshint']
+      html:
+        files: 'src/html/**/*.hbs'
+        tasks: ['assemble:dev','newer:prettify:dev']
 
 
   # TACHES UTILITAIRES
