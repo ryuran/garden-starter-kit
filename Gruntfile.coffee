@@ -77,6 +77,19 @@ module.exports = (grunt) ->
           dest   : 'build/docs'
         }]
 
+    # $ grunt prettify
+    # --------------------------------------------------------------------------
+    # Indente correctement le HTML du build de dev pour qu'il soit plus lisible
+    prettify:
+      options:
+        config: '.jsbeautifyrc'
+      dev:
+        expand: true
+        src   : ['build/dev/**/*.html']
+      prod:
+        expand: true
+        src   : ['build/prod/**/*.html']
+
     # $ grunt imagemin
     # --------------------------------------------------------------------------
     # Optimise automatiquement les images (png, jpeg, gif et svg)
