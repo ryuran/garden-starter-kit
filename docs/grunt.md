@@ -79,6 +79,28 @@ production.
 $ grunt build
 ```
 
+#### css
+Cette tache va s'occuper de contruire toutes les feuilles de styles et leur
+ressources associées (images, fontes, etc.)
+
+```bash
+$ grunt css
+```
+
+#### html
+Cette tache va s'occuper de contruire toutes les pages HTML
+
+```bash
+$ grunt html
+```
+
+#### js
+Cette tache va s'occuper de contruire tous les fichier JavaScript
+
+```bash
+$ grunt html
+```
+
 #### connect
 Cette tache offre la possibilité d'avoir un serveur web statique autonome pour
 visualiser le résultat d'un _build_. Elle se subdivise en deux sous-taches, une

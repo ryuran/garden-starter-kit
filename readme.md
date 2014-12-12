@@ -107,6 +107,47 @@ les répertoires suivant:
 * `/build/prod` : Le projet statique optimisé pour la livraison final
 
 
+Taches normalisées
+--------------------------------------------------------------------------------
+
+Tous projet démarré avec ce starter kit dispose d'un certain nombre de taches
+Grunt normalisés utilisable quelques soient les modules grunt utilisés.
+
+**live**: permet de démarrer un serveur static pour les pages HTML et d'avoir
+un _watch_ sur les fichiers du projet en même temps.
+
+```bash
+$ grunt live
+
+# l'option --sass=no permet de désactiver le watcher Sass
+$ grunt live --sass=no
+```
+
+**build**: contruit la version statique du projet (compile les fichier Sass,
+assemble les fichiers HTML, etc.)
+
+```bash
+$ grunt build
+```
+
+**css**: Construit les feuilles de styles et gère les images associés
+
+```bash
+$ grunt css
+```
+
+**html**: Construit les pages HTML
+
+```bash
+$ grunt html
+```
+
+**JS**: Construit les fichiers JS
+
+```bash
+$ grunt js
+```
+
 Outils obligatoires
 --------------------------------------------------------------------------------
 Les outils listés ici doivent êtres utilisés obligatoirement lorsqu'on démarre
