@@ -11,11 +11,11 @@ module.exports = (grunt) ->
   # $ grunt build
   # Régénère le contenu du dossier `/build`. Il est recommandé de lancer cette
   # tache à chaque fois que l'on réalise un `git pull` du projet.
-  grunt.registerTask 'build', ['clean', 'compass', 'imagemin', 'assemble', 'prettify']
+  grunt.registerTask 'build', ['clean', 'compass', 'imagemin', 'postcss', 'assemble', 'prettify']
 
   # $ grunt css
   # Régènère uniquement les feuilles de styles (et les sprites/images associés)
-  grunt.registerTask 'css', ['compass', 'imagemin', 'scsslint']
+  grunt.registerTask 'css', ['compass', 'postcss', 'imagemin', 'scsslint']
 
   # $ grunt html
   # Régènère uniquement les pages HTML
@@ -144,6 +144,22 @@ module.exports = (grunt) ->
         options:
           environment: 'production'
 
+    # $ grunt postcss
+    # --------------------------------------------------------------------------
+    # Applique des filtres de post-traitement aux feuilles de styles générées
+    # Les post processeur CSS utilisés sont:
+    # * Autoprefixer: Les problématiques de prefix sont gérées automatiquement
+    postcss:
+      options:
+        processors: [
+          require('autoprefixer-core')({browsers: ['> 4%', 'ie >= 8']}).postcss,
+        ]
+      dev:
+        src: 'build/dev/css/*.css'
+      prod:
+        src: 'build/prod/css/*.css'
+
+
     # $ grunt clean
     # --------------------------------------------------------------------------
     # Supprime tous les fichiers avant de lancer un build
@@ -226,6 +242,9 @@ module.exports = (grunt) ->
       html:
         files: 'src/html/**/*.hbs'
         tasks: ['assemble:dev','newer:prettify:dev']
+      css:
+        files: 'build/dev/css/**/*.css'
+        tasks: ['postcss']
 
 
   # TACHES UTILITAIRES

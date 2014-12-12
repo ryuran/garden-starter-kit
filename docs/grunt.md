@@ -52,6 +52,7 @@ Par défaut, tout projet utilise les plugins suivant avec leur taches associées
 * [grunt-newer](https://github.com/tschaub/grunt-newer)
 * [grunt-prettify](https://github.com/jonschlinkert/grunt-prettify)
 * [grunt-scss-lint](https://github.com/ahmednuaman/grunt-scss-lint)
+* [grunt-postcss](https://github.com/nDmitry/grunt-postcss)
 
 
 ### Taches normalisées
