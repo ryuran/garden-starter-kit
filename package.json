@@ -1,18 +1,23 @@
 {
   "name": "garden-starterkit",
+  "homepage": "http://localhost:8000",
+  "title": "Garden Starter Kit",
+  "description": "Set de base pour les projet Garden statique.",
+  "logo": "http://www.dummyimage.com/100x50/8A3/FFF.png&text=Clever+Garden",
   "version": "0.0.2",
   "dependencies": {
+    "assemble": "^0.4.42",
     "grunt": "~0.4.5",
-    "load-grunt-tasks": "~0.6.0",
     "grunt-contrib-clean": "~0.6.0",
     "grunt-contrib-compass": "^1.0.1",
     "grunt-contrib-connect": "~0.8.0",
     "grunt-contrib-imagemin": "~0.9.2",
+    "grunt-contrib-jshint": "~0.10.0",
     "grunt-contrib-watch": "~0.6.1",
     "grunt-newer": "~0.8.0",
-    "grunt-contrib-jshint": "~0.10.0",
-    "grunt-scss-lint": "~0.3.4"
+    "grunt-scss-lint": "~0.3.4",
+    "handlebars-helper-compose": "^0.2.12",
+    "load-grunt-tasks": "~0.6.0"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }

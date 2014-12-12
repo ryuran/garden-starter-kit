@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>{{title}}</title>
+    <meta name="description" content="{{description}}" />
+
+    <!-- STYLES -->
+    <link rel="stylesheet" href="/css/doc.css">
+  </head>
+  <body>
+    <div class="page {{basename}}">
+      {{#markdown}}
+        {{> body }}
+      {{/markdown}}
+    </div>
+  </body>
+</html>

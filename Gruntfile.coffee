@@ -19,11 +19,63 @@ module.exports = (grunt) ->
   # ============================================================================
   require('load-grunt-tasks')(grunt)
 
+  # CHARGE LES TACHES QUI NE PEUVENT L'ETRE AUTOMATIQUEMENT
+  grunt.loadNpmTasks 'assemble'
+
 
   # CONFIGURATION DES TACHES CHARGÉES
   # ============================================================================
   grunt.initConfig
     pkg: grunt.file.readJSON 'package.json'
+
+    # $ grunt assemble
+    # --------------------------------------------------------------------------
+    # Utilise Handlebars pour créer les sources HTML du projet à partir de
+    # gabarits factorisés
+    assemble:
+      options:
+        helpers   : ['handlebars-helper-compose']
+        partials  : 'src/html/inc/**/*.hbs'
+        layoutdir : 'src/html/layouts'
+        layout    : 'default.hbs'
+
+      dev:
+        options:
+          assets : 'build/dev/'
+          data   : 'src/html/data/{*,dev/*}.json'
+        expand : true
+        cwd    : 'src/html/'
+        src    : ['index.hbs','pages/**/*.hbs']
+        dest   : 'build/dev'
+
+      prod:
+        options:
+          assets : 'build/prod/'
+          data   : 'src/html/data/{*,prod/*}.json'
+        expand : true
+        cwd    : 'src/html/'
+        src    : ['index.hbs','pages/**/*.hbs']
+        dest   : 'build/prod'
+
+      doc:
+        options:
+          assets : 'build/dev/'
+          data   : 'src/html/data/{*,dev/*}.json'
+          layout : 'documentation.hbs'
+        files: [{
+          expand : true
+          cwd    : 'docs/'
+          src    : ['**/*.md']
+          dest   : 'build/docs/docs'
+        },{
+          src : 'readme.md'
+          dest: 'build/docs/index.html'
+        },{
+          expand : true
+          cwd    : 'src/docs/'
+          src    : ['**/*.md']
+          dest   : 'build/docs'
+        }]
 
     # $ grunt imagemin
     # --------------------------------------------------------------------------
