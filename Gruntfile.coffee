@@ -151,9 +151,11 @@ module.exports = (grunt) ->
       # Uniquement pour être utilisé avec watch:livereload
       live:
         options:
-          base       : 'build/dev'
           port       : 8000
           livereload : true
+          middleware : (connect) ->
+            [ connect.static('build/dev'),
+              connect().use('/docs', connect.static('build/docs')) ]
 
       # $ grunt connect:dev
       # Pour pouvoir voir le contenu du repertoir `/build/dev` et `/build/docs`
