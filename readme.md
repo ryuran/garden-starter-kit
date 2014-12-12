@@ -96,6 +96,10 @@ modifiés après le début du projet.
 * `/src/img/sprites` : L'ensemble des images d'interface qui seront regroupées en sprites
 * `/src/font` : L'ensemble des fonts utilisées par le projet
 * `/src/html` : L'ensemble des gabarits HTML du projet
+* `/src/html/data` : Les fichiers JSON de données à injecter dans les gabarits HTML
+* `/src/html/inc` : Les gabaris partiels à injecter dans les pages HTML
+* `/src/html/layout` : Les gabarit global de base pour les pages HTML
+* `/src/html/pages` : L'ensemble des gabarit d'assemblage des pages HTML
 * `/src/docs` : L'ensemble de la documentation statique du projet au format Markdown
 
 A chaque fois que le projet est "construit", le résultat est disponible dans
@@ -156,6 +160,7 @@ lorsqu'on aura une demande explicite du client pour utiliser autre chose._
 
 * [Grunt](docs/grunt.md)
 * [Sass/compass](docs/sass.md)
+* [Assemble](docs/assemble.md)
 * [Linter](docs/linter.md)
 
 
