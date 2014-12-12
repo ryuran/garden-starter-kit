@@ -202,7 +202,7 @@ module.exports = (grunt) ->
         files: ['build/dev/**/*']
       sass:
         files: 'src/sass/**/*.scss'
-        tasks: ['newer:scsslint', 'sass']
+        tasks: ['sass', 'newer:scsslint']
       images:
         files: 'src/img/*.{png,jpg,gif,svg}'
         tasks: ['newer:imagemin:dev']
@@ -218,8 +218,8 @@ module.exports = (grunt) ->
   # ============================================================================
   # Intermediate task to handle `$ grunt watch --sass=no`
   grunt.registerTask 'sass', 'Checking Sass requirement', () ->
-    if grunt.option('sass') isnt 'no'
+    if grunt.option('sass') is 'no'
+      grunt.log.write 'We must not compile Sass'
+    else
       grunt.log.write 'We are allowed to compile Sass'
       grunt.task.run 'compass:dev'
-    else
-      grunt.log.write 'We must not compile Sass'
