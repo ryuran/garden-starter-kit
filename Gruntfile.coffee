@@ -13,6 +13,18 @@ module.exports = (grunt) ->
   # tache à chaque fois que l'on réalise un `git pull` du projet.
   grunt.registerTask 'build', ['clean', 'compass', 'imagemin', 'assemble', 'prettify']
 
+  # $ grunt css
+  # Régènère uniquement les feuilles de styles (et les sprites/images associés)
+  grunt.registerTask 'css', ['compass', 'imagemin', 'scsslint']
+
+  # $ grunt html
+  # Régènère uniquement les pages HTML
+  grunt.registerTask 'html', ['assemble', 'prettify']
+
+  # $ grunt js
+  # Régènère uniquement les fichiers JS
+  grunt.registerTask 'js', ['jshint']
+
 
   # CHARGE AUTOMATIQUEMENT TOUTES LES TACHES GRUNT DU PROJET
   # /!\ Attention, cela ne fonctionne que pour les taches préfixées `grunt-*`
