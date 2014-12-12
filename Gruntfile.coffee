@@ -148,9 +148,9 @@ module.exports = (grunt) ->
     # --------------------------------------------------------------------------
     # Supprime tous les fichiers avant de lancer un build
     clean:
-      dev : ['/build/dev']
-      prod: ['/build/prod']
-      doc : ['/build/doc']
+      dev : ['build/dev']
+      prod: ['build/prod']
+      doc : ['build/docs']
 
     # $ grunt connect
     # --------------------------------------------------------------------------
