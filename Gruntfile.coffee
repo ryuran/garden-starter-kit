@@ -40,6 +40,11 @@ module.exports = (grunt) ->
   grunt.initConfig
     pkg: grunt.file.readJSON 'package.json'
 
+
+    # HTML
+    # ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+    # Les taches suivantes sont exclusivement dédiées au traitement du HTML
+
     # $ grunt assemble
     # --------------------------------------------------------------------------
     # Utilise Handlebars pour créer les sources HTML du projet à partir de
@@ -102,6 +107,12 @@ module.exports = (grunt) ->
         expand: true
         src   : ['build/prod/**/*.html']
 
+
+
+    # IMAGES
+    # ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+    # Les taches suivantes sont exclusivement dédiées au traitement des images
+
     # $ grunt imagemin
     # --------------------------------------------------------------------------
     # Optimise automatiquement les images (png, jpeg, gif et svg)
@@ -128,6 +139,12 @@ module.exports = (grunt) ->
           src   : ['*.{png,jpg,gif,svg}'],
           dest  : 'build/prod/img/'
         ]
+
+
+
+    # CSS
+    # ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+    # Les taches suivantes sont exclusivement dédiées au traitement de CSS
 
     # $ grunt compass
     # --------------------------------------------------------------------------
@@ -159,6 +176,34 @@ module.exports = (grunt) ->
       prod:
         src: 'build/prod/css/*.css'
 
+    # $ grunt scsslint
+    # --------------------------------------------------------------------------
+    # Vérifie que les fichiers Sass suivent les conventions de codage
+    scsslint:
+      all: ['src/**/*.scss']
+      options:
+        bundleExec: true
+        config: '.scss-lint.yml'
+
+
+
+    # JS
+    # ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+    # Les taches suivantes sont exclusivement dédiées au traitement de JS
+
+    # $ grunt jshint
+    # --------------------------------------------------------------------------
+    # Vérifie que les fichiers Javascript suivent les conventions de codage
+    jshint:
+      all: ['src/**/*.js']
+      options:
+        jshintrc: '.jshintrc'
+
+
+
+    # UTILITAIRES
+    # ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+    # Les taches suivantes sont des utilitaires génériques
 
     # $ grunt clean
     # --------------------------------------------------------------------------
@@ -205,23 +250,6 @@ module.exports = (grunt) ->
           port       : 8001
           keepalive  : true
 
-    # $ grunt jshint
-    # --------------------------------------------------------------------------
-    # Vérifie que les fichiers Javascript suivent les conventions de codage
-    jshint:
-      all: ['src/**/*.js']
-      options:
-        jshintrc: '.jshintrc'
-
-    # $ grunt scsslint
-    # --------------------------------------------------------------------------
-    # Vérifie que les fichiers Sass suivent les conventions de codage
-    scsslint:
-      all: ['src/**/*.scss']
-      options:
-        bundleExec: true
-        config: '.scss-lint.yml'
-
     # $ grunt watch
     # --------------------------------------------------------------------------
     # Configuration de tous les watcher du projet
@@ -247,7 +275,8 @@ module.exports = (grunt) ->
         tasks: ['postcss']
 
 
-  # TACHES UTILITAIRES
+
+  # TACHES PERSONALISÉES
   # ============================================================================
   # Intermediate task to handle `$ grunt watch --sass=no`
   grunt.registerTask 'sass', 'Checking Sass requirement', () ->
