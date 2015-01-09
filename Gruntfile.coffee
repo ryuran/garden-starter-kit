@@ -218,7 +218,7 @@ module.exports = (grunt) ->
     # Static web server près à l'emplois pour afficher du HTML statique.
     connect:
       options:
-        hostname: 'localhost'
+        hostname: '*'
 
       # $ grunt connect:live
       # Uniquement pour être utilisé avec watch:livereload
