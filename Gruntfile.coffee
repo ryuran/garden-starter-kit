@@ -313,7 +313,7 @@ module.exports = (grunt) ->
         tasks: ['newer:copy:fonts']
       css:
         files: 'build/dev/css/**/*.css'
-        tasks: ['postcss']
+        tasks: ['newer:postcss']
 
 
 
