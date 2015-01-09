@@ -7,5 +7,5 @@
 # NodeJS modules
 node_modules
 
-# Dev build
-build/dev
+# Build
+build
