@@ -7,6 +7,26 @@
 
     <!-- STYLES -->
     <link rel="stylesheet" href="/css/styles.css">
+
+    <!-- SCRIPTS -->
+    <!-- build:js /js/scripts.min.js -->
+
+      <!--
+        Mettez tout vos scripts ici dans l'ordre
+        dans lequel ils doivent être chargés.
+        Ils seront automatiquement concaténé et
+        minifié pour la production
+      -->
+
+    <!-- endbuild -->
+
+    {{#if ENV.dev}}
+      <!--
+        Mettez tout vos scripts et feuilles de style
+        uniquement utile pour le developpement comme
+        par exemple #grid
+      -->
+    {{/if}}
   </head>
   <body>
     {{> body }}
