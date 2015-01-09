@@ -94,7 +94,7 @@ modifiés après le début du projet.
 * `/src/js`   : L'ensemble des sources JavasSript du projet
 * `/src/img`  : L'ensemble des images d'interface du projet
 * `/src/img/sprites` : L'ensemble des images d'interface qui seront regroupées en sprites
-* `/src/font` : L'ensemble des fonts utilisées par le projet
+* `/src/fonts`: L'ensemble des fonts utilisées par le projet
 * `/src/html` : L'ensemble des gabarits HTML du projet
 * `/src/html/data` : Les fichiers JSON de données à injecter dans les gabarits HTML
 * `/src/html/inc` : Les gabaris partiels à injecter dans les pages HTML
@@ -146,7 +146,7 @@ $ grunt css
 $ grunt html
 ```
 
-**JS**: Construit les fichiers JS
+**js**: Construit les fichiers JS
 
 ```bash
 $ grunt js
