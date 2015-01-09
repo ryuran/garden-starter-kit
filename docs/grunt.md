@@ -43,16 +43,21 @@ projets.
 Par défaut, tout projet utilise les plugins suivant avec leur tâches associées :
 
 * [assemble](https://github.com/assemble/assemble/)
-* [grunt-contrib-watch](https://github.com/gruntjs/grunt-contrib-watch)
-* [grunt-contrib-connect](https://github.com/gruntjs/grunt-contrib-connect)
+* [autoprefixer-core](https://github.com/postcss/autoprefixer-core)
 * [grunt-contrib-clean](https://github.com/gruntjs/grunt-contrib-clean)
 * [grunt-contrib-compass](https://github.com/gruntjs/grunt-contrib-compass)
+* [grunt-contrib-concat](https://github.com/gruntjs/grunt-contrib-concat)
+* [grunt-contrib-connect](https://github.com/gruntjs/grunt-contrib-connect)
+* [grunt-contrib-copy](https://github.com/gruntjs/grunt-contrib-copy)
 * [grunt-contrib-imagemin](https://github.com/gruntjs/grunt-contrib-imagemin)
 * [grunt-contrib-jshint](https://github.com/gruntjs/grunt-contrib-jshint)
+* [grunt-contrib-uglify](https://github.com/gruntjs/grunt-contrib-uglify)
+* [grunt-contrib-watch](https://github.com/gruntjs/grunt-contrib-watch)
 * [grunt-newer](https://github.com/tschaub/grunt-newer)
 * [grunt-prettify](https://github.com/jonschlinkert/grunt-prettify)
 * [grunt-scss-lint](https://github.com/ahmednuaman/grunt-scss-lint)
 * [grunt-postcss](https://github.com/nDmitry/grunt-postcss)
+* [grunt-usemin](https://github.com/yeoman/grunt-usemin),
 
 
 ### Tâches normalisées
@@ -112,6 +117,13 @@ Cette tâche va s'occuper de contruire tous les fichiers JavaScript
 
 ```bash
 $ grunt js
+```
+
+#### test
+Cette tâche va lancer tous les tests présents sur les fichiers du projet
+
+```bash
+$ grunt test
 ```
 
 #### connect
