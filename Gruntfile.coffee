@@ -11,11 +11,11 @@ module.exports = (grunt) ->
   # $ grunt build
   # Régénère le contenu du dossier `/build`. Il est recommandé de lancer cette
   # tache à chaque fois que l'on réalise un `git pull` du projet.
-  grunt.registerTask 'build', ['clean', 'compass', 'imagemin', 'postcss', 'assemble', 'prettify']
+  grunt.registerTask 'build', ['clean', 'css', 'html', 'js', 'test']
 
   # $ grunt css
   # Régènère uniquement les feuilles de styles (et les sprites/images associés)
-  grunt.registerTask 'css', ['compass', 'postcss', 'imagemin', 'scsslint']
+  grunt.registerTask 'css', ['compass', 'postcss', 'imagemin', 'copy:fonts']
 
   # $ grunt html
   # Régènère uniquement les pages HTML
@@ -23,7 +23,7 @@ module.exports = (grunt) ->
 
   # $ grunt js
   # Régènère uniquement les fichiers JS
-  grunt.registerTask 'js', ['jshint']
+  grunt.registerTask 'js', ['copy:js', 'useminPrepare', 'concat:generated', 'uglify:generated', 'usemin']
 
   # $ grunt test
   # Lance les tests du projets
@@ -184,7 +184,7 @@ module.exports = (grunt) ->
     # --------------------------------------------------------------------------
     # Vérifie que les fichiers Sass suivent les conventions de codage
     scsslint:
-      all: ['src/**/*.scss']
+      all: ['src/**/*.scss','!src/sass/doc.scss']
       options:
         bundleExec: true
         config: '.scss-lint.yml'
@@ -195,11 +195,26 @@ module.exports = (grunt) ->
     # ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
     # Les taches suivantes sont exclusivement dédiées au traitement de JS
 
+    # $ grunt useminPrepare
+    # --------------------------------------------------------------------------
+    useminPrepare:
+      prod:
+        src: 'build/dev/**/*.html'
+        options:
+          root: 'src'
+          dest: 'build/prod'
+
+    # $ grunt usemin
+    # --------------------------------------------------------------------------
+    usemin:
+      prod:
+        src: 'build/prod/**/*.html'
+
     # $ grunt jshint
     # --------------------------------------------------------------------------
     # Vérifie que les fichiers Javascript suivent les conventions de codage
     jshint:
-      all: ['src/**/*.js']
+      all: ['src/**/*.js','!src/js/lib/**/*.js']
       options:
         jshintrc: '.jshintrc'
 
@@ -216,6 +231,25 @@ module.exports = (grunt) ->
       dev : ['build/dev']
       prod: ['build/prod']
       doc : ['build/docs']
+
+    # $ grunt copy
+    # --------------------------------------------------------------------------
+    # Déplace tous les fichiers qui ont besoin de l'être
+    copy:
+      js:
+        files: [{
+          expand: true
+          cwd: 'src'
+          src: ['js/**/*.js']
+          dest: 'build/dev/'
+        }]
+      fonts:
+        files: [{
+          expand: true
+          cwd: 'src'
+          src: ['fonts/**/*']
+          dest: 'build/{dev,prod}/'
+        }]
 
     # $ grunt connect
     # --------------------------------------------------------------------------
@@ -270,10 +304,13 @@ module.exports = (grunt) ->
         tasks: ['newer:imagemin:dev']
       js:
         files: 'src/js/**/*.js'
-        tasks: ['newer:jshint']
+        tasks: ['newer:copy:js', 'newer:jshint']
       html:
         files: 'src/html/**/*.hbs'
         tasks: ['assemble:dev','newer:prettify:dev']
+      fonts:
+        files: 'src/fonts/**/*'
+        tasks: ['newer:copy:fonts']
       css:
         files: 'build/dev/css/**/*.css'
         tasks: ['postcss']
