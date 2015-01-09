@@ -25,6 +25,10 @@ module.exports = (grunt) ->
   # Régènère uniquement les fichiers JS
   grunt.registerTask 'js', ['jshint']
 
+  # $ grunt test
+  # Lance les tests du projets
+  grunt.registerTask 'test', ['scsslint', 'jshint']
+
 
   # CHARGE AUTOMATIQUEMENT TOUTES LES TACHES GRUNT DU PROJET
   # /!\ Attention, cela ne fonctionne que pour les taches préfixées `grunt-*`

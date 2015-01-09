@@ -152,6 +152,12 @@ $ grunt html
 $ grunt js
 ```
 
+**test**: Lance tous les tests du projet
+
+```bash
+$ grunt test
+```
+
 Outils obligatoires
 --------------------------------------------------------------------------------
 Les outils listés ici doivent êtres utilisés obligatoirement lorsqu'on démarre
