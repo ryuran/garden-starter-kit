@@ -8,8 +8,10 @@ logo : <%- pkg.logo %>
 
 
 <header>
-  {{#if logo}}<img alt="" src="{{logo}}">{{/if}}
-  <h1>{{title}}</h1>
+  <div class="title">
+    {{#if logo}}<img alt="" src="{{logo}}">{{/if}}
+    <h1>{{title}}</h1>
+  </div>
   {{#if description}}<p>{{description}}</p>{{/if}}
   <p>Accéder à la <a href="/docs">documentation</a></p>
 </header>

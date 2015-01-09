@@ -69,3 +69,26 @@ table {
     }
   }
 }
+
+.title {
+  overflow: hidden;
+
+  img {
+    height: 2em;
+    width: auto;
+    margin-right: .5em;
+  }
+
+  img, h1 {
+    float:left;
+    font-size: 2em
+  }
+
+  &::after {
+    content: "";
+    display:block;
+    clear:both;
+    height:0;
+    border-top: 1px solid #CCC;
+  }
+}
