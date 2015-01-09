@@ -60,7 +60,7 @@ Le plus simple:
 
 ```bash
 $ cd ~/monProjet
-$ git clone git@git.clever-age.net:clever-age-expertise/clever-garden-starter-kit.git
+$ git clone git@git.clever-age.net:clever-age-expertise/clever-garden-starter-kit.git .
 $ git remote remove origin
 ```
 
