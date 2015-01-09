@@ -1,6 +1,6 @@
 {
   "INDEX": {
-    "HTML"    : {"label" : "Validation", "url" : "http://valldator.nu"},
+    "HTML"    : {"label" : "Validation", "url" : "http://validator.nu"},
     "CSS"     : false,
     "JS"      : false,
 
