@@ -248,7 +248,13 @@ module.exports = (grunt) ->
           expand: true
           cwd: 'src'
           src: ['fonts/**/*']
-          dest: 'build/{dev,prod}/'
+          dest: 'build/dev/'
+        },
+        {
+          expand: true
+          cwd: 'src'
+          src: ['fonts/**/*']
+          dest: 'build/prod/'
         }]
 
     # $ grunt connect
