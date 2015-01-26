@@ -69,7 +69,7 @@ des sources du projet final et à envoyer vos source vers le dépôt définitif.
 Le paramètre `-u` permet d'associer la branche locale (ici le master) avec celle distante de façon pérenne.
 
 ```bash
-$ git remote add git@git.clever-age.net:client-name/project-name.git
+$ git remote add origin git@git.clever-age.net:client-name/project-name.git
 $ git push -u origin master
 ```
 
