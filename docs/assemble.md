@@ -139,3 +139,53 @@ L'index contiendra le tableau HTML suivant:
 ```
 
 Pour un exemple plus complet, voir la page `test.hbs` et le fichier `data.json`de ce Starter Kit
+
+### Helpers personnalisés
+
+Comme indiqué au début de ce document, Assemble.io supporte l'utilisation de helpers HandlerbarsJS et rend dispnible automatique des [helpers intégrés](https://github.com/assemble/handlebars-helpers). Il est également possible de définir ses propres helpers.
+
+Les helpers personnalisés sont des fichiers JS contenant un code de la forme : 
+```
+// déclaration du module 
+module.exports.register = function(Handlebars, options) {
+    Handlebars.registerHelper('monhelper', function(parametre1) {
+
+        // Ici le code de transformation / génération du contenu à afficher
+        var result = parametre1.toString() + Math.round(Math.rand()*100); 
+
+        // retourne une chaine de caractère contenant la représentation String du paramètre1 suivi d'un nombre aléatoire entre 0 et 99.
+        return result; 
+    });
+};
+```
+
+Pour plus de détail sur la mise en place de helpers personnalisés, voir [la documentation sur les helpers de Assemble.io]
+(http://assemble.io/docs/Custom-Helpers.html).
+
+Ce stater-kit inclus les helpers suivants :
+#### base64
+
+##### Description
+Récupère le contenu d'un fichier et le transforme en base64.
+Paramètre : url relative du fichier par rapport à la racine du projet.
+
+##### Exemples d'utilisation
+```
+<img 
+  width="300" 
+  height="100" 
+  alt="Logo" 
+  src="data:image/png;base64,\{{base64 'src/img/clever-age-logo.png'}}"/>
+```
+Resultat :
+<img width="300" height="100" alt="Logo" src="data:image/png;base64,{{base64 'src/img/clever-age-logo.png'}}"/>
+
+```
+<style type="text/css">
+  body {
+      background: #f7f7f7;
+      background-image: url(data:image/jpeg;base64,\{{base64 'src/img/motif_bg.jpg'}});
+      background-repeat: repeat;
+  }
+</style>
+```

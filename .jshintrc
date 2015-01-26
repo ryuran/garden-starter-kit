@@ -29,5 +29,15 @@
   "plusplus"  : false,
   "maxparams" : 3,
   "maxdepth"  : 3,
-  "jquery"    : true
+  "jquery"    : true,
+  "globals" : [
+    "require",
+    "define",
+    "module"
+  ],
+  "predef": [
+    "require",
+    "define",
+    "module"
+  ]
 }
