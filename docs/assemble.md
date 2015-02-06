@@ -145,7 +145,7 @@ Pour un exemple plus complet, voir la page `test.hbs` et le fichier `data.json`d
 Comme indiqué au début de ce document, Assemble.io supporte l'utilisation de helpers HandlerbarsJS et rend dispnible automatique des [helpers intégrés](https://github.com/assemble/handlebars-helpers). Il est également possible de définir ses propres helpers.
 
 Les helpers personnalisés sont des fichiers JS contenant un code de la forme : 
-```
+```javascript
 // déclaration du module 
 module.exports.register = function(Handlebars, options) {
     Handlebars.registerHelper('monhelper', function(parametre1) {
@@ -170,7 +170,7 @@ Récupère le contenu d'un fichier et le transforme en base64.
 Paramètre : url relative du fichier par rapport à la racine du projet.
 
 ##### Exemples d'utilisation
-```
+```xml
 <img 
   width="300" 
   height="100" 
@@ -180,7 +180,7 @@ Paramètre : url relative du fichier par rapport à la racine du projet.
 Resultat :
 <img width="300" height="100" alt="Logo" src="data:image/png;base64,{{base64 'src/img/clever-age-logo.png'}}"/>
 
-```
+```xml
 <style type="text/css">
   body {
       background: #f7f7f7;
