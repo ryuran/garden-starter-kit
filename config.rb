@@ -8,11 +8,11 @@ javascripts_dir = 'src/js'
 fonts_dir       = 'src/fonts'
 
 # Configuration des chemins HTTP
-http_path             = '/'
-http_stylesheets_path = '/css'
-http_images_path      = '/img'
-http_javascripts_path = '/js'
-http_fonts_path       = '/fonts'
+http_path             = ''
+http_stylesheets_path = ''
+http_images_path      = '../img'
+http_javascripts_path = '../js'
+http_fonts_path       = '../fonts'
 
 # Configuration spécifique à chaque environement
 if  environment == :production

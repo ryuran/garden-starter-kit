@@ -6,16 +6,11 @@
     <meta name="description" content="{{description}}" />
 
     <!-- STYLES -->
-    <link rel="stylesheet" href="/css/styles.css">
-    <!-- STYLES -->
-    <!-- <link rel="stylesheet" href="{{assets}}css/styles.css"> -->
-      <!--
-        Choisissez la version avec {{assets}} si vous souhaitez que le build de prod fonctionne sans serveur web (pour les recettes notamment)
-      -->
+    <link rel="stylesheet" href="{{assets}}css/styles.css">
 
     <!-- SCRIPTS -->
-    <!-- build:js /js/scripts.min.js -->
-
+    <!-- build:js {{assets}}js/scripts.min.js -->
+    <script src="{{assets}}js/lib/jquery.js"></script>
       <!--
         Mettez tout vos scripts ici dans l'ordre
         dans lequel ils doivent être chargés.

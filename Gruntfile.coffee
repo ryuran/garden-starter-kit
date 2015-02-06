@@ -199,10 +199,10 @@ module.exports = (grunt) ->
     # --------------------------------------------------------------------------
     useminPrepare:
       prod:
-        src: 'build/dev/**/*.html'
+        src: 'build/dev/pages/*.html'
         options:
           root: 'src'
-          dest: 'build/prod'
+          dest: 'build/prod/pages'
 
     # $ grunt usemin
     # --------------------------------------------------------------------------
