@@ -120,6 +120,11 @@ Grunt normalisés utilisable quelques soient les modules grunt utilisés.
 **live**: permet de démarrer un serveur static pour les pages HTML et d'avoir
 un _watch_ sur les fichiers du projet en même temps.
 
+> **ATTENTION:** _Même si tous les chemins sont résolut de manière relative il
+  est vivement conseillé de préférer cette méthode a tout autre serveur local
+  que vous pourriez utiliser. De cette manière vous verrez toujours votre site
+  "à la racine". Votre site répondra sur l'URL: http://localhost:8000_
+
 ```bash
 $ grunt live
 
