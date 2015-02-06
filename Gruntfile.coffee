@@ -55,7 +55,7 @@ module.exports = (grunt) ->
     # gabarits factorisés
     assemble:
       options:
-        helpers   : ['handlebars-helper-compose']
+        helpers   : ['handlebars-helper-compose', 'src/helpers/**/*.js']
         partials  : 'src/html/inc/**/*.hbs'
         layoutdir : 'src/html/layouts'
         layout    : 'default.hbs'
