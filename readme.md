@@ -181,4 +181,4 @@ Les outils listés ci-après sont des recommandations. Il peuvent apporter des
 fonctionnalités originales ou en cours d’expérimentation. Vous êtes libre de
 les utiliser, ou non, selon vos envies ou votre contexte projet.
 
-* Bower
+* [Bower](docs/bower.md)
