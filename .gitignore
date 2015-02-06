@@ -4,8 +4,9 @@
 # Sass
 .sass-cache
 
-# NodeJS modules
+# JS modules
 node_modules
+src/js/lib
 
 # Build
 build
