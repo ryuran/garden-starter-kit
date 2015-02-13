@@ -28,6 +28,7 @@ installés au niveau global sur votre machine :
 * [Rubygems](http://rubygems.org/)
 * [Bundler](http://bundler.io/)
 * [Grunt CLI](http://gruntjs.com/getting-started)
+* Sous **Windows** uniquement : un de module installé par Bundle nécesitte une compilation en C. Pour cela, installez le Ruby Development Kit en suivant [ces instructions](https://github.com/oneclick/rubyinstaller/wiki/Development-Kit).
 
 Dans la mesure ou vous êtes sous Mac, vous devez obligatoirement installer XCode
 et les outils en ligne de commande qui l'accompagne (ce qui installera
