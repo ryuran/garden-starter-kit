@@ -10,13 +10,15 @@
 
     <!-- SCRIPTS -->
     <!-- build:js {{assets}}js/scripts.min.js -->
-    <script src="{{assets}}js/lib/jquery.js"></script>
       <!--
         Mettez tout vos scripts ici dans l'ordre
         dans lequel ils doivent être chargés.
         Ils seront automatiquement concaténé et
         minifié pour la production
       -->
+      <script src="{{assets}}js/lib/underscore/underscore.js"></script>
+      <script src="{{assets}}js/lib/jquery/dist/jquery.js"></script>
+      <!-- <script src="{{assets}}js/lib/momentjs/moment.js"></script> -->
 
     <!-- endbuild -->
 
@@ -26,6 +28,7 @@
         uniquement utile pour le developpement comme
         par exemple #grid
       -->
+      <script src="{{assets}}js/lib/hashgrid/hashgrid.js"></script>
     {{/if}}
   </head>
   <body>
