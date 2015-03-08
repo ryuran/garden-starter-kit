@@ -1,6 +1,9 @@
 # Nombre de décimal après la virgule, utile pour la précision des em
 Sass::Script::Number.precision = 8
 
+# Pour les bibliothèque Sass utilisé via Bower
+additional_import_paths = ['src/js/lib']
+
 # Configuration des chemins des ressources:
 sass_dir        = 'src/sass'
 images_dir      = 'src/img'

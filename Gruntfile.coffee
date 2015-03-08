@@ -201,7 +201,6 @@ module.exports = (grunt) ->
       prod:
         src: 'build/dev/pages/*.html'
         options:
-          root: 'src'
           dest: 'build/prod/pages'
 
     # $ grunt usemin

@@ -2,9 +2,9 @@
 Bower
 ===============================================================================
 
-[Bower](http://bower.io) est un getionnaire de bibliothèques tiers communément
+[Bower](http://bower.io) est un gestionnaire de bibliothèques tiers communément
 utilisé. Le starter kit peut être utilisé avec Bower pour gérer les dépendances
-de bibliothèques JavaScript.
+des bibliothèques JavaScript ou Sass.
 
 
 Vérifier votre environnement
@@ -33,8 +33,10 @@ commande :
 $ bower install
 ```
 
-> **NOTE:** _Les bibliothèques sont installé directement dans le dossier
-  `src/js/lib`, ce qui permet de les utiliser directement._
+> **NOTE:** _Les bibliothèques sont installé dans le dossier `src/lib/js`
+  Se dossier est une ressource pour les import Sass et peut être utilisé
+  directement pour faire des liens vers les bibliothèques JS pour le build
+  de dev._
 
 Il est possible de rajouter de nouvelles bibliothèques en utilisant la
 commande :
