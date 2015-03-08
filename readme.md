@@ -28,15 +28,11 @@ installés au niveau global sur votre machine :
 * [Rubygems](http://rubygems.org/)
 * [Bundler](http://bundler.io/)
 * [Grunt CLI](http://gruntjs.com/getting-started)
-* Sous **Windows** uniquement : un de module installé par Bundle nécesitte une compilation en C. Pour cela, installez le Ruby Development Kit en suivant [ces instructions](https://github.com/oneclick/rubyinstaller/wiki/Development-Kit).
 
-Dans la mesure ou vous êtes sous Mac, vous devez obligatoirement installer XCode
-et les outils en ligne de commande qui l'accompagne (ce qui installera
-automatiquement Ruby et Rubygems).
+Sous **Windows** uniquement : un de module installé par Bundle nécessite une compilation en C. Pour cela, installez le Ruby Development Kit en suivant [ces instructions](https://github.com/oneclick/rubyinstaller/wiki/Development-Kit).
 
-Il est également recommandé d'installer et d'utiliser [Homebrew](http://brew.sh/)
-pour installer tous les outils en ligne de commande dont vous pourriez avoir
-besoin.
+Sous **Mac** uniquement, vous devez obligatoirement installer XCode et les outils en ligne de commande qui l'accompagne (ce qui installera
+automatiquement Ruby et Rubygems). Il est également recommandé d'installer et d'utiliser [Homebrew](http://brew.sh/) pour installer tous les outils en ligne de commande dont vous pourriez avoir besoin.
 
 ## Démarrez votre projet
 Vous avez deux options pour démarrer votre projet:
@@ -44,7 +40,7 @@ Vous avez deux options pour démarrer votre projet:
 1. Télécharger le contenu de ce dépôt et l'utiliser comme base de démarrage
 2. Cloner ce dépôt avec GIT (voir ci-après)
 
-> *NOTE :* _Il est prévus à termes de disposer d'un script de démarrage qui
+> *NOTE :* _Il est prévu, à termes, de disposer d'un script de démarrage qui
   automatisera la mise en œuvre d'un projet_
 
 Une fois que vous aurez récupéré le contenu de ce dépôt, vous avez la possibilité d'ajouter les outils recommandés ci-après (voir section : Outils recommandés).
@@ -65,8 +61,7 @@ $ git clone git@git.clever-age.net:clever-age-expertise/clever-garden-starter-ki
 $ git remote remove origin
 ```
 
-Il ne vous reste plus qu'a ajouter une nouvelle `origin` vers le dépôt définitif
-des sources du projet final et à envoyer vos source vers le dépôt définitif.
+Il ne vous reste plus qu'a ajouter une nouvelle `origin` vers le dépôt définitif des sources du projet final et à envoyer vos source vers le dépôt définitif.
 Le paramètre `-u` permet d'associer la branche locale (ici le master) avec celle distante de façon pérenne.
 
 ```bash
@@ -92,15 +87,15 @@ modifiés après le début du projet.
 
 * `/src`
 * `/src/sass` : L'ensemble des fichiers Sass du projet
-* `/src/js`   : L'ensemble des sources JavasSript du projet
+* `/src/js`   : L'ensemble des sources JavaScript du projet
 * `/src/img`  : L'ensemble des images d'interface du projet
 * `/src/img/sprites` : L'ensemble des images d'interface qui seront regroupées en sprites
-* `/src/fonts`: L'ensemble des fonts utilisées par le projet
+* `/src/fonts`: L'ensemble des _fonts_ utilisées par le projet
 * `/src/html` : L'ensemble des gabarits HTML du projet
 * `/src/html/data` : Les fichiers JSON de données à injecter dans les gabarits HTML
-* `/src/html/inc` : Les gabaris partiels à injecter dans les pages HTML
-* `/src/html/layout` : Les gabarit global de base pour les pages HTML
-* `/src/html/pages` : L'ensemble des gabarit d'assemblage des pages HTML
+* `/src/html/inc` : Les gabarits partiels à injecter dans les pages HTML
+* `/src/html/layout` : Les gabarits globaux de base pour les pages HTML
+* `/src/html/pages` : L'ensemble des gabarits d'assemblage des pages HTML
 * `/src/docs` : L'ensemble de la documentation statique du projet au format Markdown
 
 A chaque fois que le projet est "construit", le résultat est disponible dans
@@ -121,8 +116,8 @@ Grunt normalisés utilisable quelques soient les modules grunt utilisés.
 **live**: permet de démarrer un serveur static pour les pages HTML et d'avoir
 un _watch_ sur les fichiers du projet en même temps.
 
-> **ATTENTION:** _Même si tous les chemins sont résolut de manière relative il
-  est vivement conseillé de préférer cette méthode a tout autre serveur local
+> **ATTENTION:** _Même si tous les chemins sont résolus de manière relative, il
+  est vivement conseillé de préférer cette méthode à tout autre serveur local
   que vous pourriez utiliser. De cette manière vous verrez toujours votre site
   "à la racine". Votre site répondra sur l'URL: http://localhost:8000_
 

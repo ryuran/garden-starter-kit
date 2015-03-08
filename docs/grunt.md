@@ -172,8 +172,8 @@ $ grunt watch --sass=no
 Autres tâches
 --------------------------------------------------------------------------------
 
-En plus de la configuration standard, il est tout à fait possible d'utiliser
-d'autre tâches grunt. Selon le contexte projet tout est possible.
+En plus de la configuration standard, il est tout-à-fait possible d'utiliser
+d'autre tâches Grunt. Selon le contexte projet, tout est possible.
 
 Nous recommandons cependant d'enregistrer les plugins associés à ces tâches dans
 la section `devDependencies` du fichier `package.json`, la section

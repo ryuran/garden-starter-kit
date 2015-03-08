@@ -5,8 +5,7 @@ Sass & Compass
 Pour tous nos projets, nous utilisons [Sass](http://sass-lang.com) et
 régulièrement [Compass](http://compass-style.org)
 
-> **NOTE :** _L'utilisation d'autres préprocesseurs CSS n'est autorisé que si le
-            client en fait une demande explicite_
+> **NOTE :** _L'utilisation d'autres préprocesseurs CSS n'est autorisé que si le client en fait une demande explicite_
 
 
 Vérifier votre environnement
@@ -16,8 +15,7 @@ Sass repose sur [Ruby](https://www.ruby-lang.org/fr/), assurez-vous que vous
 l'avez bien installé sur votre environnement.
 
 Il est également nécessaire d'installer l'utilitaire
-[Bundler](http://bundler.io/) dans votre environnement global (cela permet d'avoir
-plusieurs versions de Sass en fonction de chaque projets).
+[Bundler](http://bundler.io/) dans votre environnement global (cela permet d'avoir plusieurs versions de Sass en fonction de chaque projets).
 
 Si ce n'est pas déjà le cas, exécutez simplement la commande suivante :
 
@@ -26,14 +24,13 @@ $ sudo gem install bundler
 ```
 
 Puis, pour être sûr que vous disposer de la dernière version de Sass et Compass
-pour le projet sur lequel vous travaillez, exécuter la commande suivante :
+pour le projet sur lequel vous travaillez, exécutez la commande suivante :
 
 ```bash
 $ sudo bundle install
 ```
 
-En cas de problème de compilation Sass sur un projet existant commencez toujours
-par exécuter la commande suivante:
+En cas de problème de compilation Sass sur un projet existant commencez toujours par exécuter la commande suivante:
 
 ```bash
 $ sudo bundle update
@@ -43,12 +40,11 @@ $ sudo bundle update
 Configuration standard
 --------------------------------------------------------------------------------
 
-Vous pouvez utiliser Sass/Compass de manière traditionnelle, toute la
-configuration de l'environnement est centralisé dans le ficher `config.rb`
+Vous pouvez utiliser Sass/Compass de manière traditionnelle, toute la configuration de l'environnement est centralisé dans le ficher `config.rb`
 
 Sachez que lancer la tache grunt `build` lancera automatiquement la
 compilation Compass des deux environnements de `dev` et `prod`. Cependant, si
-vous souhaitez utiliser Sass/Compass sans grunt, c'est possible.
+vous souhaitez utiliser Sass/Compass sans Grunt, c'est possible.
 
 Pour compiler les styles du projet vers l'environnement de développement,
 exécuter simplement la commande suivante :
@@ -79,8 +75,7 @@ $ grunt compass:prod
 
 ### Grunt & Watch
 
-Lors de la phase de développement, vous pouvez utiliser indifférement le watcher
-de Grunt ou de Compass pour compiler vos feuilles de style.
+Lors de la phase de développement, vous pouvez utiliser indifférement le watcher de Grunt ou de Compass pour compiler vos feuilles de style.
 
 Pour lancer le watcher de Compass, exécutez simplement :
 

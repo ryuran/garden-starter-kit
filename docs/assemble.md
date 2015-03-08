@@ -29,7 +29,7 @@ Les gabarits partiels pour inclusion sont placés dans le dossier `/src/html/inc
 
 L'inclusion des gabarits est fait via le helper `> nom-du-gabarit`. Le nom du gabarit étant le nom du fichier sans l'extension `.hbs`.
 
-> **NOTE:** _Les différents gabarits peuvent être organiser dans des sous-dossiers. Dans ce cas il faut tout de même s'assurer que les nom des gabarits sont tous différent. Il n'est pas possible d'avoir un gabarit avec le même nom dans deux dossier différents._
+> **NOTE:** _Les différents gabarits peuvent être organisés dans des sous-dossiers. Dans ce cas il faut tout de même s'assurer que les noms des gabarits sont tous différent. Il n'est pas possible d'avoir un gabarit avec le même nom dans deux dossier différents._
 
 
 ### Pages maîtres
@@ -44,11 +44,11 @@ Toutes ses pages seront listées automatiquement dans l'index HTML du projet et 
 Les données qui peuvent être injectées dans les gabarits sont disponibles dans des fichiers JSON placés dans `/src/html/data`
 
 * `data.json`
-  Données accessible dans tous les gabarits. Par défaut, il contient les données de configuration de la page d'index (voir ci-après)
+  Données accessibles dans tous les gabarits. Par défaut, il contient les données de configuration de la page d'index (voir ci-après)
 * `dev/env.json`
-  Données accessible uniquement lors du build de développement.
-* `prod/env.json
-  Données accessible uniquement lors du build de production.
+  Données accessibles uniquement lors du build de développement.
+* `prod/env.json`
+  Données accessibles uniquement lors du build de production.
 
 Selon les besoins du projet, il est possible de rajouter autant de fichiers JSON que nécessaire. **ATTENTION:** _les sous-dossier autre que `dev` et `prod`ne seront pas pris en compte._
 
@@ -56,9 +56,9 @@ Selon les besoins du projet, il est possible de rajouter autant de fichiers JSON
 Méta données et page d'index
 -------------------------------------------------------------------------------
 
-La page d'index du projet est généré automatiquement à partir de deux sources de données:
+La page d'index du projet est générée automatiquement à partir de deux sources de données:
 
-### Données global
+### Données globales
 
 Le fichier `package.json` contient un certain nombre de données à propos du projet qui seront directement injectées dans l'index du projet:
 
@@ -69,7 +69,7 @@ Le fichier `package.json` contient un certain nombre de données à propos du pr
 
 ### Données de pages
 
-Chaque page maître doit contenir un certain nombre de méta-données dans sont en-tête YAML. Toutes ces méta-données seront affichées dans la page d'index du projet.
+Chaque page maître doit contenir un certain nombre de méta-données dans son en-tête YAML. Toutes ces méta-données seront affichées dans la page d'index du projet.
 
 #### Données obligatoire
 
@@ -80,12 +80,12 @@ Chaque page maître doit contenir un certain nombre de méta-données dans sont 
 
 L'index va afficher un tableau résumant les informations de la page. Pour cela il dispose d'un certain nombres de colonnes utilisables.
 
-Les colonnes disponibles sont configurés dans le fichier `/src/html/data/data.json`. Une colonne configurée avec la valeur `false` ne sera jamais affichée.
-Chaque colonne qui doit être affiché doit être configuré avec un objet JSON ayant les paramètre suivant:
+Les colonnes disponibles sont configurées dans le fichier `/src/html/data/data.json`. Une colonne configurée avec la valeur `false` ne sera jamais affichée.
+Chaque colonne qui doit être affichée doit être configurée avec un objet JSON ayant les paramètres suivant:
 
 * `label`: Le titre de l'en-tête de colonne ou de groupe.
 * `url`: Une URL _optionnelle_ pour créer un lien sur l'en-tête de colonne.
-* `length`: Pour les groupes, indique le nombre de colonne dans le groupe.
+* `length`: Pour les groupes, indique le nombre de colonnes dans le groupe.
 
 Pour chaque colonne configurée, il est possible de spécifier une valeur correspondante pour chaque page maître directement dans sont en-tête YAML.
 
@@ -142,27 +142,27 @@ Pour un exemple plus complet, voir la page `test.hbs` et le fichier `data.json`d
 
 ### Helpers personnalisés
 
-Comme indiqué au début de ce document, Assemble.io supporte l'utilisation de helpers HandlerbarsJS et rend dispnible automatique des [helpers intégrés](https://github.com/assemble/handlebars-helpers). Il est également possible de définir ses propres helpers.
+Comme indiqué au début de ce document, Assemble.io supporte l'utilisation de helpers HandlerbarsJS et offre [helpers intégrés](https://github.com/assemble/handlebars-helpers). Il est également possible de définir ses propres helpers.
 
-Les helpers personnalisés sont des fichiers JS contenant un code de la forme : 
+Les helpers personnalisés sont des fichiers JS contenant un code de la forme :
 ```javascript
-// déclaration du module 
+// déclaration du module
 module.exports.register = function(Handlebars, options) {
     Handlebars.registerHelper('monhelper', function(parametre1) {
 
         // Ici le code de transformation / génération du contenu à afficher
-        var result = parametre1.toString() + Math.round(Math.rand()*100); 
+        var result = parametre1.toString() + Math.round(Math.rand()*100);
 
         // retourne une chaine de caractère contenant la représentation String du paramètre1 suivi d'un nombre aléatoire entre 0 et 99.
-        return result; 
+        return result;
     });
 };
 ```
 
-Pour plus de détail sur la mise en place de helpers personnalisés, voir [la documentation sur les helpers de Assemble.io]
+Pour plus de détails sur la mise en place de helpers personnalisés, voir [la documentation sur les helpers de Assemble.io]
 (http://assemble.io/docs/Custom-Helpers.html).
 
-Ce stater-kit inclus les helpers suivants :
+Ce starter-kit inclus les helpers suivants :
 #### base64
 
 ##### Description
@@ -171,10 +171,10 @@ Paramètre : url relative du fichier par rapport à la racine du projet.
 
 ##### Exemples d'utilisation
 ```xml
-<img 
-  width="300" 
-  height="100" 
-  alt="Logo" 
+<img
+  width="300"
+  height="100"
+  alt="Logo"
   src="data:image/png;base64,\{{base64 'src/img/clever-age-logo.png'}}"/>
 ```
 

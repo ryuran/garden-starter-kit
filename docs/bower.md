@@ -2,7 +2,7 @@
 Bower
 ===============================================================================
 
-[Bower](http://bower.io) est un gestionnaire de bibliothèques tiers communément
+[Bower](http://bower.io) est un gestionnaire de bibliothèques tierces communément
 utilisé. Le starter kit peut être utilisé avec Bower pour gérer les dépendances
 des bibliothèques JavaScript ou Sass.
 
@@ -33,8 +33,8 @@ commande :
 $ bower install
 ```
 
-> **NOTE:** _Les bibliothèques sont installé dans le dossier `src/lib/js`
-  Se dossier est une ressource pour les import Sass et peut être utilisé
+> **NOTE:** _Les bibliothèques sont installées dans le dossier `src/lib/js`
+  Ce dossier est une ressource pour les import Sass et peut être utilisé
   directement pour faire des liens vers les bibliothèques JS pour le build
   de dev._
 
@@ -46,7 +46,11 @@ $ bower install <bibliotheque> --save
 ```
 
 L'option `--save` enregistrera la bibliothèque dans le fichier bower.json pour
-que les autres intervenant du projets puissent synchroniser leur installation.
+que les autres intervenant du projets puissent synchroniser leur installation par la suite avec un simple:
+
+```bash
+$ bower install
+```
 
 
 Configuration standard
@@ -65,11 +69,11 @@ habituellement :
 * [#grid](http://hashgrid.com)
 
 Selon votre projet, n'hésitez pas à éditer le fichier `bower.json` pour
-retirer les bibliothèques inutiles ou pour ajuster leur numéros de version. Si
-vous laissez des bibliothèques inutiles, ce n'est pas très grave car seul
-celles effectivement utilisées dans les gabarits HTML seront inclus dans les
+retirer les bibliothèques inutiles ou pour ajuster leur version. Si
+vous laissez des bibliothèques inutiles, ce n'est pas très grave car seules
+celles effectivement utilisées dans les gabarits HTML seront inclues dans les
 builds de production.
 
-> **NOTES:** _Les bibliothèques étant installé dans src/js/lib, ce répertoire
+> **NOTES:** _Les bibliothèques étant installées dans src/js/lib, ce répertoire
   est ignoré via le fichier `.gitignore`. Pensez à commenter la ligne
   correspondante dans ce fichier si vous ne souhaitez pas utiliser bower._
