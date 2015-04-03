@@ -30,9 +30,9 @@
   "maxparams" : 3,
   "maxdepth"  : 3,
   "jquery"    : true,
-  "globals" : [
+  "globals" : {
     "require" : true,
     "define"  : true,
     "module"  : true
-  ]
+  }
 }
