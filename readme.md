@@ -29,10 +29,18 @@ installés au niveau global sur votre machine :
 * [Bundler](http://bundler.io/)
 * [Grunt CLI](http://gruntjs.com/getting-started)
 
-Sous **Windows** uniquement : un de module installé par Bundle nécessite une compilation en C. Pour cela, installez le Ruby Development Kit en suivant [ces instructions](https://github.com/oneclick/rubyinstaller/wiki/Development-Kit).
+> Pour **Mac** : _vous devez obligatoirement installer XCode et les outils en
+  ligne de commande qui l'accompagne (ce qui installera automatiquement Ruby et
+  Rubygems). Il est également recommandé d'installer et d'utiliser
+  [Homebrew](http://brew.sh/) pour installer tous les outils en ligne de
+  commande dont vous pourriez avoir besoin._
 
-Sous **Mac** uniquement, vous devez obligatoirement installer XCode et les outils en ligne de commande qui l'accompagne (ce qui installera
-automatiquement Ruby et Rubygems). Il est également recommandé d'installer et d'utiliser [Homebrew](http://brew.sh/) pour installer tous les outils en ligne de commande dont vous pourriez avoir besoin.
+> Pour **Windows** : _un de module installé par Bundle nécessite une
+  compilation en C. Pour cela, installez le Ruby Development Kit en suivant
+  [ces instructions](https://github.com/oneclick/rubyinstaller/wiki/Development-Kit)._
+
+> Pour **Linux** : _Chaque distribution a ses propre prérequis. Par exemple,
+  Linux Mint 16 à besoin de `ruby1.9.1-beta`_
 
 ## Démarrez votre projet
 Vous avez deux options pour démarrer votre projet:
