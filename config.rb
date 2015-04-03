@@ -2,7 +2,7 @@
 Sass::Script::Number.precision = 8
 
 # Pour les bibliothèque Sass utilisé via Bower
-additional_import_paths = ['src/js/lib']
+additional_import_paths = ['bower_components']
 
 # Configuration des chemins des ressources:
 sass_dir        = 'src/sass'

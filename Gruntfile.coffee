@@ -189,7 +189,7 @@ module.exports = (grunt) ->
     # --------------------------------------------------------------------------
     # Vérifie que les fichiers Sass suivent les conventions de codage
     scsslint:
-      all: ['src/**/*.scss','!src/sass/lib/**/*.scss']
+      all: ['src/**/*.scss']
       options:
         bundleExec: true
         config: '.scss-lint.yml'
@@ -266,11 +266,6 @@ module.exports = (grunt) ->
           cwd: 'bower_components'
           src: ['**/*.js']
           dest: 'src/js/lib/'
-        },{
-          expand: true
-          cwd: 'bower_components'
-          src: ['**/*.scss']
-          dest: 'src/sass/lib/'
         }]
 
     # $ grunt exec

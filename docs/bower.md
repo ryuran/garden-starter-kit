@@ -33,15 +33,15 @@ commande :
 $ grunt bower
 ```
 
-Ou bien, si vous preferez utiliser la commande `bower`:
+Ou bien, si vous préférez utiliser la commande `bower`:
 
 ```
 $ bower install & grunt copy:bower
 ```
 
 > **NOTE:** _La tâche `copy:bower` de grunt copie les fichiers rapatriés par
-  bower dans les répertoires utilisés par grunt : Les fichiers JavaScript sont
-  copiés dans `src/js/lib` et les fichiers Sass sont copiés dans `src/sass/lib`_
+  bower dans les répertoires utilisés par grunt : Par défaut, les fichiers
+  JavaScript sont copiés dans `src/js/lib`._
 
 Il est possible de rajouter de nouvelles bibliothèques en utilisant la
 commande :
@@ -90,7 +90,6 @@ vous laissez des bibliothèques inutiles, ce n'est pas très grave car seules
 celles effectivement utilisées dans les gabarits HTML seront inclues dans les
 builds de production.
 
-> **NOTES:** _Les bibliothèques étant installées dans `src/js/lib` et
-  `src/sass/lib`, ce répertoire est ignoré via le fichier `.gitignore`. Pensez
-  à commenter la ligne correspondante dans ce fichier si vous ne souhaitez pas
-  utiliser bower._
+> **NOTES:** _Les bibliothèques JavaScript étant installées dans `src/js/lib`
+  ce répertoire est ignoré via le fichier `.gitignore`. Pensez à commenter la
+  ligne correspondante dans ce fichier si vous ne souhaitez pas utiliser bower._
