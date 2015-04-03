@@ -189,7 +189,7 @@ module.exports = (grunt) ->
     # --------------------------------------------------------------------------
     # Vérifie que les fichiers Sass suivent les conventions de codage
     scsslint:
-      all: ['src/**/*.scss','!src/sass/doc.scss']
+      all: ['src/**/*.scss','!src/sass/lib/**/*.scss']
       options:
         bundleExec: true
         config: '.scss-lint.yml'
