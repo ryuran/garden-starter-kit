@@ -99,11 +99,11 @@ modifiés après le début du projet.
 * `/src/img`  : L'ensemble des images d'interface du projet
 * `/src/img/sprites` : L'ensemble des images d'interface qui seront regroupées en sprites
 * `/src/fonts`: L'ensemble des _fonts_ utilisées par le projet
-* `/src/html` : L'ensemble des gabarits HTML du projet
-* `/src/html/data` : Les fichiers JSON de données à injecter dans les gabarits HTML
-* `/src/html/inc` : Les gabarits partiels à injecter dans les pages HTML
-* `/src/html/layout` : Les gabarits globaux de base pour les pages HTML
-* `/src/html/pages` : L'ensemble des gabarits d'assemblage des pages HTML
+* `/src/tpl`  : L'ensemble des gabarits HTML du projet
+* `/src/tpl/data` : Les fichiers JSON de données à injecter dans les gabarits HTML
+* `/src/tpl/inc`  : Les gabarits partiels à injecter dans les pages HTML
+* `/src/tpl/layout` : Les gabarits globaux de base pour les pages HTML
+* `/src/tpl/pages`  : L'ensemble des gabarits d'assemblage des pages HTML
 * `/src/docs` : L'ensemble de la documentation statique du projet au format Markdown
 
 A chaque fois que le projet est "construit", le résultat est disponible dans

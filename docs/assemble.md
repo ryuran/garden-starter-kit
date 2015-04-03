@@ -13,7 +13,7 @@ Assemble est configuré pour nos besoins de la façon suivante:
 
 ### Gabarits globaux
 
-Les layouts sont placés dans le dossier `/src/html/layout`. Il y en a deux par défaut:
+Les layouts sont placés dans le dossier `/src/tpl/layout`. Il y en a deux par défaut:
 
 * `default.hbs`
   Il s'agit du gabarit de base appliqué à toutes les pages par défaut.
@@ -25,7 +25,7 @@ Rien n’empêche d'en rajouter d'autres si un projet le nécessite.
 
 ### Gabarits partiels
 
-Les gabarits partiels pour inclusion sont placés dans le dossier `/src/html/inc`. A noter que tous les gabarits doivent avoir l'extension `.hbs`
+Les gabarits partiels pour inclusion sont placés dans le dossier `/src/tpl/inc`. A noter que tous les gabarits doivent avoir l'extension `.hbs`
 
 L'inclusion des gabarits est fait via le helper `> nom-du-gabarit`. Le nom du gabarit étant le nom du fichier sans l'extension `.hbs`.
 
@@ -34,14 +34,14 @@ L'inclusion des gabarits est fait via le helper `> nom-du-gabarit`. Le nom du ga
 
 ### Pages maîtres
 
-Les pages maîtres sont des gabarits spéciaux qui représentent une page du projet et vont agréger un ou plusieurs gabarits partiels. Ces pages maîtres sont placé dans le dossier `/src/html/pages` et peuvent être organisées en sous-dossiers.
+Les pages maîtres sont des gabarits spéciaux qui représentent une page du projet et vont agréger un ou plusieurs gabarits partiels. Ces pages maîtres sont placé dans le dossier `/src/tpl/pages` et peuvent être organisées en sous-dossiers.
 
 Toutes ses pages seront listées automatiquement dans l'index HTML du projet et les méta données placées dans l'en-tête YAML de chaque page seront utilisées pour alimenter ce même index (voir ci-après).
 
 
 ### Données dynamiques
 
-Les données qui peuvent être injectées dans les gabarits sont disponibles dans des fichiers JSON placés dans `/src/html/data`
+Les données qui peuvent être injectées dans les gabarits sont disponibles dans des fichiers JSON placés dans `/src/tpl/data`
 
 * `data.json`
   Données accessibles dans tous les gabarits. Par défaut, il contient les données de configuration de la page d'index (voir ci-après)
@@ -80,7 +80,7 @@ Chaque page maître doit contenir un certain nombre de méta-données dans son e
 
 L'index va afficher un tableau résumant les informations de la page. Pour cela il dispose d'un certain nombres de colonnes utilisables.
 
-Les colonnes disponibles sont configurées dans le fichier `/src/html/data/data.json`. Une colonne configurée avec la valeur `false` ne sera jamais affichée.
+Les colonnes disponibles sont configurées dans le fichier `/src/tpl/data/data.json`. Une colonne configurée avec la valeur `false` ne sera jamais affichée.
 Chaque colonne qui doit être affichée doit être configurée avec un objet JSON ayant les paramètres suivant:
 
 * `label`: Le titre de l'en-tête de colonne ou de groupe.

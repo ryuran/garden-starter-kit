@@ -56,32 +56,32 @@ module.exports = (grunt) ->
     assemble:
       options:
         helpers   : ['handlebars-helper-compose', 'src/helpers/**/*.js']
-        partials  : 'src/html/inc/**/*.hbs'
-        layoutdir : 'src/html/layouts'
+        partials  : 'src/tpl/inc/**/*.hbs'
+        layoutdir : 'src/tpl/layouts'
         layout    : 'default.hbs'
 
       dev:
         options:
           assets : 'build/dev/'
-          data   : 'src/html/data/{*,dev/*}.json'
+          data   : 'src/tpl/data/{*,dev/*}.json'
         expand : true
-        cwd    : 'src/html/'
+        cwd    : 'src/tpl/'
         src    : ['index.hbs','pages/**/*.hbs']
         dest   : 'build/dev'
 
       prod:
         options:
           assets : 'build/prod/'
-          data   : 'src/html/data/{*,prod/*}.json'
+          data   : 'src/tpl/data/{*,prod/*}.json'
         expand : true
-        cwd    : 'src/html/'
+        cwd    : 'src/tpl/'
         src    : ['index.hbs','pages/**/*.hbs']
         dest   : 'build/prod'
 
       doc:
         options:
           assets : 'build/dev/'
-          data   : 'src/html/data/{*,dev/*}.json'
+          data   : 'src/tpl/data/{*,dev/*}.json'
           layout : 'documentation.hbs'
         files: [{
           expand : true
@@ -311,7 +311,7 @@ module.exports = (grunt) ->
         files: 'src/js/**/*.js'
         tasks: ['newer:copy:js', 'newer:jshint']
       html:
-        files: 'src/html/**/*.hbs'
+        files: 'src/tpl/**/*.hbs'
         tasks: ['assemble:dev','newer:prettify:dev']
       fonts:
         files: 'src/fonts/**/*'
