@@ -31,13 +31,8 @@
   "maxdepth"  : 3,
   "jquery"    : true,
   "globals" : [
-    "require",
-    "define",
-    "module"
-  ],
-  "predef": [
-    "require",
-    "define",
-    "module"
+    "require" : true,
+    "define"  : true,
+    "module"  : true
   ]
 }
