@@ -6,7 +6,9 @@
 
 # Modules tiers
 node_modules
+bower_components
 src/js/lib
+src/sass/lib
 
 # Build
 build

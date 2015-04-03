@@ -2,9 +2,9 @@
 Bower
 ===============================================================================
 
-[Bower](http://bower.io) est un gestionnaire de bibliothèques tierces communément
-utilisé. Le starter kit peut être utilisé avec Bower pour gérer les dépendances
-des bibliothèques JavaScript ou Sass.
+[Bower](http://bower.io) est un gestionnaire de bibliothèques tierces
+communément utilisé. Le starter kit peut être utilisé avec Bower pour gérer les
+dépendances des bibliothèques JavaScript ou Sass.
 
 
 Vérifier votre environnement
@@ -30,13 +30,18 @@ L'installation des bibliothèques d'un projet se fait simplement avec la
 commande :
 
 ```bash
-$ bower install
+$ grunt bower
 ```
 
-> **NOTE:** _Les bibliothèques sont installées dans le dossier `src/lib/js`
-  Ce dossier est une ressource pour les import Sass et peut être utilisé
-  directement pour faire des liens vers les bibliothèques JS pour le build
-  de dev._
+Ou bien, si vous preferez utiliser la commande `bower`:
+
+```
+$ bower install & grunt copy:bower
+```
+
+> **NOTE:** _La tâche `copy:bower` de grunt copie les fichiers rapatriés par
+  bower dans les répertoires utilisés par grunt : Les fichiers JavaScript sont
+  copiés dans `src/js/lib` et les fichiers Sass sont copiés dans `src/sass/lib`_
 
 Il est possible de rajouter de nouvelles bibliothèques en utilisant la
 commande :
@@ -46,12 +51,23 @@ $ bower install <bibliotheque> --save
 ```
 
 L'option `--save` enregistrera la bibliothèque dans le fichier bower.json pour
-que les autres intervenant du projets puissent synchroniser leur installation par la suite avec un simple:
+que les autres intervenant du projets puissent synchroniser leur installation
+par la suite.
+
+> **NOTE:** _A chaque fois qu'un build est lancé via grunt, il commencera par
+  exécuter la tache `bower` vu ci-avant._
+
+Si vous souhaitez lancer votre build sans que bower soit appeler, c'est possible.
+Dans ce cas, il faut lui dire explicitement de ne pas utiliser Bower. Pour cela,
+il suffit d’appeler une des commandes suivantes (selon votre besoin) :
 
 ```bash
-$ bower install
-```
+# Construction statique
+$ grunt build --bower=no
 
+# Construction avant un live
+$ grunt live --bower=no
+```
 
 Configuration standard
 -------------------------------------------------------------------------------
@@ -74,6 +90,7 @@ vous laissez des bibliothèques inutiles, ce n'est pas très grave car seules
 celles effectivement utilisées dans les gabarits HTML seront inclues dans les
 builds de production.
 
-> **NOTES:** _Les bibliothèques étant installées dans src/js/lib, ce répertoire
-  est ignoré via le fichier `.gitignore`. Pensez à commenter la ligne
-  correspondante dans ce fichier si vous ne souhaitez pas utiliser bower._
+> **NOTES:** _Les bibliothèques étant installées dans `src/js/lib` et
+  `src/sass/lib`, ce répertoire est ignoré via le fichier `.gitignore`. Pensez
+  à commenter la ligne correspondante dans ce fichier si vous ne souhaitez pas
+  utiliser bower._

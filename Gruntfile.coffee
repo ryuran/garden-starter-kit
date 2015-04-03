@@ -11,7 +11,12 @@ module.exports = (grunt) ->
   # $ grunt build
   # Régénère le contenu du dossier `/build`. Il est recommandé de lancer cette
   # tache à chaque fois que l'on réalise un `git pull` du projet.
-  grunt.registerTask 'build', ['clean', 'css', 'html', 'js', 'test']
+  grunt.registerTask 'build', ['ifbower', 'clean', 'css', 'html', 'js', 'test']
+
+  # $ grunt bower
+  # Execute bower depuis grunt et copies les assets utils là ou ils sont
+  # necessaire: `js` => `src/js/lib`; `scss` => `src/sass/lib`
+  grunt.registerTask 'bower', ['exec:bower','copy:bower']
 
   # $ grunt css
   # Régènère uniquement les feuilles de styles (et les sprites/images associés)
@@ -255,6 +260,24 @@ module.exports = (grunt) ->
           src: ['fonts/**/*']
           dest: 'build/prod/'
         }]
+      bower:
+        files: [{
+          expand: true
+          cwd: 'bower_components'
+          src: ['**/*.js']
+          dest: 'src/js/lib/'
+        },{
+          expand: true
+          cwd: 'bower_components'
+          src: ['**/*.scss']
+          dest: 'src/sass/lib/'
+        }]
+
+    # $ grunt exec
+    # --------------------------------------------------------------------------
+    # Permet d'executer n'importe quelle commande shell
+    exec:
+      bower: 'bower install'
 
     # $ grunt connect
     # --------------------------------------------------------------------------
@@ -331,3 +354,11 @@ module.exports = (grunt) ->
     else
       grunt.log.write 'We are allowed to compile Sass'
       grunt.task.run 'compass:dev'
+
+  # Intermediate task to handle `$ grunt live --bower=no`
+  grunt.registerTask 'ifbower', 'Checking Bower requirement', () ->
+    if grunt.option('bower') is 'no'
+      grunt.log.write 'We must not call bower'
+    else
+      grunt.log.write 'Updating third party lib with bower'
+      grunt.task.run 'bower'
