@@ -1,43 +1,59 @@
+// COLORS
+$font-color        : #000;
+$bg-color          : #FFF;
+$code-font-color   : #999;
+$code-bg-color     : #DEDEDE;
+$table-border-color: #333;
+$table-header-color: #DEDEDE;
+$sperator-color    : #CCC;
+
+// STYLES
 body {
-  font: 1em sans-serif;
-  padding: 1em;
-  margin: 0;
-  color: black;
-  background: white;
+  font:       1em sans-serif;
+  padding:    1em;
+  margin:     0;
+  color:      $font-color;
+  background: $bg-color;
 }
 
 .page:not(.index) {
   max-width: 40em;
-  margin: 0 auto;
+  margin:    0 auto;
 }
 
-code, pre {
-  background-color: #DEDEDE;
+code,
+pre {
+  background-color: $code-bg-color;
 }
 
 pre {
   overflow: auto;
-  padding: .5em;
-  border: 1px solid #999;
+  padding:  .5em;
+  border:   1px solid $code-font-color;
 }
 
 img {
   max-width: 100%;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   padding-top: 0;
   font-weight: bold;
 }
 
 p {
   text-align: justify;
-  hyphens: auto;
+  hyphens:    auto;
 }
 
 .table {
   overflow:  auto;
-  border: 1px solid #333;
+  border: 1px solid $table-border-color;
 }
 
 table {
@@ -46,15 +62,17 @@ table {
   border-spacing: 0;
   border-collapse: collapse;
 
-  th, td, tr {
+  th,
+  td,
+  tr {
     text-align: left;
-    border: 1px solid #333;
-    padding: .4em .5em .3em;
+    border:     1px solid $table-border-color;
+    padding:    .4em .5em .3em;
   }
 
   th {
     white-space: nowrap;
-    background: #DFDFDF;
+    background:  $table-header-color;
   }
 
   td:nth-child(1) {
@@ -79,16 +97,17 @@ table {
     margin-right: .5em;
   }
 
-  img, h1 {
-    float:left;
-    font-size: 2em
+  img,
+  h1 {
+    float:     left;
+    font-size: 2em;
   }
 
   &::after {
-    content: "";
-    display:block;
-    clear:both;
-    height:0;
-    border-top: 1px solid #CCC;
+    content:    "";
+    display:    block;
+    clear:      both;
+    height:     0;
+    border-top: 1px solid $sperator-color;
   }
 }
