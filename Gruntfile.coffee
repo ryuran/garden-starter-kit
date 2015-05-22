@@ -85,7 +85,7 @@ module.exports = (grunt) ->
 
       doc:
         options:
-          assets : 'build/dev/'
+          assets : 'build/'
           data   : 'src/tpl/data/{*,dev/*}.json'
           layout : 'documentation.hbs'
         files: [{
