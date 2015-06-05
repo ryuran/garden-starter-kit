@@ -35,7 +35,7 @@ installés au niveau global sur votre machine :
   [Homebrew](http://brew.sh/) pour installer tous les outils en ligne de
   commande dont vous pourriez avoir besoin._
 
-> Pour **Windows** : _un de module installé par Bundle nécessite une
+> Pour **Windows** : _un des modules installé par Bundle nécessite une
   compilation en C. Pour cela, installez le Ruby Development Kit en suivant
   [ces instructions](https://github.com/oneclick/rubyinstaller/wiki/Development-Kit)._
 
@@ -136,7 +136,7 @@ $ grunt live
 $ grunt live --sass=no
 ```
 
-**build**: contruit la version statique du projet (compile les fichier Sass,
+**build**: contruit la version statique du projet (compile les fichiers Sass,
 assemble les fichiers HTML, etc.)
 
 ```bash
@@ -186,3 +186,4 @@ fonctionnalités originales ou en cours d’expérimentation. Vous êtes libre d
 les utiliser, ou non, selon vos envies ou votre contexte projet.
 
 * [Bower](docs/bower.md)
+* [KSS](docs/kss.md)
