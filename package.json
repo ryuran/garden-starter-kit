@@ -4,7 +4,7 @@
   "title": "Garden Starter Kit",
   "description": "Set de base pour les projet Garden statique.",
   "logo": "img/clever-age-logo.png",
-  "version": "0.3.0",
+  "version": "0.3.2",
   "dependencies": {
     "assemble": "^0.4.42",
     "autoprefixer-core": "~5.1.8",
