@@ -147,7 +147,7 @@ linters:
   # https://github.com/causes/scss-lint/blob/master/lib/scss_lint/linter/README.md#elseplacement
   # Ça permet de garantir la cohérence d'écriture de code. le parti pris et de
   # mettre les `@else` sur un e nouvelle ligne.
-  ElsePLacement:
+  ElsePlacement:
     enabled: true
     style: new_line
 
@@ -160,7 +160,7 @@ linters:
   # https://github.com/causes/scss-lint/blob/master/lib/scss_lint/linter/README.md#emptyrule
   # C'est pour éviter de laisser traîner des trucs qui servent à rien dans le code
   EmptyRule:
-    enable: true
+    enabled: true
 
   # https://github.com/causes/scss-lint/blob/master/lib/scss_lint/linter/README.md#emptyrule
   # C'est pour donner de la cohérence avec les autres fichier (en particulier JS)
