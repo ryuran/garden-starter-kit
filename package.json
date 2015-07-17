@@ -2,7 +2,7 @@
   "name": "garden-starterkit",
   "homepage": "http://localhost:8000",
   "title": "Garden Starter Kit",
-  "description": "Set de base pour les projet Garden statique.",
+  "description": "Set de base pour les projets Garden statiques.",
   "logo": "img/clever-age-logo.png",
   "version": "0.3.2",
   "dependencies": {
