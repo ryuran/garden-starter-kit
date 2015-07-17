@@ -6,21 +6,19 @@ description: <%- pkg.description %>
 logo : <%- pkg.logo %>
 ---
 
-
-<header>
-  <div class="title">
-    {{#if logo}}<img alt="" src="{{logo}}">{{/if}}
-    <h1>{{title}}</h1>
-  </div>
+<header class="ca__main__section">
   {{#if description}}<p>{{description}}</p>{{/if}}
-  <p>Accéder à la <a href="/docs">documentation</a></p>
+  <p>
+    Accéder à la <a href="/docs">documentation</a><br>
+    Accéder au <a href="/docs/styleguide">guide des styles</a>
+  </p>
 </header>
 
-<section>
+<section class="ca__main__section">
   <h2>Liste des pages</h2>
 
-  <div class="table">
-  <table>
+  <div class="ca__table_container">
+  <table class="ca__table">
     <thead>
       <tr>
         <th scope="col" rowspan="2">Page</th>
@@ -55,7 +53,7 @@ logo : <%- pkg.logo %>
         </th>
         {{/if}}
         {{#if INDEX.NOTES}}
-        <th scope="col" rowspan="2">
+        <th scope="col" rowspan="2" class="ca__table__head--left">
           {{#if INDEX.NOTES.url}}<a href="{{INDEX.NOTES.url}}">{{/if}}{{INDEX.NOTES.label}}{{#if INDEX.NOTES.url}}</a>{{/if}}
         </th>
         {{/if}}
@@ -141,7 +139,7 @@ logo : <%- pkg.logo %>
     <tbody>
     {{#compose src="pages/**/*.hbs"}}
       <tr>
-        <td><a href="pages/{{@basename}}.html">{{@title}}</a><br><small>{{@description}}</small></td>
+        <td class="ca__table__data--left"><a href="pages/{{@basename}}.html">{{@title}}</a><br><small>{{@description}}</small></td>
         {{#if INDEX.HTML}}<td>{{@META.HTML}}</td>{{/if}}
         {{#if INDEX.CSS}}<td>{{@META.CSS}}</td>{{/if}}
         {{#if INDEX.JS}}<td>{{@META.JS}}</td>{{/if}}
@@ -160,7 +158,7 @@ logo : <%- pkg.logo %>
         {{#if INDEX.S3}}<td>{{@META.S3}}</td>{{/if}}
         {{#if INDEX.S4}}<td>{{@META.S4}}</td>{{/if}}
         {{#if INDEX.S5}}<td>{{@META.S5}}</td>{{/if}}
-        {{#if INDEX.NOTES}}<td>{{@META.NOTES}}</td>{{/if}}
+        {{#if INDEX.NOTES}}<td class="ca__table__data--left">{{@META.NOTES}}</td>{{/if}}
       </tr>
     {{/compose}}
     </tbody>
