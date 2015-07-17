@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr" class="ca__">
+<head>
+  <meta charset="utf-8">
+  <title>Guide des styles CSS</title>
+  <meta name="viewport" content="width=device-width">
+
+  <!-- STYLES -->
+  <link rel="stylesheet" href="public/codehighlight.css">
+  {{{styles}}}
+</head>
+<body class="ca__">
+  <h1 class="ca__header">
+    <a class="ca__header__link" href="./">Guide des styles</a>
+  </h1>
+
+  <div class="ca__page">
+    <nav class="ca__menu">
+      <ul class="ca__menu__list">
+        {{#eachRoot}}
+        <li class="ca__menu__list__item">
+          <a class="ca__menu__link{{#ifReference ../rootName}} ca__menu__link-highlight{{/ifReference}}"
+             href="section-{{referenceURI}}.html">
+            <span class="ca__menu__reference">
+              {{#ifNumeric reference}}{{reference}}{{else}}{{autoincrement}}{{/ifNumeric}}
+            </span>
+            {{header}}
+          </a>
+
+          <ul class="ca__menu__list">
+          {{#eachSection reference}}
+            {{#ifDepth 2}}
+            <li class="ca__menu__list__item">
+              <a class="ca__menu__link"
+                 href="section-{{../../referenceURI}}.html#{{referenceURI}}">
+                <span class="ca__menu__reference">
+                  {{#ifNumeric reference}}{{reference}}{{else}}{{autoincrement}}{{/ifNumeric}}
+                </span>
+                {{header}}
+              </a>
+            </li>
+            {{/ifDepth}}
+          {{/eachSection}}
+          </ul>
+        </li>
+        {{/eachRoot}}
+      </ul>
+    </nav>
+
+    <main class="ca__main">
+      {{! SET UP THE HOMEPAGE
+
+          It is the markdown file define in the kss.json configuration }}
+      {{#if homepage}}
+      <article class="ca__home">
+        {{{homepage}}}
+      </article>
+
+      {{! SET UP SECTION AND SUBSECTION
+
+          A depth of 1 indicate a section,
+          A depth greater than 1 indicate a subsection. }}
+      {{else}}
+        {{#eachSection rootName}}
+          <section class="ca__main__section" id="{{referenceURI}}">
+
+          {{! Title of the (sub)section }}
+          <h{{depth}} class="ca__title-{{depth}}">
+            <a href="#{{referenceURI}}" class="ca__title__link">
+              <small>{{#ifNumeric reference}}{{reference}}{{else}}{{autoincrement}}{{/ifNumeric}}</small>
+              {{header}}
+            </a>
+          </h{{depth}}>
+
+          {{! Description of the (sub)section }}
+          {{#if description}}
+            <div class="ca__text">
+              {{{description}}}
+            </div>
+          {{/if}}
+
+          {{! Documentation of possible parameters for the (sub) section }}
+          {{#if parameters}}
+            <div class="ca__table_container">
+              <table class="ca__table">
+              {{#eachParameter}}
+                <tr>
+                  <th class="ca__table__head--left" scope="row"><code>{{name}}</code></th>
+                  <td class="ca__table__data--left">{{{description}}}</td>
+                </tr>
+              {{/eachParameter}}
+              </table>
+            </div>
+          {{/if}}
+
+          {{! Code samples for the (sub) section }}
+          {{#if markup}}
+            <div class="ca__example">
+              <strong class="ca__example__head">Exemple{{#if modifiers}}s{{/if}}</strong>
+
+              {{#if modifiers}}<em class="ca__example__title">Style par défaut</em>{{/if}}
+              <div class="ca__example__markup">{{{markup}}}</div>
+
+              {{#eachModifier}}
+                <em class="ca__example__title"><code>{{name}}</code></em>
+                <span>{{{description}}}</span>
+                <div class="ca__example__markup">{{{markup}}}</div>
+              {{/eachModifier}}
+            </div>
+
+            <pre class="prettyprint linenums"><code class="lang-html">{{markup}}</code></pre>
+          {{/if}}
+
+          </section>
+        {{/eachSection}}
+      {{/if}}
+    </main>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script src="public/kss.js"></script>
+  <script src="public/prettify.js"></script>
+  <script>prettyPrint();</script>
+  {{{scripts}}}
+</body>
+</html>

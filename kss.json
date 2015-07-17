@@ -1,0 +1,10 @@
+{
+  "source":       "./src/sass",
+  "homepage":     "styleguide.md",
+  "destination":  "./build/docs/styleguide",
+  "template":     "./.kss",
+  "css": [
+    "../../css/doc.css",
+    "../../css/styles.css"
+  ]
+}

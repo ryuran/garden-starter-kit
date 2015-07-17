@@ -24,7 +24,7 @@ module.exports = (grunt) ->
 
   # $ grunt html
   # Régènère uniquement les pages HTML
-  grunt.registerTask 'html', ['assemble', 'prettify']
+  grunt.registerTask 'html', ['assemble', 'prettify', 'kss']
 
   # $ grunt js
   # Régènère uniquement les fichiers JS
@@ -116,7 +116,13 @@ module.exports = (grunt) ->
         expand: true
         src   : ['build/prod/**/*.html']
 
-
+    # $ grunt kss
+    # --------------------------------------------------------------------------
+    # Generation du style guide basé sur les commentaires KSS des fichiers SCSS
+    kss:
+      styleguide:
+        options:
+          config: 'kss.json'
 
     # IMAGES
     # ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
@@ -189,7 +195,7 @@ module.exports = (grunt) ->
     # --------------------------------------------------------------------------
     # Vérifie que les fichiers Sass suivent les conventions de codage
     scsslint:
-      all: ['src/**/*.scss']
+      all: ['src/**/*.scss','!src/sass/doc.scss']
       options:
         bundleExec: true
         config: '.scss-lint.yml'
@@ -320,8 +326,8 @@ module.exports = (grunt) ->
           livereload: true
         files: ['build/dev/**/*']
       sass:
-        files: 'src/sass/**/*.scss'
-        tasks: ['sass', 'newer:scsslint']
+        files: ['src/sass/**/*.scss','src/sass/styleguide.md']
+        tasks: ['sass', 'newer:scsslint', 'kss']
       images:
         files: 'src/img/*.{png,jpg,gif,svg}'
         tasks: ['newer:imagemin:dev']
