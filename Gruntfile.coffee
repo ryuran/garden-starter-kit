@@ -321,6 +321,8 @@ module.exports = (grunt) ->
     # --------------------------------------------------------------------------
     # Configuration de tous les watcher du projet
     watch:
+      options:
+        spawn: false
       livereload:
         options:
           livereload: true
