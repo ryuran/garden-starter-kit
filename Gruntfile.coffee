@@ -1,4 +1,5 @@
 module.exports = (grunt) ->
+  require('time-grunt')(grunt)
 
   # TACHES PERSONNALISÉES COMMUNES A TOUS LES PROJETS
   # ============================================================================
@@ -35,13 +36,34 @@ module.exports = (grunt) ->
   grunt.registerTask 'test', ['scsslint', 'jshint']
 
 
-  # CHARGE AUTOMATIQUEMENT TOUTES LES TACHES GRUNT DU PROJET
-  # /!\ Attention, cela ne fonctionne que pour les taches préfixées `grunt-*`
+  # CHARGE LES TACHES A LA DEMANDE POUR ACCELERER
+  # L'EXECUTION DES TACHES APPELLÉES INDIVIDUELLEMENT
   # ============================================================================
-  require('load-grunt-tasks')(grunt)
+  [
+    'assemble'
+    'grunt-contrib-clean'
+    'grunt-contrib-compass'
+    'grunt-contrib-concat'
+    'grunt-contrib-connect'
+    'grunt-contrib-copy'
+    'grunt-contrib-imagemin'
+    'grunt-contrib-jshint'
+    'grunt-contrib-uglify'
+    'grunt-contrib-watch'
+    'grunt-exec'
+    'grunt-kss'
+    'grunt-newer'
+    'grunt-postcss'
+    'grunt-prettify'
+    'grunt-scss-lint'
+  ].forEach (npmTask) ->
+    task = npmTask.replace /^grunt-(contrib-)?/, ''
+    grunt.registerTask task, [], () ->
+      grunt.loadNpmTasks npmTask
+      grunt.task.run task
 
-  # CHARGE LES TACHES QUI NE PEUVENT L'ETRE AUTOMATIQUEMENT
-  grunt.loadNpmTasks 'assemble'
+  # usemin ne peut pas être optimisé de cette manière
+  grunt.loadNpmTasks 'grunt-usemin'
 
 
   # CONFIGURATION DES TACHES CHARGÉES
