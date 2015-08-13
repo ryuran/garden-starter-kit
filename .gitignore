@@ -1,15 +1,34 @@
-# Guarantee that this file is always there
+# ENVIRONNEMENT GLOBAL
+# -----------------------------------------------------------------------------
+# Pour être sur que le fichier .gitignore n'est jamais ignorer lui-même.
 !.gitignore
 
-# Sass
+
+# SASS
+# -----------------------------------------------------------------------------
+# Ignorer le cache de Sass
 .sass-cache
 
-# Modules tiers
+
+# MODULES TIERS
+# -----------------------------------------------------------------------------
+# Ignorer les modules nodes
 node_modules
+
+# Ignorer les biblothèques gérées via Bower
 bower_components
+
+
+# PROJET
+# -----------------------------------------------------------------------------
+# Ignorer les bibliothèques JS tiers placé dans les sources
 src/js/lib
+
+# Ignorer les bibliothèques Sass tiers placé dans les sources
 src/sass/lib
 
-# Build
+# Ignorer le build
 build
+
+# Ignorer le cache des modules Grunt
 .tmp
