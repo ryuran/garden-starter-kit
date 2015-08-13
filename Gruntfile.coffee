@@ -1,5 +1,8 @@
 module.exports = (grunt) ->
-  require('time-grunt')(grunt)
+  try
+    require('time-grunt')(grunt)
+  catch error
+    grunt.log.debug "time-grunt not installed"
 
   # TACHES PERSONNALISÉES COMMUNES A TOUS LES PROJETS
   # ============================================================================
@@ -16,7 +19,7 @@ module.exports = (grunt) ->
 
   # $ grunt bower
   # Execute bower depuis grunt et copies les assets utils là ou ils sont
-  # necessaire: `js` => `src/js/lib`; `scss` => `src/sass/lib`
+  # necessaire: `js` => `src/js/lib`; `scss` => restent la ou ils sont
   grunt.registerTask 'bower', ['exec:bower','copy:bower']
 
   # $ grunt css
