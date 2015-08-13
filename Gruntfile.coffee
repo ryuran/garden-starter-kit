@@ -47,26 +47,26 @@ module.exports = (grunt) ->
     'grunt-contrib-clean'
     'grunt-contrib-compass'
     'grunt-contrib-concat'
-    'grunt-contrib-connect'
     'grunt-contrib-copy'
     'grunt-contrib-imagemin'
     'grunt-contrib-jshint'
     'grunt-contrib-uglify'
-    'grunt-contrib-watch'
     'grunt-exec'
     'grunt-kss'
     'grunt-newer'
     'grunt-postcss'
     'grunt-prettify'
-    'grunt-scss-lint'
   ].forEach (npmTask) ->
     task = npmTask.replace /^grunt-(contrib-)?/, ''
     grunt.registerTask task, [], () ->
       grunt.loadNpmTasks npmTask
       grunt.task.run task
 
-  # usemin ne peut pas être optimisé de cette manière
+  # taches qui ne peuvent pas être optimisées de cette manière
   grunt.loadNpmTasks 'grunt-usemin'
+  grunt.loadNpmTasks 'grunt-scss-lint'
+  grunt.loadNpmTasks 'grunt-contrib-connect'
+  grunt.loadNpmTasks 'grunt-contrib-watch'
 
 
   # CONFIGURATION DES TACHES CHARGÉES
