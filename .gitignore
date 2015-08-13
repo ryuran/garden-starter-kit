@@ -9,6 +9,13 @@
 # Ignorer le cache de Sass
 .sass-cache
 
+# Ignorer la configuration interne de Bunler
+.bundle
+
+# Ignorer les gems instalées avec le projet
+# N'hésitez pas à adpater le nom du dossier à vos propre habitudes
+.gems
+
 
 # MODULES TIERS
 # -----------------------------------------------------------------------------

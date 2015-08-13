@@ -81,7 +81,7 @@ Lorsque le dépôt est rapatrié en local, exécutez les commandes
 suivantes :
 
 ```bash
-$ bundle install
+$ bundle install --path .gems
 $ npm install
 ```
 
