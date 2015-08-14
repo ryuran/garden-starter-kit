@@ -22,20 +22,8 @@
 # Ignorer les modules nodes
 node_modules
 
-# Ignorer les biblothèques gérées via Bower
-bower_components
-
 
 # PROJET
 # -----------------------------------------------------------------------------
-# Ignorer les bibliothèques JS tiers placé dans les sources
-src/js/lib
-
-# Ignorer les bibliothèques Sass tiers placé dans les sources
-src/sass/lib
-
 # Ignorer le build
 build
-
-# Ignorer le cache des modules Grunt
-.tmp

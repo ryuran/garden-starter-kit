@@ -1,14 +1,12 @@
 # Nombre de décimal après la virgule, utile pour la précision des em
 Sass::Script::Number.precision = 8
 
-# Pour les bibliothèque Sass utilisé via Bower
-additional_import_paths = ['bower_components']
-
 # Configuration des chemins des ressources:
-sass_dir        = 'src/sass'
-images_dir      = 'src/img'
+sass_dir        = 'src/css'
+images_dir      = 'src/assets/img'
 javascripts_dir = 'src/js'
-fonts_dir       = 'src/fonts'
+fonts_dir       = 'src/assets/fonts'
+css_dir         = 'build/css'
 
 # Configuration des chemins HTTP
 http_path             = ''
@@ -19,13 +17,9 @@ http_fonts_path       = '../fonts'
 
 # Configuration spécifique à chaque environement
 if  environment == :production
-    # chemin des ressources
-    css_dir = 'build/prod/css'
     # options de sortie
     output_style = :compressed
 else
-    # chemin des ressources
-    css_dir = 'build/dev/css'
     # options de sortie
     output_style =   :expanded
 end
