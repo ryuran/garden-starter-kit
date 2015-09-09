@@ -66,13 +66,16 @@ Le plus simple:
 ```bash
 $ cd ~/monProjet
 $ git clone git@git.clever-age.net:clever-age-expertise/clever-garden-starter-kit.git .
-$ git remote remove origin
+$ rm -rf .git
 ```
 
 Il ne vous reste plus qu'a ajouter une nouvelle `origin` vers le dépôt définitif des sources du projet final et à envoyer vos source vers le dépôt définitif.
 Le paramètre `-u` permet d'associer la branche locale (ici le master) avec celle distante de façon pérenne.
 
 ```bash
+$ git init
+$ git add --all
+$ git commit -m "Initial commit"
 $ git remote add origin git@git.clever-age.net:client-name/project-name.git
 $ git push -u origin master
 ```
