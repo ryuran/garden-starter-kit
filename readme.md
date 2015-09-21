@@ -4,7 +4,7 @@ Clever Garden Starter Kit
 
 Ce dépôt GIT sert de kit de démarrage pour les projets d'intégration statique.
 
-Ils contient toutes nos bonnes pratiques et tous les outils nécessaires pour
+Il contient toutes nos bonnes pratiques et tous les outils nécessaires pour
 nos projets d'intégration statique chez Clever Age. Parmi tous les outils
 présents dans ce kit vous trouverez ceux qui doivent être utilisés
 obligatoirement aussi bien que ceux qui sont simplement recommandés.
