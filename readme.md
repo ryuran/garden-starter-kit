@@ -120,13 +120,13 @@ sont influencés par la configuration locale de votre machine. Il est donc
 déconseillé de lancer une tâche de *build* à distance soi-même : mieux vaut
 planifier une tâche dont le contexte d'exécution sera toujours le même.
 
-Taches normalisées
+Tâches normalisées
 --------------------------------------------------------------------------------
 
-Tous projet démarré avec ce starter kit dispose d'un certain nombre de taches
-Grunt normalisés utilisable quelques soient les modules grunt utilisés.
+Tout projet démarré avec ce starter kit dispose d'un certain nombre de tâches
+Grunt normalisées utilisables quels soient les modules grunt utilisés.
 
-**live**: permet de démarrer un serveur static pour les pages HTML et d'avoir
+**live**: permet de démarrer un serveur statique pour les pages HTML et d'avoir
 un _watch_ sur les fichiers du projet en même temps.
 
 > **ATTENTION:** _Même si tous les chemins sont résolus de manière relative, il
@@ -148,7 +148,7 @@ assemble les fichiers HTML, etc.)
 $ grunt build
 ```
 
-**css**: Construit les feuilles de styles et gère les images associés
+**css**: Construit les feuilles de styles et gère les images associées
 
 ```bash
 $ grunt css
