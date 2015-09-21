@@ -114,7 +114,11 @@ les répertoires suivant:
 * `/build/dev` : Le projet construit sans optimisation pour le développement
 * `/build/prod` : Le projet statique optimisé pour la livraison final
 
-La compilation est dépendante des paramètres de `locale` courant, qui peuvent varier d'un poste à un autre, y compris sur un serveur distant où ces paramètres sont influencés par la configuration locale de votre machine. Il est donc déconseillé de lancer une tâche de *build* à distance soi-même : mieux vaut planifier une tâche dont le contexte d'exécution sera toujours le même.
+La compilation est dépendante des paramètres de `locale` courant, qui peuvent
+varier d'un poste à un autre, y compris sur un serveur distant où ces paramètres
+sont influencés par la configuration locale de votre machine. Il est donc
+déconseillé de lancer une tâche de *build* à distance soi-même : mieux vaut
+planifier une tâche dont le contexte d'exécution sera toujours le même.
 
 Taches normalisées
 --------------------------------------------------------------------------------
