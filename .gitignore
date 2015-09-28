@@ -3,6 +3,17 @@
 # Pour être sur que le fichier .gitignore n'est jamais ignorer lui-même.
 !.gitignore
 
+# OS
+# -----------------------------------------------------------------------------
+# Ignorer les fichiers générés par les systèmes d'exploitation
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
 
 # SASS
 # -----------------------------------------------------------------------------
