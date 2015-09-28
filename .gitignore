@@ -40,11 +40,17 @@ nbproject
 
 # MODULES TIERS
 # -----------------------------------------------------------------------------
-# Ignorer les modules nodes
+# Ignorer les modules et logs nodes
 node_modules
+logs
+*.log
+npm-debug.log*
 
-# Ignorer les biblothèques gérées via Bower
+# Ignorer les biblothèques et fichiers temporaires gérés via Bower
 bower_components
+.bower-cache
+.bower-registry
+.bower-tmp
 
 
 # PROJET
