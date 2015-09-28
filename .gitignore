@@ -15,6 +15,16 @@ ehthumbs.db
 Thumbs.db
 desktop.ini
 
+# IDE
+# -----------------------------------------------------------------------------
+# Ignorer les fichiers générés par les IDE
+nbproject
+.~lock.*
+.buildpath
+.idea
+.project
+.settings
+
 # SASS
 # -----------------------------------------------------------------------------
 # Ignorer le cache de Sass
