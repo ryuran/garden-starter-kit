@@ -167,6 +167,12 @@ $ grunt js
 $ grunt test
 ```
 
+**githook**: Relie des tâches grunt aux hooks de git
+
+```bash
+$ grunt githook
+```
+
 Outils obligatoires
 --------------------------------------------------------------------------------
 Les outils listés ici doivent êtres utilisés obligatoirement lorsqu'on démarre
