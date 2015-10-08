@@ -117,14 +117,19 @@ les répertoires suivant:
 * `/build/dev` : Le projet construit sans optimisation pour le développement
 * `/build/prod` : Le projet statique optimisé pour la livraison final
 
+La compilation est dépendante des paramètres de `locale` courant, qui peuvent
+varier d'un poste à un autre, y compris sur un serveur distant où ces paramètres
+sont influencés par la configuration locale de votre machine. Il est donc
+déconseillé de lancer une tâche de *build* à distance soi-même : mieux vaut
+planifier une tâche dont le contexte d'exécution sera toujours le même.
 
 Tâches normalisées
 --------------------------------------------------------------------------------
 
 Tout projet démarré avec ce starter kit dispose d'un certain nombre de tâches
-Grunt normalisées utilisables quelques soient les modules grunt utilisés.
+Grunt normalisées utilisables quels que soient les modules grunt utilisés.
 
-**live**: permet de démarrer un serveur static pour les pages HTML et d'avoir
+**live**: permet de démarrer un serveur statique pour les pages HTML et d'avoir
 un _watch_ sur les fichiers du projet en même temps.
 
 > **ATTENTION:** _Même si tous les chemins sont résolus de manière relative, il
@@ -146,7 +151,7 @@ assemble les fichiers HTML, etc.)
 $ grunt build
 ```
 
-**css**: Construit les feuilles de styles et gère les images associés
+**css**: Construit les feuilles de styles et gère les images associées
 
 ```bash
 $ grunt css
