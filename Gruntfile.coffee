@@ -56,6 +56,7 @@ module.exports = (grunt) ->
     'grunt-newer'
     'grunt-postcss'
     'grunt-prettify'
+    'grunt-githooks'
   ].forEach (npmTask) ->
     task = npmTask.replace /^grunt-(contrib-)?/, ''
     grunt.registerTask task, [], () ->
@@ -370,6 +371,16 @@ module.exports = (grunt) ->
       css:
         files: 'build/dev/css/**/*.css'
         tasks: ['newer:postcss']
+
+
+    # GIT HOOKS
+    # --------------------------------------------------------------------------
+    # Relie des tâches grunt aux hooks de git
+    githooks:
+      all:
+        options:
+          template: 'hooks/pre-commit.js'
+        'pre-commit': 'test'
 
 
 
