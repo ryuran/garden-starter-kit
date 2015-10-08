@@ -27,7 +27,6 @@ installés au niveau global sur votre machine :
 * [Ruby](https://www.ruby-lang.org/fr/)
 * [Rubygems](http://rubygems.org/)
 * [Bundler](http://bundler.io/)
-* [Grunt CLI](http://gruntjs.com/getting-started)
 
 > Pour **Mac** : _vous devez obligatoirement installer XCode et les outils en
   ligne de commande qui l'accompagne (ce qui installera automatiquement Ruby et
@@ -41,6 +40,15 @@ installés au niveau global sur votre machine :
 
 > Pour **Linux** : _Chaque distribution a ses propre prérequis. Par exemple,
   Linux Mint 16 à besoin de `ruby1.9.1-beta`_
+
+Afin de pouvoir utiliser Brunch (ou n'importe quel module NodeJS) facilement,
+il est recommandé de rajouter `./node_modules/.bin` a votre `PATH`.
+
+Pour Mac/Linux:
+
+```bash
+$ export PATH=./node_modules/.bin:$PATH
+```
 
 ## Démarrez votre projet
 Vous avez deux options pour démarrer votre projet:
@@ -94,16 +102,17 @@ Normalement, seuls les fichiers présents dans ce répertoire devraient être
 modifiés après le début du projet.
 
 * `/src`
-* `/src/sass` : L'ensemble des fichiers Sass du projet
-* `/src/js`   : L'ensemble des sources JavaScript du projet
-* `/src/img`  : L'ensemble des images d'interface du projet
-* `/src/img/sprites` : L'ensemble des images d'interface qui seront regroupées en sprites
-* `/src/fonts`: L'ensemble des _fonts_ utilisées par le projet
-* `/src/tpl`  : L'ensemble des gabarits HTML du projet
-* `/src/tpl/data` : Les fichiers JSON de données à injecter dans les gabarits HTML
-* `/src/tpl/inc`  : Les gabarits partiels à injecter dans les pages HTML
-* `/src/tpl/layout` : Les gabarits globaux de base pour les pages HTML
-* `/src/tpl/pages`  : L'ensemble des gabarits d'assemblage des pages HTML
+* `/src/css` : L'ensemble des fichiers qui produiront du CSS
+* `/src/js`  : L'ensemble des sources JavaScript du projet (sauf les library tiers)
+* `/src/assets` : L'ensemble des fichiers qui doivent être utilisé par le projet tel quel.
+* `/src/assets/img`  : L'ensemble des images d'interface du projet
+* `/src/assets/img/sprites` : L'ensemble des images d'interface qui seront regroupées en sprites
+* `/src/assets/fonts`: L'ensemble des _fonts_ utilisées par le projet
+* `/src/html`  : L'ensemble des gabarits qui produiront du HTML
+* `/src/html/data` : Les fichiers JSON de données à injecter dans les gabarits HTML
+* `/src/html/inc`  : Les gabarits partiels à injecter dans les pages HTML
+* `/src/html/layout` : Les gabarits globaux de base pour les pages HTML
+* `/src/html/pages`  : L'ensemble des gabarits d'assemblage des pages HTML
 * `/src/docs` : L'ensemble de la documentation statique du projet au format Markdown
 
 A chaque fois que le projet est "construit", le résultat est disponible dans
@@ -111,8 +120,6 @@ les répertoires suivant:
 
 * `/build`
 * `/build/docs` : Toute la documentation du projet au format HTML
-* `/build/dev` : Le projet construit sans optimisation pour le développement
-* `/build/prod` : Le projet statique optimisé pour la livraison final
 
 
 Taches normalisées

@@ -11,9 +11,14 @@ exports.config =
       joinTo:
         'js/app.js'   : ['src/js/**/*.js']
         'js/vendor.js': ['{node_modules,vendor}/**/*.js']
+
     #Comment this configuration  if you want to use Compass standalone
     stylesheets:
       joinTo: 'css/styles.css'
+
+    #Comment this configuration if you don't want to get compiled twig files
+    templates:
+      joinTo: 'js/tpl.js'
 
   plugins:
     # Use of Sass through Ruby rather than libsass
@@ -30,3 +35,9 @@ exports.config =
       processors: [
         require('autoprefixer')(['> 4%', 'ie >= 8'])
       ]
+
+    twig:
+      extension: 'twig'
+      static:
+        directory: 'src/assets'
+        data: 'src/twig.json'
