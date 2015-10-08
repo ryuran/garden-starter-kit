@@ -4,7 +4,7 @@ Clever Garden Starter Kit
 
 Ce dépôt GIT sert de kit de démarrage pour les projets d'intégration statique.
 
-Ils contient toutes nos bonnes pratiques et tous les outils nécessaires pour
+Il contient toutes nos bonnes pratiques et tous les outils nécessaires pour
 nos projets d'intégration statique chez Clever Age. Parmi tous les outils
 présents dans ce kit vous trouverez ceux qui doivent être utilisés
 obligatoirement aussi bien que ceux qui sont simplement recommandés.
@@ -39,7 +39,7 @@ installés au niveau global sur votre machine :
   compilation en C. Pour cela, installez le Ruby Development Kit en suivant
   [ces instructions](https://github.com/oneclick/rubyinstaller/wiki/Development-Kit)._
 
-> Pour **Linux** : _Chaque distribution a ses propre prérequis. Par exemple,
+> Pour **Linux** : _Chaque distribution a ses propres prérequis. Par exemple,
   Linux Mint 16 à besoin de `ruby1.9.1-beta`_
 
 ## Démarrez votre projet
@@ -69,7 +69,7 @@ $ git clone git@git.clever-age.net:clever-age-expertise/clever-garden-starter-ki
 $ rm -rf .git
 ```
 
-Il ne vous reste plus qu'a ajouter une nouvelle `origin` vers le dépôt définitif des sources du projet final et à envoyer vos source vers le dépôt définitif.
+Il ne vous reste plus qu'à ajouter une nouvelle `origin` vers le dépôt définitif des sources du projet final et à envoyer vos source vers le dépôt définitif.
 Le paramètre `-u` permet d'associer la branche locale (ici le master) avec celle distante de façon pérenne.
 
 ```bash
@@ -118,11 +118,11 @@ les répertoires suivant:
 * `/build/prod` : Le projet statique optimisé pour la livraison final
 
 
-Taches normalisées
+Tâches normalisées
 --------------------------------------------------------------------------------
 
-Tous projet démarré avec ce starter kit dispose d'un certain nombre de taches
-Grunt normalisés utilisable quelques soient les modules grunt utilisés.
+Tout projet démarré avec ce starter kit dispose d'un certain nombre de tâches
+Grunt normalisées utilisables quelques soient les modules grunt utilisés.
 
 **live**: permet de démarrer un serveur static pour les pages HTML et d'avoir
 un _watch_ sur les fichiers du projet en même temps.
@@ -173,7 +173,7 @@ $ grunt test
 Outils obligatoires
 --------------------------------------------------------------------------------
 Les outils listés ici doivent êtres utilisés obligatoirement lorsqu'on démarre
-un nouveau projet d'intégration. _Le seul cas ou on ne les utilisera pas sera
+un nouveau projet d'intégration. _Le seul cas où on ne les utilisera pas sera
 lorsqu'on aura une demande explicite du client pour utiliser autre chose._
 
 * [Grunt](docs/grunt.md)
@@ -184,7 +184,7 @@ lorsqu'on aura une demande explicite du client pour utiliser autre chose._
 
 Outils recommandés
 --------------------------------------------------------------------------------
-Les outils listés ci-après sont des recommandations. Il peuvent apporter des
+Les outils listés ci-après sont des recommandations. Ils peuvent apporter des
 fonctionnalités originales ou en cours d’expérimentation. Vous êtes libre de
 les utiliser, ou non, selon vos envies ou votre contexte projet.
 
