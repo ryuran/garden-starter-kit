@@ -9,11 +9,5 @@
     "jquery": "^2.1.4"
   },
   "devDependencies": {
-    "autoprefixer": "^5.2.0",
-    "brunch": "^1.8.5",
-    "javascript-brunch": "^1.7.1",
-    "jshint-brunch": "^1.8.0",
-    "postcss-brunch": "^0.4.2",
-    "sass-brunch": "^1.8.10"
   }
 }
