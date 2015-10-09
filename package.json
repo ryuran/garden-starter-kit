@@ -6,6 +6,17 @@
   "version": "2.0.0-alpha1",
   "dependencies": {},
   "devDependencies": {
-    "gulp": "^3.9.0"
+    "autoprefixer": "^6.0.3",
+    "browser-sync": "^2.9.10",
+    "gulp": "^3.9.0",
+    "gulp-compass": "^2.1.0",
+    "gulp-data": "^1.2.0",
+    "gulp-plumber": "^1.0.1",
+    "gulp-postcss": "^6.0.1",
+    "gulp-prettify": "^0.3.0",
+    "gulp-scss-lint": "^0.3.6",
+    "gulp-twig": "^0.4.0",
+    "gulp-util": "^3.0.6",
+    "lazypipe": "^1.0.1"
   }
 }
