@@ -2,11 +2,40 @@
 // ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
 var process  = require('process');
 var path     = require('path');
+var cli      = require('./.gulp/tool.cli.js');
 var gulp     = require('gulp');
 var gutil    = require('gulp-util');
 var lazypipe = require('lazypipe');
 var plumber  = require('gulp-plumber');
 var bs       = require('browser-sync');
+
+
+// Set up environnement
+// ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+var CONF = {};
+
+try {
+  CONF = require('./gulp.json');
+} catch (e) {
+  // gutil.log(gutil.colors.red('ERROR:'), e.message);
+}
+
+var CLI_ENV = cli.parse({
+  // Pour dire qu'on veut optimiser pour la prod
+  '--optimize'  : 'boolean',
+  '-o'          : 'boolean',
+  '--production': 'boolean'
+});
+
+var ENV = {
+  // Pour dire si on veut optimiser pour la prod
+  optimize: CLI_ENV['--optimize']   ||
+            CLI_ENV['-o']           ||
+            CLI_ENV['--production'] ||
+            !!CONF.optimize         ||
+            false
+};
+
 
 // Utils
 // ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
