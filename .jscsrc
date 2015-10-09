@@ -29,7 +29,7 @@
   "requireCamelCaseOrUpperCaseIdentifiers": true,
   "requireCommaBeforeLineBreak": true,
   "requireCurlyBraces": true,
-  "requireKeywordsOnNewLine": ["if", "for", "while"],
+  "requireKeywordsOnNewLine": ["for", "while"],
   "requireLineFeedAtFileEnd": true,
   "requireOperatorBeforeLineBreak": [
     "?", ":", "=", "+", "-", "/", "*", "==", "===",
