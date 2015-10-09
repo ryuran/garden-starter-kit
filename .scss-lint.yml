@@ -278,8 +278,8 @@ linters:
   # https://github.com/causes/scss-lint/blob/master/lib/scss_lint/linter/README.md#selectorformat
   # Clever Age utilise la convention BEM
   SelectorFormat:
-    enabled: true
-    convention: BEM
+    enabled: false
+    # convention: BEM
     # ignored_types:
     # ignored_names:
     # attribute_convention: hyphenated_lowercase
