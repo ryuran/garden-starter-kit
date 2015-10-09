@@ -1,6 +1,5 @@
 // Required singleton modules
 // ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
-var process  = require('process');
 var path     = require('path');
 var cli      = require('./.gulp/tool.cli.js');
 var gulp     = require('gulp');
@@ -48,81 +47,22 @@ function err(error) {
 // Lazypipe
 // ----------------------------------------------------------------------------
 // util functions to setup various pipe to be used in various tasks
+// TODO: Use configuration to make all of this customizable
 
 // LINTERS
 // ----------------------------------------------------------------------------
-
-// SCSS Linter
-function scsslint() {
-  var scsslint = require('gulp-scss-lint');
-
-  return lazypipe()
-    .pipe(scsslint, {
-      bundleExec: true,
-      config: './.scss-lint.yml'
-    })
-    .pipe(scsslint.failReporter)();
-}
+var jslint  = require('./.gulp/linter.jshint.js');
+var csslint = require('./.gulp/linter.scss.js');
 
 // COMPILER
 // ----------------------------------------------------------------------------
-
-// CSS
-// TODO: Allow multiple CSS pre-processor (that abstraction make that easy)
-function css() {
-  var compass = require('gulp-compass');
-
-  return lazypipe()
-    .pipe(compass, {
-      bundle_exec: true,
-      config_file: './config.rb',
-      sass       : './src/css',
-      css        : './build/css'
-    })();
-}
-
-// HTML
-function html() {
-  var twig     = require('gulp-twig');
-  var data     = require('gulp-data');
-
-  function processData(file) {
-    return require('./src/data/' + path.basename(file.path, '.twig') + '.json');
-  }
-
-  return lazypipe()
-    .pipe(data, processData)
-    .pipe(twig)();
-}
+var css  = require('./.gulp/compiler.compass.js');
+var html = require('./.gulp/compiler.twig.js');
 
 // POST PROCESSOR
 // ----------------------------------------------------------------------------
-
-// CSS
-function postcss() {
-  var postcss      = require('gulp-postcss');
-  var autoprefixer = require('autoprefixer');
-
-  return lazypipe()
-    .pipe(postcss, [
-      autoprefixer({browsers: ['> 4%', 'ie >= 8']})
-    ])();
-}
-
-// HTML
-function prettify() {
-  var prettify = require('gulp-prettify');
-
-  return lazypipe()
-    .pipe(prettify, {
-      indent_size          : 2,
-      preserve_newlines    : true,
-      max_preserve_newlines: 2,
-      unformatted          : [
-        'pre', 'code', 'a', 'sub', 'sup', 'b', 'i', 'u', 'strong', 'em'
-      ]
-    })();
-}
+var postcss  = require('./.gulp/post.postcss.js');
+var posthtml = require('./.gulp/post.prettify.js');
 
 
 // TASKS
@@ -132,14 +72,14 @@ function prettify() {
 // ----------------------------------------------------------------------------
 // Gère la compilation des fichiers CSS
 
-gulp.task('css', function() {
+gulp.task('css', function () {
   var SRC  = './src/css/**/*.scss';
   var DEST = './build/css';
 
   gulp.src(SRC)
     .pipe(plumber({ errorHandler: err }))
-    .pipe(scsslint())
-    .pipe(css())
+    .pipe(csslint())
+    .pipe(css(ENV))
     .pipe(postcss())
     .pipe(gulp.dest(DEST))
     .pipe(bs.stream());
@@ -152,9 +92,23 @@ gulp.task('html', function () {
   gulp.src(SRC)
     .pipe(plumber({ errorHandler: err }))
     .pipe(html())
-    .pipe(prettify())
+    .pipe(posthtml())
     .pipe(gulp.dest(DEST))
     .pipe(bs.stream());
+});
+
+gulp.task('js', function () {
+  var SRC    = './src/js/**/*.js';
+  var DEST   = './build/js';
+
+  var stream = gulp.src(SRC)
+    .pipe(plumber({ errorHandler: err }));
+
+  if (jslint) {
+    stream = stream.pipe(jslint(ENV));
+  }
+
+  stream.pipe(gulp.dest(DEST));
 });
 
 gulp.task('connect', function () {
@@ -173,7 +127,7 @@ gulp.task('connect', function () {
   });
 });
 
-gulp.task('watch', function() {
+gulp.task('watch', function () {
   gulp.watch('./src/css/**/*.scss', ['css']);
   gulp.watch(['./src/html/**/*.twig', '.src/data/**/*.json'], ['html']);
 });
