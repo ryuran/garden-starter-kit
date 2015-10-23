@@ -6,6 +6,7 @@ var gutil    = require('gulp-util');
 var plumber  = require('gulp-plumber');
 var bs       = require('browser-sync');
 var del      = require('del');
+var runner   = require('run-sequence');
 
 
 // Set up environnement
@@ -18,20 +19,15 @@ try {
   gutil.log(gutil.colors.red('ERROR:'), e.message);
 }
 
-var CLI_ENV = cli.parse({
+var CLI_ENV = cli.parse([
   // Pour dire qu'on veut optimiser pour la prod
-  '--optimize'  : 'boolean',
-  '-o'          : 'boolean',
-  '--production': 'boolean'
-});
+  {id: 'optimize', cli: ['o', 'optimize', 'p', 'production'], value: 'boolean'}
+]);
 
 var ENV = {
   // Pour dire si on veut optimiser pour la prod
-  optimize: CLI_ENV['--optimize']   ||
-            CLI_ENV['-o']           ||
-            CLI_ENV['--production'] ||
-            !!CONF.optimize         ||
-            false
+  optimize: CLI_ENV.optimize ||
+            cli.sanitize.BOOLEAN(CONF.optimize)
 };
 
 
@@ -192,11 +188,15 @@ gulp.task('clean', function () {
 // ----------------------------------------------------------------------------
 // Régénère le contenu du dossier `/build`. Il est recommandé de lancer cette
 // tache à chaque fois que l'on réalise un `git pull` du projet.
-gulp.task('build', ['clean', 'image', 'css', 'js', 'html']);
+gulp.task('build', function (cb) {
+  runner('clean', ['image', 'css', 'js', 'html'], cb);
+});
 
 // $ gulp live
 // ----------------------------------------------------------------------------
-// Definie un watcher pour tous les fichier qu'un serveur statique pour voir le
-// contenu du repertoir `/build`. Ce serveur utilise BrowserSync pour
-// rafraichir automatiquement le navigateur dès qu'un  fichier est mis à jour.
-gulp.task('live', ['build', 'connect', 'watch']);
+// Définie un watcher pour tous les fichier qu'un serveur statique pour voir le
+// contenu du répertoire `/build`. Ce serveur utilise BrowserSync pour
+// rafraîchir automatiquement le navigateur dès qu'un  fichier est mis à jour.
+gulp.task('live', function (cb) {
+  runner('build', ['connect', 'watch'], cb);
+});

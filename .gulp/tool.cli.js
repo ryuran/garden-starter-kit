@@ -3,56 +3,88 @@
 var process = require('process');
 var path    = require('path');
 
-function parser(rules) {
-  var argv   = process.argv.slice(2);
-  var output = {};
-  var prev, key;
+function extractCliArgs() {
+  var argv = process.argv.slice(2);
+  var args = {};
+  var prev;
 
   argv.forEach(function (value) {
     var t, k, v;
 
-    if (value.indexOf('=') > -1) {
-      t = value.split('=');
-      k = t[0];
-      v = t[1];
-    } else {
-      k = value;
-      v = true;
+    if (value.indexOf('--') === 0) {
+      if (value.indexOf('=') > -1) {
+        t = value.split('=');
+        k = t[0].slice(2);
+        v = t[1];
+        prev = null;
+      } else {
+        prev = k = value;
+        v = true;
+      }
+
+      args[k] = v;
     }
 
-    if (k in rules) {
-      output[k] = v;
-      prev = k;
+    else if (value.indexOf('-') === 0) {
+      k = value.slice(1);
+      prev = k.slice(-1);
+
+      k.split('').forEach(function (id) {
+        args[id] = true;
+      });
     }
 
-    else if (value.indexOf('-') !== 0 && prev in output) {
-      output[prev] = value;
+    else if (prev in args) {
+      args[prev] = value;
     }
   });
 
-  for (key in rules) {
-    if (rules.hasOwnProperty(key)) {
-      if (!(key in output)) {
-        output[key] = '';
-      }
+  return args;
+}
 
-      if (rules[key] === 'boolean') {
-        output[key] = !!output[key];
-      }
+function sanitize(value, format) {
+  format = format.toUpperCase();
 
-      else if (rules[key] === 'string') {
-        output[key] = String(output[key]).replace(/^(?:"|')?(.*)(?:"|')?$/, '$1');
-      }
-
-      else if (rules[key] === 'filename') {
-        output[key] = path.normalize(output[key]);
-      }
-    }
+  if (format in sanitize) {
+    return sanitize[format](value);
   }
+
+  return false;
+}
+
+sanitize.BOOLEAN = function (value) {
+  return Boolean(value);
+};
+
+sanitize.STRING = function (value) {
+  return String(value).replace(/^(?:"|')?(.*)(?:"|')?$/, '$1');
+};
+
+sanitize.FILENAME = function (value) {
+  return path.normalize(sanitize.STRING(value));
+};
+
+
+function parser(rules) {
+  var args   = extractCliArgs();
+  var output = {};
+
+  rules.forEach(function (rule) {
+    var id = rule.id;
+
+    rule.cli.forEach(function (name) {
+      if (name in args) {
+        output[id] = args[name];
+      }
+    });
+
+    output[id] = sanitize(output[id], rule.value);
+  });
 
   return output;
 }
 
 module.exports = {
-  parse: parser
+  parse   : parser,
+  sanitize: sanitize
 };
