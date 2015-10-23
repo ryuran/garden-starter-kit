@@ -5,6 +5,7 @@ var gulp     = require('gulp');
 var gutil    = require('gulp-util');
 var plumber  = require('gulp-plumber');
 var bs       = require('browser-sync');
+var del      = require('del');
 
 
 // Set up environnement
@@ -151,11 +152,18 @@ gulp.task('watch', function () {
   gulp.watch(['./src/html/**/*.twig', '.src/data/**/*.json'], ['html']);
 });
 
+// $ gulp clean
+// ----------------------------------------------------------------------------
+// Supprime le contenu du build
+gulp.task('clean', function () {
+  return del(['build/**/*']);
+});
+
 // $ grunt build
 // ----------------------------------------------------------------------------
 // Régénère le contenu du dossier `/build`. Il est recommandé de lancer cette
 // tache à chaque fois que l'on réalise un `git pull` du projet.
-gulp.task('build', ['css', 'js', 'html']);
+gulp.task('build', ['clean', 'css', 'js', 'html']);
 
 // $ gulp live
 // ----------------------------------------------------------------------------
