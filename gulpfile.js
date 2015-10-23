@@ -64,12 +64,23 @@ var imagemin = require('./.gulp/post.imagemin.js');
 // TASKS
 // ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
 
+// $ gulp assets
+// ----------------------------------------------------------------------------
+// Copy tout les assets static du projet
+gulp.task('assets', ['image'], function () {
+  return gulp.src([
+    'src/assets/**/*',
+    '!src/assets/@(img|sprites)',
+    '!src/assets/@(img|sprites)/**/*'
+  ]).pipe(gulp.dest('build'));
+});
+
 // $ gulp image
 // ----------------------------------------------------------------------------
 // Gère toutes les optimisations d'image:
 // * imagemin: Optimisation non destructive
 gulp.task('image', function () {
-  var SRC  = './src/img/*';
+  var SRC  = './src/assets/img/*';
   var DEST = './build/img';
 
   var stream = gulp.src(SRC)
@@ -189,7 +200,7 @@ gulp.task('clean', function () {
 // Régénère le contenu du dossier `/build`. Il est recommandé de lancer cette
 // tache à chaque fois que l'on réalise un `git pull` du projet.
 gulp.task('build', function (cb) {
-  runner('clean', ['image', 'css', 'js', 'html'], cb);
+  runner('clean', ['assets', 'css', 'js', 'html'], cb);
 });
 
 // $ gulp live
