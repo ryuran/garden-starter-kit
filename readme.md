@@ -1,6 +1,6 @@
 
 Clever Garden Starter Kit
-================================================================================
+===============================================================================
 
 Ce dépôt GIT sert de kit de démarrage pour les projets d'intégration statique.
 
@@ -15,12 +15,12 @@ Markdown et est disponible dans le répertoire `docs` de ce dépôt.
 
 
 Créer un nouveau projet
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 Pour créer un nouveau projet, suivez simplement les instructions ci-après.
 
 ## Vérifiez votre environnement
-Tous nos projet pré-supposent que votre environnement dispose des outils suivant
-installés au niveau global sur votre machine :
+Tous nos projets pré-supposent que votre environnement dispose des outils
+suivant installés au niveau global sur votre machine :
 
 * [Git](http://git-scm.com/)
 * [NodeJS](http://nodejs.org/)
@@ -41,47 +41,46 @@ installés au niveau global sur votre machine :
 > Pour **Linux** : _Chaque distribution a ses propre prérequis. Par exemple,
   Linux Mint 16 à besoin de `ruby1.9.1-beta`_
 
-Afin de pouvoir utiliser Brunch (ou n'importe quel module NodeJS) facilement,
-il est recommandé de rajouter `./node_modules/.bin` a votre `PATH`.
+Afin de pouvoir utiliser facilement les commandes fournis par npm, installées
+dans votre repertoir projet, il est recommandé de rajouter
+`./node_modules/.bin` a votre `PATH`.
 
-Pour Mac/Linux:
+Pour Mac/Linux, rajouter la ligne suivante dans votre fichier `~/.profile`
+(Mac), `~/.bash_rc` (Linux) ou tout autre fichier de configuration
+correspondant à votre shell, pour que le changement soit effectif à chaque
+lancement de votre terminal.
 
-```bash
-$ export PATH=./node_modules/.bin:$PATH
+```
+export PATH="./node_modules/.bin:$PATH"
 ```
 
 ## Démarrez votre projet
 Vous avez deux options pour démarrer votre projet:
 
-1. Télécharger le contenu de ce dépôt et l'utiliser comme base de démarrage
+1. [Télécharger](https://git.clever-age.net/clever-age-expertise/clever-garden-starter-kit/repository/archive.zip?ref=master) le contenu de ce dépôt et l'utiliser comme base de démarrage
 2. Cloner ce dépôt avec GIT (voir ci-après)
-
-> *NOTE :* _Il est prévu, à termes, de disposer d'un script de démarrage qui
-  automatisera la mise en œuvre d'un projet_
-
-Une fois que vous aurez récupéré le contenu de ce dépôt, vous avez la possibilité d'ajouter les outils recommandés ci-après (voir section : Outils recommandés).
 
 ### Cloner le kit de démarrage avec GIT
 Si vous le souhaitez, vous pouvez directement cloner ce dépôt avec GIT.
-Si vous choisissez cette option, cela vous permet de garder le lien avec ce
-dépôt. Ça peut être utile si vous voulez pouvoir récupérer des mises à jour de
-ce starter kit après coup. *ATTENTION:* _En l'état c'est assez risqué et il est
-recommandé de supprimer la branche distante liée à ce dépôt une fois que vous
-avez l'avez cloné._
 
 Le plus simple:
 
 ```bash
 $ cd ~/monProjet
 $ git clone git@git.clever-age.net:clever-age-expertise/clever-garden-starter-kit.git .
-$ git remote remove origin
+$ rm -rf .git
 ```
 
-Il ne vous reste plus qu'a ajouter une nouvelle `origin` vers le dépôt définitif des sources du projet final et à envoyer vos source vers le dépôt définitif.
-Le paramètre `-u` permet d'associer la branche locale (ici le master) avec celle distante de façon pérenne.
+Il ne vous reste plus qu'à ajouter une nouvelle `origin` vers le dépôt
+définitif des sources du projet final et à envoyer vos source vers le dépôt
+définitif. Le paramètre `-u` permet d'associer la branche locale (ici le
+master) avec celle distante de façon pérenne.
 
 ```bash
-$ git remote add origin git@git.clever-age.net:client-name/project-name.git
+$ git init
+$ git add --all
+$ git commit -m "First commit"
+$ git remote add origin <URL-de-votre-depot-git>
 $ git push -u origin master
 ```
 
@@ -94,36 +93,33 @@ $ npm install
 ```
 
 ## Organisation des fichiers
-Pour harmoniser notre travail, tous les projets utiliserons la structure de
+Pour harmoniser notre travail, tous les projets utiliseront la structure de
 fichiers suivante.
 
-Les sources sur lesquelles nous travaillons sont toutes dans le répertoire `src`.
-Normalement, seuls les fichiers présents dans ce répertoire devraient être
-modifiés après le début du projet.
+Les sources sur lesquelles nous travaillons sont toutes dans le répertoire
+`src`. _Normalement, seuls les fichiers présents dans ce répertoire devraient
+être modifiés après le début du projet_.
 
 * `/src`
-* `/src/css` : L'ensemble des fichiers qui produiront du CSS
-* `/src/js`  : L'ensemble des sources JavaScript du projet (sauf les library tiers)
-* `/src/assets` : L'ensemble des fichiers qui doivent être utilisé par le projet tel quel.
-* `/src/assets/img`  : L'ensemble des images d'interface du projet
-* `/src/assets/img/sprites` : L'ensemble des images d'interface qui seront regroupées en sprites
-* `/src/assets/fonts`: L'ensemble des _fonts_ utilisées par le projet
-* `/src/html`  : L'ensemble des gabarits qui produiront du HTML
-* `/src/html/data` : Les fichiers JSON de données à injecter dans les gabarits HTML
-* `/src/html/inc`  : Les gabarits partiels à injecter dans les pages HTML
-* `/src/html/layout` : Les gabarits globaux de base pour les pages HTML
-* `/src/html/pages`  : L'ensemble des gabarits d'assemblage des pages HTML
-* `/src/docs` : L'ensemble de la documentation statique du projet au format Markdown
+* `/src/css`: L'ensemble des fichiers qui produiront du CSS
+* `/src/js`: L'ensemble des sources JavaScript du projet
+* `/src/assets`: L'ensemble des fichiers qui doivent être utilisé par le projet tel quel.
+* `/src/assets/img`: L'ensemble des images d'interface du projet
+* `/src/assets/sprites`: L'ensemble des images d'interface qui seront regroupées en sprites
+* `/src/assets/fonts`: L'ensemble des fontes utilisées par le projet
+* `/src/html`: L'ensemble des gabarits qui produiront du HTML
+* `/src/data`: Les fichiers JSON de données à injecter dans les gabarits HTML
+* `/src/docs`: L'ensemble de la documentation statique du projet au format Markdown
 
 A chaque fois que le projet est "construit", le résultat est disponible dans
 les répertoires suivant:
 
 * `/build`
-* `/build/docs` : Toute la documentation du projet au format HTML
+* `/build/docs`: Toute la documentation du projet au format HTML
 
 
 Taches normalisées
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 Tous projet démarré avec ce starter kit dispose d'un certain nombre de taches
 Grunt normalisés utilisable quelques soient les modules grunt utilisés.
@@ -137,60 +133,56 @@ un _watch_ sur les fichiers du projet en même temps.
   "à la racine". Votre site répondra sur l'URL: http://localhost:8000_
 
 ```bash
-$ grunt live
-
-# l'option --sass=no permet de désactiver le watcher Sass
-$ grunt live --sass=no
+$ gulp live
 ```
 
 **build**: contruit la version statique du projet (compile les fichiers Sass,
 assemble les fichiers HTML, etc.)
 
 ```bash
-$ grunt build
+$ gulp build
 ```
 
 **css**: Construit les feuilles de styles et gère les images associés
 
 ```bash
-$ grunt css
+$ gulp css
 ```
 
 **html**: Construit les pages HTML
 
 ```bash
-$ grunt html
+$ gulp html
 ```
 
 **js**: Construit les fichiers JS
 
 ```bash
-$ grunt js
+$ gulp js
 ```
 
 **test**: Lance tous les tests du projet
 
 ```bash
-$ grunt test
+$ gulp test
 ```
 
 Outils obligatoires
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 Les outils listés ici doivent êtres utilisés obligatoirement lorsqu'on démarre
 un nouveau projet d'intégration. _Le seul cas ou on ne les utilisera pas sera
 lorsqu'on aura une demande explicite du client pour utiliser autre chose._
 
-* [Grunt](docs/grunt.md)
+* [Gulp](docs/gulp.md)
 * [Sass/compass](docs/sass.md)
-* [Assemble](docs/assemble.md)
+* [Twig](docs/twig.md)
 * [Linter](docs/linter.md)
 
 
 Outils recommandés
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 Les outils listés ci-après sont des recommandations. Il peuvent apporter des
 fonctionnalités originales ou en cours d’expérimentation. Vous êtes libre de
 les utiliser, ou non, selon vos envies ou votre contexte projet.
 
-* [Bower](docs/bower.md)
 * [KSS](docs/kss.md)
