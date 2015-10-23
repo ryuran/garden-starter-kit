@@ -1,10 +1,8 @@
 // Required singleton modules
 // ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
-var path     = require('path');
 var cli      = require('./.gulp/tool.cli.js');
 var gulp     = require('gulp');
 var gutil    = require('gulp-util');
-var lazypipe = require('lazypipe');
 var plumber  = require('gulp-plumber');
 var bs       = require('browser-sync');
 
@@ -16,7 +14,7 @@ var CONF = {};
 try {
   CONF = require('./gulp.json');
 } catch (e) {
-  // gutil.log(gutil.colors.red('ERROR:'), e.message);
+  gutil.log(gutil.colors.red('ERROR:'), e.message);
 }
 
 var CLI_ENV = cli.parse({
@@ -71,7 +69,6 @@ var posthtml = require('./.gulp/post.prettify.js');
 // $ gulp css
 // ----------------------------------------------------------------------------
 // Gère la compilation des fichiers CSS
-
 gulp.task('css', function () {
   var SRC  = './src/css/**/*.scss';
   var DEST = './build/css';
@@ -85,6 +82,9 @@ gulp.task('css', function () {
     .pipe(bs.stream());
 });
 
+// $ gulp html
+// ----------------------------------------------------------------------------
+// Gère la compilation des fichiers HTML
 gulp.task('html', function () {
   var SRC  = ['./src/html/*.twig','!./src/html/_*.twig'];
   var DEST = './build';
@@ -97,6 +97,9 @@ gulp.task('html', function () {
     .pipe(bs.stream());
 });
 
+// $ gulp js
+// ----------------------------------------------------------------------------
+// Gère toutes les actions d'assemblage JavaScript
 gulp.task('js', function () {
   var SRC    = './src/js/**/*.js';
   var DEST   = './build/js';
@@ -111,6 +114,16 @@ gulp.task('js', function () {
   stream.pipe(gulp.dest(DEST));
 });
 
+// $ gulp test
+// ----------------------------------------------------------------------------
+// Lance tous les tests existants sur le code source
+
+
+// $ gulp connect
+// ----------------------------------------------------------------------------
+// Lance un serveur pour voir le site statique produit
+// Le site peut être vu en même temps sur plusieurs navigateur (y compris
+// mobiles) la navigation sera automatiquement synchronisée grâce à BrowserSync.
 gulp.task('connect', function () {
   bs.init({
     port: 8000,
@@ -121,23 +134,32 @@ gulp.task('connect', function () {
     ghostMode: {
       clicks: true,
       forms : true,
-      scroll: false
+      scroll: true
     },
     reloadDebounce: 500
   });
 });
 
+// $ gulp watch
+// ----------------------------------------------------------------------------
+// Configuration de tous les watcher du projet
 gulp.task('watch', function () {
+  // Watch SCSS files
   gulp.watch('./src/css/**/*.scss', ['css']);
+
+  // Watch Twig files and associated JSON files
   gulp.watch(['./src/html/**/*.twig', '.src/data/**/*.json'], ['html']);
 });
 
-gulp.task('build', ['css', 'html']);
+// $ grunt build
+// ----------------------------------------------------------------------------
+// Régénère le contenu du dossier `/build`. Il est recommandé de lancer cette
+// tache à chaque fois que l'on réalise un `git pull` du projet.
+gulp.task('build', ['css', 'js', 'html']);
 
 // $ gulp live
 // ----------------------------------------------------------------------------
 // Definie un watcher pour tous les fichier qu'un serveur statique pour voir le
 // contenu du repertoir `/build`. Ce serveur utilise BrowserSync pour
 // rafraichir automatiquement le navigateur dès qu'un  fichier est mis à jour.
-
-gulp.task('live', ['connect', 'watch']);
+gulp.task('live', ['build', 'connect', 'watch']);
