@@ -62,10 +62,29 @@ var html = require('./.gulp/compiler.twig.js');
 // ----------------------------------------------------------------------------
 var postcss  = require('./.gulp/post.postcss.js');
 var posthtml = require('./.gulp/post.prettify.js');
+var imagemin = require('./.gulp/post.imagemin.js');
 
 
 // TASKS
 // ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+
+// $ gulp image
+// ----------------------------------------------------------------------------
+// Gère toutes les optimisations d'image:
+// * imagemin: Optimisation non destructive
+gulp.task('image', function () {
+  var SRC  = './src/img/*';
+  var DEST = './build/img';
+
+  var stream = gulp.src(SRC)
+    .pipe(plumber({ errorHandler: err }));
+
+  if (imagemin) {
+    stream = stream.pipe(imagemin());
+  }
+
+  return stream.pipe(gulp.dest(DEST));
+});
 
 // $ gulp css
 // ----------------------------------------------------------------------------
@@ -145,6 +164,9 @@ gulp.task('connect', function () {
 // ----------------------------------------------------------------------------
 // Configuration de tous les watcher du projet
 gulp.task('watch', function () {
+  // Watch images
+  gulp.watch('./src/img/*', ['image']);
+
   // Watch SCSS files
   gulp.watch('./src/css/**/*.scss', ['css']);
 
@@ -163,7 +185,7 @@ gulp.task('clean', function () {
 // ----------------------------------------------------------------------------
 // Régénère le contenu du dossier `/build`. Il est recommandé de lancer cette
 // tache à chaque fois que l'on réalise un `git pull` du projet.
-gulp.task('build', ['clean', 'css', 'js', 'html']);
+gulp.task('build', ['clean', 'image', 'css', 'js', 'html']);
 
 // $ gulp live
 // ----------------------------------------------------------------------------
