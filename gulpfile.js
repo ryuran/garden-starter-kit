@@ -93,13 +93,15 @@ gulp.task('css', function () {
   var SRC  = './src/css/**/*.scss';
   var DEST = './build/css';
 
-  gulp.src(SRC)
+  var stream = gulp.src(SRC)
     .pipe(plumber({ errorHandler: err }))
     .pipe(csslint())
     .pipe(css(ENV))
     .pipe(postcss())
     .pipe(gulp.dest(DEST))
     .pipe(bs.stream());
+
+  return stream;
 });
 
 // $ gulp html
@@ -109,12 +111,14 @@ gulp.task('html', function () {
   var SRC  = ['./src/html/*.twig','!./src/html/_*.twig'];
   var DEST = './build';
 
-  gulp.src(SRC)
+  var stream = gulp.src(SRC)
     .pipe(plumber({ errorHandler: err }))
     .pipe(html())
     .pipe(posthtml())
     .pipe(gulp.dest(DEST))
     .pipe(bs.stream());
+
+  return stream;
 });
 
 // $ gulp js
@@ -131,12 +135,15 @@ gulp.task('js', function () {
     stream = stream.pipe(jslint(ENV));
   }
 
-  stream.pipe(gulp.dest(DEST));
+  return stream.pipe(gulp.dest(DEST));
 });
 
 // $ gulp test
 // ----------------------------------------------------------------------------
 // Lance tous les tests existants sur le code source
+// gulp.task('test', function () {
+//
+// });
 
 
 // $ gulp connect
