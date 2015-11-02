@@ -1,7 +1,6 @@
 'use strict';
 
-var process = require('process');
-var path    = require('path');
+var path = require('path');
 
 function extractCliArgs() {
   var argv = process.argv.slice(2);
@@ -56,12 +55,18 @@ sanitize.BOOLEAN = function (value) {
   return Boolean(value);
 };
 
+sanitize.NUMBER = function (value) {
+  var n = Number(value);
+
+  return n === +n ? n : 0;
+};
+
 sanitize.STRING = function (value) {
   return String(value).replace(/^(?:"|')?(.*)(?:"|')?$/, '$1');
 };
 
 sanitize.FILENAME = function (value) {
-  return path.normalize(sanitize.STRING(value));
+  return path.resolve('.', path.normalize(sanitize.STRING(value)));
 };
 
 
@@ -70,15 +75,14 @@ function parser(rules) {
   var output = {};
 
   rules.forEach(function (rule) {
-    var id = rule.id;
+    var id = rule.id.split('.');
 
     rule.cli.forEach(function (name) {
       if (name in args) {
-        output[id] = args[name];
+        output[id[0]] = output[id[0]] || {};
+        output[id[0]][id[1]] = sanitize(args[name], rule.value);
       }
     });
-
-    output[id] = sanitize(output[id], rule.value);
   });
 
   return output;
