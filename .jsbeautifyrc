@@ -1,18 +1,13 @@
 {
-  "indent": 2,
-  "indent_char": " ",
-  "indent_scripts": "normal",
-  "padcomments": true,
-  "brace_style": "collapse",
-  "preserve_newlines": true,
-  "max_preserve_newlines": 1,
-  "unformatted": [
-    "a",
-    "b",
-    "code",
-    "em",
-    "i",
-    "pre",
-    "strong"
+  "brace_style"          : "collapse",
+  "end_with_newline"     : true,
+  "indent_size"          : 2,
+  "indent_char"          : " ",
+  "indent_inner_html"    : false,
+  "indent_scripts"       : "normal",
+  "max_preserve_newlines": 2,
+  "preserve_newlines"    : true,
+  "unformatted"          : [
+    "pre", "code", "a", "sub", "sup", "b", "i", "u", "strong", "em"
   ]
 }
