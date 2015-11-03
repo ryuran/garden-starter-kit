@@ -8,7 +8,7 @@ var data     = require('gulp-data');
 var ENV      = require('../../tools/env').html;
 
 function processData(file) {
-  return require(path.resolve(ENV['data-dir'] + path.basename(file.path, '.twig') + '.json'));
+  return require(path.resolve(path.join(ENV['data-dir'], path.basename(file.path, '.twig') + '.json')));
 }
 
 module.exports = function () {
