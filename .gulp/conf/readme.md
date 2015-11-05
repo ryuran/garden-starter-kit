@@ -11,5 +11,10 @@ de votre projet. Cependant, si vous modifiez systématique les configurations
 par defaut, n'hésitez pas à proposer une merge request au starter kit pour que
 l'on en discute.
 
-* `.lesshintrc` Configuration pour le [linting des fichiers LESS](https://github.com/lesshint/lesshint)
-* `.stylintrc`  Configuration pour le [linting des fichiers Stylus](https://rosspatton.github.io/stylint/)
+* `.jsbeautifyrc`  Configuration pour le [formatage automatique du code HTML](https://github.com/beautify-web/js-beautify)
+* `.jscsrc`        Configuration pour la [verification de syntaxe JS](http://jscs.info/)
+* `.jshintrc`      Configuration pour le [linting des fichiers JS](http://jshint.com/)
+* `.lesshintrc`    Configuration pour le [linting des fichiers LESS](https://github.com/lesshint/lesshint)
+* `.scss-lint.yml` Configuration pour le [linting des fichiers SCSS](https://github.com/brigade/scss-lint/)
+* `.stylintrc`     Configuration pour le [linting des fichiers Stylus](https://rosspatton.github.io/stylint/)
+* `config.rb`      Configuration pour la [compilation Compass](http://compass-style.org/)
