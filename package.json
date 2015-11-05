@@ -3,7 +3,7 @@
   "homepage": "http://localhost:8000",
   "title": "Garden Starter Kit",
   "description": "Set de base pour les projets Garden statiques.",
-  "version": "2.0.0-alpha1",
+  "version": "2.0.0-alpha2",
   "dependencies": {},
   "devDependencies": {
     "autoprefixer": "^6.0.3",

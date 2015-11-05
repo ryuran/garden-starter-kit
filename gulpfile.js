@@ -19,7 +19,7 @@
 
 // TASKS
 // ----------------------------------------------------------------------------
-require('require-dir')('.gulp/tasks');
+require('require-dir')('.gsk/tasks');
 
 
 
