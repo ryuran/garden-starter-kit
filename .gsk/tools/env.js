@@ -11,7 +11,7 @@ var cli  = require('./cli');
 // CONFIGURATION
 // ----------------------------------------------------------------------------
 // Récupération de la liste des taches disponibles
-var tasks = fs.readdirSync(path.resolve('./.gulp/tasks')).map(function (val) {
+var tasks = fs.readdirSync(path.resolve('./.gsk/tasks')).map(function (val) {
   return val.slice(0, -3);
 });
 
