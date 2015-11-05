@@ -11,12 +11,15 @@ obligatoirement aussi bien que ceux qui sont simplement recommandés.
 
 Chaque outil utilisé dispose d'une documentation dédiée sur la façon de
 l'utiliser dans notre contexte. Cette documentation est rédigée au format
-Markdown et est disponible dans le répertoire `docs` de ce dépôt.
+Markdown et est disponible dans le répertoire `.gsk/docs` de ce dépôt.
 
 
 Créer un nouveau projet
 -------------------------------------------------------------------------------
 Pour créer un nouveau projet, suivez simplement les instructions ci-après.
+
+> __NOTE:__ _Il s'agit ici des instructions manuel à suivre. Cependant, à terme
+  il est prévus qu'un installer soit disponible pour simplifier le démarage_
 
 ## Vérifiez votre environnement
 Tous nos projets pré-supposent que votre environnement dispose des outils
@@ -71,10 +74,8 @@ $ git clone git@git.clever-age.net:clever-age-expertise/clever-garden-starter-ki
 $ rm -rf .git
 ```
 
-Il ne vous reste plus qu'à ajouter une nouvelle `origin` vers le dépôt
-définitif des sources du projet final et à envoyer vos source vers le dépôt
-définitif. Le paramètre `-u` permet d'associer la branche locale (ici le
-master) avec celle distante de façon pérenne.
+Il ne vous reste plus qu'à initialiser le dépot git de votre projet et commiter
+le starter kit que vous avez récupérer pour commencer votre projet:
 
 ```bash
 $ git init
@@ -84,8 +85,8 @@ $ git remote add origin <URL-de-votre-depot-git>
 $ git push -u origin master
 ```
 
-Lorsque le dépôt est rapatrié en local, exécutez les commandes
-suivantes :
+Lors du démarrage de votre projet et à chque fois que le dépôt est rapatrié en
+local, exécutez les commandes suivantes :
 
 ```bash
 $ bundle install --path .gems
@@ -108,7 +109,7 @@ Les sources sur lesquelles nous travaillons sont toutes dans le répertoire
 * `/src/assets/sprites`: L'ensemble des images d'interface qui seront regroupées en sprites
 * `/src/assets/fonts`: L'ensemble des fontes utilisées par le projet
 * `/src/html`: L'ensemble des gabarits qui produiront du HTML
-* `/src/data`: Les fichiers JSON de données à injecter dans les gabarits HTML
+* `/src/data`: Les fichiers JSON de données à injecter dans les gabarits HTML ou autre
 * `/src/docs`: L'ensemble de la documentation statique du projet au format Markdown
 
 A chaque fois que le projet est "construit", le résultat est disponible dans
@@ -122,7 +123,7 @@ Taches normalisées
 -------------------------------------------------------------------------------
 
 Tous projet démarré avec ce starter kit dispose d'un certain nombre de taches
-Grunt normalisés utilisable quelques soient les modules grunt utilisés.
+Gulp normalisés utilisable quelques soient les modules Gulp utilisés.
 
 **live**: permet de démarrer un serveur static pour les pages HTML et d'avoir
 un _watch_ sur les fichiers du projet en même temps.
@@ -143,13 +144,13 @@ assemble les fichiers HTML, etc.)
 $ gulp build
 ```
 
-**css**: Construit les feuilles de styles et gère les images associés
+**css**: Construit les feuilles de styles
 
 ```bash
 $ gulp css
 ```
 
-**html**: Construit les pages HTML
+**html**: Construit les pages HTML statiques
 
 ```bash
 $ gulp html
@@ -161,28 +162,35 @@ $ gulp html
 $ gulp js
 ```
 
+**assets**: Déplace et optimise les assets statique du projet
+
+```bash
+$ gulp assets
+```
+
 **test**: Lance tous les tests du projet
 
 ```bash
 $ gulp test
 ```
 
-Outils obligatoires
+Outils utilisé
 -------------------------------------------------------------------------------
 Les outils listés ici doivent êtres utilisés obligatoirement lorsqu'on démarre
-un nouveau projet d'intégration. _Le seul cas ou on ne les utilisera pas sera
-lorsqu'on aura une demande explicite du client pour utiliser autre chose._
+un nouveau projet d'intégration. Il garantisse un workflow de travail optimal
 
-* [Gulp](docs/gulp.md)
-* [Sass/compass](docs/sass.md)
-* [Twig](docs/twig.md)
-* [Linter](docs/linter.md)
+* [Gulp](.gsk/docs/gulp.md)
+* [Linter](.gsk/docs/linter.md)
 
+Les outils listés ci-après sont à utiliser et configuré pour votre projet.
+Ils sont tous utiliseble tel quel, mais le starter kit est suffisement flexible
+pour s'adapter à vos besoins. Le choix d'utilisation de ces outils se fait via
+le fichier `.gsk/config.json`
 
-Outils recommandés
--------------------------------------------------------------------------------
-Les outils listés ci-après sont des recommandations. Il peuvent apporter des
-fonctionnalités originales ou en cours d’expérimentation. Vous êtes libre de
-les utiliser, ou non, selon vos envies ou votre contexte projet.
+### CSS
+* [Sass/compass](.gsk/docs/css/sass.md)
+* [Stylus](.gsk/docs/css/stylus.md)
+* [LESS](.gsk/docs/less.md)
 
-* [KSS](docs/kss.md)
+### HTML
+* [Twig](.gsk/docs/HTML/twig.md)
