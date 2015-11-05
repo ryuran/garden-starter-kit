@@ -8,7 +8,7 @@
 
 // On trouve également les taches suivantes:
 // ----------------------------------------------------------------------------
-// $ gulp assets  # (Copie les assets statique du projet)
+// $ gulp assets  # (Copie les assets statiques du projet)
 // $ gulp connect # (Lance un serveur statique pour voir le projet)
 // $ gulp css     # (Compile les CSS du projet)
 // $ gulp html    # (Compile les gabarits HTML du projet)

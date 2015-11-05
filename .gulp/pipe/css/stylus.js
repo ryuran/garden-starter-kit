@@ -1,4 +1,4 @@
-// Définition du LazyPipe pour utiliser compass
+// Définition du LazyPipe pour utiliser Stylus
 'use strict';
 
 // MODULES
