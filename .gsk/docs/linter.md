@@ -1,48 +1,61 @@
 
 Linter
-================================================================================
+===============================================================================
 
-Les Linters sont des outils qui vérifient la qualité du code. Dans le starter kit,
-2 linters sont en place : JavaScript et Sass
-
-
-Linter JavaScript : JSHint
---------------------------------------------------------------------------------
-
-[JSHint](http://jshint.com/) vérifie la qualité du code JavaScript.
-
-Il est possible de surcharger les règles par défaut via le fichier *.jshint*.
-Pour voir les options possibles, c'est [ici](http://jshint.com/docs/options/).
-
-Certains éditeurs, tels que [Sublime](http://www.sublimetext.com/), sont capables
-de lire cette configuration et de verifier le linting à la demande. Voir la [liste
-des plugins disponibles](http://www.jshint.com/install/).
-
-Voici quelques-unes des options choisies :
-
-``` "strict" : true ```
-
-On force l'utilisation du [mode Strict](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode), qui permet notamment une meilleure gestion des erreurs.
-
-``` "evil" : false ```
-
-On empêche l'utilisation de la fonction ```eval``` car elle contient des vulnérabilités.
-
- ``` "eqeqeq" : true ```
-
-Lors de comparaison via ```==```, on force l'utilisation de ```===``` (comparaison stricte). Cela est d'une part plus performant, et d'autre part permet d'éviter des résultats inattendus.
+Les Linters sont des outils qui vérifient la qualité du code. Le starter kit,
+est configuré de tel manière que des linter sont systématiquement utilisés pour
+JavaScript et pour les preprocesseur CSS.
 
 
-Linter Sass : SCSS-Lint
---------------------------------------------------------------------------------
+Configuration des linters
+-------------------------------------------------------------------------------
+Une configuration par defaut de ces linters est disponible dans le repertoire
+`.gsk/conf`. Il suffit de copier ces fichiers de configuration à la racine du
+projet pour qu'ils soient utilisés par gulp automatiquement.
 
-[SCSS-Lint](https://github.com/causes/scss-lint) vérifie la qualité du code Sass.
+Vous pouvez bien sur mettre en place vos propres contraintes que ce soit en
+durcissant les verifications ou en les assouplissant. Cependant, éviter de
+changer la configuration une fois le projet démarré.
 
-Il est possible de surcharger les règles par défaut via le fichier *.scss-lint.yml*.
-Pour voir les options possibles, c'est [ici](https://github.com/causes/scss-lint/blob/master/lib/scss_lint/linter/README.md).
 
-Les paramètres utilisés sur le starter-kit sont adaptés de [scss-lint-w3c](https://github.com/kaelig/scss-lint-w3c).
+Utilisation des linters
+-------------------------------------------------------------------------------
+Les linters sont executé à chaque fois qu'une tache gulp va vouloir consommer
+les fichiers qui lui corresponde. Les erreurs de linting sont listées dans
+votre terminal et sont bloquantes (tant qu'il y a une erreur, le fichier ne
+compile pas)
 
-Certains éditeurs, tels que [Sublime text 3](http://www.sublimetext.com/3), sont
-capables de lire cette configuration et de verifier le linting à la demande.
-[Documentation du plugin Sublime](https://sublime.wbond.net/packages/SublimeLinter-contrib-scss-lint)
+Pour anticiper les erreurs de linting, nous vous encouragons à configurer vos
+éditeur de texte pour qu'il consomme les configurations de linting du projet et
+vous avertissent dès qu'il y a un problème.
+
+* Sublime Text:
+  * https://packagecontrol.io/packages/SublimeLinter
+* WebStorm:
+  * https://www.jetbrains.com/webstorm/help/code-quality-tools.html
+* Atom:
+  * https://github.com/AtomLinter
+
+
+Linters disponibles
+-------------------------------------------------------------------------------
+Le starter kit est actuellement configuré pour utiliser les linters suivant:
+
+* JavaScript
+  * JSHint
+    * Site: http://jshint.com
+    * Règles: http://jshint.com/docs/options
+  * JSCS
+    * Site: http://jscs.info
+    * Règles: http://jscs.info/rules
+* Sass
+  * scss-lint
+    * Site: https://github.com/brigade/scss-lint
+    * Règles: https://github.com/brigade/scss-lint/blob/master/lib/scss_lint/linter/README.md
+* Stylus
+  * Stylint
+    * Site & Règles: https://rosspatton.github.io/stylint/
+* LESS
+  * lesshint
+    * Site: https://github.com/lesshint/lesshint
+    * Règles: https://github.com/lesshint/lesshint/blob/master/lib/linters/README.md

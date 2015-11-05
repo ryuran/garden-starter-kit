@@ -6,6 +6,7 @@ var path    = require('path');
 var gulp    = require('gulp');
 var plumber = require('gulp-plumber');
 var jshint  = require('gulp-jshint');
+var jscs    = require('gulp-jscs');
 var stylish = require('jshint-stylish');
 var bs      = require('browser-sync');
 var err     = require('../tools/errcb');
@@ -31,6 +32,9 @@ gulp.task('js', function () {
     .pipe(jshint())
     .pipe(jshint.reporter(stylish))
     .pipe(jshint.reporter('fail'))
+    .pipe(jscs())
+    .pipe(jscs.reporter())
+    .pipe(jscs.reporter('fail'))
     .pipe(pipeline())
     .pipe(gulp.dest(DEST))
     .pipe(bs.stream());
