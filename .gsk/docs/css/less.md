@@ -17,7 +17,7 @@ Configuration:
 Configuration standard
 -------------------------------------------------------------------------------
 
-LESS ne requier aucune configuration particulière. Cependant, contrairement
-à compass, il n'offre pas de méchanisme de gestion automatique des sprites.
+LESS ne requiers aucune configuration particulière. Cependant, contrairement
+à Compass, il n'offre pas de mécanisme de gestion automatique des sprites.
 
 LESS est utilisé avec le linter [Lesshint](https://github.com/lesshint/lesshint).

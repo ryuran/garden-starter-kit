@@ -3,31 +3,31 @@ Linter
 ===============================================================================
 
 Les Linters sont des outils qui vérifient la qualité du code. Le starter kit,
-est configuré de tel manière que des linter sont systématiquement utilisés pour
-JavaScript et pour les preprocesseur CSS.
+est configuré de tel manière que des linters sont systématiquement utilisés
+pour JavaScript et pour les préprocesseur CSS.
 
 
 Configuration des linters
 -------------------------------------------------------------------------------
-Une configuration par defaut de ces linters est disponible dans le repertoire
+Une configuration par défaut de ces linters est disponible dans le répertoire
 `.gsk/conf`. Il suffit de copier ces fichiers de configuration à la racine du
-projet pour qu'ils soient utilisés par gulp automatiquement.
+projet pour qu'ils soient utilisés par Gulp automatiquement.
 
 Vous pouvez bien sur mettre en place vos propres contraintes que ce soit en
-durcissant les verifications ou en les assouplissant. Cependant, éviter de
+durcissant les vérifications ou en les assouplissant. Cependant, éviter de
 changer la configuration une fois le projet démarré.
 
 
 Utilisation des linters
 -------------------------------------------------------------------------------
-Les linters sont executé à chaque fois qu'une tache gulp va vouloir consommer
+Les linters sont exécutés à chaque fois qu'une tache Gulp va vouloir consommer
 les fichiers qui lui corresponde. Les erreurs de linting sont listées dans
 votre terminal et sont bloquantes (tant qu'il y a une erreur, le fichier ne
 compile pas)
 
-Pour anticiper les erreurs de linting, nous vous encouragons à configurer vos
-éditeur de texte pour qu'il consomme les configurations de linting du projet et
-vous avertissent dès qu'il y a un problème.
+Pour anticiper les erreurs de linting, nous vous encourageons à configurer vos
+éditeurs de texte pour qu'ils consomment les configurations de linting du
+projet et vous avertissent dès qu'il y a un problème.
 
 * Sublime Text:
   * https://packagecontrol.io/packages/SublimeLinter

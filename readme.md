@@ -45,7 +45,7 @@ suivant installés au niveau global sur votre machine :
   Linux Mint 16 à besoin de `ruby1.9.1-beta`_
 
 Afin de pouvoir utiliser facilement les commandes fournis par npm, installées
-dans votre repertoir projet, il est recommandé de rajouter
+dans votre répertoire projet, il est recommandé de rajouter
 `./node_modules/.bin` a votre `PATH`.
 
 Pour Mac/Linux, rajouter la ligne suivante dans votre fichier `~/.profile`
@@ -74,7 +74,7 @@ $ git clone git@git.clever-age.net:clever-age-expertise/clever-garden-starter-ki
 $ rm -rf .git
 ```
 
-Il ne vous reste plus qu'à initialiser le dépot git de votre projet et commiter
+Il ne vous reste plus qu'à initialiser le dépôt git de votre projet et commiter
 le starter kit que vous avez récupérer pour commencer votre projet:
 
 ```bash
@@ -125,7 +125,7 @@ Taches normalisées
 Tous projet démarré avec ce starter kit dispose d'un certain nombre de taches
 Gulp normalisés utilisable quelques soient les modules Gulp utilisés.
 
-**live**: permet de démarrer un serveur static pour les pages HTML et d'avoir
+**live**: permet de démarrer un serveur statique pour les pages HTML et d'avoir
 un _watch_ sur les fichiers du projet en même temps.
 
 > **ATTENTION:** _Même si tous les chemins sont résolus de manière relative, il
@@ -168,12 +168,6 @@ $ gulp js
 $ gulp assets
 ```
 
-**test**: Lance tous les tests du projet
-
-```bash
-$ gulp test
-```
-
 Outils utilisé
 -------------------------------------------------------------------------------
 Les outils listés ici doivent êtres utilisés obligatoirement lorsqu'on démarre
@@ -183,9 +177,9 @@ un nouveau projet d'intégration. Il garantisse un workflow de travail optimal
 * [Linter](.gsk/docs/linter.md)
 
 Les outils listés ci-après sont à utiliser et configuré pour votre projet.
-Ils sont tous utiliseble tel quel, mais le starter kit est suffisement flexible
+Ils sont tous utiliseble tel quel, mais le starter kit est suffisamment flexible
 pour s'adapter à vos besoins. Le choix d'utilisation de ces outils se fait via
-le fichier `.gsk/config.json`
+le fichier `.gsk/config.json`, voir les [instructions de configuration](.gsk/readme.md)
 
 ### CSS
 * [Sass/compass](.gsk/docs/css/sass.md)

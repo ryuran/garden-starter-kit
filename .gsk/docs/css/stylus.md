@@ -17,8 +17,8 @@ Configuration:
 Configuration standard
 -------------------------------------------------------------------------------
 
-Stylus ne requier aucune configuration particulière. Cependant, contrairement
-à compass, il n'offre pas de méchanisme de gestion automatique des sprites.
+Stylus ne requiers aucune configuration particulière. Cependant, contrairement
+à compass, il n'offre pas de mécanisme de gestion automatique des sprites.
 
 Stylus est utilisé avec le linter Stylint. [La configuration](../../conf/.stylintrc)
 proposé par le starter kit pour Stylint force une syntaxe très proche de la
