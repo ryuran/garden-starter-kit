@@ -22,14 +22,14 @@ module.exports = {
   name: 'readdir',
   func: function (dir) {
     var fulldir = path.resolve(ENV['src-dir'], dir);
-    var files   = glob.sync(path.join(fulldir, '**/*.*'));
+    var files   = glob.sync(path.join(fulldir, '**', '*.*'));
 
     return files
       .map(function (file) {
-        file = path.parse(path.join(dir, path.basename(file)));
+        file = path.parse(file.replace(ENV['src-dir'], '.'));
 
         return {
-          path     : path.join(dir, file.base),
+          path     : path.join(file.dir, file.base),
           directory: file.dir,
           filename : file.base,
           basename : file.base.replace(file.ext, ''),
@@ -37,11 +37,11 @@ module.exports = {
         };
       })
       .sort(function (a, b) {
-        if (a.dir === b.dir) {
-          return a.dir.localeCompare(b.dir);
+        if (a.directory !== b.directory) {
+          return a.directory.localeCompare(b.directory);
         }
 
-        return a.filename.localeCompar(b.filename);
+        return a.filename.localeCompare(b.filename);
       });
   }
 };

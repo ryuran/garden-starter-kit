@@ -4,16 +4,16 @@
 {# VARIABLES STATIQUES #}
 {# ------------------------------------------------------------------------- #}
 {# Préférez mettre vos variables dans le fichier:                            #}
-{#     ./src/data/pages/test.json                                            #}
+{#     ./src/data/pages/subpages/autre.json                                  #}
 {# De même, les variables "globales" d'environnement devrais être dans:      #}
 {#     ./src/data/data.json                                                  #}
 
 {# LAYOUT #}
 {# ------------------------------------------------------------------------- #}
-{% extends "../layout/_default.twig" %}
+{% extends "../../layout/_default.twig" %}
 
 {# GABARIT PRINCIPAL #}
 {# ------------------------------------------------------------------------- #}
 {% block main %}
-  <p>{{ description }}</p>
-{% endblock %}
+  <p>Un autre test</p>
+{% endblock main %}

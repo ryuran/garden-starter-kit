@@ -1,15 +1,33 @@
 {# index.twig #}
+{# ------------------------------------------------------------------------- #}
+
+{# LAYOUT #}
+{# ------------------------------------------------------------------------- #}
 {% extends "layout/_documentation.twig" %}
 
+{# GABARIT PRINCIPAL #}
+{# ------------------------------------------------------------------------- #}
 {% block main %}
   <header>
-    <h1>Garden Starter Kit</h1>
+    <h1>{{ title }}</h1>
   </header>
 
+  {% set dir = '' %}
   {% for file in readdir('./pages') %}
     {% set data = json(file.directory ~ '/' ~ file.basename ~ '.json') %}
 
-    {% if loop.first %}
+    {% if dir != file.directory %}
+      {% set dir = file.directory %}
+      {% if not loop.first %}
+        </tbody>
+      </table>
+      {% endif %}
+
+      <h2>
+        {% if     dir == './pages'          %} Pages principales
+        {% elseif dir == './pages/subpages' %} Pages de niveau 2
+        {% else %}{{ dir }}{% endif %}
+      </h2>
       <table>
         <thead>
           <tr>
@@ -32,15 +50,15 @@
 
     <tr>
       <th scope="row">
-        <strong><a href="{{file.directory}}/{{file.basename}}.html">{{ data.title }}</a></strong><br>
+        <strong><a href="{{file.directory}}/{{file.basename}}.html">{% if data.title %}{{ data.title }}{% else %}{{ file.basename }}.html{% endif %}</a></strong><br>
         <small>{{ data.description }}</small>
       </th>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td>{{ data.valid.css }}</td>
+      <td>{{ data.valid.js }}</td>
+      <td>{{ data.valid.chrome }}</td>
+      <td>{{ data.valid.firefox }}</td>
+      <td>{{ data.valid.ie }}</td>
+      <td>{{ data.valid.safari }}</td>
       <td>{{ data.notes }}</td>
     </tr>
 
