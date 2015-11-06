@@ -1,0 +1,52 @@
+{# index.twig #}
+{% extends "layout/_documentation.twig" %}
+
+{% block main %}
+  <header>
+    <h1>Garden Starter Kit</h1>
+  </header>
+
+  {% for file in readdir('./pages') %}
+    {% set data = json(file.directory ~ '/' ~ file.basename ~ '.json') %}
+
+    {% if loop.first %}
+      <table>
+        <thead>
+          <tr>
+            <th scope="col" rowspan="2">Pages</th>
+            <th scope="col" colspan="2">Validation</th>
+            <th scope="col" colspan="4">Navigateur</th>
+            <th scope="col" rowspan="2">Notes</th>
+          </tr>
+          <tr>
+            <th scope="col">CSS</th>
+            <th scope="col">JS</th>
+            <th scope="col">Chrome</th>
+            <th scope="col">Firefox</th>
+            <th scope="col">IE/Edge</th>
+            <th scope="col">Safari</th>
+          </tr>
+        </thead>
+        <tbody>
+    {% endif %}
+
+    <tr>
+      <th scope="row">
+        <strong><a href="{{file.directory}}/{{file.basename}}.html">{{ data.title }}</a></strong><br>
+        <small>{{ data.description }}</small>
+      </th>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>{{ data.notes }}</td>
+    </tr>
+
+    {% if loop.last %}
+        </tbody>
+      </table>
+    {% endif %}
+  {% endfor %}
+{% endblock main %}
