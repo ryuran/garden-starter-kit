@@ -3,15 +3,19 @@
 // MODULES
 // ----------------------------------------------------------------------------
 var fs       = require('fs');
+var path     = require('path');
+var exec     = require('child_process').exec;
+var runner   = require('run-sequence');
 var gulp     = require('gulp');
 var gutil    = require('gulp-util');
 var newer    = require('gulp-newer');
 var marked   = require('gulp-marked');
 var wrapper  = require('gulp-wrapper');
 var prettify = require('gulp-prettify');
+var ENV      = require('../tools/env');
 
-var SRC  = './docs/**/*.md';
-var DEST = './build/doc';
+var SRC  = path.join(ENV.doc['src-dir'], '**', '*.md');
+var DEST = ENV.doc['dest-dir'];
 
 
 // MARKED CONFIGURATION
@@ -77,14 +81,51 @@ var WRP_CONF = {
 
 // TASK DEFINITION
 // ----------------------------------------------------------------------------
-// $ gulp doc
+
+// $ gulp doc:static
 // ----------------------------------------------------------------------------
-// Génère toutes la doc du projet
-gulp.task('doc', function () {
+// Génère toute la doc statique du projet
+gulp.task('doc:static', function () {
   return gulp.src(SRC)
     .pipe(newer(DEST))
     .pipe(marked(MD_CONF))
     .pipe(wrapper(WRP_CONF))
     .pipe(prettify(PRT_CONF))
     .pipe(gulp.dest(DEST));
+});
+
+// $ gulp doc:kss
+// ----------------------------------------------------------------------------
+// Génère le styleguide du projet via KSS
+gulp.task('doc:kss', function (cb) {
+  var CONF = require('../../kss.json');
+
+  exec([
+    'mkdir -p ', path.resolve(CONF.destination), ' && ',
+    './node_modules/.bin/kss-node -c ./kss.json'
+  ].join(''), function (err, stdout, stderr) {
+    stdout.split('\n').forEach(function (line) {
+      gutil.log(line);
+    });
+
+    if (stderr) {
+      gutil.log(gutil.colors.red('ERROR:'), '[kss]', stderr);
+    }
+
+    if (err && !stderr) {
+      gutil.log(gutil.colors.red('ERROR:'), '[kss]', err.message);
+    }
+
+    cb(null);
+  });
+});
+
+// $ gulp doc
+// ----------------------------------------------------------------------------
+// Génère toute la doc du projet
+gulp.task('doc', function (cb) {
+  // Si on optimize le projet, on n'inclus pas la documentation.
+  if (ENV.all.optimize) { cb(null); }
+
+  runner('doc:static', 'doc:kss', cb);
 });

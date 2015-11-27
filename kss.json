@@ -1,7 +1,7 @@
 {
-  "source":       "./src/sass",
+  "source":       "./src/css",
   "homepage":     "styleguide.md",
-  "destination":  "./build/docs/styleguide",
+  "destination":  "./build/doc/styleguide",
   "template":     "./.kss",
   "css": [
     "../../css/doc.css",
