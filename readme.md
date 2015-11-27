@@ -168,6 +168,12 @@ $ gulp js
 $ gulp assets
 ```
 
+**test**: Exécute tous les tests du projet
+
+```bash
+$ gulp test
+```
+
 Outils utilisé
 -------------------------------------------------------------------------------
 Les outils listés ici doivent êtres utilisés obligatoirement lorsqu'on démarre

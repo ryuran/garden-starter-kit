@@ -1,21 +1,23 @@
-// Définition du LazyPipe pour utiliser LESS
+// Définition du LazyPipe pour linter sass
 'use strict';
 
 // MODULES
 // ----------------------------------------------------------------------------
 var lazypipe = require('lazypipe');
-var less     = require('gulp-less');
-var ENV      = require('../../tools/env');
+var scsslint = require('gulp-scss-lint');
 
-// LESS CONFIGURATION
+
+// LINTER CONFIGURATION
 // ----------------------------------------------------------------------------
-var CONF = {
-  compress: ENV.all.optimize
+var LINT = {
+  bundleExec: true,
+  config: './.scss-lint.yml'
 };
 
 module.exports = function () {
   var lazystream = lazypipe()
-    .pipe(less, CONF);
+    .pipe(scsslint, LINT)
+    .pipe(scsslint.failReporter);
 
   return lazystream();
 };

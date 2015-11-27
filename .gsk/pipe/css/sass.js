@@ -5,7 +5,6 @@
 // ----------------------------------------------------------------------------
 var lazypipe = require('lazypipe');
 var compass  = require('gulp-compass');
-var scsslint = require('gulp-scss-lint');
 var ENV      = require('../../tools/env');
 
 // SASS CONFIGURATION
@@ -18,17 +17,8 @@ var SASS = {
   css        : ENV.css['dest-dir']
 };
 
-// LINTER CONFIGURATION
-// ----------------------------------------------------------------------------
-var LINT = {
-  bundleExec: true,
-  config: './.scss-lint.yml'
-};
-
 module.exports = function () {
   var lazystream = lazypipe()
-    .pipe(scsslint, LINT)
-    .pipe(scsslint.failReporter)
     .pipe(compass, SASS);
 
   return lazystream();

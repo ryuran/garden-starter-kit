@@ -22,7 +22,10 @@ var DEFAULT = require('../config.json');
 var CLI_PARAM = [];
 var CLI_ALIAS = {
   // Use the flag "-o" instead of "--all.optimize" or "--optimize"
-  'all.optimize': 'o'
+  'all.optimize': 'o',
+
+  // Use the flag "-r" instead of "--all.relax" or "--relax"
+  'all.relax': 'r'
 };
 
 // Tous les paramètres de conf par defaut peuvent être

@@ -37,7 +37,7 @@ var APX_CONF = {
 // $ gulp css
 // ----------------------------------------------------------------------------
 // Gère la compilation des fichiers CSS
-gulp.task('css', function () {
+gulp.task('css', ['test:css'], function () {
   return gulp.src(SRC)
     .pipe(plumber({ errorHandler: err }))
     .pipe(pipeline())
