@@ -58,7 +58,9 @@ function load(path) {
     }
 
     return list;
-  } catch (e) {}
+  } catch (e) {
+    // gutil.log(gutil.colors.yellow('WARN:'), e.message);
+  }
 }
 
 
@@ -70,7 +72,7 @@ var CONF = {
 };
 
 _.each({
-  extend   : load('../../tools/twig/extend'),
+  extend   : load('../../tools/twig/tags'),
   functions: load('../../tools/twig/functions'),
   filters  : load('../../tools/twig/filters')
 }, function (val, key) {
