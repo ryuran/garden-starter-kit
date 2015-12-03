@@ -56,26 +56,25 @@ try {
 // WRAPPER CONFIGURATION
 // ----------------------------------------------------------------------------
 var WRP_CONF = {
-  header: [
-    '<!DOCTYPE html>',
-    '<html>',
-    '<head>',
-      '<title>${filename} - Documentation</title>',
-      '<link rel="stylesheet" href="../css/doc.css">',
-      '<link rel="stylesheet" href="https://highlightjs.org/static/demo/styles/github-gist.css">',
-    '</head>',
-    '<body class="ca__">',
-      '<div class="ca__page">',
-        '<main class="ca__main">',
-          '<article class="ca__home">'
-  ].join('\n'),
-  footer: [
-          '</article>',
-        '</main>',
-      '</div>',
-    '</body>',
-    '</html>'
-  ].join('\n')
+  header: function (file) {
+    var tpl   = fs.readFileSync('.gsk/tools/doc/header.tpl', 'utf8');
+    var spl   = file.relative.split(path.sep)
+    var depth = spl.length;
+    var up    = ['.'];
+
+    while(depth--) { up.push('..'); }
+
+    var root = up.join('/');
+
+    return tpl
+      .replace(/\$\{filename\}/g, spl[spl.length - 1])
+      .replace(/\$\{root\}/g, root);
+  },
+  footer: function (file) {
+    var tpl = fs.readFileSync('.gsk/tools/doc/footer.tpl', 'utf8');
+
+    return tpl;
+  }
 };
 
 
