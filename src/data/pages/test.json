@@ -1,4 +1,13 @@
 {
   "title": "Page de test",
-  "description": "Ceci est un exemple de page construit en utilisant Twig"
+  "description": "Ceci est un exemple de page construit en utilisant Twig",
+  "note": "",
+  "valid": {
+    "css"    : "KO",
+    "js"     : "KO",
+    "chrome" : "NON",
+    "firefox": "OUI",
+    "ie"     : "IE: NON<br>EDGE: OUI",
+    "safari" : "Mac OS: OUI<br> iOS: ?"
+  }
 }
