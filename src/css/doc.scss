@@ -1,219 +1,220 @@
-/// Styles de la documentation
- //
- // La documenation fournis par défaut un certains nombre de styles de base.
- //
- // De manière générale, tous les style appliqués repose sur des classes
- // préfixées par `ca__` pour limiter d'éventuel conflits avec des styles
- // tiers utilisés.
- //
- // Styleguide documentation
-
-///  Colors
- //
- // Set of colors available in the documentation
- //
- // $font-color         - \#000
- // $bg-color           - \#FFF
- // $code-bg-color      - \#DEDEDE
- // $table-border-color - \#333
- // $table-header-color - \#DEDEDE
- // $sperator-color     - \#CCC
- //
- // Styleguide documentation.colors
-$font-color        : #000;
-$bg-color          : #FFF;
-$code-bg-color     : #DEDEDE;
-$table-border-color: #333;
-$table-header-color: #DEDEDE;
-$sperator-color    : #CCC;
-$menu-bg-color     : #EFEFEF;
-
-
+// VARIABLES
 // ----------------------------------------------------------------------------
-// STYLES
+// Colors
+$darker-grey: #3A3737;
+$dark-grey: #666666;
+$light-grey: #E6E6E6;
+$dark-gold: #C8A151;
+$dark-red: #990000;
+
+$color-link: $dark-red;
+$color-bg-content: #FFFFFF;
+$color-bg-page: #FAF8F4;
+$color-title: $dark-gold;
+$color-bg-dark-cell: $darker-grey;
+$color-fg-dark-cell: #FFFFFF;
+$color-fg-light-cell: $darker-grey;
+$color-bg-light-cell: #FFFFFF;
+
+
+// Grid
+$column: 4rem;
+$gap: 1rem;
+
+
+// Functions
 // ----------------------------------------------------------------------------
+@function grid-width($nbr) {
+  @return $column * $nbr + $gap * ($nbr - 1);
+}
 
-.ca__ {
-  display: flex;
-  height: 100%;
 
+// MAIN STYLES
+// ----------------------------------------------------------------------------
+.ca {
+  font: 1em/140% Georgia, serif;
   padding: 0;
-  margin:  0;
-
-  font:  1rem/1.4rem sans-serif;
-  color: $font-color;
-
-  background: $bg-color;
-
-  flex-direction: column;
-  }
-
-.ca__header {
-  font-size: 1.5rem;
-  font-weight: normal;
-  font-variant: small-caps;
-  padding: 1rem .5rem .5rem;
   margin: 0;
-  border-bottom: 1px solid $sperator-color;
-  }
-.ca__header__logo {
-  height: 1rem;
-  width: auto;
-  margin-right: .5em;
-  }
-.ca__header__link {
-  color:inherit;
-  text-decoration: none;
+  background: $color-bg-page;
 
-  &:hover, &:active {
-    text-decoration: underline;
-  }
+  &__pageWrapper {
+    margin: 0 auto;
+    max-width: grid-width(12);
   }
 
-.ca__page {
-  display: flex;
+  &__header {
+    background: $color-bg-content;
+    overflow: hidden;
 
-  flex: 1;
-  }
-
-.ca__menu {
-  flex      : none;
-  background: $menu-bg-color;
-  }
-.ca__menu__list {
-  list-style: none;
-  padding   : 0;
-  margin    : 0;
-
-  .ca__menu__list .ca__menu__link {
-    font-size: .8rem;
-    padding  : .3rem 1rem;
+    &Logo {
+      font: 1.5rem Georgia, serif;
+      background: url('../img/clever-age-logo.png') left center no-repeat;
+      background-size: auto 1.2em;
+      margin: 0;
+      padding: 1rem 0 1rem 6rem;
+      float: left;
     }
-  }
-.ca__menu__list__item {
-  padding: 0;
-  }
-.ca__menu__reference {
-  min-width: 1rem;
-  }
-.ca__menu__link {
-  display        : block;
-  line-height    : 1rem;
-  padding        : 1rem .5rem .3rem;
-  color          : lighten($font-color, 75%);
-  text-decoration: none;
-  }
-.ca__menu__link-highlight {
-  font-weight: bold;
-  color      : $font-color;
-  }
-.ca__menu__link:hover {
-  color: $font-color;
-  text-decoration: underline;
-  }
 
-.ca__main {
-  flex: 1;
-  padding: 1rem;
+    &Nav {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      float: right;
 
-  > *:first-child {
-    margin-top: 0;
-  }
+      &Item {
+        display: inline-block;
+      }
 
-  > *:last-child {
-    margin-bottom: 0;
-  }
-  }
-.ca__main__section {
-  &:first-child > *:first-child {
-    margin-top: 0;
-  }
+      &Link {
+        display: block;
+        font: 1.25rem Georgia, serif;
+        padding: 1.25rem 0 .75rem;
+        margin: 0 0 0 1rem;
+        color: inherit;
+        text-decoration: none;
+        box-sizing: border-box;
+        border-bottom: 0.25rem solid transparent;
 
-  &:last-child  > *:last-child {
-    margin-bottom: 0;
-  }
-  }
-
-.ca__title__link {
-  color          : inherit;
-  text-decoration: none;
-  }
-
-.ca__example {
-  border : 1px solid $sperator-color;
-  padding: .5rem;
-  }
-.ca__example__head {
-  display      : block;
-  padding      : .5rem;
-  margin       : -.5rem -.5rem .5rem;
-  border-bottom: 1px solid $sperator-color;
-  background   : $code-bg-color;
-
-  + .ca__example__markup {
-    margin-top: 0;
-  }
-  }
-.ca__example__title {
-  font-style: normal;
-  font-weight: bold
-  }
-.ca__example__title:after {
-  content: ' :'
-  }
-.ca__example__markup {
-  margin: .5rem 0;
-  }
-.ca__example__markup:last-child {
-  margin-bottom: 0;
-  }
-
-.ca__table_container {
-  overflow:  auto;
-  border: 1px solid $table-border-color;
-  }
-.ca__table {
-  font-size      : .9rem;
-  border-spacing : 0;
-  border-collapse: collapse;
-  width          : 100%;
-  min-width      : 40em;
-
-  th {
-    padding        : .4em .5em .3em;
-    background     : $table-header-color;
-    border-bottom  : 1px solid $table-border-color;
-    border-right   : 1px solid $table-border-color;
-
-    &:last-child {
-      border-right: none;
+        &:hover,
+        &-selected {
+          border-bottom-color: $dark-grey;
+        }
+      }
     }
   }
 
-  td {
-    padding        : .4em .5em .3em;
-    text-align     : center;
-    border-bottom  : 1px solid $table-border-color;
-    border-right   : 1px solid $table-border-color;
+  &__md {
+    a {
+      color: $color-link;
+      text-decoration: none;
 
-    &:last-child {
-      border-right: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    code {
+      font-size: 1.2em;
+    }
+
+    em code {
+      font-style: normal;
+    }
+
+    pre, blockquote {
+      background: $color-bg-content;
+      border-radius: .5em;
+      padding: 1em
+    }
+
+    blockquote {
+      margin: 1em 0;
+      color: $dark-grey;
+
+      p {
+        margin: 0;
+
+        + p {
+          margin-top: 1em;
+        }
+      }
+    }
+
+    h1 {
+      font: 1.8rem Georgia, serif;
+      color: $color-title;
+      text-transform: uppercase;
+      padding: 0 0 .8rem;
+      margin: 2rem 0;
+      border-bottom: 1px solid $color-title;
+    }
+
+    h2 {
+      font: 1.45rem Georgia, serif;
+      color: $color-title;
+      text-transform: uppercase;
+      padding: .8rem 0 0;
+      margin: 2rem 0 1rem;
+      border-top: 1px solid $color-title;
+    }
+
+    h3 {
+      font: bold 1.2rem Georgia, serif;
+      padding-left: 1.5em;
+      margin: 2rem 0 1rem;
+    }
+
+    h4, h5, h6 {
+      font: bold 1rem Georgia, serif;
+      padding-left: 3em;
+      margin: 2rem 0 1rem;
     }
   }
 
-  tbody tr:last-child th, tbody tr:last-child td {
-    border-bottom : none;
+  &__title1 {
+    font: 1.8rem Georgia, serif;
+    color: $color-title;
+    text-transform: uppercase;
+    padding: 0 0 .8rem;
+    margin: 2rem 0;
+    border-bottom: 1px solid $color-title;
   }
 
-  p {
-    margin: 0;
+  &__table {
+    font: 1.2rem Georgia, serif;
+    border-spacing: 0;
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 40rem;
 
-    + p {
-      margin-top: 1em;
+    &Wrapper {
+      overflow: auto;
+    }
+
+    small {
+      font-style: italic;
+    }
+
+    a {
+      color: $color-link;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    th,
+    td {
+      font-weight: normal;
+      text-align: center;
+      border: 1px solid $light-grey;
+      padding: 0.5em 1em;
+    }
+
+    thead {
+      th {
+        background-color: $color-bg-dark-cell;
+        color: $color-fg-dark-cell;
+      }
+
+      tr:first-of-type th {
+        text-transform: uppercase;
+      }
+    }
+
+    tbody {
+      th,
+      td:last-of-type {
+        text-align: left;
+      }
+
+      th,
+      td {
+        background-color: $color-bg-light-cell;
+        color: $color-fg-light-cell;
+        padding: 1em;
+      }
     }
   }
-  .ca__table__head--left,
-  .ca__table__data--left {
-    text-align: left;
-  }
-  }
+}
