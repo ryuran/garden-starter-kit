@@ -116,7 +116,7 @@ A chaque fois que le projet est "construit", le résultat est disponible dans
 les répertoires suivant:
 
 * `/build`
-* `/build/docs`: Toute la documentation du projet au format HTML
+* `/build/doc`: Toute la documentation du projet au format HTML
 
 
 Taches normalisées
@@ -168,6 +168,12 @@ $ gulp js
 $ gulp assets
 ```
 
+**doc**: Génère la documentation du projet
+
+```bash
+$ gulp doc
+```
+
 **test**: Exécute tous les tests du projet
 
 ```bash
@@ -194,3 +200,6 @@ le fichier `.gsk/config.json`, voir les [instructions de configuration](.gsk/rea
 
 ### HTML
 * [Twig](.gsk/docs/HTML/twig.md)
+
+### Documentation
+* [KSS](.gsk/docs/kss.md)

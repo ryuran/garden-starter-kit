@@ -29,7 +29,7 @@ Toute la configuration pour la génération du guide des styles est centralisée
 
   // L'emplacement du gabarit KSS personalisé à utiliser
   // (le chemin est relatif à l'emplacement du fichier kss.json)
-  "template": "./.kss",
+  "template": "./.gsk/kss",
 
   // Les divers fichiers CSS à inclure dans le template
   // (leur chemin est l'URL relative des fichiers et dépend donc de la

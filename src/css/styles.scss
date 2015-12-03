@@ -1,6 +1,12 @@
 // Ajouter vos style SCSS ici
 // --------------------------
-p {
-  font-size: 1em;
-  flex: 1;
+
+/// Générez un guide des style
+ //
+ // Si vous commentez votre code en utilisant la syntaxe [KSS](https://github.com/kss-node/kss/blob/spec/SPEC.md), le Starter Kit generera un guide des styles dans la documentation a chaque build du projet.
+ //
+ // Styleguide Introduction
+
+body {
+  font: 1em sans-serif;
 }
