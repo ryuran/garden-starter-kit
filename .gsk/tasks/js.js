@@ -9,7 +9,10 @@ var bs      = require('browser-sync');
 var err     = require('../tools/errcb');
 var ENV     = require('../tools/env').js;
 
-var SRC  = path.join(ENV['src-dir'], '**', '*');
+var SRC  = [
+  path.join(ENV['src-dir'], 'lib', '**', '*'),
+  path.join(ENV['src-dir'], '**', '*')
+];
 var DEST = ENV['dest-dir'];
 
 

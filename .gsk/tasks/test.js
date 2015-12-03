@@ -18,7 +18,10 @@ var SRC = {
     path.join('!' + ENV.css['src-dir'], '**', '_*'),
     path.join('!' + ENV.css['src-dir'], '**', '*.md')
   ],
-  js: path.join(ENV.js['src-dir'], '**', '*')
+  js: [
+    path.join(ENV.js['src-dir'], '**', '*'),
+    path.join('!' + ENV.js['src-dir'], 'lib', '**', '*')
+  ]
 };
 
 // LINTER
