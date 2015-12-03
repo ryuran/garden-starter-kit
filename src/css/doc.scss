@@ -125,7 +125,7 @@ $gap: 1rem;
     margin: 1rem 0 1rem grid-width(3) + $gap;
     padding: $gap;
 
-    section:first-child :first-child {
+    :first-child :first-child {
       margin-top: 0;
     }
   }
