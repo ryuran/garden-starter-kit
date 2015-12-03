@@ -29,6 +29,52 @@ $gap: 1rem;
 }
 
 
+// Mixins
+// ----------------------------------------------------------------------------
+@mixin reset-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@mixin content-block {
+  border-radius: .5rem;
+  background: $color-bg-content;
+}
+
+@mixin title {
+  font-weight: normal;
+  color: $color-title;
+  text-transform: uppercase;
+  padding: 0;
+  margin: 2rem 0 1rem;
+}
+
+@mixin title1 {
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  padding-bottom: .8rem;
+  border-bottom: 1px solid $color-title;
+}
+
+@mixin title2 {
+  font-size: 1.45rem;
+  padding-top: .8rem;
+  border-top: 1px solid $color-title;
+}
+
+@mixin title3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding-left: 1.5em;
+}
+
+@mixin title4 {
+  font-size: 1rem;
+  font-weight: bold;
+  padding-left: 3em;
+}
+
 // MAIN STYLES
 // ----------------------------------------------------------------------------
 .ca {
@@ -40,6 +86,48 @@ $gap: 1rem;
   &__pageWrapper {
     margin: 0 auto;
     max-width: grid-width(12);
+    overflow: hidden;
+  }
+
+  &__sidebar {
+    @include content-block;
+
+    float: left;
+    width: grid-width(3);
+    box-sizing: border-box;
+    margin: 1rem 0;
+    padding: 1rem;
+
+    &Menu {
+      @include reset-list;
+
+      .ca__sidebarMenu {
+        margin-left: 1rem;
+      }
+    }
+
+    &Link {
+      color: inherit;
+      text-decoration: none;
+
+      &:hover,
+      &:active,
+      &:focus {
+        color: $dark-gold;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__content {
+    @include content-block;
+
+    margin: 1rem 0 1rem grid-width(3) + $gap;
+    padding: $gap;
+
+    section:first-child :first-child {
+      margin-top: 0;
+    }
   }
 
   &__header {
@@ -56,9 +144,8 @@ $gap: 1rem;
     }
 
     &Nav {
-      list-style: none;
-      margin: 0;
-      padding: 0;
+      @include reset-list;
+
       float: right;
 
       &Item {
@@ -101,10 +188,11 @@ $gap: 1rem;
       font-style: normal;
     }
 
-    pre, blockquote {
-      background: $color-bg-content;
-      border-radius: .5em;
-      padding: 1em
+    pre,
+    blockquote {
+      @include content-block;
+
+      padding: 1em;
     }
 
     blockquote {
@@ -121,43 +209,58 @@ $gap: 1rem;
     }
 
     h1 {
-      font: 1.8rem Georgia, serif;
-      color: $color-title;
-      text-transform: uppercase;
-      padding: 0 0 .8rem;
-      margin: 2rem 0;
-      border-bottom: 1px solid $color-title;
+      @include title;
+      @include title1;
     }
 
     h2 {
-      font: 1.45rem Georgia, serif;
-      color: $color-title;
-      text-transform: uppercase;
-      padding: .8rem 0 0;
-      margin: 2rem 0 1rem;
-      border-top: 1px solid $color-title;
+      @include title;
+      @include title2;
     }
 
     h3 {
-      font: bold 1.2rem Georgia, serif;
-      padding-left: 1.5em;
-      margin: 2rem 0 1rem;
+      @include title;
+      @include title3;
     }
 
-    h4, h5, h6 {
-      font: bold 1rem Georgia, serif;
-      padding-left: 3em;
-      margin: 2rem 0 1rem;
+    h4,
+    h5,
+    h6 {
+      @include title;
+      @include title4;
     }
   }
 
-  &__title1 {
-    font: 1.8rem Georgia, serif;
-    color: $color-title;
-    text-transform: uppercase;
-    padding: 0 0 .8rem;
-    margin: 2rem 0;
-    border-bottom: 1px solid $color-title;
+  &__title {
+    &Link {
+      color: inherit;
+      text-decoration: none;
+
+      &:hover::after {
+        content: '\2714';
+        color: $light-grey;
+      }
+    }
+
+    &1 {
+      @include title;
+      @include title1;
+    }
+
+    &2 {
+      @include title;
+      @include title2;
+    }
+
+    &3 {
+      @include title;
+      @include title3;
+    }
+
+    &4 {
+      @include title;
+      @include title4;
+    }
   }
 
   &__table {
@@ -214,6 +317,38 @@ $gap: 1rem;
         background-color: $color-bg-light-cell;
         color: $color-fg-light-cell;
         padding: 1em;
+      }
+    }
+  }
+
+  &__example {
+    border: 1px solid $light-grey;
+    padding: 1rem;
+
+    &Head {
+      display: block;
+      color: $color-fg-dark-cell;
+      background: $color-bg-dark-cell;
+      padding: 1rem;
+      margin: -1rem -1rem 1rem -1rem;
+      border-bottom: 1px solid $light-grey;
+    }
+
+    &Title {
+      code {
+        font-size: 1.2em;
+      }
+    }
+
+    &Markup {
+      + .ca__exampleTitle {
+        margin-top: 1rem;
+      }
+
+      &::after {
+        content: '';
+        display: table-cell;
+        clear: both;
       }
     }
   }
