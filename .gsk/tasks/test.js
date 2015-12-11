@@ -21,13 +21,18 @@ var SRC = {
   js: [
     path.join(ENV.js['src-dir'], '**', '*'),
     path.join('!' + ENV.js['src-dir'], 'lib', '**', '*')
+  ],
+  html: [
+    path.join(ENV.html['dest-dir'], '**', '*'),
+    path.join('!' + ENV.html['dest-dir'], 'index.html')
   ]
 };
 
 // LINTER
 // ----------------------------------------------------------------------------
-var css = require('../pipe/css/' + ENV.css.engine + '.linter.js');
-var js  = require('../pipe/js/simple.linter.js');
+var css  = require('../pipe/css/' + ENV.css.engine + '.linter.js');
+var js   = require('../pipe/js/simple.linter.js');
+var a11y = require('../pipe/html/a11y.linter.js');
 
 
 // TASK DEFINITION
@@ -55,6 +60,17 @@ gulp.task('test:css', function () {
     .pipe(gif(!ENV.all.relax, css()));
 });
 
+// $ gulp test:a11y
+// ----------------------------------------------------------------------------
+// Lint les fichiers html pour l'accessibilité
+gulp.task('test:a11y', function () {
+  return gulp.src(SRC.html)
+    .pipe(plumber({ errorHandler: err }))
+
+    // En mode relax, on ignore les tests (c'est mal)
+    .pipe(gif(!ENV.all.relax, a11y()));
+});
+
 // $ gulp test
 // ----------------------------------------------------------------------------
 // Lint tous les fichiers sources du projet
@@ -62,5 +78,5 @@ gulp.task('test', function (cb) {
   // En mode relax, on ignore les tests (c'est mal)
   if (ENV.all.relax) { cb(null); }
 
-  runner('test:js', 'test:css', cb);
+  runner('test:js', 'test:css', 'test:a11y', cb);
 });
