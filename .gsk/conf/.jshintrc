@@ -30,7 +30,7 @@
   "plusplus"    : false,
   "maxparams"   : 3,
   "maxdepth"    : 3,
-  "jquery"      : false,
+  "jquery"      : true,
   "globals" : {
     "require" : true,
     "define"  : true,
