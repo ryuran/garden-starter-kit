@@ -21,5 +21,5 @@ gulp.task('build:clean', function () {
 // Régénère le contenu du dossier `/build`. Il est recommandé de lancer cette
 // tache à chaque fois que l'on réalise un `git pull` du projet.
 gulp.task('build', function (cb) {
-  runner('build:clean', ['assets', 'css', 'js', 'html'], 'doc', cb);
+  runner('build:clean', ['assets', 'css', 'js', 'html'], 'doc', 'test:a11y', cb);
 });
