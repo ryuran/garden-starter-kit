@@ -32,8 +32,7 @@ module.exports = function () {
         viewport: vp,
         delay: CONFIG.delay
       })
-      .pipe(a11y.reporter)
-      .pipe(a11y.reporter, 'fail');
+      .pipe(a11y.reporter);
   });
 
   return lazystream();

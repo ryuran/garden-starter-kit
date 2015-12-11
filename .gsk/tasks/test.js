@@ -23,8 +23,7 @@ var SRC = {
     path.join('!' + ENV.js['src-dir'], 'lib', '**', '*')
   ],
   html: [
-    path.join(ENV.html['dest-dir'], '**', '*'),
-    path.join('!' + ENV.html['dest-dir'], 'index.html')
+    path.join(ENV.html['dest-dir'], 'pages', '**', '*.html')
   ]
 };
 
