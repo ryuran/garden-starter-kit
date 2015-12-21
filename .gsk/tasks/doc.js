@@ -58,11 +58,11 @@ try {
 var WRP_CONF = {
   header: function (file) {
     var tpl   = fs.readFileSync('.gsk/tools/doc/header.tpl', 'utf8');
-    var spl   = file.relative.split(path.sep)
+    var spl   = file.relative.split(path.sep);
     var depth = spl.length;
     var up    = ['.'];
 
-    while(depth--) { up.push('..'); }
+    while (depth--) { up.push('..'); }
 
     var root = up.join('/');
 
@@ -70,7 +70,7 @@ var WRP_CONF = {
       .replace(/\$\{filename\}/g, spl[spl.length - 1])
       .replace(/\$\{root\}/g, root);
   },
-  footer: function (file) {
+  footer: function () {
     var tpl = fs.readFileSync('.gsk/tools/doc/footer.tpl', 'utf8');
 
     return tpl;

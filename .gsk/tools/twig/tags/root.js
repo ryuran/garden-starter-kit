@@ -6,7 +6,7 @@ var path = require('path');
 
 module.exports = function (Twig) {
   Twig.exports.extendTag({
-    type : "root",
+    type : 'root',
     regex: /^root$/,
     next : [ ],
     open : true,
@@ -24,7 +24,7 @@ module.exports = function (Twig) {
         chain : false,
         output: (function () {
           var up = ['.'];
-          while(depth--) { up.push('..') }
+          while (depth--) { up.push('..'); }
           return up.join('/');
         })()
       };
