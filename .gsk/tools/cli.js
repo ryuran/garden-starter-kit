@@ -17,7 +17,7 @@ function extractCliArgs() {
         v = t[1];
         prev = null;
       } else {
-        prev = k = value;
+        prev = k = value.slice(2);
         v = true;
       }
 

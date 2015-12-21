@@ -45,7 +45,7 @@ _.each(DEFAULT, function (value, key) {
 
     // Les paramètre globaux peuvent être appelé sans le prefix "all."
     if (prefix === 'all') {
-      names.push('k');
+      names.push(k);
     }
 
     // Certain paramètre dispose d'un alias plus court
