@@ -22,7 +22,8 @@
   "js" : {
     "src-dir" : "./src/js",
     "dest-dir": "./build/js",
-    "engine"  : "simple"
+    "engine"  : "browserify",
+    "filename": "script.js"
   },
   "images": {
     "src-dir" : "./src/assets/img",
