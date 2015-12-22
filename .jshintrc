@@ -1,6 +1,6 @@
 {
   "es3"         : true,
-  "esnext"      : false,
+  "esnext"      : true,
   "strict"      : false,
   "globalstrict": true,
   "evil"        : false,

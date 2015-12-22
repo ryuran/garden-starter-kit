@@ -11,6 +11,7 @@ var through    = require('through2');
 var source     = require('vinyl-source-stream');
 var buffer     = require('vinyl-buffer');
 var browserify = require('browserify');
+var babelify   = require('babelify');
 var sourcemap  = require('gulp-sourcemaps');
 var uglify     = require('gulp-uglify');
 var bs         = require('browser-sync');
@@ -48,7 +49,10 @@ gulp.task('js', ['test:js'], function () {
       transform: [babelify]*/
     });
 
-    b.bundle().pipe(buildStream);
+    b.transform(babelify, {
+      presets: ['es2015']
+    }).bundle()
+      .pipe(buildStream);
   });
 
   return buildStream;
