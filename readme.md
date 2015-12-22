@@ -135,13 +135,22 @@ un _watch_ sur les fichiers du projet en même temps.
 
 ```bash
 $ gulp live
+
+# Pour ne pas être embêté par les tests,
+# vous pouvez lancer le live en mode relax
+# (Mais c'est mal et vous le savez)
+$ gulp live --relax
 ```
 
-**build**: contruit la version statique du projet (compile les fichiers Sass,
+**build**: construit la version statique du projet (compile les fichiers Sass,
 assemble les fichiers HTML, etc.)
 
 ```bash
 $ gulp build
+
+# Pour créer un build optimisé pour la prod
+# (Fichiers minifiés, pas de doc, etc)
+$ gulp build --optimize
 ```
 
 **css**: Construit les feuilles de styles
@@ -188,8 +197,8 @@ un nouveau projet d'intégration. Il garantisse un workflow de travail optimal
 * [Gulp](.gsk/docs/gulp.md)
 * [Linter](.gsk/docs/linter.md)
 
-Les outils listés ci-après sont à utiliser et configuré pour votre projet.
-Ils sont tous utiliseble tel quel, mais le starter kit est suffisamment flexible
+Les outils listés ci-après sont à utiliser et configurer pour votre projet.
+Ils sont tous utilisable tel quel, mais le starter kit est suffisamment flexible
 pour s'adapter à vos besoins. Le choix d'utilisation de ces outils se fait via
 le fichier `.gsk/config.json`, voir les [instructions de configuration](.gsk/readme.md)
 
@@ -199,7 +208,12 @@ le fichier `.gsk/config.json`, voir les [instructions de configuration](.gsk/rea
 * [LESS](.gsk/docs/less.md)
 
 ### HTML
-* [Twig](.gsk/docs/HTML/twig.md)
+* [Twig](.gsk/docs/html/twig.md)
+
+### JavaScript
+* [Simple pipeline](.gsk/docs/js/simple.md)
+* [Browserify + NPM](.gsk/docs/js/browserify.md)
 
 ### Documentation
+* [Documentation statique](docs/index.md)
 * [KSS](.gsk/docs/kss.md)

@@ -66,3 +66,7 @@ module.exports = function (Twig) {
   // Bon courage :-/
 };
 ```
+
+Pour voir quelques exemples concrets vous pouvez jetez un coup d’œil dans le
+repertoire [.gsk/tools/twig](.gsk/tools/twig).
+
