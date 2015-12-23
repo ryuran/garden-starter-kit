@@ -11,7 +11,6 @@ var gutil    = require('gulp-util');
 var data     = require('gulp-data');
 var newer    = require('gulp-newer');
 var marked   = require('gulp-marked');
-var wrapper  = require('gulp-wrapper');
 var prettify = require('gulp-prettify');
 var dox      = require('gulp-dox');
 var hbs      = require('gulp-hbs');
@@ -56,31 +55,6 @@ try {
 }
 
 
-// WRAPPER CONFIGURATION
-// ----------------------------------------------------------------------------
-var WRP_CONF = {
-  header: function (file) {
-    var tpl   = fs.readFileSync('.gsk/tools/doc/header.tpl', 'utf8');
-    var spl   = file.relative.split(path.sep);
-    var depth = spl.length;
-    var up    = ['.'];
-
-    while (depth--) { up.push('..'); }
-
-    var root = up.join('/');
-
-    return tpl
-      .replace(/\$\{filename\}/g, spl[spl.length - 1])
-      .replace(/\$\{root\}/g, root);
-  },
-  footer: function () {
-    var tpl = fs.readFileSync('.gsk/tools/doc/footer.tpl', 'utf8');
-
-    return tpl;
-  }
-};
-
-
 // TASK DEFINITION
 // ----------------------------------------------------------------------------
 
@@ -92,9 +66,11 @@ gulp.task('doc:js', function () {
     .pipe(newer(path.join(DEST, 'js')))
     .pipe(dox())
     .pipe(data(function (file) {
-      return { data: JSON.parse(file.contents) };
+      return {
+        data: JSON.parse(file.contents)
+      };
     }))
-    .pipe(hbs('./.gsk/dox/template.hbs', { dataSource: 'data' }))
+    .pipe(hbs('./.gsk/tools/doc/jsdoc.hbs', { dataSource: 'data' }))
     .pipe(prettify(PRT_CONF))
     .pipe(gulp.dest(path.join(DEST, 'js')));
 });
@@ -106,7 +82,12 @@ gulp.task('doc:static', function () {
   return gulp.src(SRC)
     .pipe(newer(DEST))
     .pipe(marked(MD_CONF))
-    .pipe(wrapper(WRP_CONF))
+    .pipe(data(function (file) {
+      return {
+        filename: path.parse(file.path).name
+      };
+    }))
+    .pipe(hbs('./.gsk/tools/doc/staticdoc.hbs', { dataSource: 'data' }))
     .pipe(prettify(PRT_CONF))
     .pipe(gulp.dest(DEST));
 });
