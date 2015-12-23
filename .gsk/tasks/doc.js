@@ -8,10 +8,13 @@ var exec     = require('child_process').exec;
 var runner   = require('run-sequence');
 var gulp     = require('gulp');
 var gutil    = require('gulp-util');
+var data     = require('gulp-data');
 var newer    = require('gulp-newer');
 var marked   = require('gulp-marked');
 var wrapper  = require('gulp-wrapper');
 var prettify = require('gulp-prettify');
+var dox      = require('gulp-dox');
+var hbs      = require('gulp-hbs');
 var ENV      = require('../tools/env');
 
 var SRC  = path.join(ENV.doc['src-dir'], '**', '*.md');
@@ -81,6 +84,21 @@ var WRP_CONF = {
 // TASK DEFINITION
 // ----------------------------------------------------------------------------
 
+// $ gulp doc:js
+// ----------------------------------------------------------------------------
+// Génère toute la doc statique du projet
+gulp.task('doc:js', function () {
+  return gulp.src(path.join(ENV.js['src-dir'], '**', '*.js'))
+    .pipe(newer(path.join(DEST, 'js')))
+    .pipe(dox())
+    .pipe(data(function (file) {
+      return { data: JSON.parse(file.contents) };
+    }))
+    .pipe(hbs('./.gsk/dox/template.hbs', { dataSource: 'data' }))
+    .pipe(prettify(PRT_CONF))
+    .pipe(gulp.dest(path.join(DEST, 'js')));
+});
+
 // $ gulp doc:static
 // ----------------------------------------------------------------------------
 // Génère toute la doc statique du projet
@@ -126,5 +144,5 @@ gulp.task('doc', function (cb) {
   // Si on optimize le projet, on n'inclus pas la documentation.
   if (ENV.all.optimize) { cb(null); }
 
-  runner('doc:static', 'doc:kss', cb);
+  runner('doc:static', 'doc:kss', 'doc:js', cb);
 });

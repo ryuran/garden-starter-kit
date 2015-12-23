@@ -18,6 +18,8 @@
     "gulp-compass": "^2.1.0",
     "gulp-concat": "^2.6.0",
     "gulp-data": "^1.2.0",
+    "gulp-dox": "^0.1.6",
+    "gulp-hbs": "^0.2.0",
     "gulp-if": "^2.0.0",
     "gulp-imagemin": "^2.3.0",
     "gulp-jscs": "^3.0.2",
