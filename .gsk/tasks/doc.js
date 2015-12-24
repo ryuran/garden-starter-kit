@@ -16,17 +16,16 @@ var dox      = require('gulp-dox');
 var hbs      = require('gulp-hbs');
 var ENV      = require('../tools/env');
 
-var SRC  = path.join(ENV.doc['src-dir'], '**', '*.md');
-var DEST = ENV.doc['dest-dir'];
+var SRC      = path.join(ENV.doc['src-dir'], '**', '*.md');
+var DEST     = path.resolve(ENV.doc['dest-dir']);
+var DEST_URL = DEST.replace(path.resolve(ENV.connect.baseDir), '')
+                   .replace(path.sep, '/');
 
-
-// MARKED CONFIGURATION
+// HBS HELPERS
 // ----------------------------------------------------------------------------
-var MD_CONF = {
-  highlight: function (code) {
-    return require('highlight.js').highlightAuto(code).value;
-  }
-};
+var root = require('../tools/handlebars/helpers/root');
+
+hbs.registerHelper('root', root);
 
 
 // PRETTIFY CONFIGURATION
@@ -67,6 +66,7 @@ gulp.task('doc:js', function () {
     .pipe(dox())
     .pipe(data(function (file) {
       return {
+        url : file.path.replace(ENV.js['src-dir'], DEST_URL + '/js'),
         data: JSON.parse(file.contents)
       };
     }))
@@ -81,9 +81,10 @@ gulp.task('doc:js', function () {
 gulp.task('doc:static', function () {
   return gulp.src(SRC)
     .pipe(newer(DEST))
-    .pipe(marked(MD_CONF))
+    .pipe(marked())
     .pipe(data(function (file) {
       return {
+        url: file.path.replace(ENV.doc['src-dir'], DEST_URL),
         filename: path.parse(file.path).name
       };
     }))

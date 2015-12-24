@@ -19,7 +19,8 @@ gulp.task('connect', function () {
     port: ENV.port,
     open: ENV.open,
     server: {
-      baseDir: './build'
+      directory: ENV.directory,
+      baseDir  : ENV.baseDir
     },
     ghostMode: {
       clicks: true,
