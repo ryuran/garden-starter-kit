@@ -32,10 +32,35 @@
     <nav class="ca__sidebar">
       <ul class="ca__sidebarMenu">
         <li class="ca__sidebarMenuItem">
-          <a class="ca__sidebarLink"
-             href="#">
-            <span class="ca__sidebarRef">1</span>
-            TOC
+          <a class="ca__sidebarLink" href="{{root}}/doc">
+            <span class="ca__sidebarRef">::</span>
+            Documentation
+          </a>
+        </li>
+      </ul>
+
+      <ul class="ca__sidebarMenu">
+        {{#each toc}}
+        <li class="ca__sidebarMenuItem">
+          <a class="ca__sidebarLink" href="{{url}}">
+            {{#if dir}}<span class="ca__sidebarRef">{{dir}}&nbsp;:</span>{{/if}}
+            {{name}}
+          </a>
+        </li>
+        {{/each}}
+      </ul>
+
+      <ul class="ca__sidebarMenu">
+        <li class="ca__sidebarMenuItem">
+          <a class="ca__sidebarLink" href="{{root}}/doc/js">
+            <span class="ca__sidebarRef">::</span>
+            API JavaScripts
+          </a>
+        </li>
+        <li class="ca__sidebarMenuItem">
+          <a class="ca__sidebarLink" href="{{root}}/doc/styleguide">
+            <span class="ca__sidebarRef">::</span>
+            Guide des styles
           </a>
         </li>
       </ul>

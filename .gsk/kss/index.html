@@ -27,6 +27,15 @@
   <div class="ca__pageWrapper">
     <nav class="ca__sidebar">
       <ul class="ca__sidebarMenu">
+        <li class="ca__sidebarMenuItem">
+          <a class="ca__sidebarLink" href="..">
+            <span class="ca__sidebarRef">::</span>
+            Documentation
+          </a>
+        </li>
+      </ul>
+
+      <ul class="ca__sidebarMenu">
         {{#eachRoot}}
         <li class="ca__sidebarMenuItem">
           <a class="ca__sidebarLink{{#ifReference ../rootName}} ca__sidebarLink-highlight{{/ifReference}}"
@@ -54,6 +63,21 @@
           </ul>
         </li>
         {{/eachRoot}}
+      </ul>
+
+      <ul class="ca__sidebarMenu">
+        <li class="ca__sidebarMenuItem">
+          <a class="ca__sidebarLink" href="../js">
+            <span class="ca__sidebarRef">::</span>
+            API JavaScripts
+          </a>
+        </li>
+        <li class="ca__sidebarMenuItem">
+          <a class="ca__sidebarLink" href=".">
+            <span class="ca__sidebarRef">::</span>
+            Guide des styles
+          </a>
+        </li>
       </ul>
     </nav>
 

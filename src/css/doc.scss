@@ -3,6 +3,7 @@
 // Colors
 $darker-grey: #3A3737;
 $dark-grey: #666666;
+$grey: #A6A6A6;
 $light-grey: #E6E6E6;
 $dark-gold: #C8A151;
 $dark-red: #990000;
@@ -101,8 +102,14 @@ $gap: 1rem;
     &Menu {
       @include reset-list;
 
-      .ca__sidebarMenu {
+      & & {
         margin-left: 1rem;
+      }
+
+      & + & {
+        border-top: 3px solid $color-bg-page;
+        margin-top: 1rem;
+        padding-top: 1rem;
       }
     }
 
@@ -117,6 +124,10 @@ $gap: 1rem;
         text-decoration: underline;
       }
     }
+
+    &Ref {
+      color: $grey
+    }
   }
 
   &__content {
@@ -125,7 +136,7 @@ $gap: 1rem;
     margin: 1rem 0 1rem grid-width(3) + $gap;
     padding: $gap;
 
-    :first-child :first-child {
+    :first-child {
       margin-top: 0;
     }
 

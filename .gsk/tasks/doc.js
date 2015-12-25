@@ -6,6 +6,7 @@ var fs       = require('fs');
 var path     = require('path');
 var exec     = require('child_process').exec;
 var runner   = require('run-sequence');
+var glob     = require('glob');
 var gulp     = require('gulp');
 var gutil    = require('gulp-util');
 var data     = require('gulp-data');
@@ -17,15 +18,104 @@ var hbs      = require('gulp-hbs');
 var ENV      = require('../tools/env');
 
 var SRC      = path.join(ENV.doc['src-dir'], '**', '*.md');
+var SRC_JS   = path.join(ENV.js['src-dir'], '**', '*.js');
+
 var DEST     = path.resolve(ENV.doc['dest-dir']);
 var DEST_URL = DEST.replace(path.resolve(ENV.connect.baseDir), '')
                    .replace(path.sep, '/');
+
+
+// UTILS
+// ----------------------------------------------------------------------------
+function extractData(file) {
+  var parsed = path.parse(file.path);
+
+  // Basic configuration for MarkDown files
+  var src   = ENV.doc['src-dir'];
+  var gPath = SRC;
+  var rURL  = DEST_URL;
+  var out   = {
+    filename: parsed.name
+  };
+
+  // Extra configuration for JavaScript files
+  if (parsed.ext === '.json') {
+    src = ENV.js['src-dir'];
+    gPath = SRC_JS;
+    rURL += '/js';
+    out.data = JSON.parse(file.contents);
+  }
+
+  // Set up final URL for the document
+  out.url = file.path.replace(src, rURL).replace(parsed.ext, '.html');
+
+  // Special case js/index.md which is the Javascript doc homepage
+  if (parsed.name === 'index' && parsed.dir.slice(-3) === '/js') {
+    src = ENV.js['src-dir'];
+    gPath = SRC_JS;
+    rURL += '/js';
+  }
+
+  // Index related content
+  out.toc = glob.sync(gPath).reduce(function (a, f) {
+    var u = f
+      .replace(src, rURL)
+      .replace(path.parse(f).ext, '.html');
+
+    // Ignore JS API homepage (it has its own entry within templates)
+    if (u === rURL + '/js/index.html') { return a; }
+
+    var p = path.parse(u);
+
+    a.push({
+      dir : p.dir.replace(rURL, '').replace(/^\//, ''),
+      name: p.name.replace('_', ' ').replace(/^./, function (s) { return s.toUpperCase(); }),
+      url : path.relative(path.parse(out.url).dir, u)
+    });
+
+    return a;
+  }, []).sort(function (a, b) {
+    if (a.dir === b.dir) { return a.name.localeCompare(b.name); }
+    // if (a.dir === '') { return 1; }
+    return a.dir.localeCompare(b.dir);
+  });
+
+  return out;
+}
 
 // HBS HELPERS
 // ----------------------------------------------------------------------------
 var root = require('../tools/handlebars/helpers/root');
 
 hbs.registerHelper('root', root);
+
+
+// MARKED CUSTOM RENDERER
+// ----------------------------------------------------------------------------
+var renderer = new markdown.marked.Renderer();
+
+renderer.link = function (href, title, text) {
+  // Link to markdown files are transformed into link to HTML files
+  // This allow to use bith the gitlab markdown linking and the HTML
+  // transformation for exporting the doc.
+
+  var url = [];
+  url.push('<a href="');
+  url.push(href.replace(/\.md$/, '.html'));
+  url.push('"');
+
+  if (title) {
+    url.push(' title="');
+    url.push(title);
+    url.push('"');
+  }
+
+  url.push('>');
+  url.push(text);
+  url.push('</a>');
+
+  return url.join('');
+};
 
 
 // PRETTIFY CONFIGURATION
@@ -61,15 +151,10 @@ try {
 // ----------------------------------------------------------------------------
 // Génère toute la doc statique du projet
 gulp.task('doc:js', function () {
-  return gulp.src(path.join(ENV.js['src-dir'], '**', '*.js'))
+  return gulp.src(SRC_JS)
     .pipe(newer(path.join(DEST, 'js')))
     .pipe(dox())
-    .pipe(data(function (file) {
-      return {
-        url : file.path.replace(ENV.js['src-dir'], DEST_URL + '/js'),
-        data: JSON.parse(file.contents)
-      };
-    }))
+    .pipe(data(extractData))
     .pipe(hbs('./.gsk/tools/doc/jsdoc.hbs', { dataSource: 'data' }))
     .pipe(prettify(PRT_CONF))
     .pipe(gulp.dest(path.join(DEST, 'js')));
@@ -81,13 +166,10 @@ gulp.task('doc:js', function () {
 gulp.task('doc:static', function () {
   return gulp.src(SRC)
     .pipe(newer(DEST))
-    .pipe(marked())
-    .pipe(data(function (file) {
-      return {
-        url: file.path.replace(ENV.doc['src-dir'], DEST_URL),
-        filename: path.parse(file.path).name
-      };
+    .pipe(markdown({
+      renderer: renderer
     }))
+    .pipe(data(extractData))
     .pipe(hbs('./.gsk/tools/doc/staticdoc.hbs', { dataSource: 'data' }))
     .pipe(prettify(PRT_CONF))
     .pipe(gulp.dest(DEST));
