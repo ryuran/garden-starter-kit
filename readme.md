@@ -209,6 +209,7 @@ le fichier `.gsk/config.json`, voir les [instructions de configuration](.gsk/rea
 
 ### HTML
 * [Twig](.gsk/docs/html/twig.md)
+* [Handlebars](.gsk/docs/html/handlebars.md)
 
 ### JavaScript
 * [Simple pipeline](.gsk/docs/js/simple.md)

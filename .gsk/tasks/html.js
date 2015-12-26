@@ -15,8 +15,7 @@ var ENV      = require('../tools/env').html;
 // On ne va compiler que les fichiers dont le nom ne commence pas par un _
 var SRC  = [
   path.join(ENV['src-dir'], '**', '*.*'),
-  path.join('!' + ENV['src-dir'], '**', '_*'),
-  path.join('!' + ENV['src-dir'], '**', '*.js')
+  path.join('!' + ENV['src-dir'], '**', '_*')
 ];
 var DEST = ENV['dest-dir'];
 
