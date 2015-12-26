@@ -15,6 +15,7 @@ var markdown = require('gulp-markdown');
 var prettify = require('gulp-prettify');
 var dox      = require('gulp-dox');
 var hbs      = require('gulp-hbs');
+var dir      = require('require-dir');
 var ENV      = require('../tools/env');
 
 var SRC      = path.join(ENV.doc['src-dir'], '**', '*.md');
@@ -85,20 +86,19 @@ function extractData(file) {
 
 // HBS HELPERS
 // ----------------------------------------------------------------------------
-var root = require('../tools/handlebars/helpers/root');
+var helpers = dir('../tools/handlebars/helpers');
 
-hbs.registerHelper('root', root);
+hbs.registerHelper(helpers);
 
 
 // MARKED CUSTOM RENDERER
 // ----------------------------------------------------------------------------
 var renderer = new markdown.marked.Renderer();
 
+// Link to markdown files are transformed into link to HTML files
+// This allow to use both the gitlab markdown linking and the HTML
+// transformation for exporting the doc.
 renderer.link = function (href, title, text) {
-  // Link to markdown files are transformed into link to HTML files
-  // This allow to use bith the gitlab markdown linking and the HTML
-  // transformation for exporting the doc.
-
   var url = [];
   url.push('<a href="');
   url.push(href.replace(/\.md$/, '.html'));
@@ -208,5 +208,5 @@ gulp.task('doc', function (cb) {
   // Si on optimize le projet, on n'inclus pas la documentation.
   if (ENV.all.optimize) { cb(null); }
 
-  runner('doc:static', 'doc:kss', 'doc:js', cb);
+  runner('doc:static', ['doc:kss', 'doc:js'], cb);
 });
