@@ -53,7 +53,8 @@ function processData(file) {
 
   var data  = _.extend({}, gData, sData);
   data.url  = file.path.replace(ENV.html['src-dir'], DEST_URL).replace('.hbs', '.html');
-  data.main = hbs.handlebars.compile(file.contents.toString())(data);
+
+  hbs.registerPartial('body', file.contents.toString());
 
   return data;
 }

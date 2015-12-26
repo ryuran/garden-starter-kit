@@ -47,6 +47,9 @@ page correspondante.
 > **NOTE:** _Tous les layouts doivent être placés dans le dossier
   `src/html/layout`_
 
+> **NOTE:** _Dans le layout, le contenu de la page est inclus via le partial
+  `{{> body}}`_
+
 Helpers
 -------------------------------------------------------------------------------
 Handlebars peut être etendu par l'usage de helpers.
