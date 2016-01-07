@@ -4,7 +4,7 @@ module.exports = (grunt) ->
   catch error
     grunt.log.debug "time-grunt not installed"
 
-  # TACHES PERSONNALISÉES COMMUNES A TOUS LES PROJETS
+  # TÂCHES PERSONNALISÉES COMMUNES A TOUS LES PROJETS
   # ============================================================================
   # $ grunt live
   # Lance tous les watcher grunt ainsi qu'un serveur statique pour voir le
@@ -38,9 +38,14 @@ module.exports = (grunt) ->
   # Lance les tests du projets
   grunt.registerTask 'test', ['scsslint', 'jshint']
 
+  # $ grunt kss
+  # Generation du style guide basé sur les commentaires KSS des fichiers SCSS
+  # Alias de grunt exec:kss
+  grunt.registerTask 'kss', ['exec:kss']
 
-  # CHARGE LES TACHES A LA DEMANDE POUR ACCELERER
-  # L'EXECUTION DES TACHES APPELLÉES INDIVIDUELLEMENT
+
+  # CHARGE LES TÂCHES A LA DEMANDE POUR ACCELERER
+  # L'EXECUTION DES TâCHES APPELLÉES INDIVIDUELLEMENT
   # ============================================================================
   [
     'assemble'
@@ -52,7 +57,6 @@ module.exports = (grunt) ->
     'grunt-contrib-jshint'
     'grunt-contrib-uglify'
     'grunt-exec'
-    'grunt-kss'
     'grunt-newer'
     'grunt-postcss'
     'grunt-prettify'
@@ -63,14 +67,19 @@ module.exports = (grunt) ->
       grunt.loadNpmTasks npmTask
       grunt.task.run task
 
-  # taches qui ne peuvent pas être optimisées de cette manière
-  grunt.loadNpmTasks 'grunt-usemin'
-  grunt.loadNpmTasks 'grunt-scss-lint'
-  grunt.loadNpmTasks 'grunt-contrib-connect'
-  grunt.loadNpmTasks 'grunt-contrib-watch'
+  # tâches qui doivent être distinguées via `task:distinction`...
+  # ou tâches qui ne peuvent pas être optimisées de cette manière
+  [
+    'grunt-usemin'
+    'grunt-exec'
+    'grunt-scss-lint'
+    'grunt-contrib-connect'
+    'grunt-contrib-watch'
+  ].forEach (npmTask) ->
+    grunt.loadNpmTasks npmTask
 
 
-  # CONFIGURATION DES TACHES CHARGÉES
+  # CONFIGURATION DES TÂCHES CHARGÉES
   # ============================================================================
   grunt.initConfig
     pkg: grunt.file.readJSON 'package.json'
@@ -78,7 +87,7 @@ module.exports = (grunt) ->
 
     # HTML
     # ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
-    # Les taches suivantes sont exclusivement dédiées au traitement du HTML
+    # Les tâches suivantes sont exclusivement dédiées au traitement du HTML
 
     # $ grunt assemble
     # --------------------------------------------------------------------------
@@ -142,17 +151,10 @@ module.exports = (grunt) ->
         expand: true
         src   : ['build/prod/**/*.html']
 
-    # $ grunt kss
-    # --------------------------------------------------------------------------
-    # Generation du style guide basé sur les commentaires KSS des fichiers SCSS
-    kss:
-      styleguide:
-        options:
-          config: 'kss.json'
 
     # IMAGES
     # ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
-    # Les taches suivantes sont exclusivement dédiées au traitement des images
+    # Les tâches suivantes sont exclusivement dédiées au traitement des images
 
     # $ grunt imagemin
     # --------------------------------------------------------------------------
@@ -182,10 +184,9 @@ module.exports = (grunt) ->
         ]
 
 
-
     # CSS
     # ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
-    # Les taches suivantes sont exclusivement dédiées au traitement de CSS
+    # Les tâches suivantes sont exclusivement dédiées au traitement de CSS
 
     # $ grunt compass
     # --------------------------------------------------------------------------
@@ -230,7 +231,7 @@ module.exports = (grunt) ->
 
     # JS
     # ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
-    # Les taches suivantes sont exclusivement dédiées au traitement de JS
+    # Les tâches suivantes sont exclusivement dédiées au traitement de JS
 
     # $ grunt useminPrepare
     # --------------------------------------------------------------------------
@@ -258,7 +259,7 @@ module.exports = (grunt) ->
 
     # UTILITAIRES
     # ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
-    # Les taches suivantes sont des utilitaires génériques
+    # Les tâches suivantes sont des utilitaires génériques
 
     # $ grunt clean
     # --------------------------------------------------------------------------
@@ -305,6 +306,7 @@ module.exports = (grunt) ->
     # Permet d'executer n'importe quelle commande shell
     exec:
       bower: 'bower install'
+      kss: 'kss-node -c kss.json'
 
     # $ grunt connect
     # --------------------------------------------------------------------------
@@ -384,7 +386,7 @@ module.exports = (grunt) ->
 
 
 
-  # TACHES PERSONALISÉES
+  # TÂCHES PERSONALISÉES
   # ============================================================================
   # Intermediate task to handle `$ grunt watch --sass=no`
   grunt.registerTask 'sass', 'Checking Sass requirement', () ->
