@@ -118,15 +118,15 @@ module.exports = (grunt) ->
           expand : true
           cwd    : 'docs/'
           src    : ['**/*.md']
-          dest   : 'build/docs/docs'
+          dest   : 'build/dev/docs/docs'
         },{
           src : 'readme.md'
-          dest: 'build/docs/index.html'
+          dest: 'build/dev/docs/index.html'
         },{
           expand : true
           cwd    : 'src/docs/'
           src    : ['**/*.md']
-          dest   : 'build/docs'
+          dest   : 'build/dev/docs'
         }]
 
     # $ grunt prettify
@@ -266,7 +266,6 @@ module.exports = (grunt) ->
     clean:
       dev : ['build/dev']
       prod: ['build/prod']
-      doc : ['build/docs']
 
     # $ grunt copy
     # --------------------------------------------------------------------------
@@ -317,22 +316,18 @@ module.exports = (grunt) ->
       # Uniquement pour être utilisé avec watch:livereload
       live:
         options:
+          base       : 'build/dev'
           port       : 8000
           livereload : true
-          middleware : (connect) ->
-            [ connect.static('build/dev'),
-              connect().use('/docs', connect.static('build/docs')) ]
 
       # $ grunt connect:dev
-      # Pour pouvoir voir le contenu du repertoir `/build/dev` et `/build/docs`
-      # A l'adresse http://localhost:8000 et http://localhost:8000/docs/
+      # Pour pouvoir voir le contenu du repertoir `/build/dev`
+      # A l'adresse http://localhost:8000
       dev:
         options :
+          base       : 'build/dev'
           port       : 8000
           keepalive  : true
-          middleware : (connect) ->
-            [ connect.static('build/dev'),
-              connect().use('/docs', connect.static('build/docs')) ]
 
       # $ grunt connect:prod
       # Pour pouvoir voir le contenu du repertoir `/build/prod`

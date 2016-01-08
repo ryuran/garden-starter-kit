@@ -1,10 +1,12 @@
 {
-  "source":       "./src/sass",
-  "homepage":     "styleguide.md",
-  "destination":  "./build/docs/styleguide",
-  "template":     "./.kss",
+  "source": "./src/sass",
+  "homepage": "styleguide.md",
+  "destination": "./build/dev/docs/styleguide",
+  "template": "./.kss",
+  "helpers": "./src/helpers",
   "css": [
     "../../css/doc.css",
     "../../css/styles.css"
-  ]
+  ],
+  "js": []
 }

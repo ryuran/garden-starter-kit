@@ -8,10 +8,12 @@ logo : <%- pkg.logo %>
 
 <header class="ca__main__section">
   {{#if description}}<p>{{description}}</p>{{/if}}
+  {{#if env.dev}}
   <p>
-    Accéder à la <a href="/docs">documentation</a><br>
-    Accéder au <a href="/docs/styleguide">guide des styles</a>
+    Accéder à la <a href="docs">documentation</a><br>
+    Accéder au <a href="docs/styleguide">guide des styles</a>
   </p>
+  {{/if}}
 </header>
 
 <section class="ca__main__section">
