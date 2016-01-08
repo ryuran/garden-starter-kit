@@ -3,6 +3,8 @@ module.exports = (grunt) ->
     require('time-grunt')(grunt)
   catch error
     grunt.log.debug "time-grunt not installed"
+  semver = require 'semver'
+  pkg = grunt.file.readJSON 'package.json'
 
   # TACHES PERSONNALISÉES COMMUNES A TOUS LES PROJETS
   # ============================================================================
@@ -38,6 +40,10 @@ module.exports = (grunt) ->
   # Lance les tests du projets
   grunt.registerTask 'test', ['scsslint', 'jshint']
 
+  # $ grunt version
+  # Montée de version avec prompt
+  grunt.registerTask 'version', ['prompt:bump', 'bump']
+
 
   # CHARGE LES TACHES A LA DEMANDE POUR ACCELERER
   # L'EXECUTION DES TACHES APPELLÉES INDIVIDUELLEMENT
@@ -63,11 +69,17 @@ module.exports = (grunt) ->
       grunt.loadNpmTasks npmTask
       grunt.task.run task
 
-  # taches qui ne peuvent pas être optimisées de cette manière
-  grunt.loadNpmTasks 'grunt-usemin'
-  grunt.loadNpmTasks 'grunt-scss-lint'
-  grunt.loadNpmTasks 'grunt-contrib-connect'
-  grunt.loadNpmTasks 'grunt-contrib-watch'
+  # taches qui doivent être distinguées via `task:distinction`...
+  # ... ou taches qui ne peuvent pas être optimisées de cette manière
+  [
+    'grunt-prompt'
+    'grunt-bump'
+    'grunt-usemin'
+    'grunt-scss-lint'
+    'grunt-contrib-connect'
+    'grunt-contrib-watch'
+  ].forEach (npmTask) ->
+    grunt.loadNpmTasks npmTask
 
 
   # CONFIGURATION DES TACHES CHARGÉES
@@ -382,6 +394,69 @@ module.exports = (grunt) ->
           template: 'hooks/pre-commit.js'
         'pre-commit': 'test'
 
+
+
+    # GESTION DE LA VERSION
+    # --------------------------------------------------------------------------
+
+    # $ grunt bump
+    # --------------------------------------------------------------------------
+    # bump version
+    bump:
+      options:
+        files: ['package.json']
+        updateConfigs: ['pkg']
+        commit: true
+        commitMessage: '=== Bump to version <%= pkg.name %>_%VERSION% ==='
+        commitFiles: ['package.json']
+        createTag: true
+        tagName: '<%= pkg.name %>_%VERSION%'
+        tagMessage: 'Bumping <%= pkg.name %> to version %VERSION%'
+        push: true
+        pushTo: 'origin'
+        gitDescribeOptions: '--tags --always --abbrev=1 --dirty=-d'
+        globalReplace: false
+        prereleaseName: false
+        regExp: false
+
+
+    # $ grunt prompt
+    # --------------------------------------------------------------------------
+    # prompt user for version bump
+    prompt:
+      bump:
+        options:
+          questions: [{
+            config  : 'bump.options.versionType'
+            type    : 'list'
+            message : 'Bump version from ' + '<%= pkg.version %>' + ' to:'
+            default : 'patch'
+            choices: [{
+              value : 'git'
+              name  : 'Build:  '+ (pkg.version + '-?') + ' Unstable, betas, and release candidates.'
+            },{
+              value : 'patch'
+              name  : 'Patch:  ' + semver.inc(pkg.version, 'patch') + ' Bug fixes.'
+            },{
+              value : 'minor'
+              name  : 'Minor:  ' + semver.inc(pkg.version, 'minor') + ' Add some evolutions.'
+            },{
+              value : 'major'
+              name  : 'Major:  ' + semver.inc(pkg.version, 'major') + ' Add new functionalities.'
+            },{
+              value : 'custom'
+              name  : 'Custom: ?.?.? Specify version...'
+            }]
+          },{
+            config   : 'bump.options.setVersion'
+            type     : 'input'
+            message  : 'What specific version would you like?'
+            when     : (answers) ->
+              answers['bump.options.versionType'] == 'custom'
+            validate : (value) ->
+              valid = semver.valid value
+              typeof valid == 'string' || 'Must be a valid semver, such as 1.2.3-rc1. See http://semver.org/ for more details.'
+          }]
 
 
   # TACHES PERSONALISÉES
