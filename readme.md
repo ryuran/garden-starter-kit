@@ -45,7 +45,7 @@ suivant installés au niveau global sur votre machine :
   Linux Mint 16 à besoin de `ruby1.9.1-beta`_
 
 Afin de pouvoir utiliser facilement les commandes fournies par npm (notamment _gulp_), installées
-dans votre répertoire projet (dans le dossier `node_modules`), plusieurs méthodes existent. 
+dans votre répertoire projet (dans le dossier `node_modules`), plusieurs méthodes existent.
 
 ### Solution 1 : ajout au PATH
 
@@ -68,7 +68,7 @@ $ gulp live
 
 ### Solution 2 : méthode dédiée
 
-Une autre solution valable d'un projet à l'autre est de définir une fonction dédiée dans votre _profile_ de terminal qui ira à chaque fois lancer les commandes inhérentes au projet en cours. 
+Une autre solution valable d'un projet à l'autre est de définir une fonction dédiée dans votre _profile_ de terminal qui ira à chaque fois lancer les commandes inhérentes au projet en cours.
 
 Pour Mac/Linux, rajouter la fonction suivante dans votre fichier `~/.profile`
 (Mac), `~/.bash_rc` (Linux) ou tout autre fichier de configuration
@@ -76,10 +76,10 @@ correspondant à votre shell, pour que le changement soit effectif à chaque
 lancement de votre terminal.
 
 ```
-function npm-do { 
-	(PATH=$(npm bin):$PATH; eval $@;) 
+function npm-do {
+	(PATH=$(npm bin):$PATH; eval $@;)
 }
-``` 
+```
 
 Vous pourrez alors lancer les commandes voulues par le biais de cette méthode :
 
@@ -134,7 +134,7 @@ Les sources sur lesquelles nous travaillons sont toutes dans le répertoire
 être modifiés après le début du projet_.
 
 * `/src`
-* `/src/css`: l'ensemble des fichiers qui produiront du CSS
+* `/src/css`: l'ensemble des fichiers qui produiront du CSS. Attention : les dossiers contenant vos inclusions SASS doivent obligatoirement commencer par un `_` (cf. #38)
 * `/src/js`: l'ensemble des sources JavaScript du projet
 * `/src/assets`: l'ensemble des fichiers qui doivent être utilisés par le projet en l'état.
 * `/src/assets/img`: l'ensemble des images d'interface du projet
