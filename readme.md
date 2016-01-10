@@ -1,5 +1,5 @@
 
-Clever Garden Starter Kit
+Clever Garden _Starter Kit_
 ===============================================================================
 
 Ce dépôt GIT sert de kit de démarrage pour les projets d'intégration statique.
@@ -107,7 +107,7 @@ $ rm -rf .git
 ```
 
 Il ne vous reste plus qu'à initialiser le dépôt git de votre projet et commiter
-le starter kit que vous avez récupéré pour commencer votre projet:
+le _starter kit_ que vous avez récupéré pour commencer votre projet:
 
 ```bash
 $ git init
@@ -154,7 +154,7 @@ les répertoires suivant:
 Tâches normalisées
 -------------------------------------------------------------------------------
 
-Tous projet démarré avec ce starter kit dispose d'un certain nombre de tâches
+Tout projet démarré avec ce _starter kit_ dispose d'un certain nombre de tâches
 Gulp normalisées, utilisables quels que soient les modules Gulp utilisés.
 
 **live**: permet de démarrer un serveur statique pour les pages HTML et d'avoir
@@ -221,7 +221,7 @@ un nouveau projet d'intégration. Il garantissent un _workflow_ de travail optim
 * [Linter](.gsk/docs/linter.md)
 
 Les outils listés ci-après sont à utiliser et configurés pour votre projet.
-Ils sont tous utilisables en l'état, mais le starter kit est suffisamment flexible
+Ils sont tous utilisables en l'état, mais le _starter kit_ est suffisamment flexible
 pour s'adapter à vos besoins. Le choix d'utilisation de ces outils se fait via
 le fichier `.gsk/config.json`, voir les [instructions de configuration](.gsk/readme.md)
 
