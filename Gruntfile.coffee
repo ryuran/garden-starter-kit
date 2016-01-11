@@ -47,7 +47,7 @@ module.exports = (grunt) ->
   # L'EXECUTION DES TACHES APPELLÉES INDIVIDUELLEMENT
   # ============================================================================
   [
-    'assemble'
+    'grunt-assemble'
     'grunt-contrib-clean'
     'grunt-contrib-compass'
     'grunt-contrib-concat'
