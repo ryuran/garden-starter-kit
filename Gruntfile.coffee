@@ -38,6 +38,10 @@ module.exports = (grunt) ->
   # Lance les tests du projets
   grunt.registerTask 'test', ['scsslint', 'jshint']
 
+  # $ grunt deploy
+  # Alias of `sftp-deploy`
+  grunt.registerTask 'deploy', ['sftp-deploy:build']
+
 
   # CHARGE LES TACHES A LA DEMANDE POUR ACCELERER
   # L'EXECUTION DES TACHES APPELLÉES INDIVIDUELLEMENT
@@ -63,11 +67,17 @@ module.exports = (grunt) ->
       grunt.loadNpmTasks npmTask
       grunt.task.run task
 
-  # taches qui ne peuvent pas être optimisées de cette manière
-  grunt.loadNpmTasks 'grunt-usemin'
-  grunt.loadNpmTasks 'grunt-scss-lint'
-  grunt.loadNpmTasks 'grunt-contrib-connect'
-  grunt.loadNpmTasks 'grunt-contrib-watch'
+  # taches qui doivent être distinguées via `task:distinction`...
+  # ... ou taches qui ne peuvent pas être optimisées de cette manière
+  [
+    'grunt-usemin'
+    'grunt-scss-lint'
+    'grunt-contrib-connect'
+    'grunt-contrib-watch'
+    'grunt-sftp-deploy'
+  ].forEach (npmTask) ->
+    grunt.loadNpmTasks npmTask
+
 
 
   # CONFIGURATION DES TACHES CHARGÉES
@@ -382,6 +392,36 @@ module.exports = (grunt) ->
           template: 'hooks/pre-commit.js'
         'pre-commit': 'test'
 
+
+    # Deploy
+    # ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+
+    # $ grunt sftp-deploy
+    # --------------------------------------------------------------------------
+    # Configuration du déploiment sftp sur le serveur de preview
+    # Ajouter un fichier `.ftppass` au même niveau que le Gruntfile.coffee qui
+    # contient les informations de connections sous cette forme :
+    #
+    # ```
+    # {
+    #   "key1": {
+    #     "username": "your user name",
+    #     "password": "your password"
+    #   }
+    # }
+    # ```
+    'sftp-deploy':
+      build:
+        auth:
+          host: 'garden.clever-age.net'
+          port: 22006
+          authKey: 'key1'
+        src: 'build'
+        dest: '/home/integration/www/<%= pkg.name %>/<%= pkg.name %>_<%= pkg.version %>'
+        exclusions: ['build/**/.DS_Store', 'build/**/Thumbs.db']
+        serverSep: '/'
+        concurrency: 4
+        progress: true
 
 
   # TACHES PERSONALISÉES
