@@ -8,6 +8,6 @@
   "max_preserve_newlines": 1,
   "preserve_newlines"    : true,
   "unformatted"          : [
-    "pre", "code", "a", "sub", "sup", "b", "i", "u", "strong", "em"
+    "pre", "code", "a", "sub", "sup", "b", "i", "u", "strong", "em", "li"
   ]
 }
