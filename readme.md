@@ -18,7 +18,7 @@ Créer un nouveau projet
 -------------------------------------------------------------------------------
 Pour créer un nouveau projet, suivez simplement les instructions ci-après.
 
-> __NOTE :__ _Il s'agit ici des instructions manuelles à suivre. Cependant, à terme,
+> **NOTE :** _Il s'agit ici des instructions manuelles à suivre. Cependant, à terme,
   il est prévu qu'un script d'installation soit disponible pour simplifier le démarage._
 
 ## Vérifier votre environnement
@@ -91,7 +91,7 @@ $ npm-do gulp live
 ## Démarrer votre projet
 Vous avez deux options pour démarrer votre projet :
 
-1. [Télécharger](https://git.clever-age.net/clever-age-expertise/clever-garden-starter-kit/repository/archive.zip?ref=master) le contenu de ce dépôt et l'utiliser comme base de démarrage
+1. [Télécharger](https://github.com/cleverage/garden-starter-kit/archive/master.zip) le contenu de ce dépôt et l'utiliser comme base de démarrage
 2. Clôner ce dépôt avec GIT (voir ci-après)
 
 ### Clôner le kit de démarrage avec GIT
@@ -101,7 +101,7 @@ Le plus simple :
 
 ```bash
 $ cd ~/monProjet
-$ git clone git@git.clever-age.net:clever-age-expertise/clever-garden-starter-kit.git .
+$ git clone git@github.com:cleverage/garden-starter-kit.git .
 $ rm -rf .git
 ```
 
@@ -133,7 +133,8 @@ Les sources sur lesquelles nous travaillons sont toutes dans le répertoire
 être modifiés après le début du projet._
 
 * `/src`
-* `/src/css` : l'ensemble des fichiers qui produiront du CSS. Attention : les dossiers contenant vos inclusions SASS doivent obligatoirement commencer par un `_` (cf. #38)
+* `/src/css` : l'ensemble des fichiers qui produiront du CSS.
+  **Attention :** _Les dossiers contenant vos inclusions SASS doivent obligatoirement commencer par un `_`_
 * `/src/js` : l'ensemble des sources JavaScript du projet
 * `/src/assets` : l'ensemble des fichiers qui doivent être utilisés par le projet en l'état.
 * `/src/assets/img` : l'ensemble des images d'interface du projet
@@ -162,7 +163,7 @@ un _watch_ sur les fichiers du projet en même temps.
 > **ATTENTION :** _Même si tous les chemins sont résolus de manière relative, il
   est vivement conseillé de préférer cette méthode à tout autre serveur local
   que vous pourriez utiliser. De cette manière, vous verrez toujours votre site
-  « à la racine ». Votre site répondra sur l’URL : http://localhost:8000_
+  « à la racine ». Votre site répondra sur l’URL : [http://localhost:8000](http://localhost:8000)_
 
 ```bash
 $ gulp live
@@ -225,18 +226,18 @@ Outils utilisés
 Les outils listés ici doivent êtres utilisés obligatoirement lorsqu'on démarre
 un nouveau projet d'intégration. Ils garantissent un _workflow_ de travail optimal.
 
-* [Gulp](.gsk/docs/gulp.md)
+* [Gulp](http://gulpjs.com/)
 * [Linter](.gsk/docs/linter.md)
 
 Les outils listés ci-après sont à utiliser et à configurer pour votre projet.
 Ils sont tous utilisables tel quel, mais le _starter kit_ est suffisamment flexible
 pour s'adapter à vos besoins. Le choix d'utilisation de ces outils se fait via
-le fichier `.gsk/config.json`, voir les instructions de configuration.
+le fichier `.gsk/config.json`, voir les instructions de configuration ci-après :
 
 ### CSS
 * [Sass/compass](.gsk/docs/css/sass.md)
 * [Stylus](.gsk/docs/css/stylus.md)
-* [LESS](.gsk/docs/less.md)
+* [LESS](.gsk/docs/css/less.md)
 
 ### HTML
 * [Twig](.gsk/docs/html/twig.md)
