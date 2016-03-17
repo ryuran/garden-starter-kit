@@ -22,6 +22,9 @@ $color-bg-light-cell: #FFFFFF;
 $column: 4rem;
 $gap: 1rem;
 
+// Icon font
+$font-icon: 'fontello';
+
 
 // Functions
 // ----------------------------------------------------------------------------
@@ -43,7 +46,7 @@ $gap: 1rem;
   background: $color-bg-content;
 }
 
-@mixin title {
+%title {
   font-weight: normal;
   color: $color-title;
   text-transform: uppercase;
@@ -51,26 +54,30 @@ $gap: 1rem;
   margin: 2rem 0 1rem;
 }
 
-@mixin title1 {
+%title1 {
+  @extend %title;
   font-size: 1.8rem;
   margin-bottom: 2rem;
   padding-bottom: .8rem;
   border-bottom: 1px solid $color-title;
 }
 
-@mixin title2 {
+%title2 {
+  @extend %title;
   font-size: 1.45rem;
   padding-top: .8rem;
   border-top: 1px solid $color-title;
 }
 
-@mixin title3 {
+%title3 {
+  @extend %title;
   font-size: 1.2rem;
   font-weight: bold;
   padding-left: 1.5em;
 }
 
-@mixin title4 {
+%title4 {
+  @extend %title;
   font-size: 1rem;
   font-weight: bold;
   padding-left: 3em;
@@ -225,25 +232,25 @@ $gap: 1rem;
     }
 
     h1 {
-      @include title;
-      @include title1;
+      @extend %title;
+      @extend %title1;
     }
 
     h2 {
-      @include title;
-      @include title2;
+      @extend %title;
+      @extend %title2;
     }
 
     h3 {
-      @include title;
-      @include title3;
+      @extend %title;
+      @extend %title3;
     }
 
     h4,
     h5,
     h6 {
-      @include title;
-      @include title4;
+      @extend %title;
+      @extend %title4;
     }
   }
 
@@ -259,23 +266,19 @@ $gap: 1rem;
     }
 
     &1 {
-      @include title;
-      @include title1;
+      @extend %title1;
     }
 
     &2 {
-      @include title;
-      @include title2;
+      @extend %title2;
     }
 
     &3 {
-      @include title;
-      @include title3;
+      @extend %title3;
     }
 
     &4 {
-      @include title;
-      @include title4;
+      @extend %title4;
     }
   }
 
@@ -365,6 +368,99 @@ $gap: 1rem;
         display: table-cell;
         clear: both;
       }
+    }
+  }
+
+  &__colors {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    > li {
+      overflow: hidden;
+    }
+
+    &__demo {
+      float: left;
+      height: 100px;
+      width: 100px;
+      border: 2px solid $grey;
+      margin-bottom: .75em;
+    }
+
+    &__info {
+      margin-left: 120px;
+    }
+
+    &__name {
+      margin-top: 0;
+      margin-bottom: .75em;
+      font-weight: bold;
+    }
+
+    &__hex,
+    &__rgb,
+    &__hsl {
+      font-size: .8em;
+      margin: 0;
+    }
+
+    &__description {
+      color: $dark-grey;
+    }
+  }
+
+  &__icons {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    > li {
+      overflow: hidden;
+    }
+
+    &__demo {
+      float: left;
+      height: 40px;
+      padding: 30px 0;
+      width: 100px;
+      text-align: center;
+      border: 2px solid $grey;
+      font-size: 40px;
+      margin-bottom: .25em;
+
+      // lib/icon
+      font-family: $font-icon;
+      speak: none;
+      font-style: normal;
+      font-weight: normal;
+      font-variant: normal;
+      text-transform: none;
+      line-height: 1;
+
+      // Better Font Rendering
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    &__info {
+      margin-left: 120px;
+
+      p {
+        margin-top: 0;
+      }
+    }
+
+    &__name {
+      font-weight: bold;
+    }
+
+    &__char {
+      margin: 0;
+    }
+
+    &__description {
+      color: $dark-grey;
     }
   }
 }
