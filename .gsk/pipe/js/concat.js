@@ -14,12 +14,21 @@ var bs        = require('browser-sync');
 var err       = require('../../tools/errcb');
 var ENV       = require('../../tools/env');
 
+// You may want to specify the files order in _config.json_, via the following
+// attribute: `ENV.js.src`
+// Otherwise files will be concatenated in alphabetical order, starting with
+// _lib_ folder
 var SRC  = [
   path.join(ENV.js['src-dir'], 'lib', '**', '*'),
   path.join(ENV.js['src-dir'], '**', '*')
 ];
-var DEST = ENV.js['dest-dir'];
+if(ENV.js.src) {
+  SRC = ENV.js.src.map(function(jsfile) {
+    return path.resolve('.', path.normalize(jsfile));
+  });
+}
 
+var DEST = ENV.js['dest-dir'];
 
 // TASK DEFINITION
 // ----------------------------------------------------------------------------
