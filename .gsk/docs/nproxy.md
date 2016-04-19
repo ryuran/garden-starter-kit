@@ -26,10 +26,10 @@ Le proxy est installé en même temps que les autres paquets NodeJS (via la comm
 Démarrer le proxy
 --------------------------------------------------------------------------------
 
-Pour démarrer le proxy, se placer dans le dossier racine du projet (contenant le fichier _Gruntfile.coffee), et entrez la commande suivante :
+Pour démarrer le proxy, se placer dans le dossier racine du projet (contenant le fichier _gulpfile.js_), et entrez la commande suivante :
 
 ```shell
-> grunt nproxy
+> gulp nproxy
 ```
 
 Le proxy '''localhost:8989''' est alors accessible.
@@ -37,13 +37,13 @@ Le proxy '''localhost:8989''' est alors accessible.
 Proxyfier le Javascript uniquement (**pas encore implémenté**) :
 
 ```shell
-> grunt nproxy --js
+> gulp nproxy --js
 ```
 
 Proxyfier le CSS uniquement (**pas encore implémenté**) :
 
 ```shell
-> grunt nproxy --css
+> gulp nproxy --css
 ```
 
 Désactiver les scripts externes (e.g. Google Tag Management, Facebook) (**pas encore implémenté**) :
@@ -51,7 +51,7 @@ Désactiver les scripts externes (e.g. Google Tag Management, Facebook) (**pas e
 (repectivement ''--no-gmt'', ''--no-facebook'')
 
 ```shell
-> grunt --no-externals
+> gulp --no-externals
 ```
 
 Pour désactiver ces modules, on dessert un fichier javascript vide au lieu du fichier original.
@@ -101,8 +101,8 @@ __Etapes à suivre (exemple pour switchyomega)__
 * Cochez le bouton radio "switch profile" puis cliquez sur create
 * Cliquez sur le bouton "edit source code"
 * Remplacer le contenu du textarea par les lignes en dessous.
-* Demarrer nproxy : ```grunt nproxy```
-* Demarrer un ```grunt connect:dev``` ou ```grunt live```
+* Demarrer nproxy : ```gulp nproxy```
+* Demarrer un ```gulp connect:dev``` ou ```gulp live```
 * Aller sur localhost:8000/
 * Cliquez sur le plugin switchyomega en haut à gauche du navigateur.
 * Et cliquez le profil que vous venez de creer : RSC, et voilà !
