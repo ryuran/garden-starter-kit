@@ -55,6 +55,9 @@ bower_components
 # Ignorer les biblothèques et fichiers temporaires gérés via JSPM
 jspm_packages
 
+# Ignorer le cache nproxy
+nproxy-cache
+
 # PROJET
 # -----------------------------------------------------------------------------
 # Ignorer les bibliothèques JS tiers placé dans les sources

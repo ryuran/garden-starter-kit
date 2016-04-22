@@ -250,3 +250,6 @@ le fichier `.gsk/config.json`, voir les instructions de configuration ci-après�
 ### Documentation
 * [Documentation statique](docs/index.md)
 * [KSS](.gsk/docs/kss.md)
+
+### Autres
+* [Nproxy](.gsk/docs/nproxy.md) pour servir vos fichiers locaux à la place de fichiers distants (debug)
