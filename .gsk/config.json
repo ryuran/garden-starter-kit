@@ -7,7 +7,11 @@
     "src-dir"     : "./src/css",
     "dest-dir"    : "./build/css",
     "engine"      : "sass",
-    "autoprefixer": ["> 4%", "ie >= 8"]
+    "postcss"     : {
+      "autoprefixer": {
+        "browsers": ["> 4%", "ie >= 8"]
+      }
+    }
   },
   "html" : {
     "src-dir"  : "./src/html",
