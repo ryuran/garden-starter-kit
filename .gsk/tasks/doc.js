@@ -206,7 +206,10 @@ gulp.task('doc:kss', function (cb) {
 // Génère toute la doc du projet
 gulp.task('doc', function (cb) {
   // Si on optimize le projet, on n'inclus pas la documentation.
-  if (ENV.all.optimize) { cb(null); }
+  if (ENV.all.optimize) {
+    cb(null);
+    return;
+  }
 
   runner('doc:static', ['doc:kss', 'doc:js'], cb);
 });
