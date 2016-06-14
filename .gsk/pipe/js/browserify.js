@@ -43,15 +43,15 @@ gulp.task('js', ['test:js'], function () {
       return;
     }
 
-    var b = browserify({
-      entries: files,
-      debug: true/*,
-      transform: [babelify]*/
-    });
-
-    b.transform(babelify, {
-      presets: ['es2015']
-    }).bundle()
+    browserify({
+        entries: files,
+        // debug: true,
+        transform: ['browserify-shim']
+      })
+      .transform(babelify, {
+        presets: ['es2015']
+      })
+      .bundle()
       .pipe(buildStream);
   });
 
