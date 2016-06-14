@@ -60,6 +60,9 @@ nproxy-cache
 # Ignorer la conf du serveur mandataire dans nproxy
 # .gsk/conf/nproxy-auth.json
 
+# Ignorer les identifiants du serveur sftp
+.ftppass
+
 # PROJET
 # -----------------------------------------------------------------------------
 # Ignorer les bibliothèques JS tiers placé dans les sources
