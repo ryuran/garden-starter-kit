@@ -27,6 +27,22 @@ gulp.task('nproxy', function nproxyTask() {
         debug  : argv.debug || false
       };
 
+  // OPTIONAL: If you want nproxy requests to be proxyfied
+  // add a `.nproxy-auth.json` file (ignored by git)
+  // ```
+  // {
+  //   "protocol" : "http",
+  //   "host"     : "10.xx.xx.xx",
+  //   "port"     : 8090,
+  //   "username" : "johndoe",
+  //   "password" : "mypass"
+  // }
+  // ```
+  try {
+    var proxyConf = require('./../nproxy-auth.json');
+    options.proxy = proxyConf;
+  } catch(e) { }
+
   options.responderListFilePath = require('../conf/nproxy.js')(argv);
 
   return nproxy(port, options);

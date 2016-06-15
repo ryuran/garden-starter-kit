@@ -43,7 +43,7 @@
     "jshint-stylish": "^2.0.1",
     "kss": "^2.1.1",
     "lazypipe": "^1.0.1",
-    "nproxy": "stephane-tessier/nproxy#1.6.0",
+    "nproxy": "stephane-tessier/nproxy#1.7.0",
     "require-dir": "^0.3.0",
     "run-sequence": "^1.1.4",
     "through2": "^2.0.0",
