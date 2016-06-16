@@ -221,6 +221,10 @@ $ gulp doc
 $ gulp test
 ```
 
+Browsersync
+-------------------------------------------------------------------------------
+Afin d'automatiser certaines tâches manuelles et rendre le browser-testing plus facile, le Starter Kit embarque une version de [Browsersync](https://www.browsersync.io/). Pour le configurer, l'outil dispose de son propre "back-office" accessible sur le port :3001 (localhost:3001) lorsque votre instance du Starter Kit est route.
+
 Outils utilisés
 -------------------------------------------------------------------------------
 Les outils listés ici doivent êtres utilisés obligatoirement lorsqu'on démarre
