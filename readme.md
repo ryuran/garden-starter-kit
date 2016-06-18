@@ -2,7 +2,7 @@
 Clever Garden _Starter Kit_
 ===============================================================================
 
-Ce dépôt GIT sert de kit de démarrage pour les projets d'intégration statique.
+Ce dépôt sert de kit de démarrage pour les projets d'intégration statique.
 
 Il contient toutes nos bonnes pratiques et tous les outils nécessaires pour
 nos projets d'intégration statique chez Clever Age. Parmi tous les outils
@@ -92,10 +92,10 @@ $ npm-do gulp live
 Vous avez deux options pour démarrer votre projet :
 
 1. [Télécharger](https://github.com/cleverage/garden-starter-kit/archive/master.zip) le contenu de ce dépôt et l'utiliser comme base de démarrage
-2. Clôner ce dépôt avec GIT (voir ci-après)
+2. Clôner ce dépôt avec Git (voir ci-après)
 
-### Clôner le kit de démarrage avec GIT
-Si vous le souhaitez, vous pouvez directement clôner ce dépôt avec GIT.
+### Clôner le kit de démarrage avec Git
+Si vous le souhaitez, vous pouvez directement clôner ce dépôt avec Git.
 
 Le plus simple :
 
@@ -134,7 +134,7 @@ Les sources sur lesquelles nous travaillons sont toutes dans le répertoire
 
 * `/src`
 * `/src/css` : l'ensemble des fichiers qui produiront du CSS.
-  **Attention :** _Les dossiers contenant vos inclusions SASS doivent obligatoirement commencer par un `_`_
+  **Attention :** _Les dossiers contenant vos inclusions Sass doivent obligatoirement commencer par un `_`_
 * `/src/js` : l'ensemble des sources JavaScript du projet
 * `/src/assets` : l'ensemble des fichiers qui doivent être utilisés par le projet en l'état.
 * `/src/assets/img` : l'ensemble des images d'interface du projet
@@ -239,7 +239,7 @@ pour s'adapter à vos besoins. Le choix d'utilisation de ces outils se fait via
 le fichier `.gsk/config.json`, voir les instructions de configuration ci-après :
 
 ### CSS
-* [Sass/compass](.gsk/docs/css/sass.md)
+* [Sass/Compass](.gsk/docs/css/sass.md)
 * [Stylus](.gsk/docs/css/stylus.md)
 * [LESS](.gsk/docs/css/less.md)
 
