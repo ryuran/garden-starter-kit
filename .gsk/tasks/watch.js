@@ -9,22 +9,23 @@ var ENV  = require('../tools/env');
 
 // WATCH CONFIGURATION
 // ----------------------------------------------------------------------------
+// /!\ we need relatives path here, otherwise `gulp.watch` will ignore new files.
 var W = [
   {tasks: ['html'],   files: [].concat(
-    path.join(ENV.html['src-dir'],  '**', '*'),
-    path.join(ENV.html['data-dir'], '**', '*')
+    path.relative('.', path.join(path.relative('.', ENV.html['src-dir']),  '**', '*')),
+    path.relative('.', path.join(path.relative('.', ENV.html['data-dir']), '**', '*'))
   )},
-  {tasks: ['css'],    files: path.join(ENV.css['src-dir'],    '**', '*')},
-  {tasks: ['js'],     files: path.join(ENV.js['src-dir'],     '**', '*')},
-  {tasks: ['images'], files: path.join(ENV.images['src-dir'], '**', '*')}
+  {tasks: ['css'],    files: path.join(path.relative('.', ENV.css['src-dir']),    '**', '*')},
+  {tasks: ['js'],     files: path.join(path.relative('.', ENV.js['src-dir']),     '**', '*')},
+  {tasks: ['images'], files: path.join(path.relative('.', ENV.images['src-dir']), '**', '*')}
 ];
 
 // Uniquement si l'option `--doc` est utilisée, on génère également la documentation
 if(ENV.all.doc) {
   W = W.concat([
-    {tasks: ['doc:static'], files: path.join(ENV.doc['src-dir'], '**', '*.md')},
-    {tasks: ['doc:kss'],    files: path.join(ENV.css['src-dir'], '**', '*')},
-    {tasks: ['doc:js'],     files: path.join(ENV.js['src-dir'],  '**', '*')}
+    {tasks: ['doc:static'], files: path.join(path.relative('.', ENV.doc['src-dir']), '**', '*.md')},
+    {tasks: ['doc:kss'],    files: path.join(path.relative('.', ENV.css['src-dir']), '**', '*')},
+    {tasks: ['doc:js'],     files: path.join(path.relative('.', ENV.js['src-dir']),  '**', '*')}
   ]);
 }
 
