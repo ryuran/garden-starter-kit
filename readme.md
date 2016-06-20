@@ -1,4 +1,3 @@
-
 Clever Garden _Starter Kit_
 ===============================================================================
 
@@ -88,7 +87,7 @@ $ npm-do gulp live
 
 
 
-## Démarrer votre projet
+## Innitialisez votre projet
 Vous avez deux options pour démarrer votre projet :
 
 1. [Télécharger](https://github.com/cleverage/garden-starter-kit/archive/master.zip) le contenu de ce dépôt et l'utiliser comme base de démarrage
@@ -120,7 +119,6 @@ Lors du démarrage de votre projet et à chaque fois que le dépôt est rapatri�
 local, exécutez les commandes suivantes :
 
 ```bash
-$ bundle install --path .gems
 $ npm install
 ```
 
@@ -144,7 +142,7 @@ Les sources sur lesquelles nous travaillons sont toutes dans le répertoire
 * `/src/data` : les fichiers JSON de données à injecter dans les gabarits HTML ou autres
 * `/src/docs` : l'ensemble de la documentation statique du projet au format Markdown
 
-À chaque fois que le projet est « construit », le résultat est disponible dans
+À chaque fois que le projet est « construit », le résultat est disponible dans
 les répertoires suivant :
 
 * `/build`
