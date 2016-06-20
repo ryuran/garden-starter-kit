@@ -1,7 +1,8 @@
 {
   "all": {
     "optimize" : false,
-    "relax"    : false
+    "relax"    : false,
+    "doc"      : false
   },
   "css" : {
     "src-dir"     : "./src/css",

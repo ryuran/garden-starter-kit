@@ -172,6 +172,11 @@ $ gulp live
 # vous pouvez lancer le live en mode relax
 # (Mais c'est mal et vous le savez)
 $ gulp live --relax
+
+# Pour des raisons de performance,
+# le watcher ne génère pas par défaut la documentation
+# Mais vous pouvez activer cette fonctionalité :
+$ gulp live --doc
 ```
 
 **build** : Contruit la version statique du projet (compile les fichiers Sass,
