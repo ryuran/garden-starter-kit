@@ -19,6 +19,14 @@ var W = [
   {tasks: ['images'], files: path.join(ENV.images['src-dir'], '**', '*')}
 ];
 
+// Uniquement si l'option `--doc` est utilisée, on génère également la documentation
+if(ENV.all.doc) {
+  W = W.concat([
+    {tasks: ['doc:static'], files: path.join(ENV.doc['src-dir'], '**', '*.md')},
+    {tasks: ['doc:kss'],    files: path.join(ENV.css['src-dir'], '**', '*')},
+    {tasks: ['doc:js'],     files: path.join(ENV.js['src-dir'],  '**', '*')}
+  ]);
+}
 
 // TASK DEFINITION
 // ----------------------------------------------------------------------------
