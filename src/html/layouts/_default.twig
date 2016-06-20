@@ -13,6 +13,9 @@
   <script src="{% root %}/js/script.js" async></script>
 </head>
 <body>
+  <div style="height: 0; width: 0; position: absolute; visibility: hidden">
+    <!-- inject:svg --><!-- endinject -->
+  </div>
   <section>
     {% block main %}{% endblock %}
   </section>

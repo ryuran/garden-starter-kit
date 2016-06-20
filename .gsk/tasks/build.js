@@ -21,7 +21,7 @@ gulp.task('build:clean', 'Delete the content of the build folder.', function () 
 // Régénère le contenu du dossier `/build`. Il est recommandé de lancer cette
 // tache à chaque fois que l'on réalise un `git pull` du projet.
 gulp.task('build', 'Compile the whole project into build folder.', function (cb) {
-  runner('build:clean', ['assets', 'css', 'js', 'html'], 'doc', 'test:a11y', cb);
+  runner('build:clean', ['assets', 'css', 'js', 'html', 'svg:symbols'], 'doc', 'test:a11y', cb);
 }, {
   options: {
     optimize : 'Optimize for production.',

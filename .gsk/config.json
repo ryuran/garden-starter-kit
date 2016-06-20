@@ -33,6 +33,10 @@
     "src-dir"  : "./src/assets/img",
     "dest-dir" : "./build/img"
   },
+  "svg": {
+    "src-dir"  : "./src/assets/svg/symbols",
+    "html-dir" : "./build/pages"
+  },
   "assets": {
     "src-dir"  : "./src/assets",
     "dest-dir" : "./build"
