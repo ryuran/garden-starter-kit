@@ -39,7 +39,7 @@ gulp.task('nproxy', function nproxyTask() {
   // }
   // ```
   try {
-    var proxyConf = require('./../nproxy-auth.json');
+    var proxyConf = require('./../conf/nproxy-auth.json');
     options.proxy = proxyConf;
   } catch(e) { }
 

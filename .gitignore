@@ -58,7 +58,7 @@ jspm_packages
 # Ignorer le cache nproxy
 nproxy-cache
 # Ignorer la conf du serveur mandataire dans nproxy
-# .gsk/nproxy-auth.json
+# .gsk/conf/nproxy-auth.json
 
 # PROJET
 # -----------------------------------------------------------------------------
