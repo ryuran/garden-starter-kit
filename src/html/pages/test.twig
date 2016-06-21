@@ -10,10 +10,12 @@
 
 {# LAYOUT #}
 {# ------------------------------------------------------------------------- #}
-{% extends "../layout/_default.twig" %}
+{% extends "../layouts/_default.twig" %}
 
 {# GABARIT PRINCIPAL #}
 {# ------------------------------------------------------------------------- #}
 {% block main %}
   <p>{{ description }}</p>
+
+  {% include '../partials/_exemple.twig' %}
 {% endblock %}

@@ -6,7 +6,8 @@ var _        = require('underscore');
 var lazypipe = require('lazypipe');
 var gulp     = require('gulp');
 var gutil    = require('gulp-util');
-var hbs      = require('gulp-hbs');
+var hb       = require('gulp-hb');
+var rename   = require('gulp-rename');
 var data     = require('gulp-data');
 var dir      = require('require-dir');
 var ENV      = require('../../tools/env');
@@ -17,13 +18,8 @@ var DEST_URL = DEST.replace(path.resolve(ENV.connect.baseDir), '')
 
 var genericDataFile  = path.resolve(path.join(ENV.html['data-dir'], 'data.json'));
 
-var layouts  = path.join(ENV.html['src-dir'], 'layout', '**', '*.hbs');
-
-// HBS HELPERS
-// ----------------------------------------------------------------------------
-var helpers = dir('../../tools/handlebars/helpers');
-
-hbs.registerHelper(helpers);
+var partials   = path.join(ENV.html['src-dir'], '{layouts,partials}', '**', '*.hbs');
+var helpers   = './.gsk/tools/handlebars/helpers/**/*.js';
 
 // UTILS
 // ----------------------------------------------------------------------------
@@ -54,17 +50,25 @@ function processData(file) {
   var data  = _.extend({}, gData, sData);
   data.url  = file.path.replace(ENV.html['src-dir'], DEST_URL).replace('.hbs', '.html');
 
-  hbs.registerPartial('body', file.contents.toString());
-
   return data;
 }
 
 module.exports = function () {
   var lazystream = lazypipe()
     .pipe(data, processData)
-    .pipe(hbs, gulp.src(layouts), {
-      dataSource: 'data',
-      defaultTemplate: ENV.html.layout || '_default.hbs'
+    .pipe(hb, {
+      helpers: helpers,
+      partials: partials,
+      parsePartialName: function parsePartialName(options, file) {
+        var partialName = file.path.replace(file.base,'');
+        partialName = partialName.replace('.hbs','');
+        partialName = partialName.replace('partials/','');
+        partialName = partialName.replace(/\//g,'');
+        return partialName;
+      }
+    })
+    .pipe(rename, {
+      extname: '.html'
     });
 
   return lazystream();
