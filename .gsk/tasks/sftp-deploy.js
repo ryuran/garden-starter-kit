@@ -14,9 +14,9 @@ var gutil  = require('gulp-util');
 // ----------------------------------------------------------------------------
 // $ gulp sftp-deploy
 // ----------------------------------------------------------------------------
-// Déploi le dossier du build sur un serveur de démo via le protocol SFTP
-// Les identifiants sont dans le fichier `.ftpass` (à créer au même niveau que
-// le fichier `gulpfile.js`):
+// Deploys the build folder onto a preview server via SFTP.
+// The configuration is in the `.ftpass` file (to be created at the same level
+// as `gulpfile.js`):
 // ```
 // {
 //   "key1": {
@@ -25,6 +25,9 @@ var gutil  = require('gulp-util');
 //   }
 // }
 // ```
+// Caution: before the first deploy, ensure that the root target folder exists
+// (if needed, create it). We didn't solve this problem because it prevents
+// deploying at the wrong location.
 gulp.task('sftp-deploy', function () {
 
   var SRC = path.join(ENV['sftp-deploy']['src-dir'], '**', '*');
