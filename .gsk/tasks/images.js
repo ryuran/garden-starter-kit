@@ -41,7 +41,7 @@ var IMG_MIN = {
 // $ gulp images
 // ----------------------------------------------------------------------------
 // Gère toutes les optimisations d'image:
-gulp.task('images', function () {
+gulp.task('images', 'Optimise and copy images into build folder.', function () {
   return gulp.src(SRC)
     .pipe(newer(DEST))
     .pipe(imagemin(IMG_MIN))

@@ -17,7 +17,7 @@ var ENV  = require('../tools/env').connect;
 //
 // Pour activer HTTPS, ajoutez le paramètre `https:true` dans la configuration
 // d'initialisation de browser-sync.
-gulp.task('connect', function () {
+gulp.task('connect', 'Starts a server that will serve the content of the build folder.', function () {
   bs.init({
     port: ENV.port,
     open: ENV.open,

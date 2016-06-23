@@ -17,7 +17,7 @@ var ENV    = require('../tools/env');
 
 // see `conf/nproxy.js` for proxy configuration
 
-gulp.task('nproxy', function nproxyTask() {
+gulp.task('nproxy', 'Starts nproxy (proxy files, webservices, caching...).', function nproxyTask() {
 
 	// use `--port=8080` to change the port number
 	var port = argv.port || 8989,
@@ -47,4 +47,8 @@ gulp.task('nproxy', function nproxyTask() {
 
   return nproxy(port, options);
 
+}, {
+  options: {
+    debug: 'Debug.'
+  }
 });

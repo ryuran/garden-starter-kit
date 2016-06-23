@@ -34,8 +34,12 @@ if(ENV.all.doc) {
 // $ gulp watch
 // ----------------------------------------------------------------------------
 // Configuration de tous les watcher du projet
-gulp.task('watch', function () {
+gulp.task('watch', 'Starts all the watchers.', function () {
   W.forEach(function (obj) {
     gulp.watch(obj.files, obj.tasks);
   });
+}, {
+  options: {
+    'doc': 'Also compile documentation. [false]'
+  }
 });

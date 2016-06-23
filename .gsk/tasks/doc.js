@@ -149,8 +149,8 @@ try {
 
 // $ gulp doc:js
 // ----------------------------------------------------------------------------
-// Génère toute la doc statique du projet
-gulp.task('doc:js', function () {
+// Génère la documentation des fichiers javascripts
+gulp.task('doc:js', 'Compile Javascript documentation.', function () {
   return gulp.src(SRC_JS)
     .pipe(newer(path.join(DEST, 'js')))
     .pipe(dox())
@@ -163,7 +163,7 @@ gulp.task('doc:js', function () {
 // $ gulp doc:static
 // ----------------------------------------------------------------------------
 // Génère toute la doc statique du projet
-gulp.task('doc:static', function () {
+gulp.task('doc:static', 'Compile the static documentation.', function () {
   return gulp.src(SRC)
     .pipe(newer(DEST))
     .pipe(markdown({
@@ -178,7 +178,7 @@ gulp.task('doc:static', function () {
 // $ gulp doc:kss
 // ----------------------------------------------------------------------------
 // Génère le styleguide du projet via KSS
-gulp.task('doc:kss', function (cb) {
+gulp.task('doc:kss', 'Compile the styleguide, using KSS.', function (cb) {
   var CONF = require('../../kss.json');
 
   exec([
@@ -204,7 +204,7 @@ gulp.task('doc:kss', function (cb) {
 // $ gulp doc
 // ----------------------------------------------------------------------------
 // Génère toute la doc du projet
-gulp.task('doc', function (cb) {
+gulp.task('doc', 'Compile all documentations of the project.', function (cb) {
   // Si on optimize le projet, on n'inclus pas la documentation.
   if (ENV.all.optimize) {
     cb(null);
