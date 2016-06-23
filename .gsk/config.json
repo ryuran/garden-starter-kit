@@ -44,6 +44,13 @@
     "directory": false,
     "baseDir"  : "./build"
   },
+  "sftp-deploy": {
+    "host"     : "host",
+    "port"     : 22,
+    "auth"     : "key1",
+    "src-dir"  : "./build",
+    "dest-dir" : "/home/integration/www/<my-project>/%pkg.name%_%pkg.version%"
+  },
   "doc": {
     "src-dir"  : "./docs",
     "dest-dir" : "./build/doc"
