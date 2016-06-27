@@ -25,7 +25,7 @@ var DEST = ENV.js['dest-dir'];
 // $ gulp js
 // ----------------------------------------------------------------------------
 // Gère toutes les actions d'assemblage JavaScript
-gulp.task('js', ['test:js'], function () {
+gulp.task('js', 'Compile JS files into build folder using browserify.', ['test:js'], function () {
   var buildStream = through();
 
   buildStream
@@ -56,4 +56,9 @@ gulp.task('js', ['test:js'], function () {
   });
 
   return buildStream;
+}, {
+  options: {
+    optimize : 'Optimize for production.',
+    relax    : 'Skip tests. ☠ ☠ ☠'
+  }
 });

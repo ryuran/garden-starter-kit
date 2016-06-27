@@ -12,7 +12,7 @@ var runner = require('run-sequence');
 // $ gulp build:clean
 // ----------------------------------------------------------------------------
 // Supprime le contenu du build
-gulp.task('build:clean', function () {
+gulp.task('build:clean', 'Delete the content of the build folder.', function () {
   return del(['build/**/*']);
 });
 
@@ -20,6 +20,11 @@ gulp.task('build:clean', function () {
 // ----------------------------------------------------------------------------
 // Régénère le contenu du dossier `/build`. Il est recommandé de lancer cette
 // tache à chaque fois que l'on réalise un `git pull` du projet.
-gulp.task('build', function (cb) {
+gulp.task('build', 'Compile the whole project into build folder.', function (cb) {
   runner('build:clean', ['assets', 'css', 'js', 'html'], 'doc', 'test:a11y', cb);
+}, {
+  options: {
+    optimize : 'Optimize for production.',
+    relax    : 'Skip tests. ☠ ☠ ☠'
+  }
 });

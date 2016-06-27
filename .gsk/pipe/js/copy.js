@@ -22,7 +22,7 @@ var DEST = ENV.js['dest-dir'];
 // $ gulp js
 // ----------------------------------------------------------------------------
 // Gère toutes les actions d'assemblage JavaScript
-gulp.task('js', ['test:js'], function () {
+gulp.task('js', 'Copy JS files into build folder.', ['test:js'], function () {
   return gulp.src(SRC)
     .pipe(plumber({ errorHandler: err }))
     .pipe(sourcemap.init())
@@ -30,4 +30,9 @@ gulp.task('js', ['test:js'], function () {
     .pipe(sourcemap.write('.'))
     .pipe(gulp.dest(DEST))
     .pipe(bs.stream());
+}, {
+  options: {
+    optimize : 'Optimize for production.',
+    relax    : 'Skip tests. ☠ ☠ ☠'
+  }
 });

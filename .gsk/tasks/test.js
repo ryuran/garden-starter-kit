@@ -40,7 +40,7 @@ var a11y = require('../pipe/html/a11y.linter.js');
 // $ gulp test:js
 // ----------------------------------------------------------------------------
 // Lint les fichiers source pour les CSS
-gulp.task('test:js', function () {
+gulp.task('test:js', 'Lint JS files.', function () {
   return gulp.src(SRC.js)
     .pipe(plumber({ errorHandler: err }))
 
@@ -51,7 +51,7 @@ gulp.task('test:js', function () {
 // $ gulp test:css
 // ----------------------------------------------------------------------------
 // Lint les fichiers source pour les CSS
-gulp.task('test:css', function () {
+gulp.task('test:css', 'Lint CSS files.', function () {
   return gulp.src(SRC.css)
     .pipe(plumber({ errorHandler: err }))
 
@@ -62,7 +62,7 @@ gulp.task('test:css', function () {
 // $ gulp test:a11y
 // ----------------------------------------------------------------------------
 // Lint les fichiers html pour l'accessibilité
-gulp.task('test:a11y', function () {
+gulp.task('test:a11y', 'Lint HTML files for accessibility.', function () {
   return gulp.src(SRC.html)
     .pipe(plumber({ errorHandler: err }))
 
@@ -73,7 +73,7 @@ gulp.task('test:a11y', function () {
 // $ gulp test
 // ----------------------------------------------------------------------------
 // Lint tous les fichiers sources du projet
-gulp.task('test', function (cb) {
+gulp.task('test', 'Lint CSS, JS and HTML files.', function (cb) {
   // En mode relax, on ignore les tests (c'est mal)
   if (ENV.all.relax) { cb(null); }
 

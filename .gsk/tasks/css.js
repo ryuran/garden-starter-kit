@@ -30,7 +30,7 @@ var pipeline = require('../pipe/css/' + ENV.engine + '.js');
 // $ gulp css
 // ----------------------------------------------------------------------------
 // Gère la compilation des fichiers CSS
-gulp.task('css', ['test:css'], function () {
+gulp.task('css', 'Compile CSS files into build folder.', ['test:css'], function () {
   var processors = _.map(ENV.postcss, function(conf, processorName) {
       var processor = require(processorName);
       return processor(conf);
@@ -41,4 +41,9 @@ gulp.task('css', ['test:css'], function () {
     .pipe(postcss(processors))
     .pipe(gulp.dest(DEST))
     .pipe(bs.stream());
+}, {
+  options: {
+    optimize : 'Optimize for production.',
+    relax    : 'Skip tests. ☠ ☠ ☠'
+  }
 });

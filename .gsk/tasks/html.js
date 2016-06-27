@@ -64,7 +64,7 @@ try {
 // $ gulp html
 // ----------------------------------------------------------------------------
 // Gère la compilation des fichiers HTML
-gulp.task('html', function () {
+gulp.task('html', 'Compile HTML files.', function () {
   return gulp.src(SRC)
     .pipe(plumber({ errorHandler: err }))
     .pipe(pipeline())

@@ -21,7 +21,7 @@ var DEST = ENV.assets['dest-dir'];
 // $ gulp assets
 // ----------------------------------------------------------------------------
 // Copy tout les assets static du projet
-gulp.task('assets', ['images'], function () {
+gulp.task('assets', 'Copy all static assets into build folder.', ['images'], function () {
   return gulp.src(SRC)
     .pipe(newer(DEST))
     .pipe(gulp.dest(DEST));
