@@ -78,126 +78,126 @@
         </li>
       </ul>
     </nav>
-  </div>
-  <main role="main" class="ca__content">
-    {{#if homepage}}
-      <article class="ca__md" id="kssref-0">
-        {{{homepage}}}
-      </article>
-    {{else}}
+    <main role="main" class="ca__content">
+      {{#if homepage}}
+        <article class="ca__md" id="kssref-0">
+          {{{homepage}}}
+        </article>
+      {{else}}
 
-      {{!
-        Display each section, in order.
+        {{!
+          Display each section, in order.
 
-        The "root" element comes first in this loop, and can be detected using
-        the "#if @first" block as seen below.
-      }}
-      {{#each sections}}
-        <section id="kssref-{{referenceURI}}">
+          The "root" element comes first in this loop, and can be detected using
+          the "#if @first" block as seen below.
+        }}
+        {{#each sections}}
+          <section id="kssref-{{referenceURI}}">
 
-          {{! Title of the (sub)section }}
-          <h{{depth}} class="ca__title{{depth}}">
-            <a href="#kssref-{{referenceURI}}" class="ca__titleLink">
-              <small>{{referenceNumber}}</small>
-              {{header}}
-            </a>
-          </h{{depth}}>
+            {{! Title of the (sub)section }}
+            <h{{depth}} class="ca__title{{depth}}">
+              <a href="#kssref-{{referenceURI}}" class="ca__titleLink">
+                <small>{{referenceNumber}}</small>
+                {{header}}
+              </a>
+            </h{{depth}}>
 
-          {{#if description}}
-            <div class="ca__md">
-              {{{description}}}
-            </div>
-          {{/if}}
-
-          {{!--
-          TODO: adapt helper to kss3
-          https://github.com/kss-node/kss-node/issues/337
-          --}}
-          {{#if colors}}
-            <ul class="ca__colors">
-              {{#kssColors colors}}
-                <li>
-                  <div class="ca__colors__demo" style="background-color:{{color.hex}}"></div>
-                  <div class="ca__colors__info">
-                    <p class="ca__colors__name">{{color.name}}</p>
-                    <p class="ca__colors__hex">{{color.hex}}</p>
-                    <p class="ca__colors__rgb">rgb({{color.rgb.r}}, {{color.rgb.g}}, {{color.rgb.b}})</p>
-                    <p class="ca__colors__hsl">hsl({{color.hsl.h}}, {{color.hsl.s}}, {{color.hsl.l}})</p>
-                    <p class="ca__colors__description">{{{color.desc}}}</p>
-                  </div>
-                </li>
-              {{/kssColors}}
-            </ul>
-          {{/if}}
-
-          {{#if icons}}
-            <ul class="ca__icons">
-              {{#kssIcons icons}}
-                <li>
-                  <div class="ca__icons__demo">{{icon.character}}</div>
-                  <div class="ca__icons__info">
-                    <p><strong class="ca__icons__name">{{icon.name}}</strong>: <code class="ca__icons__char">{{icon.character}}</code></p>
-                    <p class="ca__icons__description">{{{icon.desc}}}</p>
-                  </div>
-                </li>
-              {{/kssIcons}}
-            </ul>
-          {{/if}}
-          {{!----}}
-
-          {{! Documentation of possible parameters for the (sub) section }}
-          {{#if parameters}}
-            <div class="ca__tableWrapper">
-              <table class="ca__table">
-                <tbody>
-                {{#eachParameter}}
-                  <tr>
-                    <th scope="row"><code>{{name}}</code></th>
-                    <td>
-                      {{{description}}}
-                      {{#if defaultValue}}
-                        <div>Default: <code>{{defaultValue}}</code></div>
-                      {{/if}}
-                    </td>
-                  </tr>
-                {{/eachParameter}}
-                </tbody>
-              </table>
-            </div>
-          {{/if}}
-
-          {{! Code samples for the (sub) section }}
-          {{#if example}}
-            <div class="ca__example">
-              <strong class="ca__exampleHead">Example{{#if modifiers}}s{{/if}}</strong>
-
-              {{#if modifiers}}
-                <div class="ca__exampleTitle">Default styling</div>
-              {{/if}}
-              <div class="ca__exampleMarkup">{{{example}}}</div>
-
-              {{#eachModifier}}
-                <div class="ca__exampleTitle">
-                  <code>{{name}}</code> — <em>{{{description}}}</em>
-                </div>
-                <div class="ca__exampleMarkup">{{{markup}}}</div>
-              {{/eachModifier}}
-            </div>
-            {{#if markup}}
-              <pre class="prettyprint linenums"><code class="lang-html">{{markup}}</code></pre>
+            {{#if description}}
+              <div class="ca__md">
+                {{{description}}}
+              </div>
             {{/if}}
-          {{/if}}
 
-          {{#if sourceFile.name}}
-            <div class="ca__source">
-              Source: <code>{{sourceFile.name}}</code>, line {{sourceFile.line}}
-            </div>
-          {{/if}}
+            {{!--
+            TODO: adapt helper to kss3
+            https://github.com/kss-node/kss-node/issues/337
+            --}}
+            {{#if colors}}
+              <ul class="ca__colors">
+                {{#kssColors colors}}
+                  <li>
+                    <div class="ca__colors__demo" style="background-color:{{color.hex}}"></div>
+                    <div class="ca__colors__info">
+                      <p class="ca__colors__name">{{color.name}}</p>
+                      <p class="ca__colors__hex">{{color.hex}}</p>
+                      <p class="ca__colors__rgb">rgb({{color.rgb.r}}, {{color.rgb.g}}, {{color.rgb.b}})</p>
+                      <p class="ca__colors__hsl">hsl({{color.hsl.h}}, {{color.hsl.s}}, {{color.hsl.l}})</p>
+                      <p class="ca__colors__description">{{{color.desc}}}</p>
+                    </div>
+                  </li>
+                {{/kssColors}}
+              </ul>
+            {{/if}}
 
-        </section>
-      {{/each}}
-    {{/if}}
-  </main>
+            {{#if icons}}
+              <ul class="ca__icons">
+                {{#kssIcons icons}}
+                  <li>
+                    <div class="ca__icons__demo">{{icon.character}}</div>
+                    <div class="ca__icons__info">
+                      <p><strong class="ca__icons__name">{{icon.name}}</strong>: <code class="ca__icons__char">{{icon.character}}</code></p>
+                      <p class="ca__icons__description">{{{icon.desc}}}</p>
+                    </div>
+                  </li>
+                {{/kssIcons}}
+              </ul>
+            {{/if}}
+            {{!----}}
+
+            {{! Documentation of possible parameters for the (sub) section }}
+            {{#if parameters}}
+              <div class="ca__tableWrapper">
+                <table class="ca__table">
+                  <tbody>
+                  {{#eachParameter}}
+                    <tr>
+                      <th scope="row"><code>{{name}}</code></th>
+                      <td>
+                        {{{description}}}
+                        {{#if defaultValue}}
+                          <div>Default: <code>{{defaultValue}}</code></div>
+                        {{/if}}
+                      </td>
+                    </tr>
+                  {{/eachParameter}}
+                  </tbody>
+                </table>
+              </div>
+            {{/if}}
+
+            {{! Code samples for the (sub) section }}
+            {{#if example}}
+              <div class="ca__example">
+                <strong class="ca__exampleHead">Example{{#if modifiers}}s{{/if}}</strong>
+
+                {{#if modifiers}}
+                  <div class="ca__exampleTitle">Default styling</div>
+                {{/if}}
+                <div class="ca__exampleMarkup">{{{example}}}</div>
+
+                {{#eachModifier}}
+                  <div class="ca__exampleTitle">
+                    <code>{{name}}</code> — <em>{{{description}}}</em>
+                  </div>
+                  <div class="ca__exampleMarkup">{{{markup}}}</div>
+                {{/eachModifier}}
+              </div>
+              {{#if markup}}
+                <pre class="prettyprint linenums"><code class="lang-html">{{markup}}</code></pre>
+              {{/if}}
+            {{/if}}
+
+            {{#if sourceFile.name}}
+              <div class="ca__source">
+                Source: <code>{{sourceFile.name}}</code>, line {{sourceFile.line}}
+              </div>
+            {{/if}}
+
+          </section>
+        {{/each}}
+      {{/if}}
+    </main>
+  </div>
 
   <!-- SCRIPTS -->
   <script src="kss-assets/kss.js"></script>

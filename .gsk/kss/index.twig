@@ -75,97 +75,97 @@
         </li>
       </ul>
     </nav>
-  </div>
-  <main role="main" class="ca__content">
-    {% if homepage %}
-      <article class="ca__md" id="kssref-0">
-        {{ homepage|raw }}
-      </article>
-    {% else %}
+    <main role="main" class="ca__content">
+      {% if homepage %}
+        <article class="ca__md" id="kssref-0">
+          {{ homepage|raw }}
+        </article>
+      {% else %}
 
-      {#
-        Display each section, in order.
+        {#
+          Display each section, in order.
 
-        The "root" element comes first in this loop, and can be detected using the
-        "loop.first" variable as seen below.
-      #}
-      {% for section in sections %}
-        <section id="kssref-{{ section.referenceURI }}">
-          <div class="kss-style">
-            {% set headerElement = (section.depth > 6) ? 'h6' : 'h' ~ section.depth %}
-            <{{ headerElement }} class="ca__title{{ section.depth }}">
-              <a class="ca__titleLink" href="#kssref-{{ section.referenceURI }}">
-                <small>{{ section.referenceNumber }}</small>
-                {{ section.header }}
-              </a>
-            </{{ headerElement }}>
+          The "root" element comes first in this loop, and can be detected using the
+          "loop.first" variable as seen below.
+        #}
+        {% for section in sections %}
+          <section id="kssref-{{ section.referenceURI }}">
+            <div class="kss-style">
+              {% set headerElement = (section.depth > 6) ? 'h6' : 'h' ~ section.depth %}
+              <{{ headerElement }} class="ca__title{{ section.depth }}">
+                <a class="ca__titleLink" href="#kssref-{{ section.referenceURI }}">
+                  <small>{{ section.referenceNumber }}</small>
+                  {{ section.header }}
+                </a>
+              </{{ headerElement }}>
 
-            {% if section.description %}
-              <div class="ca__md">
-                {{ section.description|raw }}
-              </div>
-            {% endif %}
-
-            {#
-            TODO: adapt helper to kssColors and kssIcons for kss3 and twig
-            https://github.com/kss-node/kss-node/issues/337
-            https://github.com/twigjs/twig.js/wiki/Extending-twig.js-With-Custom-Tags
-            #}
-
-            {% if section.parameters is not empty %}
-              <div class="ca__tableWrapper">
-                <table class="ca__table">
-                  <tbody>
-                    {% for parameter in section.parameters %}
-                      <li class="kss-parameters__item">
-                        <th scope="row"><code>{{ parameter.name }}</code></th>
-                        <td>
-                          {{ parameter.description|raw }}
-                          {% if parameter.defaultValue %}
-                            <div>Defaults: <code>{{ parameter.defaultValue }}</code></div>
-                          {% endif %}
-                        </td>
-                      </li>
-                    {% endfor %}
-                  </tbody>
-                </table>
-              </div>
-            {% endif %}
-
-          {% if section.example %}
-            <div class="ca__example">
-              <strong class="ca__exampleHead">
-                Example{% if section.modifiers is not empty %}s{% endif %}
-              </strong>
-
-              {% if section.modifiers is not empty %}
-                <div class="ca__exampleTitle">Default styling</div>
+              {% if section.description %}
+                <div class="ca__md">
+                  {{ section.description|raw }}
+                </div>
               {% endif %}
 
-              <div class="ca__exampleMarkup">{{ section.example|raw }}</div>
+              {#
+              TODO: adapt helper to kssColors and kssIcons for kss3 and twig
+              https://github.com/kss-node/kss-node/issues/337
+              https://github.com/twigjs/twig.js/wiki/Extending-twig.js-With-Custom-Tags
+              #}
 
-              {% for modifier in section.modifiers %}
-                <div class="ca__exampleTitle">
-                  <code>{{ modifier.name }}</code> — <em>{{ modifier.description|raw }}</em>
+              {% if section.parameters is not empty %}
+                <div class="ca__tableWrapper">
+                  <table class="ca__table">
+                    <tbody>
+                      {% for parameter in section.parameters %}
+                        <li class="kss-parameters__item">
+                          <th scope="row"><code>{{ parameter.name }}</code></th>
+                          <td>
+                            {{ parameter.description|raw }}
+                            {% if parameter.defaultValue %}
+                              <div>Defaults: <code>{{ parameter.defaultValue }}</code></div>
+                            {% endif %}
+                          </td>
+                        </li>
+                      {% endfor %}
+                    </tbody>
+                  </table>
                 </div>
-                <div class="ca__exampleMarkup">{{ modifier.markup|raw }}</div>
-              {% endfor %}
-            </div>
-            {% if section.markup %}
-              <pre class="prettyprint linenums"><code class="lang-html">{{ section.markup|escape('html') }}</code></pre>
+              {% endif %}
+
+            {% if section.example %}
+              <div class="ca__example">
+                <strong class="ca__exampleHead">
+                  Example{% if section.modifiers is not empty %}s{% endif %}
+                </strong>
+
+                {% if section.modifiers is not empty %}
+                  <div class="ca__exampleTitle">Default styling</div>
+                {% endif %}
+
+                <div class="ca__exampleMarkup">{{ section.example|raw }}</div>
+
+                {% for modifier in section.modifiers %}
+                  <div class="ca__exampleTitle">
+                    <code>{{ modifier.name }}</code> — <em>{{ modifier.description|raw }}</em>
+                  </div>
+                  <div class="ca__exampleMarkup">{{ modifier.markup|raw }}</div>
+                {% endfor %}
+              </div>
+              {% if section.markup %}
+                <pre class="prettyprint linenums"><code class="lang-html">{{ section.markup|escape('html') }}</code></pre>
+              {% endif %}
             {% endif %}
-          {% endif %}
 
-          {% if section.sourceFile.name %}
-            <div class="ca__source">
-              Source: <code>{{ section.sourceFile.name }}</code>, line {{ section.sourceFile.line }}
-            </div>
-          {% endif %}
+            {% if section.sourceFile.name %}
+              <div class="ca__source">
+                Source: <code>{{ section.sourceFile.name }}</code>, line {{ section.sourceFile.line }}
+              </div>
+            {% endif %}
 
-        </section>
-      {% endfor %}
-    {% endif %}
-  </main>
+          </section>
+        {% endfor %}
+      {% endif %}
+    </main>
+  </div>
 
   <!-- SCRIPTS -->
   <script src="kss-assets/kss.js"></script>
