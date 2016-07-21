@@ -1,6 +1,8 @@
 /* jshint node:true */
 
-module.exports = function (Handlebars) {
+// TODO : TWIG vension to do
+
+module.exports.register = function (Handlebars) {
   'use strict';
 
   function hexToRgb(hex){

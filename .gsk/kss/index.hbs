@@ -95,7 +95,6 @@
       {{#each sections}}
         <section id="kssref-{{referenceURI}}">
 
-
           {{! Title of the (sub)section }}
           <h{{depth}} class="ca__title{{depth}}">
             <a href="#kssref-{{referenceURI}}" class="ca__titleLink">
@@ -109,6 +108,10 @@
               {{{description}}}
             </div>
           {{/if}}
+
+          {{!--
+          TODO: adapt helper to kss3
+          https://github.com/kss-node/kss-node/issues/337
 
           {{#if colors}}
             <ul class="ca__colors">
@@ -140,6 +143,7 @@
               {{/kssIcons}}
             </ul>
           {{/if}}
+          --}}
 
           {{! Documentation of possible parameters for the (sub) section }}
           {{#if parameters}}
@@ -168,7 +172,7 @@
               <strong class="ca__exampleHead">Example{{#if modifiers}}s{{/if}}</strong>
 
               {{#if modifiers}}
-                <div class="ca__exampleTitle">Style par défaut</div>
+                <div class="ca__exampleTitle">Default styling</div>
               {{/if}}
               <div class="ca__exampleMarkup">{{{example}}}</div>
 
@@ -179,8 +183,9 @@
                 <div class="ca__exampleMarkup">{{{markup}}}</div>
               {{/eachModifier}}
             </div>
-
-            <pre class="prettyprint linenums"><code class="lang-html">{{markup}}</code></pre>
+            {{#if markup}}
+              <pre class="prettyprint linenums"><code class="lang-html">{{markup}}</code></pre>
+            {{/if}}
           {{/if}}
 
           {{#if sourceFile.name}}
@@ -192,7 +197,7 @@
         </section>
       {{/each}}
     {{/if}}
-  </article>
+  </main>
 
   <!-- SCRIPTS -->
   <script src="kss-assets/kss.js"></script>
@@ -200,13 +205,13 @@
   <script src="kss-assets/prettify.js"></script>
   <script>
     prettyPrint();
-    var spy = new ScrollSpy('#kss-node', {
+    var spy = new ScrollSpy('body', {
       nav: '.ca__sidebarLink',
       className: 'is-in-viewport'
     });
   </script>
   {{{scripts}}}
 
-  <!-- Automatically built using <a href="https://github.com/kss-node/kss-node">kss-node</a>. -->
+  <!-- hbs -->
 </body>
 </html>
