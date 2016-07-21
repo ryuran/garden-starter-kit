@@ -109,6 +109,7 @@
             {#
             TODO: adapt helper to kssColors and kssIcons for kss3 and twig
             https://github.com/kss-node/kss-node/issues/337
+            https://github.com/twigjs/twig.js/wiki/Extending-twig.js-With-Custom-Tags
             #}
 
             {% if section.parameters is not empty %}
@@ -138,39 +139,29 @@
               </strong>
 
               {% if section.modifiers is not empty %}
-                <div class="kss-modifier__default-name kss-style">
-                  Default styling
-                </div>
+                <div class="ca__exampleTitle">Default styling</div>
               {% endif %}
 
-              <div class="kss-modifier__example">
-                {{ section.example|raw }}
-              </div>
+              <div class="ca__exampleMarkup">{{ section.example|raw }}</div>
 
               {% for modifier in section.modifiers %}
-                <div class="kss-modifier__name kss-style">
-                  {{ modifier.name }}
+                <div class="ca__exampleTitle">
+                  <code>{{ modifier.name }}</code> — <em>{{ modifier.description|raw }}</em>
                 </div>
-                <div class="kss-modifier__description kss-style">
-                  {{ modifier.description|raw }}
-                </div>
-                <div class="kss-modifier__example">
-                  {{ modifier.markup|raw }}
-                </div>
+                <div class="ca__exampleMarkup">{{ modifier.markup|raw }}</div>
               {% endfor %}
             </div>
             {% if section.markup %}
-              <div class="kss-markup kss-style">
-                <pre class="prettyprint linenums lang-html"><code data-language="html">{{ section.markup|escape('html') }}</code></pre>
-              </div>
+              <pre class="prettyprint linenums"><code class="lang-html">{{ section.markup|escape('html') }}</code></pre>
             {% endif %}
           {% endif %}
 
           {% if section.sourceFile.name %}
-            <div class="kss-source kss-style">
+            <div class="ca__source">
               Source: <code>{{ section.sourceFile.name }}</code>, line {{ section.sourceFile.line }}
             </div>
           {% endif %}
+
         </section>
       {% endfor %}
     {% endif %}

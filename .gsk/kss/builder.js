@@ -21,6 +21,8 @@
 // are used in our templates.
 let KssBuilderBase;
 
+var path = require('path');
+
 // gks config
 var ENV = require('../tools/env');
 
@@ -51,7 +53,6 @@ class KssBuilder extends KssBuilderBase {
     // First call the constructor of KssBuilderBase.
     super();
 
-
     // Then tell kss which Yargs-like options this builder adds.
     this.addOptionDefinitions({
       title: {
@@ -62,6 +63,8 @@ class KssBuilder extends KssBuilderBase {
         default: 'KSS Style Guide'
       }
     });
+
+    this.options.extend.push(path.resolve('.gsk/kss/extend/' + ENV.html.engine));
   }
 
   /**
@@ -79,53 +82,6 @@ class KssBuilder extends KssBuilderBase {
   prepare(styleGuide) {
     // First we let KssBuilderBase.prepare() clean-up the style guide object.
     return super.prepare(styleGuide).then(styleGuide => {
-      console.log(this);
-
-      if (this.Handlebars){
-        // Allow a builder user to override the {{section [reference]}} helper
-        // with the --extend setting. Since a user's handlebars helpers are
-        // loaded first, we need to check if this helper already exists.
-        if (!this.Handlebars.helpers.section) {
-          /**
-           * Returns a single section, found by its reference
-           * @param  {String} reference The reference to search for.
-           */
-          this.Handlebars.registerHelper('section', function(reference, options) {
-            let section = options.data.root.styleGuide.sections(reference);
-
-            return section.toJSON ? options.fn(section.toJSON()) : options.inverse('');
-          });
-        }
-
-        // Allow a builder user to override the {{eachSection [query]}} helper
-        // with the --extend setting.
-        if (!this.Handlebars.helpers.eachSection) {
-          /**
-           * Loop over a section query. If a number is supplied, will convert into
-           * a query for all children and descendants of that reference.
-           * @param  {Mixed} query The section query
-           */
-          this.Handlebars.registerHelper('eachSection', function(query, options) {
-            let styleGuide = options.data.root.styleGuide;
-
-            if (!query.match(/\bx\b|\*/g)) {
-              query = query + '.*';
-            }
-            let sections = styleGuide.sections(query);
-            if (!sections.length) {
-              return options.inverse('');
-            }
-
-            let l = sections.length;
-            let buffer = '';
-            for (let i = 0; i < l; i += 1) {
-              buffer += options.fn(sections[i].toJSON());
-            }
-
-            return buffer;
-          });
-        }
-      }
 
       return Promise.resolve(styleGuide);
     });
