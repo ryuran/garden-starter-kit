@@ -4,7 +4,7 @@ module.exports = function (Handlebars) {
   'use strict';
 
   function hexToRgb(hex){
-    hex = (hex).replace(/#/, '');
+    hex = hex.replace(/#/, '');
 
     // convert short format to 6 char
     if (hex.length === 3) {

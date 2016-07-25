@@ -111,6 +111,37 @@
               https://github.com/twigjs/twig.js/wiki/Extending-twig.js-With-Custom-Tags
               #}
 
+              {% if section.colors %}
+                <ul class="ca__colors">
+                  {% kssColors section.colors %}
+                    <li>
+                      <div class="ca__colors__demo" style="background-color:{{color.hex}}"></div>
+                      <div class="ca__colors__info">
+                        <p class="ca__colors__name">{{ color.name }}</p>
+                        <p class="ca__colors__hex">{{ color.hex }}</p>
+                        <p class="ca__colors__rgb">rgb({{ color.rgb.r }}, {{ color.rgb.g }}, {{ color.rgb.b }})</p>
+                        <p class="ca__colors__hsl">hsl({{ color.hsl.h }}, {{ color.hsl.s }}, {{ color.hsl.l }})</p>
+                        <p class="ca__colors__description">{{ color.desc|raw }}</p>
+                      </div>
+                    </li>
+                  {% endkssColors %}
+                </ul>
+              {% endif %}
+
+              {% if section.icons %}
+                <ul class="ca__icons">
+                  {% kssIcons section.icons %}
+                    <li>
+                      <div class="ca__icons__demo">{{ icon.character }}</div>
+                      <div class="ca__icons__info">
+                        <p><strong class="ca__icons__name">{{ icon.name }}</strong>: <code class="ca__icons__char">{{ icon.character }}</code></p>
+                        <p class="ca__icons__description">{{ icon.desc|raw }}</p>
+                      </div>
+                    </li>
+                  {% endkssIcons %}
+                </ul>
+              {% endif %}
+
               {% if section.parameters is not empty %}
                 <div class="ca__tableWrapper">
                   <table class="ca__table">
