@@ -48,8 +48,8 @@
     "gulp-hbs": "0.2.0",
     "gulp-help": "1.6.1",
     "gulp-inject": "4.1.0",
-    "gulp-jshint": "2.0.0",
     "gulp-jscs": "3.0.2",
+    "gulp-jshint": "2.0.0",
     "gulp-lesshint": "1.0.0",
     "gulp-markdown": "1.2.0",
     "gulp-newer": "0.5.1",
@@ -64,7 +64,7 @@
     "highlight.js": "8.9.1",
     "jshint": "2.9.1",
     "jshint-stylish": "2.0.1",
-    "kss": "2.1.1",
+    "kss": "^3.0.0-beta.14",
     "nproxy": "stephane-tessier/nproxy#1.7.0"
   },
   "scripts": {

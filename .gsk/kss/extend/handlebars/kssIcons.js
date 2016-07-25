@@ -1,6 +1,6 @@
 /* jshint node:true */
 
-module.exports.register = function (Handlebars) {
+module.exports = function (Handlebars) {
   'use strict';
 
   Handlebars.registerHelper('kssIcons', function (doc, block) {

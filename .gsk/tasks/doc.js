@@ -4,7 +4,7 @@
 // ----------------------------------------------------------------------------
 var fs       = require('fs');
 var path     = require('path');
-var exec     = require('child_process').exec;
+var kss      = require('kss');
 var runner   = require('run-sequence');
 var glob     = require('glob');
 var gulp     = require('gulp');
@@ -180,25 +180,11 @@ gulp.task('doc:static', 'Compile the static documentation.', function () {
 // Génère le styleguide du projet via KSS
 gulp.task('doc:kss', 'Compile the styleguide, using KSS.', function (cb) {
   var CONF = require('../../kss.json');
+  CONF.verbose = true;
 
-  exec([
-    'mkdir -p ', path.resolve(CONF.destination), ' && ',
-    './node_modules/.bin/kss-node -c ./kss.json'
-  ].join(''), function (err, stdout, stderr) {
-    stdout.split('\n').forEach(function (line) {
-      gutil.log(line);
-    });
+  kss(CONF);
 
-    if (stderr) {
-      gutil.log(gutil.colors.red('ERROR:'), '[kss]', stderr);
-    }
-
-    if (err && !stderr) {
-      gutil.log(gutil.colors.red('ERROR:'), '[kss]', err.message);
-    }
-
-    cb(null);
-  });
+  cb(null);
 });
 
 // $ gulp doc

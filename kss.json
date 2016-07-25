@@ -2,8 +2,7 @@
   "source":       "./src/css",
   "homepage":     "styleguide.md",
   "destination":  "./build/doc/styleguide",
-  "template":     "./.gsk/kss",
-  "helpers":      "./.gsk/kss/helpers",
+  "builder":      "./.gsk/kss",
   "custom": [
     "Colors",
     "Icons"
