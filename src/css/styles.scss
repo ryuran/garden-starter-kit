@@ -41,6 +41,9 @@
 //
 // Styleguide Introduction.Couleur
 
+@import 'assets';
+
 body {
   font: 1em sans-serif;
+  background: asset-url('img/clever-age-logo.png') no-repeat top right;
 }
