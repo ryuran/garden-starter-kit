@@ -248,6 +248,7 @@ pour s'adapter à vos besoins. Le choix d'utilisation de ces outils se fait via
 le fichier `.gsk/config.json`, voir les instructions de configuration ci-après :
 
 ### CSS
+* [Sass/Eyeglass](.gsk/docs/css/eyeglass.md) [Recommandé]
 * [Sass/Compass](.gsk/docs/css/sass.md)
 * [Stylus](.gsk/docs/css/stylus.md)
 * [LESS](.gsk/docs/css/less.md)
