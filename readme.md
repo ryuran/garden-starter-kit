@@ -248,17 +248,18 @@ pour s'adapter à vos besoins. Le choix d'utilisation de ces outils se fait via
 le fichier `.gsk/config.json`, voir les instructions de configuration ci-après :
 
 ### CSS
-* [Sass/Compass](.gsk/docs/css/sass.md)
+* [Sass/Compass](.gsk/docs/css/sass.md) [Recommandé]
 * [Stylus](.gsk/docs/css/stylus.md)
 * [LESS](.gsk/docs/css/less.md)
 
 ### HTML
-* [Twig](.gsk/docs/html/twig.md)
+* [Twig](.gsk/docs/html/twig.md) [Recommandé]
 * [Handlebars](.gsk/docs/html/handlebars.md)
 
 ### JavaScript
-* [Simple pipeline](.gsk/docs/js/simple.md)
-* [Browserify + NPM](.gsk/docs/js/browserify.md)
+* [Copy pipeline](.gsk/docs/js/copy.md)
+* [Concat pipeline](.gsk/docs/js/concat.md)
+* [Browserify + NPM](.gsk/docs/js/browserify.md) [Recommandé]
 
 ### Documentation
 * [Documentation statique](docs/index.md)
