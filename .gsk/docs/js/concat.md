@@ -1,5 +1,5 @@
 
-JS: Simple Pipeline
+JS: Concat Pipeline
 ===============================================================================
 
 Il s'agit là d'une façon simple de gérer les scripts JS du projet. Avec
