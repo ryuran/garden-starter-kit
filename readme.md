@@ -249,7 +249,7 @@ le fichier `.gsk/config.json`, voir les instructions de configuration ci-après�
 
 ### CSS
 * [Sass/Eyeglass](.gsk/docs/css/eyeglass.md) [Recommandé]
-* [Sass/Compass](.gsk/docs/css/sass.md)
+* [Sass/Compass](.gsk/docs/css/compass.md)
 * [Stylus](.gsk/docs/css/stylus.md)
 * [LESS](.gsk/docs/css/less.md)
 
