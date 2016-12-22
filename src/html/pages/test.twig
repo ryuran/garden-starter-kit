@@ -17,5 +17,5 @@
 {% block main %}
   <p>{{ description }}</p>
 
-  {% include '../partials/_exemple.twig' %}
+  {% include '../partials/_exemple.twig' with {'variable': 'variable de test'} only %}
 {% endblock %}
