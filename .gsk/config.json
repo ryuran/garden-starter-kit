@@ -35,7 +35,9 @@
   },
   "svg": {
     "src-dir"  : "./src/assets/svg/symbols",
-    "html-dir" : "./build/pages"
+    "dest-dir" : "./src/assets/svg",
+    "id-prefix": "symbol",
+    "dest-file": "symbols"
   },
   "assets": {
     "src-dir"  : "./src/assets",
