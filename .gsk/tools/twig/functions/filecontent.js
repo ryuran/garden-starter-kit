@@ -13,7 +13,12 @@ module.exports = {
   name: 'filecontent',
   func: function (filepath) {
     var filefullpath = path.resolve(ENV['src-dir'], filepath);
-    var filecontent = fs.readFileSync(filefullpath).toString();
+    var filecontent = '';
+    try {
+      filecontent = fs.readFileSync(filefullpath).toString();
+    } catch (e) {
+      console.error(e.message);
+    }
     return filecontent;
   }
 };
