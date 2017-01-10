@@ -11,6 +11,11 @@
   {{ styles|raw }}
 </head>
 <body class="ca">
+  <!-- include inline svg symbols -->
+  <div style="display: none">
+    {{ filecontent('../assets/svg/symbols.svg') |raw }}
+  </div>
+
   <header class="ca__header">
     <div class="ca__pageWrapper">
       <h1 class="ca__headerLogo">{{ options.title }}</h1>
