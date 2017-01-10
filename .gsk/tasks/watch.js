@@ -11,7 +11,7 @@ var ENV  = require('../tools/env');
 // ----------------------------------------------------------------------------
 // /!\ we need relatives path here, otherwise `gulp.watch` will ignore new files.
 var W = [
-  {tasks: ['html', 'svg:symbols'],   files: [].concat(
+  {tasks: ['svg:symbols', 'html'],   files: [].concat(
     path.relative('.', path.join(path.relative('.', ENV.html['src-dir']),  '**', '*')),
     path.relative('.', path.join(path.relative('.', ENV.html['data-dir']), '**', '*'))
   )},
