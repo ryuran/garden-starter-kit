@@ -11,8 +11,10 @@ var ENV = require('../tools/env');
 // ----------------------------------------------------------------------------
 // /!\ we need relatives path here, otherwise `gulp.watch` will ignore new files.
 var W = [
+  {tasks: ['svg'], files: path.join(path.relative('.', ENV.svg['src-dir']), '**', '*.svg')},
   {tasks: ['html'], files: [].concat(
     path.relative('.', path.join(path.relative('.', ENV.html['src-dir']), '**', '*')),
+    path.relative('.', path.join(path.relative('.', ENV.svg['dest-dir']), '*.svg')),
     path.relative('.', path.join(path.relative('.', ENV.html['data-dir']), '**', '*'))
   )},
   {tasks: ['css'], files: path.join(path.relative('.', ENV.css['src-dir']), '**', '*')},
@@ -24,7 +26,10 @@ var W = [
 if(ENV.all.doc) {
   W = W.concat([
     {tasks: ['doc:static'], files: path.join(path.relative('.', ENV.doc['src-dir']), '**', '*.md')},
-    {tasks: ['doc:kss'], files: path.join(path.relative('.', ENV.css['src-dir']), '**', '*')},
+    {tasks: ['doc:kss'], files: [].concat(
+      path.join(path.relative('.', ENV.css['src-dir']), '**', '*'),
+      path.relative('.', path.join(path.relative('.', ENV.svg['dest-dir']), '*.svg'))
+    )},
     {tasks: ['doc:js'], files: path.join(path.relative('.', ENV.js['src-dir']), '**', '*')}
   ]);
 }
