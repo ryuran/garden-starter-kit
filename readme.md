@@ -78,7 +78,7 @@ Une fois les étapes précedantes éxécutées vous n’êtes déjà plus sur le
 1. Remplacer votre `readme.md` par le `readme.dist.md`.
 2. Dans celui-ci, remplacer `PROJECT_NAME` par le nom de votre projet et `GIT_REPO_URL` par l’url de son dépôt git.
 3. Changer dans le `package.json` toutes les entrées suivantes :
-  ```
+  ```json
   "name": "garden-starterkit",
   "homepage": "https://github.com/cleverage/garden-starter-kit",
   "title": "Garden Starter Kit",
