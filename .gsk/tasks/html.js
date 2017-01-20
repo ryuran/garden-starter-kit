@@ -70,5 +70,5 @@ gulp.task('html', 'Compile HTML files.', function () {
     .pipe(pipeline())
     .pipe(prettify(PRT_CONF))
     .pipe(gulp.dest(DEST))
-    .pipe(bs.stream());
+    .on('end', bs.reload);
 });
