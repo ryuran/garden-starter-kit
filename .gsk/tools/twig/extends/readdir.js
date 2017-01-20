@@ -18,9 +18,10 @@ var path = require('path');
 var glob = require('glob');
 var ENV  = require('../../env.js').html;
 
-module.exports = {
-  name: 'readdir',
-  func: function (dir) {
+module.exports = function (Twig) {
+  'use strict';
+
+  Twig.exports.extendFunction('readdir', function (dir) {
     var fulldir = path.resolve(ENV['src-dir'], dir);
     var files   = glob.sync(path.join(fulldir, '**', '*.twig'));
 
@@ -43,5 +44,5 @@ module.exports = {
 
         return a.filename.localeCompare(b.filename);
       });
-  }
+  });
 };

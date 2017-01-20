@@ -33,6 +33,12 @@
     "src-dir"  : "./src/assets/img",
     "dest-dir" : "./build/img"
   },
+  "svg": {
+    "src-dir"  : "./src/assets/svg/symbols",
+    "dest-dir" : "./src/assets/svg",
+    "id-prefix": "symbol",
+    "dest-file": "symbols"
+  },
   "assets": {
     "src-dir"  : "./src/assets",
     "dest-dir" : "./build"
