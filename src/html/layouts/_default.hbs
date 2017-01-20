@@ -13,6 +13,10 @@
   <script src="{{root}}/js/script.js" async></script>
 </head>
 <body>
+  <!-- include inline svg symbols -->
+  <div style="display: none">
+    {{{filecontent '../assets/svg/symbols.svg'}}}
+  </div>
   <section>
     {{> @partial-block }}
   </section>

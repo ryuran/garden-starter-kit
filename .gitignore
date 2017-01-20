@@ -45,3 +45,6 @@ nproxy-cache
 
 # Ignorer le build
 build
+
+# Ignorer le fichier contenant tous les symbols svg regroupés
+src/assets/svg/symbols.svg

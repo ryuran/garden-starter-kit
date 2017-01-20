@@ -1,16 +1,16 @@
 
 NProxy : Proxyfier les fichiers JS et CSS
-================================================================================
+===============================================================================
 
 Module utilisé : [NProxy](https://github.com/stephane-tessier/nproxy)
 
 
-Cette manipulation peut s'avérer très utile pour corriger un bug qui n'est pas reproductible sur la maquette, à cause de données différentes, de scripts tiers, ou tout simplement pour ne pas avoir à faire tourner une lourde VM dont on n'a pas forcément besoin en tant que developpeur front.
+Cette manipulation peut s'avérer très utile pour corriger un bug qui n'est pas reproductible sur la maquette, à cause de données différentes, de scripts tiers, ou tout simplement pour ne pas avoir à faire tourner une lourde VM dont on n’a pas forcément besoin en tant que développeur front.
 
 Proxyfier ?!
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
-Proxifier signifique utiliser un element tier qui vient se placer entre le serveur et le navigateur. Dans notre cas, le proxy va permettre de naviguer sur un site distant (recette, pre-prod, prod, etc.), mais en chargeant les fichiers JS et/ou CSS locaux (à la place des fichiers distants).
+Proxyfier signifie utiliser un élément tiers qui vient se placer entre le serveur et le navigateur. Dans notre cas, le proxy va permettre de naviguer sur un site distant (recette, pre-prod, prod, etc.), mais en chargeant les fichiers JS et/ou CSS locaux (à la place des fichiers distants).
 
 
       SERVEUR <---------------\
@@ -19,12 +19,12 @@ Proxifier signifique utiliser un element tier qui vient se placer entre le serve
 
 
 Installation
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 Le proxy est installé en même temps que les autres paquets NodeJS (via la commande ```npm install```).
 
 Démarrer le proxy
---------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 Pour démarrer le proxy, se placer dans le dossier racine du projet (contenant le fichier _gulpfile.js_), et entrez la commande suivante :
 
@@ -32,7 +32,7 @@ Pour démarrer le proxy, se placer dans le dossier racine du projet (contenant l
 > gulp nproxy
 ```
 
-Le proxy '''localhost:8989''' est alors accessible.
+Le proxy ```localhost:8989``` est alors accessible.
 
 Proxyfier le Javascript uniquement (**pas encore implémenté**) :
 

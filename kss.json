@@ -1,8 +1,8 @@
 {
-  "source":       "./src/css",
-  "homepage":     "styleguide.md",
-  "destination":  "./build/doc/styleguide",
-  "builder":      "./.gsk/kss",
+  "source": "./src/css",
+  "homepage": "styleguide.md",
+  "destination": "./build/doc/styleguide",
+  "builder": "./.gsk/kss",
   "custom": [
     "Colors",
     "Icons"
