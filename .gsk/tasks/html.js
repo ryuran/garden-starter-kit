@@ -43,5 +43,5 @@ gulp.task('html', 'Compile HTML files.', function () {
     .pipe(plumber({ errorHandler: err }))
     .pipe(pipeline())
     .pipe(gulp.dest(DEST))
-    .pipe(bs.stream());
+    .on('end', bs.reload);
 });

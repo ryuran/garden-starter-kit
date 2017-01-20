@@ -40,7 +40,7 @@ gulp.task('css', 'Compile CSS files into build folder.', ['test:css'], function 
     .pipe(pipeline())
     .pipe(postcss(processors))
     .pipe(gulp.dest(DEST))
-    .pipe(bs.stream());
+    .on('end', bs.reload);
 }, {
   options: {
     optimize : 'Optimize for production.',
