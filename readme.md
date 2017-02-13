@@ -1,4 +1,4 @@
-Clever Garden _Starter Kit_
+Clever _Garden Starter Kit_
 ===============================================================================
 
 Ce dépôt sert de kit de démarrage pour les projets d'intégration statique.
@@ -50,11 +50,11 @@ $ git push -u origin master
 
 > **NOTE :** _Si la branche master existe déjà et/ou est protégée, il faut faire le `git push` sur une autre branche (`git push -u origin gsk`) puis faire une « pull request »_
 
-### Configurer le gsk
+### Configurer le GSK
 
 À l’initialisation du projet vous devez choisir quels outils vont être utilisés pour builder le html et le css selon les besoins du projet.
 
-Les outils listés ci-après sont à configurer via le fichier `.gsk/config.json`. Si vous n’utilisez que les choix recomandés ils sont déjà configurés par défaut.
+Les outils listés ci-après sont à configurer via le fichier `.gsk/config.json`. Si vous n’utilisez que les choix recommandés, ils sont déjà configurés par défaut.
 
 Voir les instructions de configuration ci-après :
 
@@ -62,7 +62,7 @@ Voir les instructions de configuration ci-après :
 * [Sass/Compass](.gsk/docs/css/sass.md) [Recommandé]
 * [Stylus](.gsk/docs/css/stylus.md)
 * [LESS](.gsk/docs/css/less.md)
-* Si vous ne choisissez pas de préprocesseur le projet n’utilisera que PostCss
+* Si vous ne choisissez pas de préprocesseur, le projet n’utilisera que PostCss
 
 #### HTML
 * [Twig](.gsk/docs/html/twig.md) [Recommandé]
@@ -73,7 +73,7 @@ Voir les instructions de configuration ci-après :
 
 ### Finalisation
 
-Une fois les étapes précedantes éxécutées vous n’êtes déjà plus sur le Gsk mais dans votre nouveau projet.
+Une fois les étapes précédantes executées, vous n’êtes déjà plus sur le GSK mais dans votre nouveau projet.
 
 1. Remplacer votre `readme.md` par le `readme.dist.md`.
 2. Dans celui-ci, remplacer `PROJECT_NAME` par le nom de votre projet et `GIT_REPO_URL` par l’url de son dépôt git.
