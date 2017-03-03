@@ -142,14 +142,6 @@ $font-icon: 'fontello';
 
     margin: 1rem 0 1rem grid-width(3) + $gap;
     padding: $gap;
-
-    :first-child {
-      margin-top: 0;
-    }
-
-    :last-child {
-      margin-bottom: 0;
-    }
   }
 
   &__header {
@@ -341,14 +333,13 @@ $font-icon: 'fontello';
 
   &__example {
     border: 1px solid $light-grey;
-    padding: 1rem;
 
     &Head {
       display: block;
       color: $color-fg-dark-cell;
       background: $color-bg-dark-cell;
       padding: 1rem;
-      margin: -1rem -1rem 1rem;
+      margin: 0;
       border-bottom: 1px solid $light-grey;
     }
 
@@ -359,9 +350,7 @@ $font-icon: 'fontello';
     }
 
     &Markup {
-      + .ca__exampleTitle {
-        margin-top: 1rem;
-      }
+      margin: 1rem;
 
       &::after {
         content: '';
