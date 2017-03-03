@@ -1,20 +1,24 @@
-# Docker : Image docker du Clever Garden Starter Kit
+Docker : Image docker du Garden Starter Kit
+===============================================================================
 
-## Installation de Docker :
+Installation de Docker :
+-------------------------------------------------------------------------------
 
 Merci de suivre les instructions sur [le site officiel](https://www.docker.com/products/docker).
 
-## Création de l'image en locale
+Création de l’image en locale
+-------------------------------------------------------------------------------
 
 > **NOTE :** _À terme,
-  il est prévu que l'image soit disponible sur le Docker hub._
+  il est prévu que l’image soit disponible sur le Docker hub._
 
 ```bash
 docker build -t cleverage/garden-starter-kit .
 ```
 
 
-## Simplement avoir un aperçu de G.S.K. :
+Simplement avoir un aperçu de G.S.K. :
+-------------------------------------------------------------------------------
 
 Vous pouvez avoir un aperçu de G.S.K. avec la commande suivante :
 
@@ -24,7 +28,8 @@ $ docker run -it --rm -p 8000:8000 cleverage/garden-starter-kit
 
 Il vous suffit ensuite de vous rendre sur http://localhost:8000
 
-## Utilisation sur votre projet :
+Utilisation sur votre projet :
+-------------------------------------------------------------------------------
 
 Récupérer le G.S.K. :
 

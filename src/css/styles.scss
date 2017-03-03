@@ -40,7 +40,23 @@
  // down    : ↓
  // comment : 💬 - bulle
  //
- // Styleguide Introduction.Couleur
+ // Styleguide Introduction.Icons
+
+
+/// Exemple UI
+ //
+ // Markup: ../html/partials/_exemple.twig
+ //
+ // Styleguide Introduction.UI
+
+/// SVG
+ //
+ // Markup:
+ // <svg style="height:120px;width:120px;fill:#000">
+ //   <use xlink:href="#symbol-fish"/>
+ // </svg>
+ //
+ // Styleguide Introduction.Svg
 
 body {
   font: 1em sans-serif;

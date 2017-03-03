@@ -72,9 +72,7 @@ var CONF = {
 };
 
 _.each({
-  extend   : load('../../tools/twig/tags'),
-  functions: load('../../tools/twig/functions'),
-  filters  : load('../../tools/twig/filters')
+  extend   : load('../../tools/twig/extends')
 }, function (val, key) {
   if (val) { CONF[key] = val; }
 });

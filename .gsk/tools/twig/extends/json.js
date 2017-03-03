@@ -11,9 +11,10 @@ var _     = require('underscore');
 var gutil = require('gulp-util');
 var ENV   = require('../../env.js').html;
 
-module.exports = {
-  name: 'json',
-  func: function (file) {
+module.exports = function (Twig) {
+  'use strict';
+
+  Twig.exports.extendFunction('json', function (file) {
     var data = {};
 
     if (!_.isString(file)) {
@@ -37,5 +38,5 @@ module.exports = {
     }
 
     return data;
-  }
+  });
 };

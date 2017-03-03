@@ -12,7 +12,6 @@ var gutil    = require('gulp-util');
 var data     = require('gulp-data');
 var newer    = require('gulp-newer');
 var markdown = require('gulp-markdown');
-var prettify = require('gulp-prettify');
 var dox      = require('gulp-dox');
 var hbs      = require('gulp-hbs');
 var dir      = require('require-dir');
@@ -118,32 +117,6 @@ renderer.link = function (href, title, text) {
 };
 
 
-// PRETTIFY CONFIGURATION
-// ----------------------------------------------------------------------------
-var PRT_CONF;
-
-try {
-  // gulp-prettify est trop con pour gérer lui même les fichiers .jsbeautifyrc
-  PRT_CONF = JSON.parse(fs.readFileSync('./.jsbeautifyrc'));
-} catch (e) {
-  gutil.log(gutil.colors.yellow('WARN:'), '[.jsbeautifyrc]', e.message);
-
-  PRT_CONF = {
-    brace_style          : 'collapse',
-    end_with_newline     : true,
-    indent_size          : 2,
-    indent_char          : ' ',
-    indent_inner_html    : false,
-    indent_scripts       : 'normal',
-    max_preserve_newlines: 2,
-    preserve_newlines    : true,
-    unformatted          : [
-      'pre', 'code', 'a', 'sub', 'sup', 'b', 'i', 'u', 'strong', 'em'
-    ]
-  };
-}
-
-
 // TASK DEFINITION
 // ----------------------------------------------------------------------------
 
@@ -156,7 +129,6 @@ gulp.task('doc:js', 'Compile Javascript documentation.', function () {
     .pipe(dox())
     .pipe(data(extractData))
     .pipe(hbs('./.gsk/tools/doc/jsdoc.hbs', { dataSource: 'data' }))
-    .pipe(prettify(PRT_CONF))
     .pipe(gulp.dest(path.join(DEST, 'js')));
 });
 
@@ -171,7 +143,6 @@ gulp.task('doc:static', 'Compile the static documentation.', function () {
     }))
     .pipe(data(extractData))
     .pipe(hbs('./.gsk/tools/doc/staticdoc.hbs', { dataSource: 'data' }))
-    .pipe(prettify(PRT_CONF))
     .pipe(gulp.dest(DEST));
 });
 

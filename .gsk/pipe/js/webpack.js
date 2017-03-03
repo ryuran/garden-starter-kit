@@ -27,7 +27,7 @@ gulp.task('js', 'Compile JS files into build folder using webpack.', ['test:js']
     .pipe(plumber({ errorHandler: err }))
     .pipe(webpackStream(webpackConfig, webpack))
     .pipe(gulp.dest(DEST))
-    .pipe(bs.stream());
+    .on('end', bs.reload);
 }, {
   options: {
     optimize : 'Optimize for production.',
