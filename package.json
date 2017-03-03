@@ -3,7 +3,7 @@
   "homepage": "https://github.com/cleverage/garden-starter-kit",
   "title": "Garden Starter Kit",
   "description": "Set de base pour les projets Garden statiques.",
-  "version": "2.0.0-beta5",
+  "version": "2.0.0-beta6",
   "license" : "MIT",
   "repository": {
     "type": "git",
