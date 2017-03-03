@@ -68,7 +68,7 @@
     "highlight.js": "9.9.0",
     "jshint": "2.9.4",
     "jshint-stylish": "2.2.1",
-    "kss": "3.0.0-beta.15",
+    "kss": "3.0.0-beta.18",
     "nproxy": "stephane-tessier/nproxy#1.7.1"
   },
   "scripts": {
