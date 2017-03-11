@@ -5,7 +5,7 @@
 
 # SASS
 # -----------------------------------------------------------------------------
-# Ignorer le cache de Sass
+# Ignorer le cache de Sass/Compass
 .sass-cache
 
 # Ignorer la configuration interne de Bunler

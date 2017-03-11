@@ -1,25 +1,23 @@
-// Define the LazyPipe to use eyeglass
+// Définition du LazyPipe pour linter sass
 'use strict';
 
 // MODULES
 // ----------------------------------------------------------------------------
 var lazypipe = require('lazypipe');
-var sass = require('gulp-sass');
-var importer = require('node-sass-import');
-var ENV = require('../../tools/env');
+var scsslint = require('gulp-scss-lint');
 
-// SASS CONFIGURATION
+
+// LINTER CONFIGURATION
 // ----------------------------------------------------------------------------
-var SASS = {
-  sass: ENV.css['src-dir'],
-  css: ENV.css['dest-dir'],
-  importer: importer,
-  precision: 8
+var LINT = {
+  bundleExec: true,
+  config: './.scss-lint.yml'
 };
 
 module.exports = function () {
   var lazystream = lazypipe()
-    .pipe(sass, SASS);
+    .pipe(scsslint, LINT)
+    .pipe(scsslint.failReporter);
 
   return lazystream();
 };

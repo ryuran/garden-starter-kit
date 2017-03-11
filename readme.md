@@ -59,7 +59,8 @@ Les outils listés ci-après sont à configurer via le fichier `.gsk/config.json
 Voir les instructions de configuration ci-après :
 
 #### CSS
-* [Sass/Compass](.gsk/docs/css/sass.md) [Recommandé]
+* [Sass](.gsk/docs/css/sass.md) [Recommandé]
+* [Sass/Compass](.gsk/docs/css/compass.md)
 * [Stylus](.gsk/docs/css/stylus.md)
 * [LESS](.gsk/docs/css/less.md)
 * Si vous ne choisissez pas de préprocesseur, le projet n’utilisera que PostCss
