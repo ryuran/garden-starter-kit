@@ -84,14 +84,14 @@ Une fois les étapes précédantes executées, vous n’êtes déjà plus sur le
   "homepage": "https://github.com/cleverage/garden-starter-kit",
   "title": "Garden Starter Kit",
   "description": "Set de base pour les projets Garden statiques.",
-  "version": "2.0.0-beta6",
+  "version": "2.0.0-beta7",
   "license" : "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/cleverage/garden-starter-kit.git"
   },
   ```
-  
+
 4. Changez ou supprimez le fichier `LICENSE`.
 
 _Bravo !! Votre projet est en route._
