@@ -41,7 +41,10 @@ webpackPlugins.push(
 
 // Minimise with uglify if --optimize used
 if (ENV.all.optimize) {
-  webpackPlugins.push(new webpack.optimize.UglifyJsPlugin({ minimize: true }));
+  webpackPlugins.push(new webpack.optimize.UglifyJsPlugin({
+    minimize: true,
+    sourceMap: true
+  }));
 }
 
 module.exports = {
@@ -51,18 +54,25 @@ module.exports = {
     filename: '[name].js'
   },
   module: {
-    loaders: [{
+    rules: [{
       test: /(\.jsx|\.js)$/,
       exclude: /(node_modules)/,
-      loader: 'babel',
-      query: {
-        presets: ['es2015'],
+      use: {
+        loader: 'babel-loader',
+        options: {
+          presets: [
+            ['es2015', {'modules': false}]
+          ]
+        }
       }
     }]
   },
   resolve: {
-    root: path.resolve('../src/js'),
-    extensions: ['', '.js']
+    modules: [
+      path.resolve('../src/js'),
+      'node_modules'
+    ],
+    extensions: ['.js']
   },
   devtool: 'source-map',
   plugins: webpackPlugins

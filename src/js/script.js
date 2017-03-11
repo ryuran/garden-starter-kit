@@ -17,13 +17,9 @@ function foo(firstname) {
 foo(lib.firstname);
 
 
-// Use jQuery
-var $ = require('jquery');
-
-// expose jQuery as global
+// Use jQuery and expose as global
 // for console, external script on inline js if needed
-window.$ = $;
-window.jQuery = $;
+var $ = require('expose-loader?$!expose-loader?jQuery!jquery');
 
 // you can add jquery plugin just by requiring them (if they are compatible with CommonJS)
 require('slick-carousel');
