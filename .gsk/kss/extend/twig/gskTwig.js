@@ -1,4 +1,3 @@
-/* jshint node:true */
 
 var dir = require('require-dir');
 var _ = require('underscore');

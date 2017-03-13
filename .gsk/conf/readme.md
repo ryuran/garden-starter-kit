@@ -12,8 +12,7 @@ configurations par défaut, n'hésitez pas à proposer une merge request au
 starter kit pour que l'on en discute.
 
 * `.jsbeautifyrc`  Configuration pour le [formatage automatique du code HTML](https://github.com/beautify-web/js-beautify)
-* `.jscsrc`        Configuration pour la [vérification de syntaxe JS](http://jscs.info/)
-* `.jshintrc`      Configuration pour le [linting des fichiers JS](http://jshint.com/)
+* `.eslint`        Configuration pour [le linting et la vérification de syntaxe des fichiers JS](http://eslint.org)
 * `.lesshintrc`    Configuration pour le [linting des fichiers LESS](https://github.com/lesshint/lesshint)
 * `.scss-lint.yml` Configuration pour le [linting des fichiers SCSS](https://github.com/brigade/scss-lint/)
 * `.stylintrc`     Configuration pour le [linting des fichiers Stylus](https://rosspatton.github.io/stylint/)

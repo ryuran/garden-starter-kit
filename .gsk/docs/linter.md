@@ -42,12 +42,9 @@ Linters disponibles
 Le starter kit est actuellement configuré pour utiliser les linters suivant:
 
 * JavaScript
-  * JSHint
-    * Site: http://jshint.com
-    * Règles: http://jshint.com/docs/options
-  * JSCS
-    * Site: http://jscs.info
-    * Règles: http://jscs.info/rules
+  * ESLint
+    * Site: http://eslint.org
+    * Règles: http://eslint.org/docs/rules/
 * Sass
   * scss-lint
     * Site: https://github.com/brigade/scss-lint
