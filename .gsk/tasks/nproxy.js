@@ -5,8 +5,6 @@
 var gulp   = require('gulp');
 var nproxy = require('nproxy');
 var argv   = require('yargs').argv;
-var ENV    = require('../tools/env');
-
 
 // TASK DEFINITION
 // ----------------------------------------------------------------------------
@@ -20,12 +18,12 @@ var ENV    = require('../tools/env');
 gulp.task('nproxy', 'Starts nproxy (proxy files, webservices, caching...).', function nproxyTask() {
 
 	// use `--port=8080` to change the port number
-	var port = argv.port || 8989,
-      options = {
-        timeout: argv.timeout || 100,
-        // use `--debug` to activate debuging
-        debug  : argv.debug || false
-      };
+  var port = argv.port || 8989,
+    options = {
+      timeout: argv.timeout || 100,
+      // use `--debug` to activate debuging
+      debug  : argv.debug || false
+    };
 
   // OPTIONAL: If you want nproxy requests to be proxyfied
   // add a `.nproxy-auth.json` file (ignored by git)
@@ -41,7 +39,7 @@ gulp.task('nproxy', 'Starts nproxy (proxy files, webservices, caching...).', fun
   try {
     var proxyConf = require('./../conf/nproxy-auth.json');
     options.proxy = proxyConf;
-  } catch(e) { }
+  } catch(e) { /* config file can be missing */ }
 
   options.responderListFilePath = require('../conf/nproxy.js')(argv);
 
