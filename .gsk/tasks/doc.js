@@ -163,7 +163,7 @@ gulp.task('doc:kss', 'Compile the styleguide, using KSS.', function (cb) {
 // Génère toute la doc du projet
 gulp.task('doc', 'Compile all documentations of the project.', function (cb) {
   // Si on optimize le projet, on n'inclus pas la documentation.
-  if (ENV.all.optimize) {
+  if (!ENV.all.doc && ENV.all.optimize) {
     cb(null);
     return;
   }
