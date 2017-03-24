@@ -8,8 +8,11 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 
   <!-- STYLES -->
-  <link rel="stylesheet" href="kss-assets/codehighlight.css">
   {{{styles}}}
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.0.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.0.0/styles/github-gist.min.css">
 </head>
 <body class="ca">
   <!-- include inline svg symbols -->
@@ -55,8 +58,7 @@
               {{#each children}}
                 <li class="ca__sidebarMenuItem">
                   <a class="ca__sidebarLink" href="section-{{../referenceURI}}.html#kssref-{{referenceURI}}">
-                    <span class="ca__sidebarRef">{{referenceNumber}}</span
-                    >
+                    <span class="ca__sidebarRef">{{referenceNumber}}</span>
                     {{header}}
                   </a>
                 </li>
@@ -183,7 +185,7 @@
                 {{/eachModifier}}
               </div>
               {{#if markup}}
-                <pre class="prettyprint linenums"><code class="lang-html">{{markup}}</code></pre>
+                <pre class="ca__exampleCode"><code class="handlebars">{{markup}}</code></pre>
               {{/if}}
             {{/if}}
 
@@ -202,7 +204,6 @@
   <!-- SCRIPTS -->
   <script src="kss-assets/kss.js"></script>
   <script src="kss-assets/scrollspy.js"></script>
-  <script src="kss-assets/prettify.js"></script>
   <script>
     prettyPrint();
     var spy = new ScrollSpy('body', {

@@ -9,7 +9,10 @@
 
   <!-- STYLES -->
   {{ styles|raw }}
-  <link rel="stylesheet" href="kss-assets/codehighlight.css">
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.0.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.0.0/styles/github-gist.min.css">
 </head>
 <body class="ca">
   <!-- include inline svg symbols -->
@@ -187,7 +190,7 @@
                 {% endfor %}
               </div>
               {% if section.markup %}
-                <pre class="prettyprint linenums"><code class="lang-html">{{ section.markup|escape('html') }}</code></pre>
+                <pre class="ca__exampleCode"><code class="twig">{{ section.markup|escape('html') }}</code></pre>
               {% endif %}
             {% endif %}
 
@@ -206,7 +209,6 @@
   <!-- SCRIPTS -->
   <script src="kss-assets/kss.js"></script>
   <script src="kss-assets/scrollspy.js"></script>
-  <script src="kss-assets/prettify.js"></script>
   <script>
     prettyPrint();
     var spy = new ScrollSpy('body', {

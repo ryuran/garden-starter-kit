@@ -358,6 +358,12 @@ $font-icon: 'fontello';
         clear: both;
       }
     }
+
+    &Code {
+      @include content-block;
+      border: 3px solid $color-bg-page;
+      padding: .5em;
+    }
   }
 
   &__colors {
