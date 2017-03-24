@@ -1,8 +1,8 @@
 
-NProxy : Proxyfier les fichiers JS et CSS
+NProxy : Proxyfier les fichiers JS et CSS
 ===============================================================================
 
-Module utilisé : [NProxy](https://github.com/stephane-tessier/nproxy)
+Module utilisé : [NProxy](https://github.com/stephane-tessier/nproxy)
 
 
 Cette manipulation peut s'avérer très utile pour corriger un bug qui n'est pas reproductible sur la maquette, à cause de données différentes, de scripts tiers, ou tout simplement pour ne pas avoir à faire tourner une lourde VM dont on n’a pas forcément besoin en tant que développeur front.

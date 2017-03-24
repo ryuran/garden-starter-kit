@@ -263,3 +263,4 @@ Ils sont tous utilisables tel quel, mais le _starter kit_ est suffisamment flexi
 ### Autres outils
 * [Nproxy](.gsk/docs/nproxy.md) pour servir vos fichiers locaux à la place de fichiers distants (debug)
 * [Browsersync](.gsk/docs/browsersync.md) pour rendre le browser-testing plus facile
+* [Import](.gsk/docs/import.md) pour copier simplement des fichiers dans le build (exemple : assets de dépendances)

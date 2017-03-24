@@ -32,9 +32,9 @@ var pipeline = require('../pipe/css/' + ENV.engine + '.js');
 // Gère la compilation des fichiers CSS
 gulp.task('css', 'Compile CSS files into build folder.', ['test:css'], function () {
   var processors = _.map(ENV.postcss, function (conf, processorName) {
-      var processor = require(processorName);
-      return processor(conf);
-    });
+    var processor = require(processorName);
+    return processor(conf);
+  });
   return gulp.src(SRC, { nodir: true })
     .pipe(plumber({ errorHandler: err }))
     .pipe(pipeline())
