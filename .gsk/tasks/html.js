@@ -2,10 +2,8 @@
 
 // MODULES
 // ----------------------------------------------------------------------------
-var fs       = require('fs');
 var path     = require('path');
 var gulp     = require('gulp');
-var gutil    = require('gulp-util');
 var plumber  = require('gulp-plumber');
 var bs       = require('browser-sync');
 var err      = require('../tools/errcb');

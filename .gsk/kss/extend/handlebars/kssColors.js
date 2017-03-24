@@ -1,4 +1,3 @@
-/* jshint node:true */
 
 module.exports = function (Handlebars) {
   'use strict';

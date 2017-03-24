@@ -4,12 +4,10 @@
 var path     = require('path');
 var _        = require('underscore');
 var lazypipe = require('lazypipe');
-var gulp     = require('gulp');
 var gutil    = require('gulp-util');
 var hb       = require('gulp-hb');
 var rename   = require('gulp-rename');
 var data     = require('gulp-data');
-var dir      = require('require-dir');
 var ENV      = require('../../tools/env');
 
 var DEST     = path.resolve(ENV.html['dest-dir']);

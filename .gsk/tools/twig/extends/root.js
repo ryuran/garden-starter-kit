@@ -16,7 +16,7 @@ module.exports = function (Twig) {
       return token;
     },
 
-    parse: function (token, context, chain) {
+    parse: function (token, context/*, chain*/) {
       var dir   = path.parse(context._target.relative).dir;
       var depth = (dir === '' ? [] : dir.split(path.sep)).length;
 

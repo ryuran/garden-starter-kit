@@ -4,17 +4,13 @@
 // MODULES
 // ----------------------------------------------------------------------------
 var lazypipe = require('lazypipe');
-var jshint   = require('gulp-jshint');
-var jscs     = require('gulp-jscs');
+var eslint   = require('gulp-eslint');
 
 module.exports = function () {
   var lazystream = lazypipe()
-    .pipe(jshint)
-    .pipe(jshint.reporter, 'jshint-stylish')
-    .pipe(jshint.reporter, 'fail')
-    .pipe(jscs)
-    .pipe(jscs.reporter)
-    .pipe(jscs.reporter, 'fail');
+    .pipe(eslint)
+    .pipe(eslint.format)
+    .pipe(eslint.failAfterError);
 
   return lazystream();
 };

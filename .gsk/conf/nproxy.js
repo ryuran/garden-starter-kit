@@ -1,5 +1,7 @@
 'use strict';
 
+/* eslint-disable no-console */
+
 var path = require('path');
 
 // This is the configuration file to bind HTTP requests
@@ -15,7 +17,6 @@ module.exports = function(options) {
 
     css_folder   = path.resolve('.', 'src/css'),
     js_folder    = path.resolve('.', 'src/js'),
-    cache_folder = path.resolve('.', 'nproxy-cache'),
 
     // `concat.js` will be served as the concatenation of the following files
     concat = [
@@ -24,7 +25,7 @@ module.exports = function(options) {
       js_folder + 'sample-file-3.js',
       // this file is not included in prod, but it contains dev tools
       // (it can be a screen logger for mobile and tablets, etc.)
-      js_folder + 'dev-debbuging-tools.js'
+      js_folder + 'dev-debbuging-tools.js',
     ];
 
 
@@ -36,7 +37,7 @@ module.exports = function(options) {
     // serve `concat.js`
     mapping.push({
       pattern   : /my-website.*concat\.js/,
-      responder : concat
+      responder : concat,
     });
 
     // other JS files
@@ -44,7 +45,7 @@ module.exports = function(options) {
     // $1 = subdir/myfile.js
     mapping.push({
       pattern   : /my-website.*\/js\/(.*\.js)/,
-      responder : js_folder + '$1'
+      responder : js_folder + '$1',
     });
 
   }
@@ -60,7 +61,7 @@ module.exports = function(options) {
     // $1 = news/article/article.css
     mapping.push({
       pattern   : /my-website.*\/css\/(.*\.css)/,
-      responder : css_folder + '$1'
+      responder : css_folder + '$1',
     });
   }
 
@@ -70,22 +71,25 @@ module.exports = function(options) {
     console.log('NO EXTERNAL (scripts are served empty)');
     mapping.push({
       pattern   : /(some-analytics-provider|some-other-service-provider).*\.js/,
-      responder : js_folder + 'empty.js'
+      responder : js_folder + 'empty.js',
     });
   }
 
   // Cache the DOM of the following environments
   // Example of SwitchyOmega configuration for UAT:
   // ```UrlWildcard: *://www.recette.fr* +nproxy```
-  var platforms = [{
+  var platforms = [
+    {
       domain      : 'www.recette.fr',
       cacheFolder : 'recette',
-      cached      : true
-    },{
+      cached      : true,
+    },
+    {
       domain      : 'www.preprod.fr',
       cacheFolder : 'preprod',
-      cached      : true
-  }];
+      cached      : true,
+    },
+  ];
 
   platforms.forEach(function(platform) {
     if(platform.cached) {
@@ -93,21 +97,21 @@ module.exports = function(options) {
       // do not cache webservices
       mapping.push({
         pattern   : new RegExp('(^https?:\\/\\/'+platform.domain.replace(/\./g, '\\.')+'\\/ws-path\/?)$'),
-        responder : '$1'
+        responder : '$1',
       });
 
       // cache home page (otherwise it has no name)
       mapping.push({
         pattern   : new RegExp('^https?:\\/\\/'+platform.domain.replace(/\./g, '\\.')+'\\/?$'),
         responder : platform.cacheFolder + '/homepage.html',
-        cache     : true
+        cache     : true,
       });
 
       // cache other pages
       mapping.push({
         pattern   : new RegExp('^https?:\\/\\/'+platform.domain.replace(/\./g, '\\.')+'\\/?([^\\.\\?]*)$'),
         responder : platform.cacheFolder + '/$1.html',
-        cache     : true
+        cache     : true,
       });
 
     }

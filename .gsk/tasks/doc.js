@@ -2,13 +2,11 @@
 
 // MODULES
 // ----------------------------------------------------------------------------
-var fs       = require('fs');
 var path     = require('path');
 var kss      = require('kss');
 var runner   = require('run-sequence');
 var glob     = require('glob');
 var gulp     = require('gulp');
-var gutil    = require('gulp-util');
 var data     = require('gulp-data');
 var newer    = require('gulp-newer');
 var markdown = require('gulp-markdown');
