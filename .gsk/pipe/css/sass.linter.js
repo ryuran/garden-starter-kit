@@ -4,20 +4,20 @@
 // MODULES
 // ----------------------------------------------------------------------------
 var lazypipe = require('lazypipe');
-var scsslint = require('gulp-scss-lint');
+var sasslint = require('gulp-sass-lint');
 
 
 // LINTER CONFIGURATION
 // ----------------------------------------------------------------------------
 var LINT = {
-  bundleExec: true,
-  config: './.scss-lint.yml'
+  configFile: './.sass-lint.yml'
 };
 
 module.exports = function () {
   var lazystream = lazypipe()
-    .pipe(scsslint, LINT)
-    .pipe(scsslint.failReporter);
+    .pipe(sasslint, LINT)
+    .pipe(sasslint.format)
+    .pipe(sasslint.failOnError);
 
   return lazystream();
 };

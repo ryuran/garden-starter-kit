@@ -179,8 +179,7 @@ $ gulp live --relax
 $ gulp live --doc
 ```
 
-**build** : Contruit la version statique du projet (compile les fichiers Sass,
-assemble les fichiers HTML, etc.)
+**build** : Contruit la version statique du projet (compile les fichiers Sass, assemble les fichiers HTML, etc.)
 
 ```bash
 $ gulp build
@@ -235,17 +234,17 @@ $ gulp sftp-deploy
 
 Outils utilisés
 -------------------------------------------------------------------------------
-Les outils listés ici doivent êtres utilisés obligatoirement lorsqu'on démarre
-un nouveau projet d'intégration. Ils garantissent un _workflow_ de travail optimal.
+Les outils listés ici doivent êtres utilisés obligatoirement lorsqu’on démarre un nouveau projet d’intégration. Ils garantissent un _workflow_ de travail optimal.
 
 * [Gulp](http://gulpjs.com/)
 * [Linter](.gsk/docs/linter.md)
 
 Les outils listés ci-après sont à utiliser et à configurer pour votre projet.
-Ils sont tous utilisables tel quel, mais le _starter kit_ est suffisamment flexible pour s'adapter à vos besoins. Le choix d'utilisation de ces outils se fait via le fichier `.gsk/config.json`, voir les instructions de configuration ci-après :
+Ils sont tous utilisables tels quels, mais le _starter kit_ est suffisamment flexible pour s’adapter à vos besoins. Le choix d'utilisation de ces outils se fait via le fichier `.gsk/config.json`, voir les instructions de configuration ci-après :
 
 ### CSS
-* [Sass/Compass](.gsk/docs/css/sass.md) [Recommandé]
+* [Sass](.gsk/docs/css/sass.md) [Recommandé]
+* ~~[Sass/Compass](.gsk/docs/css/compass.md)~~
 * ~~[Stylus](.gsk/docs/css/stylus.md)~~
 * ~~[LESS](.gsk/docs/css/less.md)~~
 
