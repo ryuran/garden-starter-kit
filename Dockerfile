@@ -16,7 +16,8 @@ WORKDIR /usr/src/app
 COPY . /usr/src/app
 
 RUN npm install
-RUN bundle install
+# Run bundle command only if there is a gemfile available
+RUN if [ -f "Gemfile" ]; then bundle install; fi
 
 # Add node_modules
 ENV PATH "$PATH:/usr/src/app/node_modules/.bin"
