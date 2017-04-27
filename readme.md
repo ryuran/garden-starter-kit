@@ -85,7 +85,7 @@ Une fois les étapes précédantes executées, vous n’êtes déjà plus sur le
   "homepage": "https://github.com/cleverage/garden-starter-kit",
   "title": "Garden Starter Kit",
   "description": "Set de base pour les projets Garden statiques.",
-  "version": "2.0.0-beta7",
+  "version": "2.0.0-beta9",
   "license" : "MIT",
   "repository": {
     "type": "git",
