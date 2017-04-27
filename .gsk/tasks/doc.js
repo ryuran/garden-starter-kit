@@ -13,6 +13,7 @@ var markdown = require('gulp-markdown');
 var dox      = require('gulp-dox');
 var hbs      = require('gulp-hbs');
 var dir      = require('require-dir');
+var del      = require('del');
 var ENV      = require('../tools/env');
 
 var SRC      = path.join(ENV.doc['src-dir'], '**', '*.md');
@@ -149,8 +150,12 @@ gulp.task('doc:static', 'Compile the static documentation.', function () {
 // Génère le styleguide du projet via KSS
 gulp.task('doc:kss', 'Compile the styleguide, using KSS.', function (cb) {
   var CONF = require('../../kss.json');
-  CONF.verbose = true;
+  CONF.verbose = true; // TODO: verbose should be an option
 
+  // clean styleguide directory
+  del(CONF.destination);
+
+  // build kss styleguide
   kss(CONF);
 
   cb(null);
