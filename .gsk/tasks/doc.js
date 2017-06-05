@@ -54,8 +54,10 @@ function extractData(file) {
     rURL += '/js';
   }
 
+  out.toc = [];
+
   // Index related content
-  out.toc = glob.sync(gPath).reduce(function (a, f) {
+  glob.sync(gPath).reduce(function (a, f) {
     var u = f
       .replace(src, rURL)
       .replace(path.parse(f).ext, '.html');
@@ -63,30 +65,67 @@ function extractData(file) {
     // Ignore JS API homepage (it has its own entry within templates)
     if (u === rURL + '/js/index.html') { return a; }
 
-    var p = path.parse(u);
-
-    a.push({
-      dir : p.dir.replace(rURL, '').replace(/^\//, ''),
-      name: p.name.replace('_', ' ').replace(/^./, function (s) { return s.toUpperCase(); }),
-      url : path.relative(path.parse(out.url).dir, u)
-    });
+    a.push(u);
 
     return a;
-  }, []).sort(function (a, b) {
-    if (a.dir === b.dir) { return a.name.localeCompare(b.name); }
-    // if (a.dir === '') { return 1; }
-    return a.dir.localeCompare(b.dir);
+  }, [])
+  .sort(function (a, b) {
+    return a.localeCompare(b);
+  }).forEach(function (currentValue, index, array) {
+    var p = path.parse(currentValue);
+
+    var dir = p.dir.replace(rURL, '').replace(/^\//, '');
+
+    var branch = out.toc;
+
+    var folder = null;
+
+    var name = p.name;
+
+    if (dir !== '') {
+      var dirs = dir.split('/')
+      dirs.forEach(function (part){
+        var found = branch.findIndex(function (e) {return e.name === part});
+        if (found < 0) {
+          folder = {
+            name: part,
+            children:[]
+          };
+          branch.push(folder);
+        }
+        else {
+          folder = branch[found];
+        }
+
+        branch = folder.children;
+      });
+
+    }
+
+    if (name !== 'index') {
+      branch.push({
+        name: name,
+        url: currentValue
+      });
+    }
+    else if (folder !== null) {
+      folder.url = currentValue
+    }
   });
 
   return out;
 }
 
+
 // HBS HELPERS
 // ----------------------------------------------------------------------------
 var helpers = dir('../tools/handlebars/helpers');
-
-hbs.registerHelper(helpers);
-
+Object.keys(helpers).forEach(function (key) {
+  var helper = helpers[key];
+  if (helper.register !== undefined){
+    helper.register(hbs);
+  }
+});
 
 // MARKED CUSTOM RENDERER
 // ----------------------------------------------------------------------------
