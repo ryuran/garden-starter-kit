@@ -27,9 +27,10 @@ let webpackPlugins = [];
 //
 webpackPlugins.push(
   new webpack.ProvidePlugin({
-    $: 'jquery',
-    jQuery: 'jquery',
-    'window.jQuery': 'jquery'
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery',
+      'window.$': 'jquery'
   })
 );
 
@@ -51,21 +52,34 @@ module.exports = {
   entry: entries,
   output: {
     path: DEST,
-    filename: '[name].js'
+    filename: '[name].js',
+    libraryTarget: 'umd',
   },
   module: {
-    rules: [{
-      test: /(\.jsx|\.js)$/,
-      exclude: /(node_modules)/,
-      use: {
-        loader: 'babel-loader',
-        options: {
-          presets: [
-            ['es2015', {'modules': false}]
-          ]
+    rules: [
+      {
+        test: /(\.jsx|\.js)$/,
+        exclude: /(node_modules)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              ['es2015', {'modules': false}]
+            ]
+          }
         }
+      },
+      {
+        test: require.resolve('jquery'),
+        use: [{
+          loader: 'expose-loader',
+          options: 'jQuery'
+        },{
+          loader: 'expose-loader',
+          options: '$'
+        }]
       }
-    }]
+    ]
   },
   resolve: {
     modules: [
