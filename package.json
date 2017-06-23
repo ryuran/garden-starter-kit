@@ -75,7 +75,9 @@
   },
   "scripts":{
     "install": "if [ -f \"Gemfile\" ]; then bundle install --path=.gems; fi",
-    "start": "gulp live"
+    "post-install": "gulp build",
+    "start": "gulp connect",
+    "live": "gulp live"
   },
   "engines": {
     "node": ">= 5.0.3",

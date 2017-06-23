@@ -14,10 +14,11 @@ Prérequis
 -------------------------------------------------------------------------------
 
 ## Avec Docker (recommandé)
-Ce projet nécécite que ces outils soient installé sur votre machine.
+Ce projet nécéssite que ces outils soient installé sur votre machine.
 
 * [Git](http://git-scm.com/)
 * [Docker](https://www.docker.com/products/docker) : Merci de suivre les instructions d’instalation sur le site officiel.
+* [Docker Compose](https://docs.docker.com/compose/) : Normalement installé en même temps que Docker
 
 [Pour plus d’info sur l’usage de docker](.gsk/docs/docker.md).
 
