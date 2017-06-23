@@ -16,10 +16,9 @@ function foo(firstname) {
 
 foo(lib.firstname);
 
-
-// Use jQuery and expose as global
+// Use jQuery exposed as global by webpack config
 // for console, external script on inline js if needed
-var $ = require('expose-loader?$!expose-loader?jQuery!jquery');
+var $ = require('jquery');
 
 // you can add jquery plugin just by requiring them (if they are compatible with CommonJS)
 require('slick-carousel');
