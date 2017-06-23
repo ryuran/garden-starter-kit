@@ -10,8 +10,7 @@ Merci de suivre les instructions sur [le site officiel](https://www.docker.com/p
 Création de l’image en locale
 -------------------------------------------------------------------------------
 
-> **NOTE :** _À terme,
-  il est prévu que l’image soit disponible sur le Docker hub._
+> **NOTE :**  _l’image étant disponible sur le Docker hub, cette étape n’est pas necéssaire à part si vous voulez votre propre image lié à votre projet._
 
 ```bash
 docker build -t cleverage/garden-starter-kit .
@@ -24,7 +23,7 @@ Simplement avoir un aperçu de G.S.K. :
 Vous pouvez avoir un aperçu de G.S.K. avec la commande suivante :
 
 ```bash
-$ docker run -it --rm -p 8000:8000 cleverage/garden-starter-kit
+$ docker run -it --rm -p 8000:8000 cleverage/garden-starter-kit bash -c "npm install && npm start"
 ```
 
 Il vous suffit ensuite de vous rendre sur http://localhost:8000
@@ -40,7 +39,7 @@ $ git clone git@github.com:cleverage/garden-starter-kit.git .
 $ rm -rf .git
 ```
 
-### Methode 1 : Avec un conteneur actif en permanence :
+### Methode 1 : Avec un conteneur actif en permanence (recommandé) :
 
 Créer et démarrer un nouveau conteneur :
 
@@ -73,7 +72,7 @@ docker start myProject
 Pour supprimer le conteneur :
 
 ```bash
-docker down myProject
+docker rm myProject
 ```
 
 ### Methode 2 : Sans conteneur actif en permanence :
@@ -81,13 +80,12 @@ docker down myProject
 Pour lancer vos commandes :
 
 ```bash
-$ docker run -ti --rm -v "$PWD":/usr/src/app [-p 8000:8000 -p 3001:3001] cleverage/garden-starter-kit [my command]
+$ docker run -it --rm -v "$PWD":/usr/src/app [-p 8000:8000 -p 3001:3001] cleverage/garden-starter-kit [my command]
 ```
 
 Par exemple :
 
 ```bash
-$ docker run -ti --rm -v "$PWD":/usr/src/app cleverage/garden-starter-kit npm install
-$ docker run -ti --rm -v "$PWD":/usr/src/app cleverage/garden-starter-kit bundle install
-$ docker run -ti --rm -v "$PWD":/usr/src/app -p 8000:8000 -p 3001:3001 cleverage/garden-starter-kit gulp live
+$ docker run -it --rm -v "$PWD":/usr/src/app cleverage/garden-starter-kit npm install
+$ docker run -it --rm -v "$PWD":/usr/src/app -p 8000:8000 -p 3001:3001 cleverage/garden-starter-kit gulp live
 ```

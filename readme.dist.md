@@ -86,7 +86,7 @@ $ npm-do gulp live
 ```
 
 
-Innitialisez votre environement
+Initialisez votre environement
 -------------------------------------------------------------------------------
 
 ### Clôner ce dépôt avec Git
@@ -100,24 +100,17 @@ $ git clone GIT_REPO_URL
 
 ### Initialisation de Docker
 
-Si vous utilisez Docker lancer il faut créer l’image docker locale :
+Si vous utilisez Docker, l’image est disponible sur le [Docker hub](https://hub.docker.com/r/cleverage/garden-starter-kit/).
+
+Il suffit donc de lancer la commande suivante :
 
 ```bash
-$ docker build -t cleverage/garden-starter-kit .
+$ docker run -it --name myProject -v "$PWD":/usr/src/app -p 8000:8000 -p 3001:3001 cleverage/garden-starter-kit:v2.0.0
 ```
 
-> **NOTE :** _À terme,
-  il est prévu que l’image soit disponible sur le Docker hub._
+Cette commande lance le container Docker puis l’installation des dépendances npm (et ruby s’il y en a) lors du premier usage.
 
-Vous pouvez ensuite travailler dans cette image :
-
-```bash
-$ docker run -it --name myProject -v "$PWD":/usr/src/app -p 8000:8000 -p 3001:3001 cleverage/garden-starter-kit bash
-```
-
-### Installation des dépendances du projet
-Lors du démarrage de votre projet et à chaque fois que le dépôt est rapatrié en
-local, exécutez les commandes suivantes :
+À chaque fois que le dépôt est rapatrié en local, exécutez les commandes suivantes :
 
 ```bash
 $ npm install
