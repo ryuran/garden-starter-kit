@@ -12,9 +12,6 @@
   "bin": {
     "gsk": "./bin/gsk.js"
   },
-  "scripts": {
-    "postinstall": "cd ../../ && gsk"
-  },
   "dependencies": {
     "autoprefixer": "7.1.3",
     "babel-cli": "6.26.0",
