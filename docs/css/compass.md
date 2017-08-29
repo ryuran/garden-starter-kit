@@ -16,7 +16,7 @@ Configuration:
 Vérifiez votre environnement
 -------------------------------------------------------------------------------
 
-Sass et compass reposent sur [Ruby](https://www.ruby-lang.org/fr/), assurez-vous que vous l'avez bien installé sur votre environnement.
+Sass et compass reposent sur [Ruby](https://www.ruby-lang.org/fr/), assurez-vous que vous l’avez bien installé sur votre environnement.
 
 Il est également nécessaire d'installer l'utilitaire
 [Bundler](http://bundler.io/) dans votre environnement global (cela permet
@@ -28,7 +28,7 @@ Puis exécutez simplement la commande suivante :
 $ sudo gem install bundler
 ```
 
-Copiez à la racine du projet les fichiers `config.rb` et `Gemfile` que vous trouverez dans le dossier `.gsk/conf`.
+Copiez à la racine du projet les fichiers `config.rb` et `Gemfile` que vous trouverez dans le dossier `starter/`.
 
 Puis, pour être sûr que vous disposez de la dernière version de Sass et Compass
 pour le projet sur lequel vous travaillez, exécutez la commande suivante :
@@ -50,7 +50,7 @@ Configuration standard
 
 Vous pouvez utiliser Sass/Compass de manière traditionnelle, toute la
 configuration de l’environnement est centralisé dans le ficher `config.rb`.
-Un fichier de configuration près à l’emploi est disponible dans `.gsk/conf`
+Un fichier de configuration près à l’emploi est disponible dans `starter/`
 
 Pour compiler les styles du projet vers l'environnement de développement,
 exécuter simplement la commande suivante :

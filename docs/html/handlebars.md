@@ -56,7 +56,7 @@ Handlebars peut être etendu par l'usage de helpers.
 
 De manière général, pour rajouter un helpers, il suffit d'écrire un module
 CommonJS qui exposera une fonction definisant le helpers. Ce module doit être
-placé dans le dossier `.gsk/tools/handlebars/helpers`. Le nom du helper sera
+placé dans le dossier `tools/handlebars/helpers`. Le nom du helper sera
 le nom du fichier (sans extention).
 
 Un helper definie de cette façon a cette forme:
@@ -71,5 +71,5 @@ Pour en savoir plus sur la création de helpers, la
 est là pour vous aider
 
 Pour voir quelques exemples concrets vous pouvez jetez un coup d’œil dans le
-repertoire [.gsk/tools/handlebars/helpers](.gsk/tools/handlebars/helpers).
+repertoire [tools/handlebars/helpers](tools/handlebars/helpers).
 

@@ -39,9 +39,9 @@ De manière générale, pour rajouter un tag, une fonction ou un filtre, il faut
 écrire un module CommonJS et le mettre dans un des répertoires suivants selon
 ce que vous voulez rajouter:
 
-* `.gsk/tools/twig/tags/` pour rajouter un tag
-* `.gsk/tools/twig/functions/` pour rajouter une fonction
-* `.gsk/tools/twig/filters/` pour rajouter un filtre
+* `tools/twig/tags/` pour rajouter un tag
+* `tools/twig/functions/` pour rajouter une fonction
+* `tools/twig/filters/` pour rajouter un filtre
 
 Pour les fonctions et les filtres, votre module doit exporter un objet:
 
@@ -55,8 +55,8 @@ module.exports = {
 ```
 
 Pour les tags, votre module doit exporter une fonction qui prend un objet Twig
-en entrée. Cet objet expose toute l'API interne de Twig.js pour pouvoir rajouter
-un tag. On ne va pas se le cacher, [c'est assez chaud à faire](https://github.com/justjohn/twig.js/wiki/Extending-twig.js-With-Custom-Tags).
+en entrée. Cet objet expose toute l’API interne de Twig.js pour pouvoir rajouter
+un tag. On ne va pas se le cacher, [c’est assez chaud à faire](https://github.com/justjohn/twig.js/wiki/Extending-twig.js-With-Custom-Tags).
 
 A noter que la fonction exportée par le module est celle qui sera utilisée par
 `Twig.extend`.
@@ -68,5 +68,5 @@ module.exports = function (Twig) {
 ```
 
 Pour voir quelques exemples concrets vous pouvez jetez un coup d’œil dans le
-repertoire [.gsk/tools/twig](.gsk/tools/twig).
+repertoire [tools/twig](tools/twig).
 

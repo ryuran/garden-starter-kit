@@ -10,7 +10,7 @@ obligatoirement aussi bien que ceux qui sont simplement recommandés.
 
 Chaque outil utilisé dispose d’une documentation dédiée sur la façon de
 l'utiliser dans notre contexte. Cette documentation est rédigée au [format
-Markdown](https://daringfireball.net/projects/markdown/syntax) et est disponible dans le répertoire `.gsk/docs` de ce dépôt.
+Markdown](https://daringfireball.net/projects/markdown/syntax) et est disponible dans le répertoire `docs` de ce dépôt.
 
 
 Créer un nouveau projet
@@ -54,23 +54,23 @@ $ git push -u origin master
 
 À l’initialisation du projet vous devez choisir quels outils vont être utilisés pour builder le html et le css selon les besoins du projet.
 
-Les outils listés ci-après sont à configurer via le fichier `.gsk/config.json`. Si vous n’utilisez que les choix recommandés, ils sont déjà configurés par défaut.
+Les outils listés ci-après sont à configurer via le fichier `config.json`. Si vous n’utilisez que les choix recommandés, ils sont déjà configurés par défaut.
 
 Voir les instructions de configuration ci-après :
 
 #### CSS
-* [Sass](.gsk/docs/css/sass.md) [Recommandé]
-* [Sass/Compass](.gsk/docs/css/compass.md)
-* [Stylus](.gsk/docs/css/stylus.md)
-* [LESS](.gsk/docs/css/less.md)
+* [Sass](docs/css/sass.md) [Recommandé]
+* [Sass/Compass](docs/css/compass.md)
+* [Stylus](docs/css/stylus.md)
+* [LESS](docs/css/less.md)
 * Si vous ne choisissez pas de préprocesseur, le projet n’utilisera que PostCss
 
 #### HTML
-* [Twig](.gsk/docs/html/twig.md) [Recommandé]
-* [Handlebars](.gsk/docs/html/handlebars.md)
+* [Twig](docs/html/twig.md) [Recommandé]
+* [Handlebars](docs/html/handlebars.md)
 
 #### JavaScript
-* [Webpack + NPM](.gsk/docs/js/webpack.md) [Recommandé]
+* [Webpack + NPM](docs/js/webpack.md) [Recommandé]
 
 ### Finalisation
 

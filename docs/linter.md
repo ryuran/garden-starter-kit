@@ -10,7 +10,7 @@ pour JavaScript et pour les préprocesseur CSS.
 Configuration des linters
 -------------------------------------------------------------------------------
 Une configuration par défaut de ces linters est disponible dans le répertoire
-`.gsk/conf`. Il suffit de copier ces fichiers de configuration à la racine du
+`strater/`. Il suffit de copier ces fichiers de configuration à la racine du
 projet pour qu'ils soient utilisés par Gulp automatiquement.
 
 Vous pouvez bien sur mettre en place vos propres contraintes que ce soit en

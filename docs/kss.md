@@ -16,10 +16,10 @@ Toute la configuration pour la génération du guide des styles est centralisée
 ```javascript
 {
   // Le dossier comportant les sources à analyser
-  // (le chemin est relatif à l'emplacement du fichier kss.json)
+  // (le chemin est relatif à l’emplacement du fichier kss.json)
   "source": "./src/sass",
 
-  // La page d'accueil statique du guide des style au format Markdown
+  // La page d’accueil statique du guide des style au format Markdown
   // (le chemin est relatif à l'emplacement des sources à analyser)
   "homepage": "styleguide.md",
 
@@ -29,10 +29,10 @@ Toute la configuration pour la génération du guide des styles est centralisée
 
   // L'emplacement du gabarit KSS personalisé à utiliser
   // (le chemin est relatif à l'emplacement du fichier kss.json)
-  "template": "./.gsk/kss",
+  "template": "./node_modules/garder-starterkit/kss",
 
   // Les divers fichiers CSS à inclure dans le template
-  // (leur chemin est l'URL relative des fichiers et dépend donc de la
+  // (leur chemin est l’URL relative des fichiers et dépend donc de la
   //  configuration du serveur HTTP utilisé pour afficher la documentation)
   "css": [
     "../../css/doc.css",
