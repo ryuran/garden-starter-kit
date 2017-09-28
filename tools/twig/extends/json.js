@@ -1,6 +1,6 @@
 // json(path)
 // --------------------------------------------------------------------------
-// Lit le fichier JSON en paramètre et renvoie l'objet correspondant
+// Lit le fichier JSON en paramètre et renvoie l’objet correspondant
 //
 // Pour le paramètre `path`, le dossier courrant `./` est le dossier source
 // des données des gabarits Twig: `src/data` par defaut.

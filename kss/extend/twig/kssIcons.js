@@ -58,7 +58,7 @@ module.exports = function (Twig) {
     Twig.exports.extendTag({
         type: 'endkssIcons',
         regex: /^endkssIcons$/,
-        next: [ ],
+        next: [],
         open: false
     });
   });

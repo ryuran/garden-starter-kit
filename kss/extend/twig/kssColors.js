@@ -120,7 +120,7 @@ module.exports = function (Twig) {
     Twig.exports.extendTag({
         type: 'endkssColors',
         regex: /^endkssColors$/,
-        next: [ ],
+        next: [],
         open: false
     });
   });
