@@ -1,7 +1,6 @@
-API JavaScript
+JavaScript API
 ===============================================================================
 
-Cette page sert de page d'acceuil pour la documentation JavaScript.
+This file serves as homepage of JavaScript documentation.
 
-C'est le lieux idéal pour documenter les parties pris architectureaux mis en
-oeuvre dans le projet.
+It’s the ideal place to document achitectural choices implemented in this project.

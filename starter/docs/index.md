@@ -1,14 +1,10 @@
-Documentation du projet
+Project documentation
 ===============================================================================
 
-Tous les fichiers au format MarkDown (avec l'extention `.md`) present dans
-ce repertoire `docs` seront convertis en HTML et rajoutés à la documentation
-du projet à chaque build.
+Every files in MarkDown format (with `.md` extension) present in the `docs` directory will be converted to HTML files and added to project documentation for each build.
 
-Il y a deux choses importantes à savoir:
+There is two important things to know:
 
-* La documentation n'est pas générée lors des build optimisés
-* Les liens fait vers des fichiers markdown (avec l'extention `.md`) sont
-  automatiquement transformés en liens vers les fichiers HTML correspondant. De
-  cette manière, les liens relatifs de la documentation peuvent être suivit
-  aussi bien dans la version HTML générée que dans l'interface de gitlab.
+* Documentation is not generated for optimized build.
+* Links to other markdown files (with `.md` extension) are automaticaly transformed
+  into links to corresponding HTML file. By this way, relative links of the documentation can be followed as well in HTML version than in gitlab, github or bitbucket interface.
