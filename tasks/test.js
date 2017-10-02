@@ -29,7 +29,7 @@ var SRC = {
 
 // LINTER
 // ----------------------------------------------------------------------------
-var css  = require('../pipe/css/' + ENV.css.engine + '.linter.js');
+var css  = require('@cleverage/gsk-' + ENV.css.engine + '/linter.js');
 var js   = require('../pipe/js/simple.linter.js');
 var a11y = require('../pipe/html/a11y.linter.js');
 

@@ -44,13 +44,13 @@ module.exports = function (ENV) {
   const files = glob.sync(path.join(SRC, '*.js'));
 
   for (const file of files) {
-    entries[path.basename(file, '.js')] = file;
+    entries[path.basename(file, '.js')] = path.resolve(__dirname, file);
   }
 
   return {
     entry: entries,
     output: {
-      path: DEST,
+      path: path.join(process.cwd(), DEST),
       filename: '[name].js',
       libraryTarget: 'umd',
     },

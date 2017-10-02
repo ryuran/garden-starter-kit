@@ -71,7 +71,7 @@ sanitize.FILENAME = function (value) {
 
 
 function parser(rules) {
-  var args   = extractCliArgs();
+  var args = extractCliArgs();
   var output = {};
 
   rules.forEach(function (rule) {

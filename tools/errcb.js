@@ -9,9 +9,7 @@ module.exports = function err(error) {
     error.stack.split('\n').forEach(function (line) {
       gutil.log(gutil.colors.red('STACK:'), line);
     });
-  }
-
-  else {
+  } else {
     gutil.log(gutil.colors.red('ERROR:'), error.message);
   }
 

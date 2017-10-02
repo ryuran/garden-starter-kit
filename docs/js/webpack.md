@@ -31,11 +31,11 @@ Les fichiers de sortie correpondants porteront le même nom.
 ### Bibliothèques tiers
 
 Si vous utilisez des bibliothèques tiers (comme jQuery), il vous suffit de les
-installer via NPM (notez l'utilisation de `--save` pour que les dépendances
+installer via NPM (notez l’utilisation de `--save` pour que les dépendances
 soient proprement versionnées avec l’ensemble du projet) :
 
 ```bash
-$ npm i jquery,underscore,moment --save
+$ npm i jquery moment --save
 ```
 
 Pour les utiliser, vous pouvez soit utiliser la fonction `require` des modules

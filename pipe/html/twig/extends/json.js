@@ -1,6 +1,6 @@
 // json(path)
 // --------------------------------------------------------------------------
-// Lit le fichier JSON en paramètre et renvoie l'objet correspondant
+// Lit le fichier JSON en paramètre et renvoie l’objet correspondant
 //
 // Pour le paramètre `path`, le dossier courrant `./` est le dossier source
 // des données des gabarits Twig: `src/data` par defaut.
@@ -8,16 +8,23 @@
 var fs    = require('fs');
 var path  = require('path');
 var gutil = require('gulp-util');
-var ENV   = require('../../env.js').html;
 
-
-module.exports.register = function (Handlebars) {
+module.exports = function (Twig) {
   'use strict';
 
-  Handlebars.registerHelper('json', function (varname, file) {
+  Twig.exports.extendFunction('json', function (file) {
     var data = {};
 
-    var fullpath = path.resolve(ENV['data-dir'], file);
+    if (!(typeof file === 'string' || file instanceof String)) {
+      gutil.log(gutil.colors.red('ERROR:'),
+        'Wrong file path:', file,
+        '(check your "json(path)" syntax)'
+      );
+
+      return data;
+    }
+
+    var fullpath = path.resolve(this.path, file);
 
     try {
       data = JSON.parse(fs.readFileSync(fullpath, 'utf8'));
@@ -28,6 +35,6 @@ module.exports.register = function (Handlebars) {
       );
     }
 
-    this[varname] = data;
+    return data;
   });
 };

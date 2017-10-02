@@ -1,9 +1,9 @@
 {
-  "name": "garden-starterkit",
+  "name": "@cleverage/gsk",
   "homepage": "https://github.com/cleverage/garden-starter-kit",
   "title": "Garden Starter Kit",
-  "description": "Set de base pour les projets Garden statiques.",
-  "version": "3.0.0-alpha0",
+  "description": "Tool box for static front-end developpement",
+  "version": "3.0.0-alpha13",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -12,17 +12,28 @@
   "bin": {
     "gsk": "./bin/gsk.js"
   },
+  "main": "index.js",
+  "files": [
+    "bin",
+    "kss",
+    "tasks",
+    "pipe/js",
+    "pipe/html/a11y.linter.js",
+    "starter",
+    "tools",
+    "config.json"
+  ],
   "dependencies": {
     "autoprefixer": "7.1.3",
     "babel-cli": "6.26.0",
     "babel-core": "6.26.0",
-    "babel-eslint": "7.2.3",
+    "babel-eslint": "8.0.1",
     "babel-loader": "7.1.2",
     "babel-plugin-add-module-exports": "0.2.1",
     "babel-preset-es2015": "6.24.1",
     "browser-sync": "2.18.13",
     "del": "3.0.0",
-    "eslint": "4.5.0",
+    "eslint": "4.7.2",
     "expose-loader": "0.7.3",
     "glob": "7.1.2",
     "gulp": "3.9.1",
@@ -45,7 +56,7 @@
     "gulp-sftp": "0.1.5",
     "gulp-sourcemaps": "2.6.1",
     "gulp-svgstore": "6.1.0",
-    "gulp-twig": "0.7.0",
+    "gulp-twig": "1.1.1",
     "gulp-uglify": "3.0.0",
     "gulp-util": "3.0.8",
     "inquirer": "^3.2.2",
@@ -53,16 +64,15 @@
     "lazypipe": "1.0.1",
     "merge-stream": "1.0.1",
     "nproxy": "stephane-tessier/nproxy#1.7.1",
-    "run-sequence": "2.1.0",
-    "underscore": "1.8.3",
+    "run-sequence": "2.2.0",
     "vinyl-buffer": "1.0.0",
     "vinyl-source-stream": "1.1.0",
-    "webpack": "3.5.5",
+    "webpack": "3.6.0",
     "webpack-stream": "4.0.0",
-    "yargs": "8.0.2"
+    "yargs": "9.0.1"
   },
   "engines": {
-    "node": ">= 5.0.3",
-    "npm": ">= 3.5.4"
+    "node": ">= 6.11.3",
+    "npm": ">= 3.10.10"
   }
 }

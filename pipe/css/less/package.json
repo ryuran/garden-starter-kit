@@ -1,0 +1,16 @@
+{
+  "name": "@cleverage/gsk-less",
+  "version": "1.0.0",
+  "description": "gsk less engine",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "gulp-less": "3.3.2",
+    "gulp-lesshint": "4.0.0",
+    "lazypipe": "1.0.1"
+  }
+}

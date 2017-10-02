@@ -5,17 +5,12 @@
 // ----------------------------------------------------------------------------
 var lazypipe = require('lazypipe');
 var less     = require('gulp-less');
-var ENV      = require('../../tools/env');
 
-// LESS CONFIGURATION
-// ----------------------------------------------------------------------------
-var CONF = {
-  compress: ENV.all.optimize
-};
-
-module.exports = function () {
+module.exports = function (ENV) {
   var lazystream = lazypipe()
-    .pipe(less, CONF);
+    .pipe(less, {
+      compress: ENV.all.optimize
+    });
 
   return lazystream();
 };

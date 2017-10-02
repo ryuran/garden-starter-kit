@@ -1,8 +1,8 @@
-var fs = require('fs-extra');
-var gulp = require('gulp');
-var path = require('path');
-var twig = require('gulp-twig');
-var rename = require('gulp-rename');
+const fs = require('fs-extra');
+const gulp = require('gulp');
+const path = require('path');
+const twig = require('gulp-twig');
+const rename = require('gulp-rename');
 
 module.exports = function (config) {
   // write config file
@@ -14,9 +14,9 @@ module.exports = function (config) {
   // copy files relativly to choosen config
   // conditional install for other packages
 
-  var base = path.resolve(__dirname, '../starter');
+  const base = path.resolve(__dirname, '../starter');
   // files wildcard relative to directory
-  var files = [
+  const files = [
     base + '/.editorconfig',
     base + '/.eslintrc.json',
     base + '/kss.json',
@@ -29,50 +29,41 @@ module.exports = function (config) {
     base + '/src/html/**/*.json', // data sample for kss
   ];
 
-  var dependencies = [
+  const dependencies = [
     'jquery@3.2.1',
     'slick-carousel@1.7.1',
   ];
 
+  // Install html engine
   if (config.html.engine === 'twig') {
     files.push(base + '/src/html/**/*.twig');
-  } else if (config.html.engine === 'handlebars') {
-    files.push(base + '/src/html/**/*.hbs');
 
-    dependencies.push('gulp-hb@6.0.2');
+    dependencies.push('@cleverage/gsk-twig');
   }
 
-  if (config.css.engine === 'compass' || config.css.engine === 'sass') {
-    files.push(base + '/src/css/**/*.scss');
+  // Install CSS engine
+  if (config.css.engine === 'sass') {
+    files.push(base + '/src/css/**/*.s+(a|c)ss');
+    files.push(base + '/.sass-lint.yml');
 
-    if (config.css.engine === 'sass') {
-      files.push(base + '/.sass-lint.yml');
+    dependencies.push('@cleverage/gsk-sass');
+  } else if (config.css.engine === 'compass') {
+    files.push(base + '/src/css/**/*.s+(a|c)ss');
+    files.push(base + '/.scss-lint.yml');
+    files.push(base + '/config.rb');
+    files.push(base + '/Gemfile');
 
-      dependencies.push('gulp-sass@3.1.0');
-      dependencies.push('gulp-sass-lint@1.3.3');
-      dependencies.push('sass-lint@1.11.0');
-      dependencies.push('node-sass@4.5.3');
-      dependencies.push('node-sass-import@1.1.1');
-    } else if (config.css.engine === 'compass') {
-      files.push(base + '/.scss-lint.yml');
-      files.push(base + '/config.rb');
-      files.push(base + '/Gemfile');
-
-      dependencies.push('gulp-compass@2.1.0');
-      dependencies.push('gulp-scss-lint@0.5.0');
-    }
+    dependencies.push('@cleverage/gsk-compass');
   } else if (config.css.engine === 'stylus') {
     files.push(base + '/src/css/**/*.styl');
     files.push(base + '/.stylintrc');
 
-    dependencies.push('gulp-stylint@4.0.0');
-    dependencies.push('gulp-stylus@2.6.0');
+    dependencies.push('@cleverage/gsk-stylus');
   } else if (config.css.engine === 'less') {
     files.push(base + '/src/css/**/*.less');
     files.push(base + '/.lesshintrc');
 
-    dependencies.push('gulp-less@3.3.2');
-    dependencies.push('gulp-lesshint@4.0.0');
+    dependencies.push('@cleverage/gsk-less');
   }
 
   gulp.src(files, {base: base, dot: true})

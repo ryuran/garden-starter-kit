@@ -7,14 +7,14 @@ var gulp     = require('gulp');
 var plumber  = require('gulp-plumber');
 var bs       = require('browser-sync');
 var err      = require('../tools/errcb');
-var ENV      = require('../tools/env').html;
+var ENV      = require('../tools/env');
 
 // CONDITIONAL PIPELINE
 // ----------------------------------------------------------------------------
-var pipeline = require('../pipe/html/' + ENV.engine + '.js');
+var pipeline = require('@cleverage/gsk-' + ENV.html.engine);
 
-// On ne va compiler que les fichiers dont le nom ne commence pas par un _
-// Ni ceux qui ne sont pas au format de l'engine choisi
+// We don't compile files with a name starting by _
+// And only files whit the good format (extention)
 var ext = {
   handlebars: '*.hbs',
   twig: '*.twig'
@@ -25,10 +25,10 @@ function getExt(engine) {
 }
 
 var SRC  = [
-  path.join(ENV['src-dir'], '**', getExt(ENV.engine)),
-  path.join('!' + ENV['src-dir'], '**', '_*')
+  path.join(ENV.html['src-dir'], '**', getExt(ENV.html.engine)),
+  path.join('!' + ENV.html['src-dir'], '**', '_*')
 ];
-var DEST = ENV['dest-dir'];
+var DEST = ENV.html['dest-dir'];
 
 
 // TASK DEFINITION
@@ -39,7 +39,7 @@ var DEST = ENV['dest-dir'];
 gulp.task('html', 'Compile HTML files.', function () {
   return gulp.src(SRC)
     .pipe(plumber({ errorHandler: err }))
-    .pipe(pipeline())
+    .pipe(pipeline(ENV))
     .pipe(gulp.dest(DEST))
     .on('end', bs.reload);
 });

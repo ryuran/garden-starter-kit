@@ -2,7 +2,7 @@
   "source": "./src/css",
   "homepage": "styleguide.md",
   "destination": "./build/doc/styleguide",
-  "builder": "./node_modules/garden-starterkit/kss",
+  "builder": "./node_modules/@cleverage/gsk/kss",
   "custom": [
     "Colors",
     "Icons"

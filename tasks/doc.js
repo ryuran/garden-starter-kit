@@ -119,7 +119,7 @@ function extractData(file) {
 
 // HBS HELPERS
 // ----------------------------------------------------------------------------
-var folderPath = '../tools/handlebars/helpers';
+var folderPath = '../tools/doc/helpers';
 require('fs').readdirSync(path.resolve(path.relative(process.cwd(), __dirname), folderPath)).forEach(function(file) {
   var helper = require(path.join(folderPath, file));
   if (helper.register) {
