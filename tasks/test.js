@@ -30,8 +30,8 @@ var SRC = {
 // LINTER
 // ----------------------------------------------------------------------------
 var css  = require('@cleverage/gsk-' + ENV.css.engine + '/linter.js');
-var js   = require('../pipe/js/simple.linter.js');
-var a11y = require('../pipe/html/a11y.linter.js');
+var js   = require('../engine/js/simple.linter.js');
+var a11y = require('../engine/html/a11y.linter.js');
 
 
 // TASK DEFINITION

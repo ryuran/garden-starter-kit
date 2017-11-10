@@ -4,10 +4,11 @@
 var path = require('path');
 var lazypipe = require('lazypipe');
 var gutil = require('gulp-util');
+var plumber  = require('gulp-plumber');
 var twig = require('gulp-twig');
 var data = require('gulp-data');
 
-module.exports = function (ENV) {
+module.exports = function (gulp, ENV, err) {
   var genericDataFile = path.resolve(path.join(ENV.html['data-dir'], 'data.json'));
 
   // UTILS
@@ -72,9 +73,23 @@ module.exports = function (ENV) {
     CONF.extend = val;
   }
 
-  var lazystream = lazypipe()
+  var pipeline = lazypipe()
     .pipe(data, processData)
     .pipe(twig, CONF);
 
-  return lazystream();
+  // We don't compile files with a name starting by _
+  // And only files whit the good format (extention)
+  var ext = ENV.html.pattern !== undefined ? ENV.html.pattern : '*.twig';
+
+  var SRC  = [
+    path.join(ENV.html['src-dir'], '**', ext),
+    path.join('!' + ENV.html['src-dir'], '**', '_*')
+  ];
+
+  var DEST = ENV.html['dest-dir'];
+
+  return gulp.src(SRC)
+    .pipe(plumber({ errorHandler: err }))
+    .pipe(pipeline())
+    .pipe(gulp.dest(DEST))
 };

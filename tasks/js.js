@@ -7,4 +7,4 @@ var ENV = require('../tools/env').js;
 
 // CONDITIONAL PIPELINE
 // ----------------------------------------------------------------------------
-require('../pipe/js/' + ENV.engine + '.js');
+require('../engine/js/' + ENV.engine + '.js');

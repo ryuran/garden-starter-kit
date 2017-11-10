@@ -22,7 +22,6 @@ if (ENV.a11y && ENV.a11y.viewports) {
   }
 }
 
-
 module.exports = function () {
   var lazystream = lazypipe();
 

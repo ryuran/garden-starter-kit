@@ -17,8 +17,8 @@
     "bin",
     "kss",
     "tasks",
-    "pipe/js",
-    "pipe/html/a11y.linter.js",
+    "engine/js/**/*",
+    "engine/html/a11y.linter.js",
     "starter",
     "tools",
     "config.json"
