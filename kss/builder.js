@@ -23,13 +23,10 @@ let KssBuilderBase;
 
 var path = require('path');
 
-// gks config
-var ENV = require('../tools/env');
-
 try {
   // In order for a builder to be "kss clone"-able, it must use the
   // require('kss/builder/path') syntax.
-  KssBuilderBase = require('kss/builder/base/' + ENV.html.engine);
+  KssBuilderBase = require('kss/builder/base/twig');
 } catch (e) {
   // The above require() line will always work.
   //
@@ -38,7 +35,7 @@ try {
   // which would allow node.js to find it with require('kss/anything'), forcing
   // you to write a long-winded comment and catch the error and try again using
   // a relative path.
-  KssBuilderBase = require('../base/' + ENV.html.engine);
+  KssBuilderBase = require('../base/twig');
 }
 
 /**
@@ -63,8 +60,6 @@ class KssBuilder extends KssBuilderBase {
         default: 'KSS Style Guide'
       }
     });
-
-    this.options.extend.push(path.join(__dirname, 'extend', ENV.html.engine));
   }
 
   /**
@@ -80,9 +75,10 @@ class KssBuilder extends KssBuilderBase {
    *   `styleGuide`.
    */
   prepare(styleGuide) {
+    this.options.extend.unshift(path.join(__dirname, 'extend'));
+
     // First we let KssBuilderBase.prepare() clean-up the style guide object.
     return super.prepare(styleGuide).then(styleGuide => {
-
       return Promise.resolve(styleGuide);
     });
   }

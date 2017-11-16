@@ -19,7 +19,7 @@ module.exports = function (config) {
   const files = [
     base + '/.editorconfig',
     base + '/.eslintrc.json',
-    base + '/kss.json',
+    base + '/kss.js',
     base + '/webpack-config.js',
     base + '/docs/**/*',
     base + '/src/assets/**/*',

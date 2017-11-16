@@ -1,4 +1,4 @@
-{
+module.exports = {
   "source": "./src/css",
   "homepage": "styleguide.md",
   "destination": "./build/doc/styleguide",
@@ -11,4 +11,4 @@
     "../../css/doc.css",
     "../../css/styles.css"
   ]
-}
+};
