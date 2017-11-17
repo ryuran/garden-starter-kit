@@ -12,7 +12,7 @@ var gutil = require('gulp-util');
 module.exports = function (Twig) {
   'use strict';
 
-  Twig.exports.extendFunction('json', function (file) {
+  Twig.extendFunction('json', function (file) {
     var data = {};
 
     if (!(typeof file === 'string' || file instanceof String)) {

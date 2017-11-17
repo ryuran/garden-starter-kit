@@ -20,9 +20,9 @@ var glob = require('glob');
 module.exports = function (Twig) {
   'use strict';
 
-  Twig.exports.extendFunction('readdir', function (dir) {
+  Twig.extendFunction('readdir', function (dir) {
     var fulldir = path.resolve(this.path, dir);
-    var files   = glob.sync(path.join(fulldir, '**', '*.twig'));
+    var files = glob.sync(path.join(fulldir, '**', '*.json'));
 
     return files
       .map(function (file) {
@@ -33,7 +33,7 @@ module.exports = function (Twig) {
           directory: file.dir,
           filename: file.base,
           basename: file.base.replace(file.ext, ''),
-          extension: file.ext
+          extension: file.ext,
         };
       })
       .sort(function (a, b) {
