@@ -12,7 +12,7 @@
   <script>hljs.initHighlightingOnLoad();</script>
 
   <!-- STYLES -->
-  <link rel="stylesheet" href="{{root}}/css/doc.css">
+  <link rel="stylesheet" href="{% root %}/css/doc.css">
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.0.0/styles/github-gist.min.css">
 </head>
 <body class="ca">
@@ -21,9 +21,9 @@
       <h1 class="ca__headerLogo">JavaScript APIs</h1>
 
       <ul class="ca__headerNav">
-        <li class="ca__headerNavItem"><a class="ca__headerNavLink" href="{{root}}">Liste des pages</a></li>
-        <li class="ca__headerNavItem"><a class="ca__headerNavLink" href="{{root}}/doc">Documentation</a></li>
-        <li class="ca__headerNavItem"><a class="ca__headerNavLink" href="{{root}}/doc/styleguide">Guide des styles</a></li>
+        <li class="ca__headerNavItem"><a class="ca__headerNavLink" href="{% root %}">Liste des pages</a></li>
+        <li class="ca__headerNavItem"><a class="ca__headerNavLink" href="{% root %}/doc">Documentation</a></li>
+        <li class="ca__headerNavItem"><a class="ca__headerNavLink" href="{% root %}/doc/styleguide">Guide des styles</a></li>
       </ul>
     </div>
   </header>
@@ -32,7 +32,7 @@
     <nav class="ca__sidebar">
       <ul class="ca__sidebarMenu">
         <li class="ca__sidebarMenuItem">
-          <a class="ca__sidebarLink" href="{{root}}/doc">
+          <a class="ca__sidebarLink" href="{% root %}/doc">
             <span class="ca__sidebarRef">::</span>
             Documentation
           </a>
@@ -40,25 +40,25 @@
       </ul>
 
       <ul class="ca__sidebarMenu">
-        {{#each toc}}
+        {% for item in toc %}
         <li class="ca__sidebarMenuItem">
-          <a class="ca__sidebarLink" href="{{url}}">
-            {{#if dir}}<span class="ca__sidebarRef">{{dir}}&nbsp;:</span>{{/if}}
-            {{name}}
+          <a class="ca__sidebarLink" href="{{ item.url }}">
+            {% if dir %}<span class="ca__sidebarRef">{{ item.dir }}&nbsp;:</span>{% endif %}
+            {{ item.name }}
           </a>
         </li>
-        {{/each}}
+        {% endfor %}
       </ul>
 
       <ul class="ca__sidebarMenu">
         <li class="ca__sidebarMenuItem">
-          <a class="ca__sidebarLink" href="{{root}}/doc/js">
+          <a class="ca__sidebarLink" href="{% root %}/doc/js">
             <span class="ca__sidebarRef">::</span>
             API JavaScripts
           </a>
         </li>
         <li class="ca__sidebarMenuItem">
-          <a class="ca__sidebarLink" href="{{root}}/doc/styleguide">
+          <a class="ca__sidebarLink" href="{% root %}/doc/styleguide">
             <span class="ca__sidebarRef">::</span>
             Guide des styles
           </a>
@@ -67,14 +67,14 @@
     </nav>
 
     <main class="ca__content ca__md">
-      {{#each data}}
+      {% for item in data %}
       <section>
-        {{#if ctx}}
-          <h1>{{ ctx.string }}</h1>
+        {% if item.ctx %}
+          <h1>{{ item.ctx.string }}</h1>
 
-          {{#if description}}{{{ description.summary }}}{{/if}}
+          {% if item.description %}{{ item.description.summary|raw }}{% endif %}
 
-          {{#if tags.length}}
+          {% if item.tags %}
           <div class="ca__tableWrapper">
             <table class="ca__table">
               <thead>
@@ -86,26 +86,26 @@
                 </tr>
               </thead>
               <tbody>
-                {{#each tags}}
+                {% for tag in item.tags %}
                 <tr>
-                  <td><em>@{{type}}</em></td>
-                  <td>{{name}}{{#if optional}}<sup title="Ce paramètre est optionel">*</sup>{{/if}}</td>
-                  <td>{{{typesDescription}}}</td>
-                  <td>{{{description}}}</td>
+                  <td><em>@{{ tag.type }}</em></td>
+                  <td>{{ tag.name }}{% if tag.optional %}<sup title="Ce paramètre est optionel">*</sup>{% endif %}</td>
+                  <td>{{ tag.typesDescription|raw }}</td>
+                  <td>{{ tag.description|raw }}</td>
                 </tr>
-                {{/each}}
+                {% endfor %}
               </tbody>
             </table>
           </div>
-          {{/if}}
+          {% endif %}
 
-          {{#if description}}{{{ description.body }}}{{/if}}
-        {{/if}}
+          {% if item.description %}{{ item.description.body|raw }}{% endif %}
+        {% endif %}
 
         <h2>Source</h2>
         <pre><code class="javascript">{{ code }}</code></pre>
       </section>
-      {{/each}}
+      {% endfor %}
     </main>
   </div>
 </body>

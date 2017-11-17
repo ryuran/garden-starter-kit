@@ -2,23 +2,24 @@
 
 // MODULES
 // ----------------------------------------------------------------------------
-var path     = require('path');
-var kss      = require('kss');
-var runner   = require('run-sequence');
-var glob     = require('glob');
-var gulp     = require('gulp');
-var data     = require('gulp-data');
-var newer    = require('gulp-newer');
+var path = require('path');
+var fs = require('fs');
+var kss = require('kss');
+var runner = require('run-sequence');
+var glob = require('glob');
+var gulp = require('gulp');
+var data = require('gulp-data');
+var newer = require('gulp-newer');
 var markdown = require('gulp-markdown');
-var dox      = require('gulp-dox');
-var hbs      = require('gulp-hbs');
-var del      = require('del');
-var ENV      = require('../tools/env');
+var dox = require('gulp-dox');
+var twig = require('gulp-twig-pipe');
+var del = require('del');
+var ENV = require('../tools/env');
 
-var SRC      = path.join(ENV.doc['src-dir'], '**', '*.md');
-var SRC_JS   = path.join(ENV.js['src-dir'], '**', '*.js');
+var SRC = path.join(ENV.doc['src-dir'], '**', '*.md');
+var SRC_JS = path.join(ENV.js['src-dir'], '**', '*.js');
 
-var DEST     = path.resolve(ENV.doc['dest-dir']);
+var DEST = path.resolve(ENV.doc['dest-dir']);
 var DEST_URL = DEST.replace(path.resolve(ENV.connect.baseDir), '')
                    .replace(path.sep, '/');
 
@@ -120,11 +121,8 @@ function extractData(file) {
 // HBS HELPERS
 // ----------------------------------------------------------------------------
 var folderPath = '../tools/doc/helpers';
-require('fs').readdirSync(path.resolve(path.relative(process.cwd(), __dirname), folderPath)).forEach(function(file) {
-  var helper = require(path.join(folderPath, file));
-  if (helper.register) {
-    helper.register(hbs);
-  }
+fs.readdirSync(path.resolve(path.relative(process.cwd(), __dirname), folderPath)).forEach(function(file) {
+  require(path.join(folderPath, file))(twig.twig);
 });
 
 // MARKED CUSTOM RENDERER
@@ -165,7 +163,7 @@ gulp.task('doc:js', 'Compile Javascript documentation.', function () {
     .pipe(newer(path.join(DEST, 'js')))
     .pipe(dox())
     .pipe(data(extractData))
-    .pipe(hbs(path.relative(process.cwd(), path.join(__dirname, '../tools/doc/jsdoc.hbs')), { dataSource: 'data' }))
+    .pipe(twig(path.relative(process.cwd(), path.join(__dirname, '../tools/doc/jsdoc.html.twig')), { dataSource: 'data' }))
     .pipe(gulp.dest(path.join(DEST, 'js')));
 });
 
@@ -179,7 +177,7 @@ gulp.task('doc:static', 'Compile the static documentation.', function () {
       renderer: renderer
     }))
     .pipe(data(extractData))
-    .pipe(hbs(path.relative(process.cwd(), path.join(__dirname, '../tools/doc/staticdoc.hbs')), { dataSource: 'data' }))
+    .pipe(twig(path.relative(process.cwd(), path.join(__dirname, '../tools/doc/staticdoc.html.twig')), { dataSource: 'data' }))
     .pipe(gulp.dest(DEST));
 });
 

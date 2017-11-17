@@ -1,18 +1,33 @@
-// {{ root }}
+// {% root %}
 // --------------------------------------------------------------------------
 // Provide the relative URL path to the directory of the current file
-// NOTE: The context must provide the URL of the file.
 
-module.exports.register = function (Handlebars) {
-  'use strict';
+var path = require('path');
 
-  var path = require('path');
+module.exports = function (Twig) {
+  Twig.extendTag({
+    type : 'root',
+    regex: /^root$/,
+    next : [ ],
+    open : true,
 
-  Handlebars.registerHelper('root', function () {
-    if (!this.url) {
-      return '.';
+    compile: function (token) {
+      delete token.match;
+      return token;
+    },
+
+    parse: function (token, context/*, chain*/) {
+      var dir   = path.parse(context._target.relative).dir;
+      var depth = (dir === '' ? [] : dir.split(path.sep)).length;
+
+      return {
+        chain : false,
+        output: (function () {
+          var up = ['.'];
+          while (depth--) { up.push('..'); }
+          return up.join('/');
+        })()
+      };
     }
-
-    return path.relative(path.parse(this.url).dir, '/');
   });
 };
