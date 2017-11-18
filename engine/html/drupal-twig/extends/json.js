@@ -9,32 +9,35 @@ var fs    = require('fs');
 var path  = require('path');
 var gutil = require('gulp-util');
 
-module.exports = function (Twig) {
+module.exports = function (instance) {
   'use strict';
+  var twigExtend = (instance.extend) ? instance.extend : instance.exports.extend;
 
-  Twig.extendFunction('json', function (file) {
-    var data = {};
+  twigExtend(function (Twig) {
+    Twig.exports.extendFunction('json', function (file) {
+      var data = {};
 
-    if (!(typeof file === 'string' || file instanceof String)) {
-      gutil.log(gutil.colors.red('ERROR:'),
-        'Wrong file path:', file,
-        '(check your "json(path)" syntax)'
-      );
+      if (!(typeof file === 'string' || file instanceof String)) {
+        gutil.log(gutil.colors.red('ERROR:'),
+          'Wrong file path:', file,
+          '(check your "json(path)" syntax)'
+        );
+
+        return data;
+      }
+
+      var fullpath = path.resolve(this.path, file);
+
+      try {
+        data = JSON.parse(fs.readFileSync(fullpath, 'utf8'));
+      } catch (e) {
+        gutil.log(gutil.colors.yellow('WARN:'),
+          'Unable to find data from',
+          fullpath.replace(path.resolve('.'), '').slice(1)
+        );
+      }
 
       return data;
-    }
-
-    var fullpath = path.resolve(this.path, file);
-
-    try {
-      data = JSON.parse(fs.readFileSync(fullpath, 'utf8'));
-    } catch (e) {
-      gutil.log(gutil.colors.yellow('WARN:'),
-        'Unable to find data from',
-        fullpath.replace(path.resolve('.'), '').slice(1)
-      );
-    }
-
-    return data;
+    });
   });
 };

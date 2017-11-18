@@ -4,30 +4,35 @@
 
 var path = require('path');
 
-module.exports = function (Twig) {
-  Twig.extendTag({
-    type : 'root',
-    regex: /^root$/,
-    next : [ ],
-    open : true,
+module.exports = function (instance) {
+  'use strict';
+  var twigExtend = (instance.extend) ? instance.extend : instance.exports.extend;
 
-    compile: function (token) {
-      delete token.match;
-      return token;
-    },
+  twigExtend(function (Twig) {
+    Twig.exports.extendTag({
+      type : 'root',
+      regex: /^root$/,
+      next : [ ],
+      open : true,
 
-    parse: function (token, context/*, chain*/) {
-      var dir   = path.parse(context._target.relative).dir;
-      var depth = (dir === '' ? [] : dir.split(path.sep)).length;
+      compile: function (token) {
+        delete token.match;
+        return token;
+      },
 
-      return {
-        chain : false,
-        output: (function () {
-          var up = ['.'];
-          while (depth--) { up.push('..'); }
-          return up.join('/');
-        })()
-      };
-    }
+      parse: function (token, context/*, chain*/) {
+        var dir   = path.parse(context._target.relative).dir;
+        var depth = (dir === '' ? [] : dir.split(path.sep)).length;
+
+        return {
+          chain : false,
+          output: (function () {
+            var up = ['.'];
+            while (depth--) { up.push('..'); }
+            return up.join('/');
+          })()
+        };
+      }
+    });
   });
 };

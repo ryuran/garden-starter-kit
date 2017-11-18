@@ -17,31 +17,34 @@
 var path = require('path');
 var glob = require('glob');
 
-module.exports = function (Twig) {
+module.exports = function (instance) {
   'use strict';
+  var twigExtend = (instance.extend) ? instance.extend : instance.exports.extend;
 
-  Twig.extendFunction('readdir', function (dir) {
-    var fulldir = path.resolve(this.path, dir);
-    var files = glob.sync(path.join(fulldir, '**', '*.json'));
+  twigExtend(function (Twig) {
+    Twig.exports.extendFunction('readdir', function (dir) {
+      var fulldir = path.resolve(this.path, dir);
+      var files = glob.sync(path.join(fulldir, '**', '*.json'));
 
-    return files
-      .map(function (file) {
-        file = path.parse(file.replace(this.path, '.'));
+      return files
+        .map(function (file) {
+          file = path.parse(file.replace(this.path, '.'));
 
-        return {
-          path: path.join(file.dir, file.base),
-          directory: file.dir,
-          filename: file.base,
-          basename: file.base.replace(file.ext, ''),
-          extension: file.ext,
-        };
-      })
-      .sort(function (a, b) {
-        if (a.directory !== b.directory) {
-          return a.directory.localeCompare(b.directory);
-        }
+          return {
+            path: path.join(file.dir, file.base),
+            directory: file.dir,
+            filename: file.base,
+            basename: file.base.replace(file.ext, ''),
+            extension: file.ext,
+          };
+        })
+        .sort(function (a, b) {
+          if (a.directory !== b.directory) {
+            return a.directory.localeCompare(b.directory);
+          }
 
-        return a.filename.localeCompare(b.filename);
-      });
+          return a.filename.localeCompare(b.filename);
+        });
+    });
   });
 };

@@ -1,6 +1,6 @@
 {
   "name": "@cleverage/gsk-twig",
-  "version": "1.0.4",
+  "version": "1.0.14",
   "description": "gsk twig engine",
   "main": "index.js",
   "scripts": {

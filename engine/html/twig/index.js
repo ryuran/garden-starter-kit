@@ -2,6 +2,7 @@
 'use strict';
 
 var path = require('path');
+var fs   = require('fs');
 var lazypipe = require('lazypipe');
 var gutil = require('gulp-util');
 var plumber  = require('gulp-plumber');
@@ -40,14 +41,11 @@ module.exports = function (gulp, ENV, err) {
     return Object.assign({}, gData, sData);
   }
 
-  function load(folderPath) {
-    folderPath = path.resolve(__dirname, folderPath);
-    return function (Twig) {
-      require('fs').readdirSync(folderPath).forEach(function(file) {
-        require(path.join(folderPath, file))(Twig);
-      });
-    }
-  }
+  var twigExtends = [];
+  var folderPath = path.resolve(__dirname, './extends');
+  fs.readdirSync(folderPath).forEach(function (file) {
+    twigExtends.push(require(path.join(folderPath, file)));
+  });
 
   // TWIG CONFIGURATION
   // ----------------------------------------------------------------------------
@@ -65,12 +63,12 @@ module.exports = function (gulp, ENV, err) {
       }
 
       this.emit('end');
+    },
+    extend: function (Twig) {
+      twigExtends.forEach(function(twigExtend) {
+        twigExtend(Twig);
+      });
     }
-  };
-
-  var val = load('./extends');
-  if (val) {
-    CONF.extend = val;
   }
 
   var pipeline = lazypipe()
