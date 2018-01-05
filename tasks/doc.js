@@ -2,25 +2,24 @@
 
 // MODULES
 // ----------------------------------------------------------------------------
-var path = require('path');
-var fs = require('fs');
-var kss = require('kss');
-var glob = require('glob');
-var gulp = require('gulp');
-var data = require('gulp-data');
-var newer = require('gulp-newer');
-var markdown = require('gulp-markdown');
-var dox = require('gulp-dox');
-var twig = require('gulp-twig-pipe');
-var del = require('del');
-var ENV = require('../tools/env');
+const path = require('path');
+const fs = require('fs');
+const kss = require('kss');
+const glob = require('glob');
+const gulp = require('gulp');
+const data = require('gulp-data');
+const newer = require('gulp-newer');
+const markdown = require('gulp-markdown');
+const dox = require('gulp-dox');
+const twig = require('gulp-twig-pipe');
+const del = require('del');
+const ENV = require('../tools/env');
 
-var SRC = path.join(ENV.doc['src-dir'], '**', '*.md');
-var SRC_JS = path.join(ENV.js['src-dir'], '**', '*.js');
+const SRC = path.join(ENV.doc['src-dir'], '**', '*.md');
+const SRC_JS = path.join(ENV.js['src-dir'], '**', '*.js');
 
-var DEST = path.resolve(ENV.doc['dest-dir']);
-var DEST_URL = DEST.replace(path.resolve(ENV.connect.baseDir), '').replace(path.sep, '/');
-
+const DEST = path.resolve(ENV.doc['dest-dir']);
+const DEST_URL = DEST.replace(path.resolve(ENV.connect.baseDir), '').replace(path.sep, '/');
 
 // UTILS
 // ----------------------------------------------------------------------------
@@ -28,10 +27,10 @@ function extractData(file) {
   var parsed = path.parse(file.path);
 
   // Basic configuration for MarkDown files
-  var src   = ENV.doc['src-dir'];
-  var gPath = SRC;
-  var rURL  = DEST_URL;
-  var out   = {
+  let src   = ENV.doc['src-dir'];
+  let gPath = SRC;
+  let rURL  = DEST_URL;
+  const out   = {
     filename: parsed.name
   };
 
@@ -72,20 +71,20 @@ function extractData(file) {
     .sort(function (a, b) {
       return a.localeCompare(b);
     }).forEach(function (currentValue, index) {
-      var p = path.parse(currentValue);
+      const p = path.parse(currentValue);
 
-      var dir = p.dir.replace(rURL, '').replace(/^\//, '');
+      const dir = p.dir.replace(rURL, '').replace(/^\//, '');
 
-      var branch = out.toc;
+      let branch = out.toc;
 
-      var folder = null;
+      let folder = null;
 
-      var name = p.name;
+      const name = p.name;
 
       if (dir !== '') {
-        var dirs = dir.split('/')
+        const dirs = dir.split('/')
         dirs.forEach(function (part){
-          var found = branch.findIndex(function (e) {return e.name === part});
+          const found = branch.findIndex(function (e) {return e.name === part});
           if (found < 0) {
             folder = {
               name: part,
@@ -132,7 +131,7 @@ var renderer = new markdown.marked.Renderer();
 // This allow to use both the gitlab markdown linking and the HTML
 // transformation for exporting the doc.
 renderer.link = function (href, title, text) {
-  var url = [];
+  const url = [];
   url.push('<a href="');
   url.push(href.replace(/\.md$/, '.html'));
   url.push('"');
@@ -149,7 +148,6 @@ renderer.link = function (href, title, text) {
 
   return url.join('');
 };
-
 
 // TASK DEFINITION
 // ----------------------------------------------------------------------------
@@ -186,7 +184,7 @@ gulp.task('doc:static').description = 'Compile the static documentation.'
 // ----------------------------------------------------------------------------
 // Génère le styleguide du projet via KSS
 gulp.task('doc:kss', function (cb) {
-  var CONF = require(path.relative(__dirname, path.join(process.cwd(), 'kss.js')));
+  const CONF = require(path.relative(__dirname, path.join(process.cwd(), 'kss.js')));
   // CONF.verbose = true; // TODO: verbose should be an option
 
   // clean styleguide directory

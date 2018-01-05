@@ -45,5 +45,5 @@ gulp.task('watch', function () {
 });
 gulp.task('watch').description = 'Starts all the watchers.';
 gulp.task('watch').flags = {
-  '--doc': 'Also compile documentation. [false]';
+  '--doc': 'Also compile documentation. [false]'
 }

@@ -2,9 +2,9 @@
 
 // MODULES
 // ----------------------------------------------------------------------------
-var gulp = require('gulp');
-var bs = require('browser-sync');
-var ENV = require('../tools/env').connect;
+const gulp = require('gulp');
+const bs = require('browser-sync');
+const ENV = require('../tools/env').connect;
 
 
 // TASK DEFINITION

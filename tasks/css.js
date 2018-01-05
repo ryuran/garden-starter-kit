@@ -2,27 +2,25 @@
 
 // MODULES
 // ----------------------------------------------------------------------------
-var path         = require('path');
-var gulp         = require('gulp');
-var plumber      = require('gulp-plumber');
-var postcss      = require('gulp-postcss');
-var bs           = require('browser-sync');
-var err          = require('../tools/errcb');
-var ENV          = require('../tools/env');
+const path         = require('path');
+const gulp         = require('gulp');
+const plumber      = require('gulp-plumber');
+const postcss      = require('gulp-postcss');
+const bs           = require('browser-sync');
+const err          = require('../tools/errcb');
+const ENV          = require('../tools/env');
 
 // On ne va compiler que les fichiers dont le nom ne commence pas par un _
-var SRC  = [
+const SRC  = [
   path.join(ENV.css['src-dir'],       '**', '*'),
   path.join('!' + ENV.css['src-dir'], '**', '_*'),
   path.join('!' + ENV.css['src-dir'], '**', '*.md')
 ];
-var DEST = ENV.css['dest-dir'];
-
+const DEST = ENV.css['dest-dir'];
 
 // CONDITIONAL PIPELINE
 // ----------------------------------------------------------------------------
-var pipeline = require('@cleverage/gsk-' + ENV.css.engine);
-
+const pipeline = require('@cleverage/gsk-' + ENV.css.engine);
 
 // TASK DEFINITION
 // ----------------------------------------------------------------------------
@@ -30,9 +28,8 @@ var pipeline = require('@cleverage/gsk-' + ENV.css.engine);
 // ----------------------------------------------------------------------------
 // Gère la compilation des fichiers CSS
 gulp.task('css', function () {
-  var processors = Object.keys(ENV.css.postcss).map(function (key) {
-    var processor = require(key);
-    return processor(ENV.css.postcss[key]);
+  const processors = Object.keys(ENV.css.postcss).map(function (key) {
+    return require(key)(ENV.css.postcss[key]);
   });
   return gulp.src(SRC, { nodir: true })
     .pipe(plumber({ errorHandler: err }))

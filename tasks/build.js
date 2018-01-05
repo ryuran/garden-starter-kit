@@ -1,7 +1,8 @@
 'use strict';
 
-require('./assets');
 require('./svg');
+require('./assets');
+require('./css');
 require('./js');
 require('./html');
 require('./import');
@@ -10,20 +11,17 @@ require('./test');
 
 // MODULES
 // ----------------------------------------------------------------------------
-var gulp = require('gulp');
-var del = require('del');
-
-// Task functions
-function buildClean() {
-  return del(['build/**/*']);
-}
+const gulp = require('gulp');
+const del = require('del');
 
 // TASK DEFINITION
 // ----------------------------------------------------------------------------
 // $ gulp build:clean
 // ----------------------------------------------------------------------------
 // Supprime le contenu du build
-gulp.task('build:clean', buildClean);
+gulp.task('build:clean', function buildClean() {
+  return del(['build/**/*']);
+});
 gulp.task('build:clean').description = 'Delete the content of the build folder.'
 
 // $ grunt build
