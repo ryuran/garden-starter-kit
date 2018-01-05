@@ -2,11 +2,11 @@
 
 // MODULES
 // ----------------------------------------------------------------------------
-var path     = require('path');
-var gulp     = require('gulp');
-var newer    = require('gulp-newer');
+var path = require('path');
+var gulp = require('gulp');
+var newer = require('gulp-newer');
 var imagemin = require('gulp-imagemin');
-var ENV      = require('../tools/env').images;
+var ENV = require('../tools/env').images;
 
 var SRC  = path.join(ENV['src-dir'], '/**', '*');
 var DEST = ENV['dest-dir'];
@@ -41,9 +41,10 @@ var IMG_MIN = {
 // $ gulp images
 // ----------------------------------------------------------------------------
 // Gère toutes les optimisations d'image:
-gulp.task('images', 'Optimise and copy images into build folder.', function () {
+gulp.task('images', function () {
   return gulp.src(SRC)
     .pipe(newer(DEST))
     .pipe(imagemin(IMG_MIN))
     .pipe(gulp.dest(DEST));
 });
+gulp.task('images').description = 'Optimise and copy images into build folder.';

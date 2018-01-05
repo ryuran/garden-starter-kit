@@ -5,7 +5,6 @@
 var path = require('path');
 var gulp = require('gulp');
 var newer = require('gulp-newer');
-var runner = require('run-sequence');
 var ENV = require('../tools/env');
 
 var subTasks = [];
@@ -33,7 +32,8 @@ if (ENV.import !== false) {
       // $ gulp import:name
       // ----------------------------------------------------------------------------
       // Copy sources files in defined destination
-      gulp.task(subTaskName, 'Copy imported files "' + key + '" into build folder.', createImportTask(conf['src'], conf['dest-dir']));
+      gulp.task(subTaskName, createImportTask(conf['src'], conf['dest-dir']));
+      gulp.task(subTaskName).description = 'Copy imported files "' + key + '" into build folder.',
 
       subTasks.push(subTaskName);
     }
@@ -45,10 +45,12 @@ if (ENV.import !== false) {
 // $ gulp import
 // ----------------------------------------------------------------------------
 // Copy sources files in defined destinations
-gulp.task('import', 'Copy all imported files into build folder.', function (cb) {
+gulp.task('import', function (cb) {
   if (subTasks.length <= 0) {
     cb(null);
     return;
   }
-  runner(subTasks, cb);
+  subTasks.push(cb);
+  gulp.parallel.apply(gulp, subTasks);
 });
+gulp.task('import').description = 'Copy all imported files into build folder.';

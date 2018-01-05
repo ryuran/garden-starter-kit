@@ -5,7 +5,6 @@
 var path = require('path');
 var fs = require('fs');
 var kss = require('kss');
-var runner = require('run-sequence');
 var glob = require('glob');
 var gulp = require('gulp');
 var data = require('gulp-data');
@@ -20,8 +19,7 @@ var SRC = path.join(ENV.doc['src-dir'], '**', '*.md');
 var SRC_JS = path.join(ENV.js['src-dir'], '**', '*.js');
 
 var DEST = path.resolve(ENV.doc['dest-dir']);
-var DEST_URL = DEST.replace(path.resolve(ENV.connect.baseDir), '')
-                   .replace(path.sep, '/');
+var DEST_URL = DEST.replace(path.resolve(ENV.connect.baseDir), '').replace(path.sep, '/');
 
 
 // UTILS
@@ -58,61 +56,62 @@ function extractData(file) {
   out.toc = [];
 
   // Index related content
-  glob.sync(gPath).reduce(function (a, f) {
-    var u = f
-      .replace(src, rURL)
-      .replace(path.parse(f).ext, '.html');
+  glob.sync(gPath)
+    .reduce(function (a, f) {
+      var u = f
+        .replace(src, rURL)
+        .replace(path.parse(f).ext, '.html');
 
-    // Ignore JS API homepage (it has its own entry within templates)
-    if (u === rURL + '/js/index.html') { return a; }
+      // Ignore JS API homepage (it has its own entry within templates)
+      if (u === rURL + '/js/index.html') { return a; }
 
-    a.push(u);
+      a.push(u);
 
-    return a;
-  }, [])
-  .sort(function (a, b) {
-    return a.localeCompare(b);
-  }).forEach(function (currentValue, index, array) {
-    var p = path.parse(currentValue);
+      return a;
+    }, [])
+    .sort(function (a, b) {
+      return a.localeCompare(b);
+    }).forEach(function (currentValue, index) {
+      var p = path.parse(currentValue);
 
-    var dir = p.dir.replace(rURL, '').replace(/^\//, '');
+      var dir = p.dir.replace(rURL, '').replace(/^\//, '');
 
-    var branch = out.toc;
+      var branch = out.toc;
 
-    var folder = null;
+      var folder = null;
 
-    var name = p.name;
+      var name = p.name;
 
-    if (dir !== '') {
-      var dirs = dir.split('/')
-      dirs.forEach(function (part){
-        var found = branch.findIndex(function (e) {return e.name === part});
-        if (found < 0) {
-          folder = {
-            name: part,
-            children:[]
-          };
-          branch.push(folder);
-        }
-        else {
-          folder = branch[found];
-        }
+      if (dir !== '') {
+        var dirs = dir.split('/')
+        dirs.forEach(function (part){
+          var found = branch.findIndex(function (e) {return e.name === part});
+          if (found < 0) {
+            folder = {
+              name: part,
+              children:[]
+            };
+            branch.push(folder);
+          }
+          else {
+            folder = branch[found];
+          }
 
-        branch = folder.children;
-      });
+          branch = folder.children;
+        });
 
-    }
+      }
 
-    if (name !== 'index') {
-      branch.push({
-        name: name,
-        url: currentValue
-      });
-    }
-    else if (folder !== null) {
-      folder.url = currentValue
-    }
-  });
+      if (name !== 'index') {
+        branch.push({
+          name: name,
+          url: currentValue
+        });
+      }
+      else if (folder !== null) {
+        folder.url = currentValue
+      }
+    });
 
   return out;
 }
@@ -158,7 +157,7 @@ renderer.link = function (href, title, text) {
 // $ gulp doc:js
 // ----------------------------------------------------------------------------
 // Génère la documentation des fichiers javascripts
-gulp.task('doc:js', 'Compile Javascript documentation.', function () {
+gulp.task('doc:js', function () {
   return gulp.src(SRC_JS)
     .pipe(newer(path.join(DEST, 'js')))
     .pipe(dox())
@@ -166,11 +165,12 @@ gulp.task('doc:js', 'Compile Javascript documentation.', function () {
     .pipe(twig(path.relative(process.cwd(), path.join(__dirname, '../tools/doc/jsdoc.html.twig')), { dataSource: 'data' }))
     .pipe(gulp.dest(path.join(DEST, 'js')));
 });
+gulp.task('doc:js').description = 'Compile Javascript documentation.';
 
 // $ gulp doc:static
 // ----------------------------------------------------------------------------
 // Génère toute la doc statique du projet
-gulp.task('doc:static', 'Compile the static documentation.', function () {
+gulp.task('doc:static', function () {
   return gulp.src(SRC)
     .pipe(newer(DEST))
     .pipe(markdown({
@@ -180,11 +180,12 @@ gulp.task('doc:static', 'Compile the static documentation.', function () {
     .pipe(twig(path.relative(process.cwd(), path.join(__dirname, '../tools/doc/staticdoc.html.twig')), { dataSource: 'data' }))
     .pipe(gulp.dest(DEST));
 });
+gulp.task('doc:static').description = 'Compile the static documentation.'
 
 // $ gulp doc:kss
 // ----------------------------------------------------------------------------
 // Génère le styleguide du projet via KSS
-gulp.task('doc:kss', 'Compile the styleguide, using KSS.', function (cb) {
+gulp.task('doc:kss', function (cb) {
   var CONF = require(path.relative(__dirname, path.join(process.cwd(), 'kss.js')));
   // CONF.verbose = true; // TODO: verbose should be an option
 
@@ -195,18 +196,19 @@ gulp.task('doc:kss', 'Compile the styleguide, using KSS.', function (cb) {
       cb(null);
     });
   });
-
 });
+gulp.task('doc:kss').description = 'Compile the styleguide, using KSS.';
 
 // $ gulp doc
 // ----------------------------------------------------------------------------
 // Génère toute la doc du projet
-gulp.task('doc', 'Compile all documentations of the project.', function (cb) {
+gulp.task('doc', function (cb) {
   // Si on optimize le projet, on n'inclus pas la documentation.
   if (!ENV.all.doc && ENV.all.optimize) {
     cb(null);
     return;
   }
 
-  runner('doc:static', ['doc:kss', 'doc:js'], cb);
+  gulp.series('doc:static', gulp.parallel('doc:kss', 'doc:js'), cb);
 });
+gulp.task('doc').description = 'Compile all documentations of the project.';

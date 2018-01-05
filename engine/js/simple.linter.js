@@ -4,7 +4,7 @@
 // MODULES
 // ----------------------------------------------------------------------------
 var lazypipe = require('lazypipe');
-var eslint   = require('gulp-eslint');
+var eslint = require('gulp-eslint');
 
 module.exports = function () {
   var lazystream = lazypipe()

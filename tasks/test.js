@@ -2,13 +2,12 @@
 
 // MODULES
 // ----------------------------------------------------------------------------
-var path    = require('path');
-var gulp    = require('gulp');
-var gif     = require('gulp-if');
+var path = require('path');
+var gulp = require('gulp');
+var gif = require('gulp-if');
 var plumber = require('gulp-plumber');
-var runner  = require('run-sequence');
-var err     = require('../tools/errcb');
-var ENV     = require('../tools/env');
+var err = require('../tools/errcb');
+var ENV = require('../tools/env');
 
 // LINTING SOURCE
 // ----------------------------------------------------------------------------
@@ -29,10 +28,9 @@ var SRC = {
 
 // LINTER
 // ----------------------------------------------------------------------------
-var css  = require('@cleverage/gsk-' + ENV.css.engine + '/linter.js');
-var js   = require('../engine/js/simple.linter.js');
+var css = require('@cleverage/gsk-' + ENV.css.engine + '/linter.js');
+var js = require('../engine/js/simple.linter.js');
 var a11y = require('../engine/html/a11y.linter.js');
-
 
 // TASK DEFINITION
 // ----------------------------------------------------------------------------
@@ -40,42 +38,46 @@ var a11y = require('../engine/html/a11y.linter.js');
 // $ gulp test:js
 // ----------------------------------------------------------------------------
 // Lint les fichiers source pour les CSS
-gulp.task('test:js', 'Lint JS files.', function () {
+gulp.task('test:js', function () {
   return gulp.src(SRC.js)
     .pipe(plumber({ errorHandler: err }))
 
     // En mode relax, on ignore les tests (c'est mal)
     .pipe(gif(!ENV.all.relax, js()));
 });
+gulp.task('test:js').description = 'Lint JS files.';
 
 // $ gulp test:css
 // ----------------------------------------------------------------------------
 // Lint les fichiers source pour les CSS
-gulp.task('test:css', 'Lint CSS files.', function () {
+gulp.task('test:css', function () {
   return gulp.src(SRC.css)
     .pipe(plumber({ errorHandler: err }))
 
     // En mode relax, on ignore les tests (c'est mal)
     .pipe(gif(!ENV.all.relax, css()));
 });
+gulp.task('test:css').description = 'Lint CSS files.'
 
 // $ gulp test:a11y
 // ----------------------------------------------------------------------------
 // Lint les fichiers html pour l'accessibilité
-gulp.task('test:a11y', 'Lint HTML files for accessibility.', function () {
+gulp.task('test:a11y', function () {
   return gulp.src(SRC.html)
     .pipe(plumber({ errorHandler: err }))
 
     // En mode relax, on ignore les tests (c'est mal)
     .pipe(gif(!ENV.all.relax, a11y()));
 });
+gulp.task('test:a11y').description = 'Lint HTML files for accessibility.';
 
 // $ gulp test
 // ----------------------------------------------------------------------------
 // Lint tous les fichiers sources du projet
-gulp.task('test', 'Lint CSS, JS and HTML files.', function (cb) {
+gulp.task('test', function (cb) {
   // En mode relax, on ignore les tests (c'est mal)
   if (ENV.all.relax) { cb(null); }
 
-  runner('test:js', 'test:css', 'test:a11y', cb);
+  gulp.series('test:js', 'test:css', 'test:a11y', cb);
 });
+gulp.task('test').description = 'Run every test.';

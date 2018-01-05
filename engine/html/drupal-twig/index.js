@@ -16,7 +16,6 @@ module.exports = function (gulp, ENV, err) {
 
   // TWIG CONFIGURATION
   // ----------------------------------------------------------------------------
-  var CONF = {};
 
   // We compile only files with the good format (extention)
   var ext = ENV.html.ext !== undefined ? ENV.html.ext : '*.*';

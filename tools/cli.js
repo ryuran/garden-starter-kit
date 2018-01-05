@@ -89,6 +89,6 @@ function parser(rules) {
 }
 
 module.exports = {
-  parse   : parser,
+  parse: parser,
   sanitize: sanitize
 };

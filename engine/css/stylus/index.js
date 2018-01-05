@@ -4,7 +4,7 @@
 // MODULES
 // ----------------------------------------------------------------------------
 var lazypipe = require('lazypipe');
-var stylus   = require('gulp-stylus');
+var stylus = require('gulp-stylus');
 
 module.exports = function (ENV) {
   var lazystream = lazypipe()

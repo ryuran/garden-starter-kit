@@ -4,7 +4,7 @@
 // MODULES
 // ----------------------------------------------------------------------------
 var lazypipe = require('lazypipe');
-var less     = require('gulp-less');
+var less = require('gulp-less');
 
 module.exports = function (ENV) {
   var lazystream = lazypipe()

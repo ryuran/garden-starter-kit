@@ -67,17 +67,17 @@ module.exports = function (config) {
   }
 
   gulp.src(files, {base: base, dot: true})
-  .pipe(gulp.dest(process.cwd()));
+    .pipe(gulp.dest(process.cwd()));
 
   gulp.src(base + '/.gitignore.dist', {base: base, dot: true})
-  .pipe(rename('.gitignore'))
-  .pipe(gulp.dest(process.cwd()));
+    .pipe(rename('.gitignore'))
+    .pipe(gulp.dest(process.cwd()));
 
 
   gulp.src(base + '/readme.dist.md', {base: base, dot: true})
-  .pipe(twig({data: require(path.join(process.cwd(), 'package.json'))}))
-  .pipe(rename('readme.md'))
-  .pipe(gulp.dest(process.cwd()));
+    .pipe(twig({data: require(path.join(process.cwd(), 'package.json'))}))
+    .pipe(rename('readme.md'))
+    .pipe(gulp.dest(process.cwd()));
 
   require('child_process').execSync('npm install ' + dependencies.join(' ') + ' --save-dev', {stdio: [0, 1, 2]});
 }

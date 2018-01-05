@@ -12,7 +12,5 @@
 
 // TASKS
 // ----------------------------------------------------------------------------
-// plug the help module before anything else
-require('gulp-help')(require('gulp'));
 // read the gulp tasks from the tasks folder
 require('./tasks');

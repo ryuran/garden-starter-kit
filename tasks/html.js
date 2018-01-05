@@ -2,11 +2,10 @@
 
 // MODULES
 // ----------------------------------------------------------------------------
-var path     = require('path');
-var gulp     = require('gulp');
-var bs       = require('browser-sync');
-var err      = require('../tools/errcb');
-var ENV      = require('../tools/env');
+var gulp = require('gulp');
+var bs = require('browser-sync');
+var err = require('../tools/errcb');
+var ENV = require('../tools/env');
 
 // CONDITIONAL PIPELINE
 // ----------------------------------------------------------------------------
@@ -17,6 +16,7 @@ var engine = require('@cleverage/gsk-' + ENV.html.engine);
 // $ gulp html
 // ----------------------------------------------------------------------------
 // Gère la compilation des fichiers HTML
-gulp.task('html', 'Compile HTML files.', function () {
+gulp.task('html', function () {
   return engine(gulp, ENV, err).on('end', bs.reload);
 });
+gulp.task('html').description = 'Compile HTML files.';

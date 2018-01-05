@@ -16,13 +16,21 @@ var SRC  = [
 var DEST = ENV.assets['dest-dir'];
 
 
+// task function
+function assetsCopy() {
+  return gulp.src(SRC)
+    .pipe(newer(DEST))
+    .pipe(gulp.dest(DEST));
+}
+
+
 // TASK DEFINITION
 // ----------------------------------------------------------------------------
 // $ gulp assets
 // ----------------------------------------------------------------------------
 // Copy tout les assets static du projet
-gulp.task('assets', 'Copy all static assets into build folder.', ['images'], function () {
-  return gulp.src(SRC)
-    .pipe(newer(DEST))
-    .pipe(gulp.dest(DEST));
-});
+gulp.task('assets:copy', assetsCopy);
+gulp.task('assets:copy').description = 'Copy all static assets into build folder.'
+
+gulp.task('assets', gulp.series(['images', 'assets:copy']));
+gulp.task('assets').description = 'Process and copy assets.'

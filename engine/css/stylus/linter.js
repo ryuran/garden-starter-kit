@@ -4,7 +4,7 @@
 // MODULES
 // ----------------------------------------------------------------------------
 var lazypipe = require('lazypipe');
-var stylint  = require('gulp-stylint');
+var stylint = require('gulp-stylint');
 
 // LINTER CONFIGURATION
 // ----------------------------------------------------------------------------

@@ -29,7 +29,7 @@ var pipeline = require('@cleverage/gsk-' + ENV.css.engine);
 // $ gulp css
 // ----------------------------------------------------------------------------
 // Gère la compilation des fichiers CSS
-gulp.task('css', 'Compile CSS files into build folder.', ['test:css'], function () {
+gulp.task('css', function () {
   var processors = Object.keys(ENV.css.postcss).map(function (key) {
     var processor = require(key);
     return processor(ENV.css.postcss[key]);
@@ -40,9 +40,9 @@ gulp.task('css', 'Compile CSS files into build folder.', ['test:css'], function 
     .pipe(postcss(processors))
     .pipe(gulp.dest(DEST))
     .on('end', bs.reload);
-}, {
-  options: {
-    optimize : 'Optimize for production.',
-    relax    : 'Skip tests. ☠ ☠ ☠'
-  }
 });
+gulp.task('css').description = 'Compile CSS files into build folder.';
+gulp.task('css').flags = {
+  '--optimize' : 'Optimize for production.',
+  '--relax' : 'Skip tests. ☠ ☠ ☠'
+}

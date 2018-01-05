@@ -2,13 +2,13 @@
 
 // MODULES
 // ----------------------------------------------------------------------------
-var path   = require('path');
-var gulp   = require('gulp');
-var sftp   = require('gulp-sftp');
+var path = require('path');
+var gulp = require('gulp');
+var sftp = require('gulp-sftp');
 var prompt = require('gulp-prompt');
-var pkg    = require(path.relative(__dirname, path.join(process.cwd(), 'package.json')));
-var ENV    = require('../tools/env');
-var gutil  = require('gulp-util');
+var pkg = require(path.relative(__dirname, path.join(process.cwd(), 'package.json')));
+var ENV = require('../tools/env');
+var gutil = require('gulp-util');
 
 // TASK DEFINITION
 // ----------------------------------------------------------------------------
@@ -56,3 +56,4 @@ gulp.task('sftp-deploy', function () {
     .pipe(sftp(options));
 
 });
+gulp.task('sftp-deploy').description = 'Deploys the build folder onto a preview server via SFTP.';

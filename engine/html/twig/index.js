@@ -2,10 +2,10 @@
 'use strict';
 
 var path = require('path');
-var fs   = require('fs');
+var fs = require('fs');
 var lazypipe = require('lazypipe');
 var gutil = require('gulp-util');
-var plumber  = require('gulp-plumber');
+var plumber = require('gulp-plumber');
 var twig = require('gulp-twig');
 var data = require('gulp-data');
 
