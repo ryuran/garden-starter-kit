@@ -4,7 +4,7 @@
 var path = require('path');
 var fs = require('fs');
 var plumber  = require('gulp-plumber');
-var gulpTwig = require('./gulp-drupal-twig');
+var gulpTwig = require('gulp-twig-pipe');
 var Twig = gulpTwig.twig;
 var twigDrupalRenderArray = require('@cleverage/twig-drupal-render-array');
 

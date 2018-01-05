@@ -1,6 +1,6 @@
 {
   "name": "@cleverage/gsk-drupal-twig",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "gsk twig engine for drupal",
   "main": "index.js",
   "scripts": {
@@ -16,6 +16,7 @@
     "@cleverage/twig-drupal-render-array": "file:///~/Sites/twig-drupal-render-array",
     "bluebird": "3.0.6",
     "gulp-data": "1.2.1",
+    "gulp-twig-pipe": "0.0.7",
     "gulp-util": "3.0.8",
     "lazypipe": "1.0.1",
     "through2": "2.0.3",
