@@ -1,5 +1,7 @@
 'use strict';
 
+require('./images');
+
 // MODULES
 // ----------------------------------------------------------------------------
 var path  = require('path');
@@ -15,14 +17,12 @@ var SRC  = [
 ];
 var DEST = ENV.assets['dest-dir'];
 
-
 // task function
 function assetsCopy() {
   return gulp.src(SRC)
     .pipe(newer(DEST))
     .pipe(gulp.dest(DEST));
 }
-
 
 // TASK DEFINITION
 // ----------------------------------------------------------------------------

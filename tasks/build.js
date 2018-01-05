@@ -1,10 +1,17 @@
 'use strict';
 
+require('./assets');
+require('./svg');
+require('./js');
+require('./html');
+require('./import');
+require('./doc');
+require('./test');
+
 // MODULES
 // ----------------------------------------------------------------------------
 var gulp = require('gulp');
 var del = require('del');
-var runner = require('run-sequence');
 
 // Task functions
 function buildClean() {
