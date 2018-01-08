@@ -12,7 +12,7 @@
   <script>hljs.initHighlightingOnLoad();</script>
 
   <!-- STYLES -->
-  <link rel="stylesheet" href="{% root %}/css/doc.css">
+  <link rel="stylesheet" href="{% root %}/../css/doc.css">
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.0.0/styles/github-gist.min.css">
 </head>
 <body class="ca">
@@ -21,9 +21,9 @@
       <h1 class="ca__headerLogo">Documentation</h1>
 
       <ul class="ca__headerNav">
-        <li class="ca__headerNavItem"><a class="ca__headerNavLink" href="{% root %}">Liste des pages</a></li>
-        <li class="ca__headerNavItem ca__headerNavItem-selected"><a class="ca__headerNavLink" href="{% root %}/doc">Documentation</a></li>
-        <li class="ca__headerNavItem"><a class="ca__headerNavLink" href="{% root %}/doc/styleguide">Guide des styles</a></li>
+        <li class="ca__headerNavItem"><a class="ca__headerNavLink" href="{% root %}/..">Liste des pages</a></li>
+        <li class="ca__headerNavItem ca__headerNavItem-selected"><a class="ca__headerNavLink" href="{% root %}/../doc">Documentation</a></li>
+        <li class="ca__headerNavItem"><a class="ca__headerNavLink" href="{% root %}/../doc/styleguide">Guide des styles</a></li>
       </ul>
     </div>
   </header>
@@ -32,7 +32,7 @@
     <nav class="ca__sidebar">
       <ul class="ca__sidebarMenu">
         <li class="ca__sidebarMenuItem">
-          <a class="ca__sidebarLink" href="{% root %}/doc">
+          <a class="ca__sidebarLink" href="{% root %}/../doc">
             <span class="ca__sidebarRef">::</span>
             Documentation
           </a>
@@ -50,7 +50,7 @@
               {% else %}
                 <span class="ca__sidebarRef">{{ levelOneIndex }}</span>&nbsp;/ {{item.name}}
               {% endif %}
-              {% if children %}
+              {% if item.children %}
                 <ul class="ca__sidebarMenu">
                   {% for children in item.children %}
                     {% set levelTwoIndex = loop.index %}

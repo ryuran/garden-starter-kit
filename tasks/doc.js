@@ -21,45 +21,47 @@ const SRC_JS = path.join(ENV.js['src-dir'], '**', '*.js');
 const DEST = path.resolve(ENV.doc['dest-dir']);
 const DEST_URL = DEST.replace(path.resolve(ENV.connect.baseDir), '').replace(path.sep, '/');
 
+
 // UTILS
 // ----------------------------------------------------------------------------
 function extractData(file) {
   const parsed = path.parse(file.path);
 
   // Basic configuration for MarkDown files
-  let src   = ENV.doc['src-dir'];
+  let src = ENV.doc['src-dir'];
   let gPath = SRC;
-  let rURL  = DEST_URL;
-  const out   = {
+  let rURL = DEST_URL;
+  const out = {
     filename: parsed.name
   };
 
   // Extra configuration for JavaScript files
   if (parsed.ext === '.json') {
-    src = ENV.js['src-dir'];
-    gPath = SRC_JS;
-    rURL += '/js';
     out.data = JSON.parse(file.contents);
   }
 
-  // Set up final URL for the document
-  out.url = file.path.replace(src, rURL).replace(parsed.ext, '.html');
-
   // Special case js/index.md which is the Javascript doc homepage
-  if (parsed.name === 'index' && parsed.dir.slice(-3) === '/js') {
+  const isJsHomePage = (parsed.name === 'index' && parsed.dir.slice(-3) === '/js');
+  if (parsed.ext === '.json' || isJsHomePage) {
     src = ENV.js['src-dir'];
     gPath = SRC_JS;
     rURL += '/js';
+
+    // Extra configuration for JavaScript files
+    if (parsed.ext === '.json') {
+      out.data = JSON.parse(file.contents);
+    }
   }
+
+  // Set up final URL for the document
+  out.url = path.join(rURL, path.relative(src, file.path).replace(parsed.ext, '.html'));
 
   out.toc = [];
 
   // Index related content
   glob.sync(gPath)
     .reduce(function (a, f) {
-      const u = f
-        .replace(src, rURL)
-        .replace(path.parse(f).ext, '.html');
+      var u = rURL + '/' + path.relative(src, f.replace(path.parse(f).ext, '.html'));
 
       // Ignore JS API homepage (it has its own entry within templates)
       if (u === rURL + '/js/index.html') { return a; }
@@ -70,21 +72,22 @@ function extractData(file) {
     }, [])
     .sort(function (a, b) {
       return a.localeCompare(b);
-    }).forEach(function (currentValue) {
-      const p = path.parse(currentValue);
+    })
+    .forEach(function (currentValue, index) {
+      var p = path.parse(currentValue);
 
-      const dir = p.dir.replace(rURL, '').replace(/^\//, '');
+      var dir = p.dir.replace(rURL, '').replace(/^\//, '');
 
-      let branch = out.toc;
+      var branch = out.toc;
 
-      let folder = null;
+      var folder = null;
 
-      const name = p.name;
+      var name = p.name;
 
       if (dir !== '') {
-        const dirs = dir.split('/')
+        var dirs = dir.split('/')
         dirs.forEach(function (part){
-          const found = branch.findIndex(function (e) {return e.name === part});
+          var found = branch.findIndex(function (e) {return e.name === part});
           if (found < 0) {
             folder = {
               name: part,
@@ -114,7 +117,6 @@ function extractData(file) {
 
   return out;
 }
-
 
 // HBS HELPERS
 // ----------------------------------------------------------------------------

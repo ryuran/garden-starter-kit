@@ -12,7 +12,7 @@
   <script>hljs.initHighlightingOnLoad();</script>
 
   <!-- STYLES -->
-  <link rel="stylesheet" href="{% root %}/css/doc.css">
+  <link rel="stylesheet" href="{% root %}/../../css/doc.css">
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.0.0/styles/github-gist.min.css">
 </head>
 <body class="ca">
@@ -21,9 +21,9 @@
       <h1 class="ca__headerLogo">JavaScript APIs</h1>
 
       <ul class="ca__headerNav">
-        <li class="ca__headerNavItem"><a class="ca__headerNavLink" href="{% root %}">Liste des pages</a></li>
-        <li class="ca__headerNavItem"><a class="ca__headerNavLink" href="{% root %}/doc">Documentation</a></li>
-        <li class="ca__headerNavItem"><a class="ca__headerNavLink" href="{% root %}/doc/styleguide">Guide des styles</a></li>
+        <li class="ca__headerNavItem"><a class="ca__headerNavLink" href="{% root %}/../..">Liste des pages</a></li>
+        <li class="ca__headerNavItem"><a class="ca__headerNavLink" href="{% root %}/../../doc">Documentation</a></li>
+        <li class="ca__headerNavItem"><a class="ca__headerNavLink" href="{% root %}/../../doc/styleguide">Guide des styles</a></li>
       </ul>
     </div>
   </header>
@@ -32,33 +32,67 @@
     <nav class="ca__sidebar">
       <ul class="ca__sidebarMenu">
         <li class="ca__sidebarMenuItem">
-          <a class="ca__sidebarLink" href="{% root %}/doc">
+          <a class="ca__sidebarLink" href="{% root %}/../../doc">
             <span class="ca__sidebarRef">::</span>
             Documentation
           </a>
         </li>
       </ul>
 
-      <ul class="ca__sidebarMenu">
-        {% for item in toc %}
-        <li class="ca__sidebarMenuItem">
-          <a class="ca__sidebarLink" href="{{ item.url }}">
-            {% if dir %}<span class="ca__sidebarRef">{{ item.dir }}&nbsp;:</span>{% endif %}
-            {{ item.name }}
-          </a>
-        </li>
-        {% endfor %}
-      </ul>
+      {% if toc %}
+        <ul class="ca__sidebarMenu">
+          {% for item in toc %}
+            {% set levelOneIndex = loop.index %}
+            <li class="ca__sidebarMenuItem">
+              {% if item.url %}
+                <a class="ca__sidebarLink" href="{{ item.url }}">
+                  <span class="ca__sidebarRef">{{ levelOneIndex }}</span>&nbsp;/ {{item.name}}
+                </a>
+              {% else %}
+                <span class="ca__sidebarRef">{{ levelOneIndex }}</span>&nbsp;/ {{item.name}}
+              {% endif %}
+              {% if item.children %}
+                <ul class="ca__sidebarMenu">
+                  {% for children in item.children %}
+                    {% set levelTwoIndex = loop.index %}
+                    <li class="ca__sidebarMenuItem">
+                      {% if children.url %}
+                        <a class="ca__sidebarLink" href="{{ children.url }}">
+                          <span class="ca__sidebarRef">{{ levelOneIndex }}.{{ levelTwoIndex }}</span>&nbsp;/ {{children.name}}
+                        </a>
+                      {% else %}
+                        <span class="ca__sidebarRef">{{ levelOneIndex }}.{{ levelTwoIndex }}</span>&nbsp;/ {{children.name}}
+                      {% endif %}
+                      {% if children.children %}
+                        <ul class="ca__sidebarMenu">
+                          {% for subchildren in children.children %}
+                            {% set levelThreeIndex = loop.index %}
+                            <li class="ca__sidebarMenuItem">
+                              <a class="ca__sidebarLink" href="{{ subchildren.url }}">
+                                <span class="ca__sidebarRef">{{ levelOneIndex }}.{{ levelTwoIndex }}.{{levelThreeIndex}}</span>&nbsp;/ {{ subchildren.name }}
+                              </a>
+                            </li>
+                          {% endfor %}
+                        </ul>
+                      {% endif %}
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
 
       <ul class="ca__sidebarMenu">
         <li class="ca__sidebarMenuItem">
-          <a class="ca__sidebarLink" href="{% root %}/doc/js">
+          <a class="ca__sidebarLink" href="{% root %}/../../doc/js">
             <span class="ca__sidebarRef">::</span>
             API JavaScripts
           </a>
         </li>
         <li class="ca__sidebarMenuItem">
-          <a class="ca__sidebarLink" href="{% root %}/doc/styleguide">
+          <a class="ca__sidebarLink" href="{% root %}/../../doc/styleguide">
             <span class="ca__sidebarRef">::</span>
             Guide des styles
           </a>

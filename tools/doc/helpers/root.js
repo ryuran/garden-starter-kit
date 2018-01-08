@@ -2,7 +2,7 @@
 // --------------------------------------------------------------------------
 // Provide the relative URL path to the directory of the current file
 
-var path = require('path');
+const path = require('path');
 
 module.exports = function (Twig) {
   Twig.extendTag({
@@ -17,7 +17,7 @@ module.exports = function (Twig) {
     },
 
     parse: function (token, context/*, chain*/) {
-      const dir   = path.parse(context._target.relative).dir;
+      const dir = path.parse(context._target.relative).dir;
       let depth = (dir === '' ? [] : dir.split(path.sep)).length;
 
       return {

@@ -23,12 +23,13 @@ module.exports = function (instance) {
 
   twigExtend(function (Twig) {
     Twig.exports.extendFunction('readdir', function (dir) {
-      const fulldir = path.resolve(this.path, dir);
-      const files = glob.sync(path.join(fulldir, '**', '*.json'));
+      const root = path.dirname(this.path);
+      const fulldir = path.resolve(root, dir);
+      const files = glob.sync(path.join(fulldir, '**', '*.twig'));
 
       return files
-        .map(function (file) {
-          file = path.parse(file.replace(this.path, '.'));
+        .map((file) => {
+          file = path.parse(file.replace(root, '.'));
 
           return {
             path: path.join(file.dir, file.base),
@@ -38,7 +39,7 @@ module.exports = function (instance) {
             extension: file.ext,
           };
         })
-        .sort(function (a, b) {
+        .sort((a, b) => {
           if (a.directory !== b.directory) {
             return a.directory.localeCompare(b.directory);
           }
