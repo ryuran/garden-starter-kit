@@ -41,7 +41,7 @@ gulp.task('build', gulp.series(
     'import',
     'doc'
   ),
-  'test:a11y'
+  'test'
 ));
 gulp.task('build').description = 'Compile the whole project into build folder.';
 gulp.task('build').flags = {

@@ -2,7 +2,7 @@
 
 // MODULES
 // ----------------------------------------------------------------------------
-var ENV = require('../tools/env').js;
+const ENV = require('../tools/env').js;
 
 
 // CONDITIONAL PIPELINE

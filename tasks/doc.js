@@ -120,7 +120,6 @@ function extractData(file) {
 // ----------------------------------------------------------------------------
 const folderPath = '../tools/doc/helpers';
 fs.readdirSync(path.resolve(path.relative(process.cwd(), __dirname), folderPath)).forEach(function(file) {
-  console.log(file);
   require(path.join(folderPath, file))(twig.twig);
 });
 
@@ -192,7 +191,7 @@ gulp.task('doc:kss', function (cb) {
   del(path.join(CONF.destination, '**/*')).then(() => {
     // build kss styleguide
     kss(CONF).then(() => {
-      cb(null);
+      cb();
     });
   });
 });
@@ -202,12 +201,11 @@ gulp.task('doc:kss').description = 'Compile the styleguide, using KSS.';
 // ----------------------------------------------------------------------------
 // Génère toute la doc du projet
 gulp.task('doc', function (cb) {
-  // Si on optimize le projet, on n'inclus pas la documentation.
+  // do not build doc if related to options
   if (!ENV.all.doc && ENV.all.optimize) {
-    cb();
-    return;
+    return cb();
   }
 
-  gulp.series('doc:static', gulp.parallel('doc:kss', 'doc:js'), cb);
+  return gulp.series('doc:static', gulp.parallel('doc:kss', 'doc:js'))(cb);
 });
 gulp.task('doc').description = 'Compile all documentations of the project.';

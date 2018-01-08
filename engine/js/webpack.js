@@ -3,19 +3,19 @@
 
 // MODULES
 // ----------------------------------------------------------------------------
-var path = require('path');
-var gulp = require('gulp');
-var webpackStream = require('webpack-stream');
-var webpack = require('webpack');
-var plumber = require('gulp-plumber');
-var bs = require('browser-sync');
-var err = require('../../tools/errcb');
-var ENV = require('../../tools/env');
+const path = require('path');
+const gulp = require('gulp');
+const webpackStream = require('webpack-stream');
+const webpack = require('webpack');
+const plumber = require('gulp-plumber');
+const bs = require('browser-sync');
+const err = require('../../tools/errcb');
+const ENV = require('../../tools/env');
 
-var SRC = path.join(ENV.js['src-dir'], '**', '*.js');
-var DEST = ENV.js['dest-dir'];
+const SRC = path.join(ENV.js['src-dir'], '**', '*.js');
+const DEST = ENV.js['dest-dir'];
 
-var webpackConfig = require(path.relative(__dirname, path.join(process.cwd(), ENV.js.config)));
+const webpackConfig = require(path.relative(__dirname, path.join(process.cwd(), ENV.js.config)));
 
 // TASK DEFINITION
 // ----------------------------------------------------------------------------

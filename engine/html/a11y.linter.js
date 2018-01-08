@@ -3,15 +3,15 @@
 
 // MODULES
 // ----------------------------------------------------------------------------
-var lazypipe = require('lazypipe');
-var a11y     = require('gulp-a11y');
-var ENV      = require('../../tools/env').html;
+const lazypipe = require('lazypipe');
+const a11y = require('gulp-a11y');
+const ENV = require('../../tools/env').html;
 
 // LINTER CONFIGURATION
 // ----------------------------------------------------------------------------
-var CONFIG = {
+const CONFIG = {
   viewports: ['1024x768'],
-  delay    : Number(ENV.a11y && ENV.a11y.delay) || 1
+  delay: Number(ENV.a11y && ENV.a11y.delay) || 1
 };
 
 if (ENV.a11y && ENV.a11y.viewports) {
@@ -23,7 +23,7 @@ if (ENV.a11y && ENV.a11y.viewports) {
 }
 
 module.exports = function () {
-  var lazystream = lazypipe();
+  let lazystream = lazypipe();
 
   CONFIG.viewports.forEach(function (vp) {
     lazystream = lazystream
