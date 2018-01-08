@@ -5,10 +5,10 @@ module.exports = {
   "builder": "./node_modules/@cleverage/gsk/kss",
   "custom": [
     "Colors",
-    "Icons"
+    "Icons",
   ],
   "css": [
     "../../css/doc.css",
-    "../../css/styles.css"
-  ]
+    "../../css/styles.css",
+  ],
 };

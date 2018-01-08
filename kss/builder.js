@@ -76,6 +76,7 @@ class KssBuilder extends KssBuilderBase {
    */
   prepare(styleGuide) {
     this.options.extend.unshift(path.join(__dirname, 'extend'));
+    this.options.extend.unshift(path.join(__dirname, '../tools/doc/helpers'));
 
     // First we let KssBuilderBase.prepare() clean-up the style guide object.
     return super.prepare(styleGuide).then(styleGuide => {
