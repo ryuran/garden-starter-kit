@@ -24,7 +24,7 @@ const DEST_URL = DEST.replace(path.resolve(ENV.connect.baseDir), '').replace(pat
 // UTILS
 // ----------------------------------------------------------------------------
 function extractData(file) {
-  var parsed = path.parse(file.path);
+  const parsed = path.parse(file.path);
 
   // Basic configuration for MarkDown files
   let src   = ENV.doc['src-dir'];
@@ -57,7 +57,7 @@ function extractData(file) {
   // Index related content
   glob.sync(gPath)
     .reduce(function (a, f) {
-      var u = f
+      const u = f
         .replace(src, rURL)
         .replace(path.parse(f).ext, '.html');
 
@@ -70,7 +70,7 @@ function extractData(file) {
     }, [])
     .sort(function (a, b) {
       return a.localeCompare(b);
-    }).forEach(function (currentValue, index) {
+    }).forEach(function (currentValue) {
       const p = path.parse(currentValue);
 
       const dir = p.dir.replace(rURL, '').replace(/^\//, '');
@@ -118,14 +118,14 @@ function extractData(file) {
 
 // HBS HELPERS
 // ----------------------------------------------------------------------------
-var folderPath = '../tools/doc/helpers';
+const folderPath = '../tools/doc/helpers';
 fs.readdirSync(path.resolve(path.relative(process.cwd(), __dirname), folderPath)).forEach(function(file) {
   require(path.join(folderPath, file))(twig.twig);
 });
 
 // MARKED CUSTOM RENDERER
 // ----------------------------------------------------------------------------
-var renderer = new markdown.marked.Renderer();
+const renderer = new markdown.marked.Renderer();
 
 // Link to markdown files are transformed into link to HTML files
 // This allow to use both the gitlab markdown linking and the HTML
@@ -207,6 +207,6 @@ gulp.task('doc', function (cb) {
     return;
   }
 
-  gulp.series('doc:static', gulp.parallel('doc:kss', 'doc:js'), cb);
+  return gulp.series('doc:static', gulp.parallel('doc:kss', 'doc:js'))();
 });
 gulp.task('doc').description = 'Compile all documentations of the project.';
