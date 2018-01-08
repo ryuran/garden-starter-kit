@@ -2,11 +2,11 @@
 // --------------------------------------------------------------------------
 // Provide the relative URL path to the directory of the current file
 
-var path = require('path');
+const path = require('path');
 
 module.exports = function (instance) {
   'use strict';
-  var twigExtend = (instance.extend) ? instance.extend : instance.exports.extend;
+  const twigExtend = (instance.extend) ? instance.extend : instance.exports.extend;
 
   twigExtend(function (Twig) {
     Twig.exports.extendTag({
@@ -21,13 +21,13 @@ module.exports = function (instance) {
       },
 
       parse: function (token, context/*, chain*/) {
-        var dir   = path.parse(context._target.relative).dir;
-        var depth = (dir === '' ? [] : dir.split(path.sep)).length;
+        const dir   = path.parse(context._target.relative).dir;
+        let depth = (dir === '' ? [] : dir.split(path.sep)).length;
 
         return {
           chain : false,
           output: (function () {
-            var up = ['.'];
+            const up = ['.'];
             while (depth--) { up.push('..'); }
             return up.join('/');
           })()

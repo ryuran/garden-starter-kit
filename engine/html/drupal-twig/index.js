@@ -1,12 +1,12 @@
 // Définition du LazyPipe pour utiliser Twig
 'use strict';
 
-var path = require('path');
-var fs = require('fs');
-var plumber  = require('gulp-plumber');
-var gulpTwig = require('gulp-twig-pipe');
-var Twig = gulpTwig.twig;
-var twigDrupalRenderArray = require('@cleverage/twig-drupal-render-array');
+const path = require('path');
+const fs = require('fs');
+const plumber  = require('gulp-plumber');
+const gulpTwig = require('gulp-twig-pipe');
+const Twig = gulpTwig.twig;
+const twigDrupalRenderArray = require('@cleverage/twig-drupal-render-array');
 
 require('twig-drupal-filters')(Twig);
 
@@ -18,16 +18,17 @@ module.exports = function (gulp, ENV, err) {
   // ----------------------------------------------------------------------------
 
   // We compile only files with the good format (extention)
-  var ext = ENV.html.ext !== undefined ? ENV.html.ext : '*.*';
+  const ext = ENV.html.ext !== undefined ? ENV.html.ext : '*.*';
 
-  var DEST = ENV.html['dest-dir'];
+  const DEST = ENV.html['dest-dir'];
 
-  var folderPath = path.resolve(__dirname, './extends');
+  const folderPath = path.resolve(__dirname, './extends');
+
   fs.readdirSync(folderPath).forEach(function (file) {
     require(path.join(folderPath, file))(Twig);
   });
 
-  var dataParser = twigDrupalRenderArray(Twig, {
+  const dataParser = twigDrupalRenderArray(Twig, {
     pathResolver: function(key) {
       return path.join(ENV.html['src-dir'], key + ext);
     },

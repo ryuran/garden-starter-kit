@@ -14,17 +14,17 @@
 //   extension: l’extension du fichier commençant par '.'
 // }
 
-var path = require('path');
-var glob = require('glob');
+const path = require('path');
+const glob = require('glob');
 
 module.exports = function (instance) {
   'use strict';
-  var twigExtend = (instance.extend) ? instance.extend : instance.exports.extend;
+  const twigExtend = (instance.extend) ? instance.extend : instance.exports.extend;
 
   twigExtend(function (Twig) {
     Twig.exports.extendFunction('readdir', function (dir) {
-      var fulldir = path.resolve(this.path, dir);
-      var files = glob.sync(path.join(fulldir, '**', '*.json'));
+      const fulldir = path.resolve(this.path, dir);
+      const files = glob.sync(path.join(fulldir, '**', '*.json'));
 
       return files
         .map(function (file) {
