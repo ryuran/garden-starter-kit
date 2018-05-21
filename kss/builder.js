@@ -23,20 +23,7 @@ let KssBuilderBase;
 
 var path = require('path');
 
-try {
-  // In order for a builder to be "kss clone"-able, it must use the
-  // require('kss/builder/path') syntax.
-  KssBuilderBase = require('kss/builder/base/twig');
-} catch (e) {
-  // The above require() line will always work.
-  //
-  // Unless you are one of the developers of kss-node and are using a git clone
-  // of kss-node where this code will not be inside a "node_modules/kss" folder
-  // which would allow node.js to find it with require('kss/anything'), forcing
-  // you to write a long-winded comment and catch the error and try again using
-  // a relative path.
-  KssBuilderBase = require('../base/twig');
-}
+KssBuilderBase = require('kss/builder/base/twig');
 
 /**
  * A kss-node builder that takes input files and builds a style guide using Twig
@@ -57,31 +44,33 @@ class KssBuilder extends KssBuilderBase {
         string: true,
         multiple: false,
         describe: 'Title of the style guide',
-        default: 'KSS Style Guide'
-      }
-    });
+        default: 'KSS Style Guide',
+      },
+      svg: {
+        group: 'File locations:',
+        string: true,
+        path: true,
+        describe: 'Location of svg symbols pack to include in template',
+      },
+    })
   }
 
-  /**
-   * Allow the builder to preform pre-build tasks or modify the KssStyleGuide
-   * object.
-   *
-   * The method can be set by any KssBuilderBase sub-class to do any custom tasks
-   * after the KssStyleGuide object is created and before the HTML style guide
-   * is built.
-   *
-   * @param {KssStyleGuide} styleGuide The KSS style guide in object format.
-   * @returns {Promise.<KssStyleGuide>} A `Promise` object resolving to
-   *   `styleGuide`.
-   */
-  prepare(styleGuide) {
+  prepareExtend(templateEngine) {
     this.options.extend.unshift(path.join(__dirname, 'extend'));
     this.options.extend.unshift(path.join(__dirname, '../tools/doc/helpers'));
 
-    // First we let KssBuilderBase.prepare() clean-up the style guide object.
-    return super.prepare(styleGuide).then(styleGuide => {
-      return Promise.resolve(styleGuide);
-    });
+    return super.prepareExtend(templateEngine)
+  }
+
+  normalizeOptions(keys) {
+    if (this.options.custom) {
+      this.options.custom = Array.from(new Set(this.options.custom.concat([
+        'colors',
+        'symbols',
+      ])))
+    }
+
+    return super.normalizeOptions(keys)
   }
 }
 

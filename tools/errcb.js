@@ -1,16 +1,17 @@
 'use strict';
 
-var gutil = require('gulp-util');
+const log = require('fancy-log');
+const color = require('ansi-colors');
 
 module.exports = function err(error) {
-  gutil.log(gutil.colors.red('ERROR:'), error.plugin);
+  log(color.red('ERROR:'), error.plugin);
 
   if (error.stack) {
     error.stack.split('\n').forEach(function (line) {
-      gutil.log(gutil.colors.red('STACK:'), line);
+      log(color.red('STACK:'), line);
     });
   } else {
-    gutil.log(gutil.colors.red('ERROR:'), error.message);
+    log(color.red('ERROR:'), error.message);
   }
 
   this.emit('end');

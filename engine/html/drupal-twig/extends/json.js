@@ -5,9 +5,11 @@
 // Pour le paramètre `path`, le dossier courrant `./` est le dossier source
 // des données des gabarits Twig: `src/data` par defaut.
 
-const fs    = require('fs');
-const path  = require('path');
-const gutil = require('gulp-util');
+const fs = require('fs');
+const path = require('path');
+const log = require('fancy-log');
+const color = require('ansi-colors');
+
 
 module.exports = function (instance) {
   'use strict';
@@ -18,7 +20,7 @@ module.exports = function (instance) {
       let data = {};
 
       if (!(typeof file === 'string' || file instanceof String)) {
-        gutil.log(gutil.colors.red('ERROR:'),
+        log(color.red('ERROR:'),
           'Wrong file path:', file,
           '(check your "json(path)" syntax)'
         );
@@ -31,7 +33,7 @@ module.exports = function (instance) {
       try {
         data = JSON.parse(fs.readFileSync(fullpath, 'utf8'));
       } catch (e) {
-        gutil.log(gutil.colors.yellow('WARN:'),
+        log(color.yellow('WARN:'),
           'Unable to find data from',
           fullpath.replace(path.resolve('.'), '').slice(1)
         );

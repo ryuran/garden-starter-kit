@@ -4,7 +4,8 @@
 const path = require('path');
 const fs = require('fs');
 const lazypipe = require('lazypipe');
-const gutil = require('gulp-util');
+const log = require('fancy-log');
+const color = require('ansi-colors');
 const plumber = require('gulp-plumber');
 const twig = require('gulp-twig');
 const data = require('gulp-data');
@@ -23,7 +24,7 @@ module.exports = function (gulp, ENV, err) {
     try {
       gData = require(genericDataFile);
     } catch (e) {
-      gutil.log(gutil.colors.yellow('WARN:'),
+      log(color.yellow('WARN:'),
         'Unable to find data from',
         genericDataFile.replace(path.resolve('.'), '').slice(1)
       );
@@ -32,7 +33,7 @@ module.exports = function (gulp, ENV, err) {
     try {
       sData = require(specificDataFile);
     } catch (e) {
-      gutil.log(gutil.colors.yellow('WARN:'),
+      log(color.yellow('WARN:'),
         'Unable to find data from',
         specificDataFile.replace(path.resolve('.'), '').slice(1)
       );
@@ -52,14 +53,14 @@ module.exports = function (gulp, ENV, err) {
   const CONF = {
     errorLogToConsole: true,
     onError: function (error) {
-      gutil.log(gutil.colors.red('ERROR:'), error.plugin);
+      log(color.red('ERROR:'), error.plugin);
 
       if (error.stack) {
         error.stack.split('\n').forEach(function (line) {
-          gutil.log(gutil.colors.red('STACK:'), line);
+          log(color.red('STACK:'), line);
         });
       } else {
-        gutil.log(gutil.colors.red('ERROR:'), error.message);
+        log(color.red('ERROR:'), error.message);
       }
 
       this.emit('end');

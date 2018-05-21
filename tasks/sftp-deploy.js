@@ -2,13 +2,13 @@
 
 // MODULES
 // ----------------------------------------------------------------------------
-var path = require('path');
-var gulp = require('gulp');
-var sftp = require('gulp-sftp');
-var prompt = require('gulp-prompt');
-var pkg = require(path.relative(__dirname, path.join(process.cwd(), 'package.json')));
-var ENV = require('../tools/env');
-var gutil = require('gulp-util');
+const path = require('path');
+const gulp = require('gulp');
+const sftp = require('gulp-sftp');
+const prompt = require('gulp-prompt');
+const pkg = require(path.relative(__dirname, path.join(process.cwd(), 'package.json')));
+const ENV = require('../tools/env');
+const log = require('fancy-log');
 
 // TASK DEFINITION
 // ----------------------------------------------------------------------------
@@ -43,7 +43,7 @@ gulp.task('sftp-deploy', function () {
       });
     });
 
-  gutil.log('package.json: ' + pkg.name + ' ' + pkg.version);
+  log('package.json: ' + pkg.name + ' ' + pkg.version);
 
   return gulp.src(SRC)
     // remind user to build first
