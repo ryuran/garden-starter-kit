@@ -1,11 +1,17 @@
-# ENVIRONNEMENT GLOBAL
+# GLOBAL ENVIRONNEMENT
 # -----------------------------------------------------------------------------
-# Pour être sur que le fichier .gitignore n'est jamais ignorer lui-même.
+# This rules should be in your global gitignore but we need it here to avoid
+# to export this files in the node module package (`npm pack`).
+.DS_Store
+
+# GIT
+# -----------------------------------------------------------------------------
+# To be sure that the .gitignore file is never ignored itself.
 !.gitignore
 
-# MODULES TIERS
+# NODE
 # -----------------------------------------------------------------------------
-# Ignorer les modules et logs nodes
+# NPM directory, logs and packages
 node_modules
 logs
 *.log
