@@ -40,7 +40,7 @@ if(ENV.all.doc) {
 // Configuration de tous les watcher du projet
 gulp.task('watch', function () {
   W.forEach(function (obj) {
-    gulp.watch(obj.files, obj.tasks);
+    gulp.watch(obj.files, gulp.series(obj.tasks));
   });
 });
 gulp.task('watch').description = 'Starts all the watchers.';
