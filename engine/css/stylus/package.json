@@ -1,6 +1,6 @@
 {
   "name": "@cleverage/gsk-stylus",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "gsk stylus engine",
   "main": "index.js",
   "scripts": {
@@ -13,8 +13,8 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "gulp-stylint": "4.0.0",
-    "gulp-stylus": "2.6.0",
+    "gulp-stylint": "4.0.2",
+    "gulp-stylus": "2.7.0",
     "lazypipe": "1.0.1"
   }
 }

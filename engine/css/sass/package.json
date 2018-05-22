@@ -1,6 +1,6 @@
 {
   "name": "@cleverage/gsk-sass",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "gsk sass engine",
   "main": "index.js",
   "scripts": {

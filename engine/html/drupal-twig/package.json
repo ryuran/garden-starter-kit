@@ -1,6 +1,6 @@
 {
   "name": "@cleverage/gsk-drupal-twig",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "gsk twig engine for drupal",
   "main": "index.js",
   "scripts": {
