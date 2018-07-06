@@ -65,7 +65,6 @@ class KssBuilder extends KssBuilderBase {
   normalizeOptions(keys) {
     if (this.options.custom) {
       this.options.custom = Array.from(new Set(this.options.custom.concat([
-        'colors',
         'symbols',
       ])))
     }

@@ -10,7 +10,8 @@
 {% block main %}
   {% set dir = '' %}
   {% for file in readdir('./pages') %}
-    {% set data = json('../data/' + file.directory ~ '/' ~ file.basename ~ '.json') %}
+    {{ dump('../data/' ~ file.directory ~ '/' ~ file.basename ~ '.json') }}
+    {% set data = json('../data/' ~ file.directory ~ '/' ~ file.basename ~ '.json') %}
 
     {% if dir != file.directory %}
       {% set dir = file.directory %}

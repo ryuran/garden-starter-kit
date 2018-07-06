@@ -16,8 +16,9 @@ module.exports = function (gulp, ENV, err) {
   // UTILS
   // ----------------------------------------------------------------------------
   function processData(file) {
-    const base = file.path.replace(ENV.html['src-dir'], ENV.html['data-dir']);
-    const specificDataFile = base.replace('.twig', '.json');
+    const dataDir = path.resolve(ENV.html['data-dir'])
+    const htmlRelativePath = path.relative(path.resolve(ENV.html['src-dir']), file.path);
+    const specificDataFile = path.resolve(dataDir, htmlRelativePath.replace('.twig', '.json'))
     let gData = {};
     let sData = {};
 
@@ -26,7 +27,7 @@ module.exports = function (gulp, ENV, err) {
     } catch (e) {
       log(color.yellow('WARN:'),
         'Unable to find data from',
-        genericDataFile.replace(path.resolve('.'), '').slice(1)
+        path.relative(path.resolve('.'), genericDataFile)
       );
     }
 
@@ -35,7 +36,7 @@ module.exports = function (gulp, ENV, err) {
     } catch (e) {
       log(color.yellow('WARN:'),
         'Unable to find data from',
-        specificDataFile.replace(path.resolve('.'), '').slice(1)
+        path.relative(path.resolve('.'), specificDataFile)
       );
     }
 

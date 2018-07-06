@@ -29,14 +29,14 @@ module.exports = function (instance) {
 
       return files
         .map((file) => {
-          file = path.parse(file.replace(root, '.'));
+          const filePath = path.parse(path.relative(root, file));
 
           return {
-            path: path.join(file.dir, file.base),
-            directory: file.dir,
-            filename: file.base,
-            basename: file.base.replace(file.ext, ''),
-            extension: file.ext,
+            path: path.join(filePath.dir, filePath.base),
+            directory: filePath.dir,
+            filename: filePath.base,
+            basename: filePath.base.replace(filePath.ext, ''),
+            extension: filePath.ext,
           };
         })
         .sort((a, b) => {

@@ -16,6 +16,7 @@ module.exports = function (instance) {
 
   twigExtend(function (Twig) {
     Twig.exports.extendFunction('json', function (file) {
+
       let data = {};
 
       if (!(typeof file === 'string' || file instanceof String)) {
@@ -27,7 +28,7 @@ module.exports = function (instance) {
         return data;
       }
 
-      const fullpath = path.resolve(this.path, file);
+      const fullpath = path.resolve(path.dirname(this.path), file);
 
       try {
         data = JSON.parse(fs.readFileSync(fullpath, 'utf8'));
