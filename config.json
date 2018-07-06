@@ -19,11 +19,7 @@
     "pattern"  : "*.twig",
     "dest-dir" : "./build",
     "data-dir" : "./src/data",
-    "engine"   : "twig",
-    "a11y"     : {
-      "viewports": ["320x480","768x1024","1024x768","1920x1080"],
-      "delay"    : 1
-    }
+    "engine"   : "twig"
   },
   "js" : {
     "src-dir"  : "./src/js",

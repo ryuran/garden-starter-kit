@@ -6,6 +6,7 @@ const path = require('path');
 const gulp = require('gulp');
 const gif = require('gulp-if');
 const plumber = require('gulp-plumber');
+const a11y = require('../engine/tests/a11y');
 const err = require('../tools/errcb');
 const ENV = require('../tools/env');
 
@@ -30,7 +31,6 @@ const SRC = {
 // ----------------------------------------------------------------------------
 const css = require('@cleverage/gsk-' + ENV.css.engine + '/linter.js');
 const js = require('../engine/js/simple.linter.js');
-const a11y = require('../engine/html/a11y.linter.js');
 
 // TASK DEFINITION
 // ----------------------------------------------------------------------------
@@ -65,14 +65,14 @@ gulp.task('test:css').description = 'Lint CSS files.'
 // ----------------------------------------------------------------------------
 // Test html accessibility
 gulp.task('test:a11y', function (cb) {
-  return gulp.src(SRC.html)
-    .pipe(plumber({ errorHandler: err }))
+  if (ENV.all.relax) {
+    return cb;
+  }
 
-    // En mode relax, on ignore les tests
-    .pipe(gif(!ENV.all.relax, a11y()))
-    .on('end', cb);
+  return gulp.src(SRC.html)
+    .pipe(a11y());
 });
-gulp.task('test:a11y').description = 'Lint HTML files for accessibility.';
+gulp.task('test:a11y').description = 'Automatized accessibility tests for HTML files.';
 
 // $ gulp test
 // ----------------------------------------------------------------------------
