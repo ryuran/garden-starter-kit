@@ -1,9 +1,9 @@
 
-Browsersync : Proxyfier les fichiers JS et CSS
+Browsersync : Proxyfy JS and CSS files
 ===============================================================================
 
-Le _Garden Starter Kit_ embarque une version de [Browsersync](https://www.browsersync.io/).
+The _Garden Starter Kit_ embed a version of [Browsersync](https://www.browsersync.io/).
 
-Browsersync permet de synchroniser la navigation (click, scroll, …) entre plusieurs devices.
+Browsersync allows to synchronize navigation (click, scroll, …) between several devices.
 
-Pour le configurer, l’outil dispose de son propre « back-office » accessible par défaut sur le port :3001 (localhost:3001) lorsque votre serveur est en route (`gulp connect` ou `gulp live`).
+To configure it, this tool has his own « back-office » accessible by default on port `:3001` (localhost:3001) when your server is running (`gulp connect` or `gulp live`).

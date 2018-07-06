@@ -17,7 +17,7 @@
 <body class="ca">
   <!-- include inline svg symbols -->
   <div style="display: none">
-    {{ filecontent('../assets/svg/symbols.svg')|raw }}
+    {{ filecontent('../../../../src/assets/svg/symbols.svg')|raw }}
   </div>
 
   <header class="ca__header">
@@ -121,18 +121,20 @@
 
               {% if section.colors %}
                 <ul class="ca__colors">
-                  {% kssColors section.colors %}
+                  {% for color in section.colors %}
                     <li>
-                      <div class="ca__colors__demo" style="background-color:{{color.hex}}"></div>
+                      <div class="ca__colors__demo" style="background-color:{{ color.color }}"></div>
                       <div class="ca__colors__info">
                         <p class="ca__colors__name">{{ color.name }}</p>
-                        <p class="ca__colors__hex">{{ color.hex }}</p>
-                        <p class="ca__colors__rgb">rgb({{ color.rgb.r }}, {{ color.rgb.g }}, {{ color.rgb.b }})</p>
-                        <p class="ca__colors__hsl">hsl({{ color.hsl.h }}, {{ color.hsl.s }}, {{ color.hsl.l }})</p>
+                        <p class="ca__colors__code">{{ color.color }}</p>
+                        {#
+                          <p class="ca__colors__rgb">rgb({{ color.rgb.r }}, {{ color.rgb.g }}, {{ color.rgb.b }})</p>
+                          <p class="ca__colors__hsl">hsl({{ color.hsl.h }}, {{ color.hsl.s }}, {{ color.hsl.l }})</p>
+                        #}
                         <p class="ca__colors__description">{{ color.desc|raw }}</p>
                       </div>
                     </li>
-                  {% endkssColors %}
+                  {% endfor %}
                 </ul>
               {% endif %}
 

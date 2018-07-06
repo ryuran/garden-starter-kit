@@ -1,0 +1,20 @@
+{
+  "name": "@cleverage/gsk-stylus",
+  "version": "1.0.1",
+  "description": "gsk stylus engine",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cleverage/garden-starter-kit.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "gulp-stylint": "4.0.2",
+    "gulp-stylus": "2.7.0",
+    "lazypipe": "1.0.1"
+  }
+}

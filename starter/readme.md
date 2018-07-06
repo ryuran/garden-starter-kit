@@ -1,22 +1,17 @@
-Configurations recommandées
+Project ressources files
 -------------------------------------------------------------------------------
 
-Ce répertoire contient un certain nombre de fichiers de configuration près à
-l’emploie pour les divers outils pilotés via Gulp. Selon les outils que vous
-voulez utiliser, **copiez les fichiers de configuration nécessaire et placer
-les à la racine du projet**.
+This directory contain a base of files to start a project.
 
-Vous êtes libre de modifier les fichiers que vous aurez copiés pour les besoins
-de votre projet. Cependant, si vous modifiez systématiquement les
-configurations par défaut, n'hésitez pas à proposer une merge request au
-starter kit pour que l'on en discute.
+After instalation of the GSK, you can edit these files as you need.
 
-* `.editorconfig` Configuration commune pour le [format des fichier pour les IDE](http://editorconfig.org/)
-* `.jsbeautifyrc` Configuration pour le [formatage automatique du code HTML](https://github.com/beautify-web/js-beautify)
-* `.eslint.json` Configuration pour [le linting et la vérification de syntaxe des fichiers JS](http://eslint.org)
-* `.lesshintrc` Configuration pour le [linting des fichiers LESS](https://github.com/lesshint/lesshint)
-* `.scss-lint.yml` Configuration pour le [linting des fichiers SCSS (pour compass avec ruby)](https://github.com/brigade/scss-lint/)
-* `.sass-lint.yml` Configuration pour le [linting des fichiers SCSS (pour sass)](https://github.com/sasstools/sass-lint)
-* `.stylintrc` Configuration pour le [linting des fichiers Stylus](https://rosspatton.github.io/stylint/)
-* `config.rb` Configuration pour la [compilation Compass](http://compass-style.org/)
-* `Gemfile` [Config pour dependances ruby (si on utilise Compass)](http://bundler.io/gemfile.html)
+If you always edit default configuration (for linter by example), do not hesitate to submit a pull request with your arguments.
+
+* `.editorconfig` Settings [for IDE by file format](http://editorconfig.org/)
+* `.eslint.json` Settings [for linting and code styling of JavaScript files](http://eslint.org)
+* `.lesshintrc` Settings [for linting of LESS files](https://github.com/lesshint/lesshint)
+* `.scss-lint.yml` Settings [for linting of SCSS files (for compass with ruby)](https://github.com/brigade/scss-lint/)
+* `.sass-lint.yml` Settings [for linting of SCSS files (for node-sass)](https://github.com/sasstools/sass-lint)
+* `.stylintrc` Settings [for linting of Stylus files](https://rosspatton.github.io/stylint/)
+* `config.rb` Settings [for Compass compilation](http://compass-style.org/)
+* `Gemfile` Settings [ruby dependencies (if you use Compass)](http://bundler.io/gemfile.html)

@@ -1,0 +1,20 @@
+{
+  "name": "@cleverage/gsk-compass",
+  "version": "1.0.0",
+  "description": "gsk compass engine",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cleverage/garden-starter-kit.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "gulp-compass": "2.1.0",
+    "gulp-scss-lint": "0.6.1",
+    "lazypipe": "1.0.1"
+  }
+}

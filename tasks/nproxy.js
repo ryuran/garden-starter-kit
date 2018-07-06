@@ -2,9 +2,9 @@
 
 // MODULES
 // ----------------------------------------------------------------------------
-var gulp   = require('gulp');
+var gulp = require('gulp');
 var nproxy = require('nproxy');
-var argv   = require('yargs').argv;
+var argv = require('yargs').argv;
 
 // TASK DEFINITION
 // ----------------------------------------------------------------------------
@@ -15,8 +15,7 @@ var argv   = require('yargs').argv;
 
 // see `conf/nproxy.js` for proxy configuration
 
-gulp.task('nproxy', 'Starts nproxy (proxy files, webservices, caching...).', function nproxyTask() {
-
+gulp.task('nproxy', function () {
 	// use `--port=8080` to change the port number
   var port = argv.port || 8989,
     options = {
@@ -45,8 +44,9 @@ gulp.task('nproxy', 'Starts nproxy (proxy files, webservices, caching...).', fun
 
   return nproxy(port, options);
 
-}, {
-  options: {
-    debug: 'Debug.'
-  }
 });
+
+gulp.task('nproxy').description = 'Starts nproxy (proxy files, webservices, caching…).'
+gulp.task('nproxy').flags = {
+  '--debug': 'Debug.'
+}

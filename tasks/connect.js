@@ -2,9 +2,9 @@
 
 // MODULES
 // ----------------------------------------------------------------------------
-var gulp = require('gulp');
-var bs   = require('browser-sync');
-var ENV  = require('../tools/env').connect;
+const gulp = require('gulp');
+const bs = require('browser-sync');
+const ENV = require('../tools/env').connect;
 
 
 // TASK DEFINITION
@@ -17,7 +17,7 @@ var ENV  = require('../tools/env').connect;
 //
 // Pour activer HTTPS, ajoutez le paramètre `https:true` dans la configuration
 // d'initialisation de browser-sync.
-gulp.task('connect', 'Starts a server that will serve the content of the build folder.', function () {
+gulp.task('connect', function () {
   bs.init({
     port: ENV.port,
     open: ENV.open,
@@ -33,3 +33,4 @@ gulp.task('connect', 'Starts a server that will serve the content of the build f
     reloadDebounce: 200
   });
 });
+gulp.task('connect').description = 'Starts a server that will serve the content of the build folder.'

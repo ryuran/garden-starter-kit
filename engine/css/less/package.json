@@ -1,0 +1,20 @@
+{
+  "name": "@cleverage/gsk-less",
+  "version": "1.0.1",
+  "description": "gsk less engine",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cleverage/garden-starter-kit.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "gulp-less": "3.5.0",
+    "gulp-lesshint": "5.0.2",
+    "lazypipe": "1.0.1"
+  }
+}

@@ -2,11 +2,9 @@
 
 // MODULES
 // ----------------------------------------------------------------------------
-var fs   = require('fs');
+var fs = require('fs');
 var path = require('path');
-var _    = require('underscore');
 var cli  = require('./cli');
-
 
 // CONFIGURATION
 // ----------------------------------------------------------------------------
@@ -30,13 +28,16 @@ var CLI_ALIAS = {
 
 // Tous les paramètres de conf par defaut peuvent être
 // forcés via la ligne de commande.
-_.each(DEFAULT, function (value, key) {
+
+Object.keys(DEFAULT).map(function(key) {
+  var value = DEFAULT[key];
   var prefix = key;
 
-  _.each(value, function (v, k) {
-    var id    = prefix + '.' + k;
+  Object.keys(value).map(function(k) {
+    var v = value[v];
+    var id = prefix + '.' + k;
     var names = [id];
-    var type  = typeof v;
+    var type = typeof v;
 
     if (type === 'string' && /\\{1,2}|\//.test(v)) {
       type = 'filename';
@@ -64,13 +65,12 @@ var RAW = cli.parse(CLI_PARAM);
 
 // Configuration final
 var CONF = {
-  all: _.extend({}, DEFAULT.all, RAW.all)
+  all: Object.assign({}, DEFAULT.all, RAW.all)
 };
 
 tasks.forEach(function (task) {
-  CONF[task] = _.extend({}, DEFAULT[task], RAW[task]);
+  CONF[task] = Object.assign({}, DEFAULT[task], RAW[task]);
 });
-
 
 // EXPORTATION
 // ----------------------------------------------------------------------------

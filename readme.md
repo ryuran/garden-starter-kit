@@ -10,7 +10,7 @@ Each tool has a dedicated documentation about his use in our context. This docum
 
 1. Initialize git `git init` (or clone your project repository if existing yet).
 2. Initialize your project with `npm init`.
-3. Install the GSK `npm install cleverage/garden-starter-kit#next` (`next` is branch for v4 alpha).
+3. Install the GSK `npm install cleverage/garden-starter-kit#next` (`next` is branch for v3 alpha).
 4. Run `gsk` command. It will ask you which html and css engine you want (Twig and Sass by default). Then it will install required dependencies for these engines and prepare some files in your project
 
   ⚠ You won’t be able to change these choices later.

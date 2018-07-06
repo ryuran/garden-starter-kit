@@ -18,7 +18,7 @@ fs.stat(gulpfile, function(err) {
     console.log('Welcome in Garden-starterkit.');
 
     // write gulpfile
-    fs.writeFileSync(gulpfile, 'require(\'garden-starterkit\');', 'utf-8');
+    fs.writeFileSync(gulpfile, 'require(\'@cleverage/gsk\');', 'utf-8');
 
     var config = require('../config.json');
 
@@ -30,25 +30,21 @@ fs.stat(gulpfile, function(err) {
       var inquirer = require('inquirer');
 
       inquirer.prompt([
+        // {
+        //   type: 'list',
+        //   message: 'Select your HTML engine:',
+        //   name: 'html',
+        //   choices: [
+        //     {
+        //       name: 'Twig',
+        //       checked: true,
+        //       value: 'twig'
+        //     }
+        //   ]
+        // },
         {
           type: 'list',
-          message: 'Select your HTML engine:',
-          name: 'html',
-          choices: [
-            {
-              name: 'Twig',
-              checked: true,
-              value: 'twig'
-            },
-            {
-              name: 'Handlebars',
-              value: 'handlebars'
-            }
-          ]
-        },
-        {
-          type: 'list',
-          message: 'Select your Css engine:',
+          message: 'Select your CSS engine:',
           name: 'css',
           choices: [
             {
@@ -67,7 +63,7 @@ fs.stat(gulpfile, function(err) {
           ]
         }
       ]).then(function (answers) {
-        config.html.engine = answers.html;
+        // config.html.engine = answers.html;
         config.css.engine = answers.css;
 
         require('../tools/init.js')(config);

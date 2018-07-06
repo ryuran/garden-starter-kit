@@ -16,6 +16,7 @@
   },
   "html" : {
     "src-dir"  : "./src/html",
+    "pattern"  : "*.twig",
     "dest-dir" : "./build",
     "data-dir" : "./src/data",
     "engine"   : "twig",

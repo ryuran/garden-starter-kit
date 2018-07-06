@@ -2,11 +2,11 @@
 
 // MODULES
 // ----------------------------------------------------------------------------
-var gulp     = require('gulp');
+var gulp = require('gulp');
 var svgstore = require('gulp-svgstore');
-var ENV      = require('../tools/env').svg;
-var path     = require('path');
-var rename   = require('gulp-rename');
+var ENV = require('../tools/env').svg;
+var path = require('path');
+var rename = require('gulp-rename');
 
 var SRC  = path.join(ENV['src-dir'],  '/**', '*.svg');
 
@@ -39,8 +39,10 @@ gulp.task('svg:symbols', function () {
     }))
     .pipe(gulp.dest(ENV['dest-dir']));
 });
+gulp.task('svg:symbols').description = 'Group every svg icons in a bundle of symbols';
 
 // $ gulp svg
 // ----------------------------------------------------------------------------
 // Gère toutes les tâches svg
-gulp.task('svg', ['svg:symbols']);
+gulp.task('svg', gulp.series('svg:symbols'));
+gulp.task('svg').description = 'process SVG files';
