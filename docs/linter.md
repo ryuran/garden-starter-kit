@@ -1,58 +1,55 @@
 
-Linter
+Linters
 ===============================================================================
 
-Les Linters sont des outils qui vérifient la qualité du code. Le starter kit,
-est configuré de tel manière que des linters sont systématiquement utilisés
-pour JavaScript et pour les préprocesseur CSS.
+Linters are tools to control code quality. The Garden Starter Kit,
+is setted to lint systematically JavaScript and CSS sources.
 
 
-Configuration des linters
+Settings
 -------------------------------------------------------------------------------
-Une configuration par défaut de ces linters est disponible dans le répertoire
-`strater/`. Il suffit de copier ces fichiers de configuration à la racine du
-projet pour qu'ils soient utilisés par Gulp automatiquement.
+Each linter have a default settings file in `starter/` directory.
+Gulp use automaticaly the config file existing at the project root.
 
-Vous pouvez bien sur mettre en place vos propres contraintes que ce soit en
-durcissant les vérifications ou en les assouplissant. Cependant, éviter de
-changer la configuration une fois le projet démarré.
+You can define your own rules. However, avoid to change settings as soon as the
+project it started.
 
 
-Utilisation des linters
+Use
 -------------------------------------------------------------------------------
-Les linters sont exécutés à chaque fois qu'une tache Gulp va vouloir consommer
-les fichiers qui lui corresponde. Les erreurs de linting sont listées dans
-votre terminal et sont bloquantes (tant qu'il y a une erreur, le fichier ne
-compile pas)
+Each time gulp will process a file, it run the corresponding linter.
+Linting errors are listed in your console.
+You should not commit your work as long as there are lint errors.
 
-Pour anticiper les erreurs de linting, nous vous encourageons à configurer vos
-éditeurs de texte pour qu'ils consomment les configurations de linting du
-projet et vous avertissent dès qu'il y a un problème.
+You should set your IDE or code editor to highlight linting errors with
+local settings.
 
-* Sublime Text:
-  * https://packagecontrol.io/packages/SublimeLinter
-* WebStorm:
-  * https://www.jetbrains.com/webstorm/help/code-quality-tools.html
-* Atom:
-  * https://github.com/AtomLinter
+* [Sublime Text](https://packagecontrol.io/packages/SublimeLinter)
+* [WebStorm](https://www.jetbrains.com/webstorm/help/code-quality-tools.html)
+* [Atom](https://github.com/AtomLinter)
+* [VScode](https://marketplace.visualstudio.com/search?target=VSCode&category=Linters)
 
 
-Linters disponibles
+Available linters
 -------------------------------------------------------------------------------
-Le starter kit est actuellement configuré pour utiliser les linters suivant:
+The starter kit is currently configured to use these linters:
 
 * JavaScript
   * ESLint
-    * Site: http://eslint.org
-    * Règles: http://eslint.org/docs/rules/
-* Sass
+    * Homepage: http://eslint.org
+    * Rules: http://eslint.org/docs/rules/
+* Sass (node-sass)
+  * sass-lint
+    * Homepage: https://github.com/sasstools/sass-lint
+    * Rules: https://github.com/sasstools/sass-lint/tree/master/docs/options
+* Sass/compass
   * scss-lint
-    * Site: https://github.com/brigade/scss-lint
-    * Règles: https://github.com/brigade/scss-lint/blob/master/lib/scss_lint/linter/README.md
+    * Homepage: https://github.com/brigade/scss-lint
+    * Rules: https://github.com/brigade/scss-lint/blob/master/lib/scss_lint/linter/README.md
 * Stylus
   * Stylint
-    * Site & Règles: https://rosspatton.github.io/stylint/
+    * Homepage & Rules: https://rosspatton.github.io/stylint/
 * LESS
   * lesshint
-    * Site: https://github.com/lesshint/lesshint
-    * Règles: https://github.com/lesshint/lesshint/blob/master/lib/linters/README.md
+    * Homepage: https://github.com/lesshint/lesshint
+    * Rules: https://github.com/lesshint/lesshint/blob/master/lib/linters/README.md

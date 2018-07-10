@@ -2,9 +2,9 @@
 LESS
 ===============================================================================
 
-Certain projet peuvent utiliser [LESS](http://lesscss.org/)
+Some project can use [LESS](http://lesscss.org/)
 
-Configuration:
+Settings:
 ```json
 {
   "css": {
@@ -13,11 +13,9 @@ Configuration:
 }
 ```
 
-
-Configuration standard
+Standard settings
 -------------------------------------------------------------------------------
 
-LESS ne requiers aucune configuration particulière. Cependant, contrairement
-à Compass, il n'offre pas de mécanisme de gestion automatique des sprites.
+LESS does not need specific settings.
 
-LESS est utilisé avec le linter [Lesshint](https://github.com/lesshint/lesshint).
+LESS is used with the linter [Lesshint](https://github.com/lesshint/lesshint).

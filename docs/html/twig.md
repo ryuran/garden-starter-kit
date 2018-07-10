@@ -2,11 +2,11 @@
 Twig
 ===============================================================================
 
-Dans la mesure ou de nombreux projets chez Clever Age utilisent Symfony,
-[Twig](http://twig.sensiolabs.org/) est aussi le système de templating par
-défaut que l'on utilise pour créer nos pages HTML statiques (via `twig.js`).
+At Clever Age many project are based on Symfony or Drupal, so we use
+[Twig](http://twig.sensiolabs.org/) ad default templating language to build
+our HTML static pages (via `twig.js`).
 
-Configuration:
+Settings:
 ```json
 {
   "html": {
@@ -15,35 +15,28 @@ Configuration:
 }
 ```
 
-
-Configuration standard
+Standard settings
 -------------------------------------------------------------------------------
 
-Twig ne requiers aucune configuration particulière. Cependant, il faut noter
-que, par défaut, toutes les variables qui seront utilisées pour peupler les
-fichiers lors de la compilation sont dans le dossier `src/data`
+Twig does not need specific settings. Furthermore, by default, every variables
+used to fill templates while the complitation are in `src/data` directory as
+json files.
 
-Ces données sont sous la forme de fichiers JSON avec un fichier générique
-(`src/data/data.json`), plus un fichier spécifique qui doit porter le même nom
-que le gabarit Twig correspondant (`src/data/mon/fichier/twig.json`). Les deux
-sont amalgamés pour être utilisé par le gabarit Twig. Si les deux fichiers
-proposent les mêmes variables, celles du fichier spécifique écrasent celles du
-fichier générique.
+Data from the main file (`src/data/data.json`) are overrided by a specific file
+named with the same name than the twig file.
 
-Étendre Twig
+Exemple: the template `src/html/mon/fichier.twig` will be filled by data from `src/data/data.json` and `src/data/mon/fichier.json` merged over it.
+
+Extend Twig
 -------------------------------------------------------------------------------
-Tout comme la version de PHP permet d'étendre Twig, la version JS offre aussi
-cette possibilité. Le starter kit normalise la façon de le faire.
+As well as the PHP version, Twig.js can be extended permet d’étendre Twig.
 
-De manière générale, pour rajouter un tag, une fonction ou un filtre, il faut
-écrire un module CommonJS et le mettre dans un des répertoires suivants selon
-ce que vous voulez rajouter:
+To add a Twig tag, function or filter, you have to write a CommonJS module in this directory:
+* `tools/twig/tags/` to add a tag
+* `tools/twig/functions/` to add a function
+* `tools/twig/filters/` to add a filter
 
-* `tools/twig/tags/` pour rajouter un tag
-* `tools/twig/functions/` pour rajouter une fonction
-* `tools/twig/filters/` pour rajouter un filtre
-
-Pour les fonctions et les filtres, votre module doit exporter un objet:
+For functions and filters, the module must export an object:
 
 ```javascript
 module.exports = {
@@ -54,19 +47,17 @@ module.exports = {
 };
 ```
 
-Pour les tags, votre module doit exporter une fonction qui prend un objet Twig
-en entrée. Cet objet expose toute l’API interne de Twig.js pour pouvoir rajouter
-un tag. On ne va pas se le cacher, [c’est assez chaud à faire](https://github.com/justjohn/twig.js/wiki/Extending-twig.js-With-Custom-Tags).
+For tags, your module must export a function with Twig as argument.
+This object give you access to entire Twig.js internal API to add a tag.
+We can’t hide it, [it’s not trivial](https://github.com/justjohn/twig.js/wiki/Extending-twig.js-With-Custom-Tags).
 
-A noter que la fonction exportée par le module est celle qui sera utilisée par
-`Twig.extend`.
+The exported function will be used by `Twig.extend`.
 
 ```javascript
 module.exports = function (Twig) {
-  // Bon courage :-/
+  // Be brave :-/
 };
 ```
 
-Pour voir quelques exemples concrets vous pouvez jetez un coup d’œil dans le
-repertoire [tools/twig](tools/twig).
+To see some exemples you can give a look to [tools/twig](../../tools/twig).
 

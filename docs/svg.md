@@ -1,13 +1,13 @@
 
-SVG : symboles
+SVG: symbols
 ===============================================================================
 
-Le Garden Starter Kit embarque une solution pour inclure une collection de symbole svg inline dans le html.
+The Garden Starter Kit can import a collection of svg symbols in html.
 
-Vous trouverez plus d’infos sur cette technique dans [l’article de css-tricks sur le sujet](https://css-tricks.com/svg-symbol-good-choice-icons/).
+You can find more informations in [the css-tricks article about this subject](https://css-tricks.com/svg-symbol-good-choice-icons/).
 
 
-Configuration
+Settings
 -------------------------------------------------------------------------------
 
 ```json
@@ -19,21 +19,20 @@ Configuration
   },
 ```
 
-Vos fichiers svg pour chaque icon sera dans le dossier et sous dossiers de `src-dir`.
-La tâche `gulp svg` en fera des symboles dans le fichier `dest-file`.svg qui sera situé dans le dossier `dest-dir`.
+Your icons SVG files will be in the `src-dir` directory.
+The `gulp svg` task will transform it to a colection in the `dest-file`.svg built in the `dest-dir` directory.
 
-Les `id` des symboles seront préfixés par `id-prefix` et composer de leur chemin depuis `src-dir`.
+Symbols’s `id` will be prefixed by `id-prefix` and composed by the path from `src-dir`.
 
-Avec la config par défaut on aura donc pour un fichier source `./src/assets/svg/symbols/animals/fish.svg` un symbole avec l’id `symbols-animals-fish` dans le fichier `./src/assets/svg/symbol.svg`.
+With default settings for the source file `./src/assets/svg/symbols/animals/fish.svg` we will optain a svg symbole with `symbols-animals-fish` as id in the `./src/assets/svg/symbol.svg` file.
 
 
-Utilisation
+Use
 -------------------------------------------------------------------------------
 
-Mettez vos symboles SVG « propres » dans le dossier sources.
-Puis lancez la tâche `gulp svg`.
+Put clean and optimized SVG files in the source directory, then run `gulp svg` task.
 
-Notez que builder le fichiers de symboles ne suffira pas à avoir les symboles à jour dans le html ou le styleguide. Il faudra donc rebuildez ceux-ci.
+__You have to run HTML build to update symbols collection in html files (same for docs)__
 
-Les tâches `gulp watch` ou `gulp live` surveillent aussi l’ajout et la modification des svg sources afin de regénérer le html et le styleguide.
+`gulp watch` or `gulp live` command watch add or edit for SVG sources to regenerate html and docs.
 

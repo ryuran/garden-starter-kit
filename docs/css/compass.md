@@ -2,9 +2,9 @@
 Sass & Compass
 ===============================================================================
 
-Nous utilisions [Sass](http://sass-lang.com) et [Compass](http://compass-style.org) dans de nombreux projets historiques.
+We use [Sass](http://sass-lang.com) and [Compass](http://compass-style.org) in old project.
 
-Configuration:
+Settings:
 ```json
 {
   "css": {
@@ -13,92 +13,80 @@ Configuration:
 }
 ```
 
-Vérifiez votre environnement
+Check your environment
 -------------------------------------------------------------------------------
 
-Sass et compass reposent sur [Ruby](https://www.ruby-lang.org/fr/), assurez-vous que vous l’avez bien installé sur votre environnement.
+Sass and compass are based on [Ruby](https://www.ruby-lang.org/), be sure it is installed in your environment.
 
-Il est également nécessaire d'installer l'utilitaire
-[Bundler](http://bundler.io/) dans votre environnement global (cela permet
-d'avoir plusieurs versions de Sass en fonction de chaque projet).
+You must install the ruby package manager [Bundler](http://bundler.io/) in your environment. (it allow to have several versions of Sass related to each projet).
 
-Puis exécutez simplement la commande suivante :
+With this command:
 
 ```bash
-$ sudo gem install bundler
+sudo gem install bundler
 ```
 
-Copiez à la racine du projet les fichiers `config.rb` et `Gemfile` que vous trouverez dans le dossier `starter/`.
+If `config.rb` and `Gemfile` do not exist at project root, you can copy them from `starter/` directory.
 
-Puis, pour être sûr que vous disposez de la dernière version de Sass et Compass
-pour le projet sur lequel vous travaillez, exécutez la commande suivante :
+To be sure to have the last Sass and Compass version for the current project, run this command:
 
 ```bash
-$ bundle install --path .gems
+bundle install --path .gems
 ```
 
-En cas de problème de compilation Sass sur un projet existant commencez
-toujours par exécuter la commande suivante :
+In case of issue of compilation Sass in an existing project, start always trying this command:
 
 ```bash
-$ bundle update
+bundle update
 ```
 
-
-Configuration standard
+Standard settings
 -------------------------------------------------------------------------------
 
-Vous pouvez utiliser Sass/Compass de manière traditionnelle, toute la
-configuration de l’environnement est centralisé dans le ficher `config.rb`.
-Un fichier de configuration près à l’emploi est disponible dans `starter/`
+You can use Sass and Compass in the traditional way, all settings are in `config.rb`.
+You can copy the exemple from `starter/` directory.
 
-Pour compiler les styles du projet vers l'environnement de développement,
-exécuter simplement la commande suivante :
-
+To build styles to build directory, run the command (recommanded):
 ```bash
-$ gulp css
+gulp css
 ```
 
-Ou bien pour une compilation standalone:
-
+Or from traditional way directly with compass:
 ```bash
-$ bundle exec compass compile
+bundle exec compass compile
 ```
 
-Pour compiler les styles du projet vers l’environnement de production il suffit
-de rajouter le paramètre adéquat :
+To build your styles with production settings (minification, etc.):
 
 ```bash
-$ gulp css --optimize
+gulp css --optimize
 ```
 
-Ou bien en standalone
+Or from traditional way directly with compass:
 
 ```bash
-$ bundle exec compass compile -e production
+bundle exec compass compile -e production
 ```
 
-
-Configuration avancée
+Advanced steeings
 -------------------------------------------------------------------------------
 
-### Installer un module via NPM (à préférer autant que possible)
+### Install a module from NPM (recommanded)
 
-Exemple avec sass-mq:
+Exemple with sass-mq:
 
-Installer le module NPM `npm install sass-mq --save`
+Install the module `npm install sass-mq --save`
 
-Puis importez le module dans vos scss `@import 'sass-mq/mq';`.
+The import it in scss `@import 'sass-mq/mq';`.
 
-### Installer un module via bundler
+### Install a module from bundler
 
-Exemple avec Sass-globing :
+Exemple with Sass-globing :
 
-Ajouter cette ligne au fichier Gemfile `gem 'sass-globbing'`
+Add this line to `Gemfile` file `gem 'sass-globbing'`
 
-Lancer un `bundle install` en ligne de commande pour que ce nouveau module soit bien installé.
+Run the command `bundle install` to install it.
 
-Puis ajouter la ligne suivante `require 'sass-globbing'` dans le fichier `config.rb`.
+Then add `require 'sass-globbing'` in `config.rb` file.
 
-Si votre gem expose des mixins vous devez l’importer dans votre css comme dans cet exemple avec bourbon `@import 'bourbon';`.
-
+If the gem expose some mixins you have to import it in scss. (Exemple with bourbon `@import 'bourbon';`).

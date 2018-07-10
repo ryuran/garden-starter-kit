@@ -56,10 +56,10 @@ module.exports = function (Twig) {
 
     // a matching end tag type
     Twig.exports.extendTag({
-        type: 'endkssIcons',
-        regex: /^endkssIcons$/,
-        next: [],
-        open: false
+      type: 'endkssIcons',
+      regex: /^endkssIcons$/,
+      next: [],
+      open: false
     });
   });
 };

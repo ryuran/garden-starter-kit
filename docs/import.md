@@ -1,15 +1,13 @@
 
-Import : importer des fichiers externes dans son build
+Import: to import external files in build directory
 ===============================================================================
 
-Le Garden Starter Kit embarque une solution pour ajouter des ressources externes au build.
+The Garden Starter Kit have a simple task to copy some files to build directory.
 
-Les tâches d’import copient simplement des fichiers depuis une source vers une destination.
-
-Elles peuvent servir par exemple pour copier un asset provenant d’une dépendance NPM.
+It can be useful by exemple to copy an asset from a NPM dependence.
 
 
-Configuration
+Settings
 -------------------------------------------------------------------------------
 
 ```json
@@ -25,16 +23,16 @@ Configuration
   },
 ```
 
-Dans cet exemple, la première partie nommée `fontAwesome` copiera les fichiers de polices de caractère de la dépendance NPM `font-awesome` dans le dossier `fonts/font-awesome` du build.
+It this exemple, the first part named `fontAwesome` will copy font files from NPM dependence `font-awesome` in the directory `fonts/font-awesome` in the build directory.
 
-La seconde partie nommée `jQueryUI` copiera les images de la dépendance NPM `jquery-ui` dans le dosser `img/jquery-ui` du build.
+The second part `jQueryUI` will copy images from NPM dependence `jquery-ui` in the directory `img/jquery-ui` in the build directory.
 
 
-Utilisation
+Use
 -------------------------------------------------------------------------------
 
-La commande `gulp import` déclenchera tous les imports.
+The command `gulp import` will run all imports.
 
-Cependant, une tâche pour chaque entrée de la config sera aussi disponible.
+Furthermore, a task to each entry of settings will be available.
 
-Par exemple, pour la config de l’exemple ci-dessus, il existera les tâches `gulp import:fontAwesome` et `gulp import:jQueryUI`.
+For exemple, with the previous settings, `gulp import:fontAwesome` and `gulp import:jQueryUI` will be available.

@@ -1,5 +1,5 @@
 
-Browsersync : Proxyfy JS and CSS files
+Browsersync: Proxyfy JS and CSS files
 ===============================================================================
 
 The _Garden Starter Kit_ embed a version of [Browsersync](https://www.browsersync.io/).
