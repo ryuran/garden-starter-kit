@@ -2,9 +2,9 @@
 Stylus
 ===============================================================================
 
-Certain projet peuvent utiliser [Stylus](http://learnboost.github.io/stylus/)
+Some project can use [Stylus](http://stylus-lang.com/)
 
-Configuration:
+Settings:
 ```json
 {
   "css": {
@@ -13,16 +13,12 @@ Configuration:
 }
 ```
 
-
-Configuration standard
+Standard settings
 -------------------------------------------------------------------------------
 
-Stylus ne requiers aucune configuration particulière. Cependant, contrairement
-à compass, il n’offre pas de mécanisme de gestion automatique des sprites.
+Stylus does not need specific settings.
 
-Stylus est utilisé avec le linter Stylint. [La configuration](../../starter/.stylintrc)
-proposé par le starter kit pour Stylint force une syntaxe très proche de la
-syntaxe scss de Sass.
+Stylus is used with the linter Stylint. [Stylint settings](../../starter/.stylintrc)
+suggested by the starter kit force a syntaxe very close to sass syntaxe.
 
-> __NOTE:__ _[Nib](http://tj.github.io/nib/) n’est pas installé avec le starter
-  kit. Si vous voulez l’utiliser il vous faudra l’installer manuellement._
+> __NOTE:__ _[Nib](http://tj.github.io/nib/) is not installed, if you need it, you have to install it manually._

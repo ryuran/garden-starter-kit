@@ -3,16 +3,12 @@
 // MODULES
 // ----------------------------------------------------------------------------
 const path = require('path');
-const fs = require('fs');
-const kss = require('kss');
 const glob = require('glob');
 const gulp = require('gulp');
 const data = require('gulp-data');
 const newer = require('gulp-newer');
-const markdown = require('gulp-markdown');
 const dox = require('gulp-dox');
 const twig = require('gulp-twig-pipe');
-const del = require('del');
 const ENV = require('../tools/env');
 
 const SRC = path.join(ENV.doc['src-dir'], '**', '*.md');
@@ -73,7 +69,7 @@ function extractData(file) {
     .sort(function (a, b) {
       return a.localeCompare(b);
     })
-    .forEach(function (currentValue, index) {
+    .forEach(function (currentValue) {
       var p = path.parse(currentValue);
 
       var dir = p.dir.replace(rURL, '').replace(/^\//, '');
@@ -118,39 +114,6 @@ function extractData(file) {
   return out;
 }
 
-// HBS HELPERS
-// ----------------------------------------------------------------------------
-const folderPath = '../tools/doc/helpers';
-fs.readdirSync(path.resolve(path.relative(process.cwd(), __dirname), folderPath)).forEach(function(file) {
-  require(path.join(folderPath, file))(twig.twig);
-});
-
-// MARKED CUSTOM RENDERER
-// ----------------------------------------------------------------------------
-const renderer = new markdown.marked.Renderer();
-
-// Link to markdown files are transformed into link to HTML files
-// This allow to use both the gitlab markdown linking and the HTML
-// transformation for exporting the doc.
-renderer.link = function (href, title, text) {
-  const url = [];
-  url.push('<a href="');
-  url.push(href.replace(/\.md$/, '.html'));
-  url.push('"');
-
-  if (title) {
-    url.push(' title="');
-    url.push(title);
-    url.push('"');
-  }
-
-  url.push('>');
-  url.push(text);
-  url.push('</a>');
-
-  return url.join('');
-};
-
 // TASK DEFINITION
 // ----------------------------------------------------------------------------
 
@@ -166,48 +129,3 @@ gulp.task('doc:js', function () {
     .pipe(gulp.dest(path.join(DEST, 'js')));
 });
 gulp.task('doc:js').description = 'Compile Javascript documentation.';
-
-// $ gulp doc:static
-// ----------------------------------------------------------------------------
-// Génère toute la doc statique du projet
-gulp.task('doc:static', function () {
-  return gulp.src(SRC)
-    .pipe(newer(DEST))
-    .pipe(markdown({
-      renderer: renderer
-    }))
-    .pipe(data(extractData))
-    .pipe(twig(path.relative(process.cwd(), path.join(__dirname, '../tools/doc/staticdoc.html.twig')), { dataSource: 'data' }))
-    .pipe(gulp.dest(DEST));
-});
-gulp.task('doc:static').description = 'Compile the static documentation.'
-
-// $ gulp doc:kss
-// ----------------------------------------------------------------------------
-// Génère le styleguide du projet via KSS
-gulp.task('doc:kss', function (cb) {
-  const CONF = require(path.relative(__dirname, path.join(process.cwd(), 'kss.js')));
-  // CONF.verbose = true; // TODO: verbose should be an option
-
-  // clean styleguide directory
-  del(path.join(CONF.destination, '**/*')).then(() => {
-    // build kss styleguide
-    kss(CONF).then(() => {
-      cb();
-    });
-  });
-});
-gulp.task('doc:kss').description = 'Compile the styleguide, using KSS.';
-
-// $ gulp doc
-// ----------------------------------------------------------------------------
-// Génère toute la doc du projet
-gulp.task('doc', function (cb) {
-  // do not build doc if related to options
-  if (!ENV.all.doc && ENV.all.optimize) {
-    return cb();
-  }
-
-  return gulp.series('doc:static', gulp.parallel('doc:kss', 'doc:js'))(cb);
-});
-gulp.task('doc').description = 'Compile all documentations of the project.';

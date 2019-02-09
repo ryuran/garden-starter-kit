@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+
+    <title>{% block title %}Documentation{% endblock %}</title>
+  </head>
+  <body class="ca">
+    <header class="ca__header">
+      <div class="ca__pageWrapper">
+        <h1 class="ca__headerLogo">Documentation</h1>
+      </div>
+    </header>
+
+    <div class="ca__pageWrapper">
+      <nav class="ca__sidebar">
+        {% if toc %}
+          <ul class="ca__sidebarMenu">
+            {% for item in toc %}
+              {% set levelOneIndex = loop.index %}
+              <li class="ca__sidebarMenuItem">
+                {% if item.url %}
+                  <a class="ca__sidebarLink" href="{{ item.url }}">
+                    <span class="ca__sidebarRef">{{ levelOneIndex }}</span>&nbsp;/ {{item.name}}
+                  </a>
+                {% else %}
+                  <span class="ca__sidebarRef">{{ levelOneIndex }}</span>&nbsp;/ {{item.name}}
+                {% endif %}
+                {% if item.children %}
+                  <ul class="ca__sidebarMenu">
+                    {% for children in item.children %}
+                      {% set levelTwoIndex = loop.index %}
+                      <li class="ca__sidebarMenuItem">
+                        {% if children.url %}
+                          <a class="ca__sidebarLink" href="{{ children.url }}">
+                            <span class="ca__sidebarRef">{{ levelOneIndex }}.{{ levelTwoIndex }}</span>&nbsp;/ {{children.name}}
+                          </a>
+                        {% else %}
+                          <span class="ca__sidebarRef">{{ levelOneIndex }}.{{ levelTwoIndex }}</span>&nbsp;/ {{children.name}}
+                        {% endif %}
+                        {% if children.children %}
+                          <ul class="ca__sidebarMenu">
+                            {% for subchildren in children.children %}
+                              {% set levelThreeIndex = loop.index %}
+                              <li class="ca__sidebarMenuItem">
+                                <a class="ca__sidebarLink" href="{{ subchildren.url }}">
+                                  <span class="ca__sidebarRef">{{ levelOneIndex }}.{{ levelTwoIndex }}.{{levelThreeIndex}}</span>&nbsp;/ {{ subchildren.name }}
+                                </a>
+                              </li>
+                            {% endfor %}
+                          </ul>
+                        {% endif %}
+                      </li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </nav>
+      <main class="ca__content ca__md">
+        {% block main %}{{ body|raw }}{% endblock %}
+      </main>
+    </div>
+  </body>
+</html>

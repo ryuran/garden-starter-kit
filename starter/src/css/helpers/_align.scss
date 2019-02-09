@@ -1,0 +1,30 @@
+// Text alignment
+//
+// Text alignement classes.
+//
+// .alignRight      - right-aligned text
+// .alignLeft       - left-aligned text
+// .alignCenter     - centered text
+// .alignJustify    - justified text
+//
+// Markup:
+// <p class="{{ modifier_class }}">Example of <code>{{ modifier_class }}</code> text. In hac habitasse platea dictumst. Sed augue ipsum, egestas nec, vestibulum et, malesuada adipiscing, dui. Nullam sagittis. Morbi nec metus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+//
+// Styleguide Helpers.Alignment
+.align {
+  &Center {
+    text-align: center;
+  }
+
+  &Left {
+    text-align: left;
+  }
+
+  &Right {
+    text-align: right;
+  }
+
+  &Justify {
+    text-align: justify;
+  }
+}

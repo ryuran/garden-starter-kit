@@ -1,0 +1,9 @@
+{% extends './base.twig' %}
+
+{% block main %}
+  <ul>
+    {% for page in pages %}
+      <li>{{ page }}</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

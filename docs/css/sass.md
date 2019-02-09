@@ -23,7 +23,7 @@ npm install sass-moduleName --save
 
 And import the module in your scss:
 ```scss
-@import 'moduleName';
+@import '~moduleName';
 ```
 
 
@@ -36,7 +36,7 @@ npm install normalize-scss --save
 
 And import the module in your scss:
 ```scss
-@import 'normalize.scss/normalize';
+@import '~normalize.scss/normalize';
 ```
 
 

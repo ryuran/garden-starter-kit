@@ -1,4 +1,4 @@
-{{ title|default(name|default('PROJECT_NAME')) }}
+__PROJECT_NAME__
 ===============================================================================
 
 Ce dépôt contient les maquettes sous forme d’intégration statique ainsi que la documentation et les outils nécessaires à la conception frontend du projet.

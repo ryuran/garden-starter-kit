@@ -1,0 +1,27 @@
+// Video
+//
+// A video wrapper to make an iframe responsive and keeping always same a ratio.
+// Default ratio is `16/9`.
+//
+// Markup:
+// <div class="video">
+//   <iframe width="560" height="315" frameborder="0"
+//     src="https://www.youtube-nocookie.com/embed/diD2Aec4CzY"
+//     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+//     allowfullscreen></iframe>
+// </div>
+//
+// Style guide: Elements.Video
+.video {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+
+  iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+}

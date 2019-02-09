@@ -1,0 +1,109 @@
+// Design
+//
+// Design rules.
+//
+// Weight: 1
+//
+// Style guide: Design
+@import './settings/color';
+
+// Bases
+//
+// Native HTML elements style and resets.
+//
+// Weight: 2
+//
+// Style guide: Bases
+@import './bases/fontface';
+@import './bases/body';
+
+// Layouts
+//
+// Page or section layouts.
+//
+// Weight: 3
+//
+// Style guide: Layouts
+
+// Elements
+//
+// Every UI elements.
+//
+// Weight: 4
+//
+// Style guide: Elements
+@import './elements/btn';
+@import './elements/video';
+
+// Components
+//
+// Blocks and components.
+//
+// Weight: 5
+//
+// Style guide: Components
+@import './components/alert';
+
+// Helpers
+//
+// Helpers classes could be used everywhere to affect
+// some css properties on components or elements.
+//
+// Weight: 6
+//
+// Style guide: Helpers
+@import './helpers/align';
+
+h1 {
+  color: $color-primary;
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  max-width: 35em;
+  margin: 0 auto;
+
+  > * {
+    flex: 100%;
+  }
+}
+
+@media screen and (min-width: 35em) {
+  article {
+    flex: 0 0 60%;
+  }
+
+  aside {
+    flex: 0 0 30%;
+  }
+}
+
+nav {
+  background-color:$color-light-grey;
+
+  ul {
+    display: flex;
+    justify-content: space-between;
+
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+
+    li {
+      padding: .5em 1em;
+    }
+  }
+}
+
+article img {
+  width: 100%;
+}
+
+.icon {
+  width: 125px;
+  height: 125px;
+  background: $color-light;
+}

@@ -2,40 +2,47 @@
 KSS
 ===============================================================================
 
-[KSS](http://warpspire.com/kss/) est une convention de documentation pour les feuilles de styles. Elle permet de structurer les commentaires afin de générer un guide complet des styles du projet.
+[KSS](http://warpspire.com/kss/) is a documentation standard for styles.
+It’s based on structured comments to generate a style guide.
 
-Il existe plusieurs outils capable de lire les commentaires pour générer un guide des styles. Nous utilisons ici [kss-node](http://kss-node.github.io/kss-node/).
+Here we use node version of kss [kss-node](http://kss-node.github.io/kss-node/).
+
+To build KSS styleguide, run: `npm run styleguide`.
 
 
-Configuration
+Settings
 -------------------------------------------------------------------------------
 
-Toute la configuration pour la génération du guide des styles est centralisée dans le fichier `kss.json`.
+KSS settings are in the `kss.json` file:
 
-```javascript
+```json
 {
-  // Le dossier comportant les sources à analyser
-  // (le chemin est relatif à l’emplacement du fichier kss.json)
-  "source": "./src/sass",
+  // Directory where sources are.
+  // (this path is relative to the kss.js file)
+  "source": "./src/css",
 
-  // La page d’accueil statique du guide des style au format Markdown
-  // (le chemin est relatif à l’emplacement des sources à analyser)
-  "homepage": "styleguide.md",
+  // The style guide homepage in markdown
+  // (this path is relative to the source directory)
+  "homepage": "README.md",
 
-  // L’emplacement ou le guide des style sera généré
-  // (le chemin est relatif à l’emplacement du fichier kss.json)
-  "destination": "./build/docs/styleguide",
+  // Diretory to build the styleguide
+  // (this path is relative to the kss.js file)
+  "destination": "./build/doc/styleguide",
 
-  // L’emplacement du gabarit KSS personalisé à utiliser
-  // (le chemin est relatif à l’emplacement du fichier kss.json)
-  "template": "./node_modules/garder-starterkit/kss",
+  // Path to the builder
+  // (resolved as commonJS `require`)
+  "builder": "@cleverage/gsk/kss",
+  "custom": [],
 
-  // Les divers fichiers CSS à inclure dans le template
-  // (leur chemin est l’URL relative des fichiers et dépend donc de la
-  //  configuration du serveur HTTP utilisé pour afficher la documentation)
+  // CSS files to import in the style guide
+  // (Paths are URL relative from built style guide)
   "css": [
     "../../css/doc.css",
-    "../../css/styles.css"
-  ]
-}
+    "../../css/styles.css",
+  ],
+
+  // js files to import in the style guide
+  // (Paths are URL relative from built style guide)
+  "js" : []
+};
 ```
